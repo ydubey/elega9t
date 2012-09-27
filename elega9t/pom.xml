@@ -12,6 +12,8 @@
 
     <modules>
         <module>../jmeter-jms-skip-jndi</module>
+        <module>../carbon</module>
+        <module>../commons</module>
     </modules>
 
     <name>elega9t</name>
