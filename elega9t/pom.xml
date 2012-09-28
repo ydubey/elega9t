@@ -20,12 +20,38 @@
     <description>Elega9t open-source projects</description>
     <url>http://elega9t.com</url>
 
+    <properties>
+        <isDebug>false</isDebug>
+        <xvfb.skip>true</xvfb.skip>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>build</id>
+            <properties>
+                <xvfb.skip>false</xvfb.skip>
+            </properties>
+        </profile>
+        <profile>
+            <id>debug</id>
+            <properties>
+                <isDebug>true</isDebug>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.intellij</groupId>
                 <artifactId>annotations</artifactId>
                 <version>9.0.4</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.intellij</groupId>
+                <artifactId>javac2</artifactId>
+                <version>7.0.3</version>
             </dependency>
             <dependency>
                 <groupId>net.java.dev.javacc</groupId>
@@ -37,7 +63,6 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.10</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
@@ -46,5 +71,34 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.4</version>
+                    <configuration>
+                        <archive>
+                            <index>true</index>
+                            <manifestEntries>
+                                <Built-By>Elega9t Ltd.</Built-By>
+                                <Website>http://www.elega9t.com</Website>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.2</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
