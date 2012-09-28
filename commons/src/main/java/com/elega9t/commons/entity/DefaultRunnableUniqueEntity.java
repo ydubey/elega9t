@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public abstract class DefaultRunnableUniqueEntity extends DefaultUniqueEntity implements RunnableUniqueEntity {
 
-    private Logger logger = Logger.getLogger(getClass().getName());
+    public Logger logger = Logger.getLogger(getClass().getName());
 
     private AtomicReference<STATUS> status;
 
@@ -66,7 +66,7 @@ public abstract class DefaultRunnableUniqueEntity extends DefaultUniqueEntity im
         }
     }
 
-    protected abstract void stopEntity();
+    protected abstract void stopEntity() throws RunnableEntityException;
 
     @Override
     public void addLifecycleListener(LifecycleListener lifecycleListener) {

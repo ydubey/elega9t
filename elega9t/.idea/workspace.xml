@@ -33,22 +33,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Host.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Module.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Server.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Service.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/carbon-standard.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardHost.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon-api/carbon-api.iml" afterPath="$PROJECT_DIR$/../carbon-api/carbon-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon-api/pom.xml" afterPath="$PROJECT_DIR$/../carbon-api/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/pom.xml" afterPath="$PROJECT_DIR$/../carbon/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java" afterPath="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultRunnableUniqueEntity.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultRunnableUniqueEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="elega9t.iws" />
@@ -106,7 +94,80 @@
     <favorites_list name="elega9t" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Connector.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StandardConnector.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="95" selection-start="1352" selection-end="1352" vertical-scroll-proportion="0.5877743">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="6" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Service.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Service.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="17" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LifecycleListenerRunnableEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="67" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultRunnableUniqueEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultRunnableUniqueEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="0" selection-start="2331" selection-end="2331" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LifecycleListenerRunnableEntityTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -120,22 +181,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultEntity.java" />
-        <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java" />
         <option value="$PROJECT_DIR$/../carbon-api/pom.xml" />
         <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Server.java" />
-        <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java" />
         <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Service.java" />
         <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Host.java" />
         <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Module.java" />
         <option value="$PROJECT_DIR$/../carbon-standard/pom.xml" />
         <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardServer.java" />
         <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardService.java" />
-        <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java" />
         <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardHost.java" />
         <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardModule.java" />
+        <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java" />
+        <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/Constants.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultRunnableUniqueEntity.java" />
+        <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java" />
+        <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java" />
       </list>
     </option>
   </component>
@@ -201,13 +262,113 @@
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.6 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="elega9t" />
@@ -235,6 +396,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -303,10 +494,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -424,7 +611,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -447,16 +633,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="263" />
@@ -471,9 +657,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/../commons/src/test/java" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -481,8 +667,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -583,24 +769,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -627,6 +795,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -738,7 +924,11 @@
       <created>1348832635900</created>
       <updated>1348832635900</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="YD: Adding base carbon interfaces and standard implementation">
+      <created>1348846092735</created>
+      <updated>1348846092735</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -759,7 +949,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14293362" sideWeight="0.6702544" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14453961" sideWeight="0.6702544" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24946466" sideWeight="0.6702544" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -808,7 +998,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: Adding copyright to source files" />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: Adding base carbon interfaces and standard implementation" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -828,6 +1018,7 @@
     <MESSAGE value="YD: entity model." />
     <MESSAGE value="YD: using javac2 compiler, added profiles to elega9t" />
     <MESSAGE value="YD: Adding copyright to source files" />
+    <MESSAGE value="YD: Adding base carbon interfaces and standard implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -837,49 +1028,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="886" selection-end="886" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LifecycleListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="29" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/UniqueEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="27" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="33" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.8649469" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Module.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="362" selection-end="362" vertical-scroll-proportion="0.13657056" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Host.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="34" selection-start="452" selection-end="452" vertical-scroll-proportion="0.18209408" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Service.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="466" selection-end="466" vertical-scroll-proportion="0.25037935" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="37" selection-start="385" selection-end="385" vertical-scroll-proportion="0.18209408" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="60" selection-start="405" selection-end="405" vertical-scroll-proportion="0.15933232" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../carbon-api/pom.xml">
@@ -897,11 +1048,6 @@
         <state line="18" column="0" selection-start="629" selection-end="629" vertical-scroll-proportion="0.3414264" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="725" selection-end="725" vertical-scroll-proportion="0.47799698" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" />
@@ -915,6 +1061,69 @@
     <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="101" selection-start="740" selection-end="740" vertical-scroll-proportion="0.2276176" />
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.6.0_34/src.zip!/java/net/ServerSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="423" column="18" selection-start="14594" selection-end="14594" vertical-scroll-proportion="0.3323217">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="6" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="67" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultRunnableUniqueEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2331" selection-end="2331" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="95" selection-start="1352" selection-end="1352" vertical-scroll-proportion="0.5877743">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

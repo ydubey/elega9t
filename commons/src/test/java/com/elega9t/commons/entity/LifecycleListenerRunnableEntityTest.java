@@ -16,7 +16,7 @@ public class LifecycleListenerRunnableEntityTest {
         protected void startEntity() throws RunnableEntityException {
         }
         @Override
-        protected void stopEntity() {
+        protected void stopEntity() throws RunnableEntityException {
         }
     };
 
