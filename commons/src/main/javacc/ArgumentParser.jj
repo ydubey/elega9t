@@ -1,0 +1,54 @@
+options {
+    JDK_VERSION = "1.7";
+    IGNORE_CASE = true;
+    STATIC = false;
+    DEBUG_TOKEN_MANAGER = false;
+    UNICODE_INPUT = true;
+}
+
+PARSER_BEGIN(ArgumentParser)
+/*
+ * Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+ * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
+
+package com.elega9t.commons.args;
+
+public class ArgumentParser {
+
+  final static String NL = System.getProperty("line.separator");
+
+  private static String getTokenText(Token first, Token cur) {
+    Token t;
+    StringBuffer sb = new StringBuffer();
+
+    for (t=first; t != cur.next; t = t.next) {
+      if (t.specialToken != null) {
+        Token tt=t.specialToken;
+        while (tt.specialToken != null)
+          tt = tt.specialToken;
+        for (; tt != null; tt = tt.next)
+          sb.append(tt.image);
+      };
+      sb.append(t.image);
+    };
+    return sb.toString();
+  }
+
+}
+
+PARSER_END(ArgumentParser)
+
+<*> TOKEN : {
+  <#ALPHA_CHAR       : ["a"-"z", "A"-"Z"] >
+| <#NUM_CHAR         : ["0"-"9"] >
+| <#ALPHANUM_CHAR    : [ "a"-"z", "A"-"Z", "0"-"9" ] >
+| <#IDENTIFIER_CHAR  : [ "a"-"z", "A"-"Z", "0"-"9", "_", "-", ".", ":" ] >
+| <#IDENTIFIER       : <ALPHA_CHAR> (<IDENTIFIER_CHAR>)* >
+| <#QUOTED_STRING_NB : ( "'" ( ~["'", "\r", "\n"] )* "'" )
+                       | ( "\"" ( ~["\"", "\r", "\n"] )* "\"" ) >
+| <#QUOTED_STRING    : ( "'" ( ~["'"] )* "'" ) | ( "\"" ( ~["\""] )* "\"" ) >
+| <#WHITESPACE       : ( " " | "\t" | "\n" | "\r" ) >
+| <#NEWLINE          : ( "\r\n" | "\r" | "\n" ) >
+| <#QUOTE            : ( "'" | "\"" )>
+}
