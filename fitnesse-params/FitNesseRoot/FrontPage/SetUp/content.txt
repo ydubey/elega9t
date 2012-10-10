@@ -1,0 +1,2 @@
+!|Import|
+|com.elega9t.fitnesse.calc.fixture|

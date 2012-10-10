@@ -1,0 +1,7 @@
+!|CalculatorFixture|
+|operation|param|result()|
+|reset||OK|
+|input|12|OK|
+|input|13|OK|
+|add||OK|
+|accumulator||25|

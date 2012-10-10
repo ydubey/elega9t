@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20111026</FitNesseVersion>
+  <rootPath>AdditionTestScenario</rootPath>
+    <result>
+    <counts>
+      <right>1</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>4</exceptions>
+    </counts>
+    <runTimeInMillis>6</runTimeInMillis>
+    <content><![CDATA[<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('8');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img8"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.SetUp">.FrontPage.SetUp</a> <a href="FrontPage.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="8"><table border="1" cellspacing="0">
+	<tr>
+		<td>Import</td>
+	</tr>
+	<tr>
+		<td>com.elega9t.fitnesse.calc.fixture</td>
+	</tr>
+</table>
+</div>
+</div>
+<br/><table border="1" cellspacing="0">
+	<tr>
+		<td>CalculatorFixture</td>
+		<td>A, B, RESULT</td>
+		<td>12, 13, 25</td>
+	</tr>
+	<tr>
+		<td>operation</td>
+		<td>param</td>
+		<td>result()</td>
+	</tr>
+	<tr>
+		<td>reset</td>
+		<td> <span class="fit_grey">null</span></td>
+		<td class="pass">OK</td>
+	</tr>
+	<tr>
+		<td>input</td>
+		<td>#{A}</td>
+		<td class="error">OK<hr><pre><div class="fit_stacktrace">java.lang.NumberFormatException
+	at java.math.BigDecimal.<init>(BigDecimal.java:470)
+	at java.math.BigDecimal.<init>(BigDecimal.java:739)
+	at com.elega9t.fitnesse.calc.Calculator.calc(Calculator.java:27)
+	at com.elega9t.fitnesse.calc.fixture.CalculatorFixture.result(CalculatorFixture.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at fit.TypeAdapter.invoke(TypeAdapter.java:109)
+	at fit.TypeAdapter.get(TypeAdapter.java:97)
+	at fit.Fixture$CellComparator.compareCellToResult(Fixture.java:371)
+	at fit.Fixture$CellComparator.access$100(Fixture.java:357)
+	at fit.Fixture.compareCellToResult(Fixture.java:299)
+	at fit.Fixture.check(Fixture.java:295)
+	at fit.ColumnFixture.check(ColumnFixture.java:51)
+	at fit.Binding$QueryBinding.doCell(Binding.java:215)
+	at fit.ColumnFixture.doCell(ColumnFixture.java:37)
+	at fit.Fixture.doCells(Fixture.java:171)
+	at fit.Fixture.doRow(Fixture.java:165)
+	at fit.ColumnFixture.doRow(ColumnFixture.java:25)
+	at fit.Fixture.doRows(Fixture.java:159)
+	at fit.ColumnFixture.doRows(ColumnFixture.java:18)
+	at fit.Fixture.doTable(Fixture.java:153)
+	at fit.Fixture.interpretFollowingTables(Fixture.java:119)
+	at fit.Fixture.interpretTables(Fixture.java:105)
+	at fit.Fixture.doTables(Fixture.java:79)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+</div></pre></td>
+	</tr>
+	<tr>
+		<td>input</td>
+		<td>#{B}</td>
+		<td class="error">OK<hr><pre><div class="fit_stacktrace">java.lang.NumberFormatException
+	at java.math.BigDecimal.<init>(BigDecimal.java:470)
+	at java.math.BigDecimal.<init>(BigDecimal.java:739)
+	at com.elega9t.fitnesse.calc.Calculator.calc(Calculator.java:27)
+	at com.elega9t.fitnesse.calc.fixture.CalculatorFixture.result(CalculatorFixture.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at fit.TypeAdapter.invoke(TypeAdapter.java:109)
+	at fit.TypeAdapter.get(TypeAdapter.java:97)
+	at fit.Fixture$CellComparator.compareCellToResult(Fixture.java:371)
+	at fit.Fixture$CellComparator.access$100(Fixture.java:357)
+	at fit.Fixture.compareCellToResult(Fixture.java:299)
+	at fit.Fixture.check(Fixture.java:295)
+	at fit.ColumnFixture.check(ColumnFixture.java:51)
+	at fit.Binding$QueryBinding.doCell(Binding.java:215)
+	at fit.ColumnFixture.doCell(ColumnFixture.java:37)
+	at fit.Fixture.doCells(Fixture.java:171)
+	at fit.Fixture.doRow(Fixture.java:165)
+	at fit.ColumnFixture.doRow(ColumnFixture.java:25)
+	at fit.Fixture.doRows(Fixture.java:159)
+	at fit.ColumnFixture.doRows(ColumnFixture.java:18)
+	at fit.Fixture.doTable(Fixture.java:153)
+	at fit.Fixture.interpretFollowingTables(Fixture.java:119)
+	at fit.Fixture.interpretTables(Fixture.java:105)
+	at fit.Fixture.doTables(Fixture.java:79)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+</div></pre></td>
+	</tr>
+	<tr>
+		<td>add</td>
+		<td> <span class="fit_grey">#{B}</span></td>
+		<td class="error">OK<hr><pre><div class="fit_stacktrace">java.util.EmptyStackException
+	at java.util.Stack.peek(Stack.java:102)
+	at java.util.Stack.pop(Stack.java:84)
+	at com.elega9t.fitnesse.calc.Calculator.add(Calculator.java:55)
+	at com.elega9t.fitnesse.calc.Calculator.calc(Calculator.java:29)
+	at com.elega9t.fitnesse.calc.fixture.CalculatorFixture.result(CalculatorFixture.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at fit.TypeAdapter.invoke(TypeAdapter.java:109)
+	at fit.TypeAdapter.get(TypeAdapter.java:97)
+	at fit.Fixture$CellComparator.compareCellToResult(Fixture.java:371)
+	at fit.Fixture$CellComparator.access$100(Fixture.java:357)
+	at fit.Fixture.compareCellToResult(Fixture.java:299)
+	at fit.Fixture.check(Fixture.java:295)
+	at fit.ColumnFixture.check(ColumnFixture.java:51)
+	at fit.Binding$QueryBinding.doCell(Binding.java:215)
+	at fit.ColumnFixture.doCell(ColumnFixture.java:37)
+	at fit.Fixture.doCells(Fixture.java:171)
+	at fit.Fixture.doRow(Fixture.java:165)
+	at fit.ColumnFixture.doRow(ColumnFixture.java:25)
+	at fit.Fixture.doRows(Fixture.java:159)
+	at fit.ColumnFixture.doRows(ColumnFixture.java:18)
+	at fit.Fixture.doTable(Fixture.java:153)
+	at fit.Fixture.interpretFollowingTables(Fixture.java:119)
+	at fit.Fixture.interpretTables(Fixture.java:105)
+	at fit.Fixture.doTables(Fixture.java:79)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+</div></pre></td>
+	</tr>
+	<tr>
+		<td>accumulator</td>
+		<td> <span class="fit_grey">#{B}</span></td>
+		<td class="error">#{RESULT}<hr><pre><div class="fit_stacktrace">java.util.EmptyStackException
+	at java.util.Stack.peek(Stack.java:102)
+	at com.elega9t.fitnesse.calc.Calculator.accumulator(Calculator.java:41)
+	at com.elega9t.fitnesse.calc.Calculator.calc(Calculator.java:31)
+	at com.elega9t.fitnesse.calc.fixture.CalculatorFixture.result(CalculatorFixture.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at fit.TypeAdapter.invoke(TypeAdapter.java:109)
+	at fit.TypeAdapter.get(TypeAdapter.java:97)
+	at fit.Fixture$CellComparator.compareCellToResult(Fixture.java:371)
+	at fit.Fixture$CellComparator.access$100(Fixture.java:357)
+	at fit.Fixture.compareCellToResult(Fixture.java:299)
+	at fit.Fixture.check(Fixture.java:295)
+	at fit.ColumnFixture.check(ColumnFixture.java:51)
+	at fit.Binding$QueryBinding.doCell(Binding.java:215)
+	at fit.ColumnFixture.doCell(ColumnFixture.java:37)
+	at fit.Fixture.doCells(Fixture.java:171)
+	at fit.Fixture.doRow(Fixture.java:165)
+	at fit.ColumnFixture.doRow(ColumnFixture.java:25)
+	at fit.Fixture.doRows(Fixture.java:159)
+	at fit.ColumnFixture.doRows(ColumnFixture.java:18)
+	at fit.Fixture.doTable(Fixture.java:153)
+	at fit.Fixture.interpretFollowingTables(Fixture.java:119)
+	at fit.Fixture.interpretTables(Fixture.java:105)
+	at fit.Fixture.doTables(Fixture.java:79)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+</div></pre></td>
+	</tr>
+</table>
+]]></content>
+    <relativePageName>AdditionTestScenario</relativePageName>
+    
+    
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

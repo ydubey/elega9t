@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20111026</FitNesseVersion>
+  <rootPath>AdditionTestScenario</rootPath>
+    <result>
+    <counts>
+      <right>1</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>11</runTimeInMillis>
+    <content><![CDATA[<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('1');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img1"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.SetUp">.FrontPage.SetUp</a> <a href="FrontPage.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="1"><table border="1" cellspacing="0">
+	<tr>
+		<td>Import</td>
+	</tr>
+	<tr>
+		<td>com.elega9t.fitnesse.calc.fixture</td>
+	</tr>
+</table>
+</div>
+</div>
+<br/><table border="1" cellspacing="0">
+	<tr>
+		<td colspan="3">CalculatorFixture</td>
+	</tr>
+	<tr>
+		<td>operation</td>
+		<td>params</td>
+		<td>result()</td>
+	</tr>
+	<tr>
+		<td>add</td>
+		<td>12,1</td>
+		<td class="pass">13</td>
+	</tr>
+</table>
+]]></content>
+    <relativePageName>AdditionTestScenario</relativePageName>
+    
+    
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

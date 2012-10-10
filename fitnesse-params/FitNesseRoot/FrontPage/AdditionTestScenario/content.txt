@@ -1,0 +1,7 @@
+!|ImprovedCalculatorFixture|A, B, EXPECTED|12, 13, 25|33.55, 12.2, 45.75|
+|operation|param|result()|
+|reset||OK|
+|input|#{A}|OK|
+|input|#{B}|OK|
+|add||OK|
+|accumulator||#{EXPECTED}|

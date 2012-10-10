@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>../fitnesse-params</module>
         <module>../jmeter-jms-skip-jndi</module>
         <module>../carbon</module>
         <module>../commons</module>
