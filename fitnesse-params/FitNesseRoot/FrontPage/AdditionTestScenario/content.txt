@@ -1,7 +1,11 @@
 !|ImprovedCalculatorFixture|A, B, EXPECTED|12, 13, 25|33.55, 12.2, 45.75|
 |operation|param|result()|
-|reset||OK|
+|Reset the calculator|
+|reset|NULL|OK|
+|Push 2 numbers #{A} and #{B} on to the stack|
 |input|#{A}|OK|
 |input|#{B}|OK|
-|add||OK|
-|accumulator||#{EXPECTED}|
+|Perform add|
+|add|NULL|OK|
+|Assert on the result|
+|accumulator|NULL|#{EXPECTED}|

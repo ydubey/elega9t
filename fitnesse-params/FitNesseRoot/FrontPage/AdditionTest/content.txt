@@ -1,7 +1,11 @@
 !|CalculatorFixture|
 |operation|param|result()|
-|reset||OK|
+|Reset the calculator|
+|reset|NULL|OK|
+|Push 2 numbers on to the stack|
 |input|12|OK|
 |input|13|OK|
-|add||OK|
-|accumulator||25|
+|Perform add|
+|add|NULL|OK|
+|Assert on the result|
+|accumulator|NULL|25|
