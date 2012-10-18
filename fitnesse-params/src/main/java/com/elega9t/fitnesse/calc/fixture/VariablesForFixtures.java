@@ -26,13 +26,37 @@ public class VariablesForFixtures extends ColumnFixture {
             r.more = null;
             for (Map<String, String> values: variables) {
                 Parse copy = copy(values, original, "Scenario: <b>" + values +"</b>");
+                fixValue(copy);
                 while (r.more != null) {
                     r = r.more;
                 }
                 r.more = copy;
             }
+        } else {
+            fixValue(rows.more);
         }
         super.doRows(rows);
+    }
+
+    private void fixValue(Parse parse) {
+        int row = -1;
+        while(parse != null) {
+            row++;
+            Parse expectation = parse.parts;
+            int column = -1;
+            do {
+                column++;
+                if(expectation != null && expectation.body != null) {
+                    expectation.body = fixValue(row, column, expectation.body);
+                    expectation = expectation.more;
+                }
+            } while(expectation != null);
+            parse = parse.more;
+        }
+    }
+
+    protected String fixValue(int row, int column, String body) {
+        return body;
     }
 
     private void beautify(Parse parse) {
@@ -98,7 +122,5 @@ public class VariablesForFixtures extends ColumnFixture {
         dupWithComment.more = duplicate;
         return dupWithComment;
     }
-
-    // protected abstract void resetFixture();
 
 }
