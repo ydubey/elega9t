@@ -14,6 +14,11 @@ PARSER_BEGIN(ArgumentParser)
 
 package com.elega9t.commons.args;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import com.elega9t.commons.args.Parameter;
+
 public class ArgumentParser {
 
   final static String NL = System.getProperty("line.separator");
@@ -39,16 +44,44 @@ public class ArgumentParser {
 
 PARSER_END(ArgumentParser)
 
+<*> SKIP: {
+  " " | "\t"
+  {
+  System.err.println("Skipping");
+  }
+}
+
 <*> TOKEN : {
-  <#ALPHA_CHAR       : ["a"-"z", "A"-"Z"] >
-| <#NUM_CHAR         : ["0"-"9"] >
-| <#ALPHANUM_CHAR    : [ "a"-"z", "A"-"Z", "0"-"9" ] >
-| <#IDENTIFIER_CHAR  : [ "a"-"z", "A"-"Z", "0"-"9", "_", "-", ".", ":" ] >
-| <#IDENTIFIER       : <ALPHA_CHAR> (<IDENTIFIER_CHAR>)* >
-| <#QUOTED_STRING_NB : ( "'" ( ~["'", "\r", "\n"] )* "'" )
+  <ALPHA_CHAR       : ["a"-"z", "A"-"Z"] >
+| <NUM_CHAR         : ["0"-"9"] >
+| <ALPHANUM_CHAR    : [ "a"-"z", "A"-"Z", "0"-"9" ] >
+| <IDENTIFIER       : <ALPHA_CHAR> (<ALPHANUM_CHAR>)* >
+| <QUOTED_STRING_NB : ( "'" ( ~["'", "\r", "\n"] )* "'" )
                        | ( "\"" ( ~["\"", "\r", "\n"] )* "\"" ) >
-| <#QUOTED_STRING    : ( "'" ( ~["'"] )* "'" ) | ( "\"" ( ~["\""] )* "\"" ) >
-| <#WHITESPACE       : ( " " | "\t" | "\n" | "\r" ) >
-| <#NEWLINE          : ( "\r\n" | "\r" | "\n" ) >
-| <#QUOTE            : ( "'" | "\"" )>
+| <QUOTED_STRING    : ( "'" ( ~["'"] )* "'" ) | ( "\"" ( ~["\""] )* "\"" ) >
+| <WHITESPACE       : ( " " | "\t" ) >
+| <OPTION_PREFIX    : ( "-" ) >
+}
+
+List<Parameter> parse() :
+{
+    List<Parameter> parameters = new ArrayList<Parameter>();
+    Parameter parameter;
+}
+{
+    ( parameter = nextParameter() { parameters.add(parameter); } )* <EOF>
+    {
+        return parameters;
+    }
+}
+
+Parameter nextParameter() :
+{
+    Parameter parameter;
+}
+{
+    <OPTION_PREFIX><IDENTIFIER> { parameter = new Parameter(token.toString()); } ( ( <IDENTIFIER> | <QUOTED_STRING> ) { parameter.setValue(token.toString()); } )?
+    {
+        return parameter;
+    }
 }
