@@ -32,8 +32,12 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="YD: Added project to demonstrate how to parameterize fitnesse test.">
+    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/commons.iml" afterPath="$PROJECT_DIR$/../commons/commons.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" afterPath="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="elega9t.iws" />
@@ -95,16 +99,16 @@
       <file leaf-file-name="ArgumentParser.jj" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="116" selection-start="1978" selection-end="1978" vertical-scroll-proportion="0.0">
+            <state line="73" column="59" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JspParser.jj" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Projects/elega9t/trunk/carbon-j2ee-jspc/src/main/javacc/JspParser.jj">
+      <file leaf-file-name="DuplicateParameterException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="5" selection-start="968" selection-end="1050" vertical-scroll-proportion="0.0">
+            <state line="12" column="4" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,10 +117,19 @@
       <file leaf-file-name="ArgumentParserTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="10" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.697074">
+            <state line="115" column="27" selection-start="4459" selection-end="4459" vertical-scroll-proportion="0.73415494">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Parameter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="14" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardHost.java" />
         <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/StandardModule.java" />
         <option value="$PROJECT_DIR$/../carbon-api/src/main/java/com/elega9t/carbon/api/Connector.java" />
         <option value="$PROJECT_DIR$/../carbon-standard/src/main/java/com/elega9t/carbon/Constants.java" />
@@ -149,6 +161,7 @@
         <option value="$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/ImprovedCalculatorFixture.java" />
         <option value="$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/VariablesForFixtures.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" />
         <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" />
       </list>
@@ -228,16 +241,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -245,13 +248,15 @@
               <option name="myItemId" value="elega9t" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -428,16 +433,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects/elega9t/trunk/carbon-j2ee-jspc/src/main/javacc" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="263" />
@@ -453,9 +458,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -463,8 +468,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -482,7 +487,7 @@
       <recent name="com.elega9t.commons" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArgumentParserTest">
+  <component name="RunManager" selected="JUnit.ArgumentParserTest.throwsDuplicateParameterExceptionWhenDuplicateParameterSpecified">
     <configuration default="false" name="LifecycleListenerRunnableEntityTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -573,6 +578,29 @@
       <ConfigurationWrapper RunnerId="Debug" />
       <method />
     </configuration>
+    <configuration default="false" name="ArgumentParserTest.throwsDuplicateParameterExceptionWhenDuplicateParameterSpecified" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="commons" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.elega9t.commons.args" />
+      <option name="MAIN_CLASS_NAME" value="com.elega9t.commons.args.ArgumentParserTest" />
+      <option name="METHOD_NAME" value="throwsDuplicateParameterExceptionWhenDuplicateParameterSpecified" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -622,24 +650,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -666,6 +676,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -719,10 +747,11 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JUnit.LifecycleListenerRunnableEntityTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.ArgumentParserTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.ArgumentParserTest.canParseOptionWithNoValue" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ArgumentParserTest.throwsDuplicateParameterExceptionWhenDuplicateParameterSpecified" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -791,7 +820,11 @@
       <created>1351100632791</created>
       <updated>1351100632792</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="YD: idea files">
+      <created>1351100651168</created>
+      <updated>1351100651168</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -810,12 +843,12 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15294841" sideWeight="0.6703418" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15479116" sideWeight="0.6703418" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24938574" sideWeight="0.6703418" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -861,7 +894,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: first draft of argument parser." />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: idea files" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -885,6 +918,7 @@
     <MESSAGE value="YD: standard connector open server socket" />
     <MESSAGE value="YD: Added project to demonstrate how to parameterize fitnesse test." />
     <MESSAGE value="YD: first draft of argument parser." />
+    <MESSAGE value="YD: idea files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -894,11 +928,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultRunnableUniqueEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2331" selection-end="2331" vertical-scroll-proportion="0.45371777" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/entity/LifecycleListenerRunnableEntityTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.3171472" />
@@ -911,23 +940,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="302" selection-end="506" vertical-scroll-proportion="0.29590288">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="302" selection-end="506" vertical-scroll-proportion="0.29590288" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="34" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="34" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../fitnesse-params/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="25" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/Calculator.java">
@@ -947,42 +970,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/VariablesForFixtures.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="30" selection-start="532" selection-end="532" vertical-scroll-proportion="0.18485916">
-          <folding />
-        </state>
+        <state line="18" column="30" selection-start="532" selection-end="532" vertical-scroll-proportion="0.18485916" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../ArgumentParser.jj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="1547" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="1547" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="31" selection-start="540" selection-end="540" vertical-scroll-proportion="0.19965577">
+        <state line="41" column="14" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Projects/elega9t/trunk/carbon-j2ee-jspc/src/main/javacc/JspParser.jj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="5" selection-start="968" selection-end="1050" vertical-scroll-proportion="0.0">
+        <state line="48" column="5" selection-start="968" selection-end="1050" vertical-scroll-proportion="0.025817556">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="4" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="116" selection-start="1978" selection-end="1978" vertical-scroll-proportion="0.0">
+        <state line="73" column="59" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="10" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.697074">
+        <state line="115" column="27" selection-start="4459" selection-end="4459" vertical-scroll-proportion="0.73415494">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

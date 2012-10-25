@@ -14,10 +14,11 @@ PARSER_BEGIN(ArgumentParser)
 
 package com.elega9t.commons.args;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.LinkedHashMap;
 
 import com.elega9t.commons.args.Parameter;
+import com.elega9t.commons.args.DuplicateParameterException;
 
 public class ArgumentParser {
 
@@ -55,21 +56,27 @@ PARSER_END(ArgumentParser)
   <ALPHA_CHAR       : ["a"-"z", "A"-"Z"] >
 | <NUM_CHAR         : ["0"-"9"] >
 | <ALPHANUM_CHAR    : [ "a"-"z", "A"-"Z", "0"-"9" ] >
-| <IDENTIFIER       : <ALPHA_CHAR> (<ALPHANUM_CHAR>)* >
-| <QUOTED_STRING_NB : ( "'" ( ~["'", "\r", "\n"] )* "'" )
-                       | ( "\"" ( ~["\"", "\r", "\n"] )* "\"" ) >
-| <QUOTED_STRING    : ( "'" ( ~["'"] )* "'" ) | ( "\"" ( ~["\""] )* "\"" ) >
+| <VALUE_STRING_NB : ( ~["-", " ", "\t"] ( ~["\r", "\n", " ", "\t"] )* ) >
+| <SINGLE_QUOTED_STRING_NB : ( "'" ( ~["'", "\r", "\n"] )* "'" ) >
+| <DOUBLE_QUOTED_STRING_NB : ( "\"" ( ~["\"", "\r", "\n"] )* "\"" ) >
 | <WHITESPACE       : ( " " | "\t" ) >
 | <OPTION_PREFIX    : ( "-" ) >
 }
 
-List<Parameter> parse() :
+Map<String, Parameter> parse() :
 {
-    List<Parameter> parameters = new ArrayList<Parameter>();
+    Map<String, Parameter> parameters = new LinkedHashMap<String, Parameter>();
     Parameter parameter;
 }
 {
-    ( parameter = nextParameter() { parameters.add(parameter); } )* <EOF>
+    ( parameter = nextParameter()
+        {
+            if(parameters.containsKey(parameter.getName())) {
+                throw new DuplicateParameterException(parameter.getName());
+            }
+            parameters.put(parameter.getName(), parameter);
+        }
+    )* <EOF>
     {
         return parameters;
     }
@@ -80,7 +87,11 @@ Parameter nextParameter() :
     Parameter parameter;
 }
 {
-    <OPTION_PREFIX><IDENTIFIER> { parameter = new Parameter(token.toString()); } ( ( <IDENTIFIER> | <QUOTED_STRING> ) { parameter.setValue(token.toString()); } )?
+    <OPTION_PREFIX><VALUE_STRING_NB>
+    {
+        parameter = new Parameter(token.toString());
+    }
+    ( ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { parameter.setValue(token.toString()); } )?
     {
         return parameter;
     }

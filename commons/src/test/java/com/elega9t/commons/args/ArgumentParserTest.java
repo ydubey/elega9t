@@ -8,7 +8,7 @@ package com.elega9t.commons.args;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -21,11 +21,13 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
 
-        final List<Parameter> parameters = test.parse();
+        final Map<String, Parameter> parameters = test.parse();
 
         assertEquals(1, parameters.size());
-        assertEquals("option", parameters.get(0).getName());
-        assertNull(parameters.get(0).getValue());
+        for (String param : parameters.keySet()) {
+            assertEquals("option", param);
+            assertNull(parameters.get(param).getValue());
+        }
     }
 
     @Test
@@ -34,45 +36,104 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
 
-        final List<Parameter> parameters = test.parse();
+        final Map<String, Parameter> parameters = test.parse();
 
         assertEquals(1, parameters.size());
-        assertEquals("option", parameters.get(0).getName());
-        assertEquals("xyz", parameters.get(0).getValue());
+        for (String param : parameters.keySet()) {
+            assertEquals("option", param);
+            assertEquals("xyz", parameters.get(param).getValue());
+        }
     }
 
     @Test
     public void canParseMultipleOptionsWithValue() throws Exception {
-        String arg = "-option xyz -anotherOp abc";
+        Parameter[] expectedParameters = { new Parameter("option", "xyz"), new Parameter("anotherOp", "abc")};
 
-        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
+        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final List<Parameter> parameters = test.parse();
+        final Map<String, Parameter> parameters = test.parse();
 
-        assertEquals(2, parameters.size());
-        assertEquals("option", parameters.get(0).getName());
-        assertEquals("xyz", parameters.get(0).getValue());
-        assertEquals("anotherOp", parameters.get(1).getName());
-        assertEquals("abc", parameters.get(1).getValue());
+        assertEquals(expectedParameters.length, parameters.size());
+        int index = 0;
+        for (String param : parameters.keySet()) {
+            assertEquals(expectedParameters[index].getName(), param);
+            assertEquals(expectedParameters[index].getValue(), parameters.get(param).getValue());
+            index++;
+        }
     }
 
     @Test
     public void canParseMultipleMixedOptionsWithAndWithoutValue() throws Exception {
-        String arg = "-option xyz -anotherOp abc -noValueOp -valueOp xxx";
+        Parameter[] expectedParameters = { new Parameter("option", "xyz"), new Parameter("anotherOp"), new Parameter("op", "opValue")};
 
-        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
+        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final List<Parameter> parameters = test.parse();
+        final Map<String, Parameter> parameters = test.parse();
 
-        assertEquals(4, parameters.size());
-        assertEquals("option", parameters.get(0).getName());
-        assertEquals("xyz", parameters.get(0).getValue());
-        assertEquals("anotherOp", parameters.get(1).getName());
-        assertEquals("abc", parameters.get(1).getValue());
-        assertEquals("noValueOp", parameters.get(2).getName());
-        assertNull(parameters.get(2).getValue());
-        assertEquals("valueOp", parameters.get(3).getName());
-        assertEquals("xxx", parameters.get(3).getValue());
+        assertEquals(expectedParameters.length, parameters.size());
+        int index = 0;
+        for (String param : parameters.keySet()) {
+            assertEquals(expectedParameters[index].getName(), param);
+            assertEquals(expectedParameters[index].getValue(), parameters.get(param).getValue());
+            index++;
+        }
+    }
+
+    @Test
+    public void canParseMultipleMixedOptionsWithSingleQuotedValue() throws Exception {
+        Parameter[] expectedParameters = { new Parameter("option", "'xyz'"), new Parameter("anotherOp"), new Parameter("op", "opValue")};
+
+        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
+
+        final Map<String, Parameter> parameters = test.parse();
+
+        assertEquals(expectedParameters.length, parameters.size());
+        int index = 0;
+        for (String param : parameters.keySet()) {
+            assertEquals(expectedParameters[index].getName(), param);
+            assertEquals(expectedParameters[index].getValue(), parameters.get(param).getValue());
+            index++;
+        }
+    }
+
+    @Test
+    public void canParseMultipleMixedOptionsWithDoubleQuotedValue() throws Exception {
+        Parameter[] expectedParameters = { new Parameter("option", "xyz"), new Parameter("anotherOp"), new Parameter("op", "\"opValue\"")};
+
+        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
+
+        final Map<String, Parameter> parameters = test.parse();
+
+        assertEquals(expectedParameters.length, parameters.size());
+        int index = 0;
+        for (String param : parameters.keySet()) {
+            assertEquals(expectedParameters[index].getName(), param);
+            assertEquals(expectedParameters[index].getValue(), parameters.get(param).getValue());
+            index++;
+        }
+    }
+
+    @Test(expected = DuplicateParameterException.class)
+    public void throwsDuplicateParameterExceptionWhenDuplicateParameterSpecified() throws Exception {
+        Parameter[] expectedParameters = { new Parameter("option", "xyz"), new Parameter("option")};
+
+        ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
+
+        test.parse();
+    }
+
+    private String toString(Parameter[] expectedParameters) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Parameter expectedParameter : expectedParameters) {
+            stringBuilder.append("-");
+            stringBuilder.append(expectedParameter.getName());
+            stringBuilder.append(" ");
+            if(expectedParameter.getValue() != null) {
+                stringBuilder.append(expectedParameter.getValue());
+                stringBuilder.append(" ");
+            }
+        }
+        return stringBuilder.toString();
     }
 
 }

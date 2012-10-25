@@ -12,7 +12,12 @@ public class Parameter {
     private String value;
 
     public Parameter(String name) {
+        this(name, null);
+    }
+
+    public Parameter(String name, String value) {
         this.name = name;
+        this.value = value;
     }
 
     public String getName() {
@@ -25,6 +30,18 @@ public class Parameter {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Boolean getBooleanValue() {
+        return value != null ? Boolean.valueOf(value) : null;
+    }
+
+    public Integer getIntValue() {
+        return value != null ? Integer.valueOf(value) : null;
+    }
+
+    public Long getLongValue() {
+        return value != null ? Long.valueOf(value) : null;
     }
 
     @Override
