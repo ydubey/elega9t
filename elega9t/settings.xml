@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  -->
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+        <server>
+            <id>sonatype-nexus-snapshots</id>
+            <username></username>
+            <password></password>
+        </server>
+        <server>
+            <id>sonatype-nexus-staging</id>
+            <username></username>
+            <password></password>
+        </server>
+    </servers>
+</settings>

@@ -17,6 +17,10 @@
             <groupId>net.java.dev.javacc</groupId>
             <artifactId>javacc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -37,7 +41,7 @@
                             <goal>javacc</goal>
                         </goals>
                         <configuration>
-                            <debugParser>${isDebug}</debugParser>
+                            <debugParser>${debug}</debugParser>
                         </configuration>
                     </execution>
                 </executions>
