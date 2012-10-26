@@ -22,31 +22,12 @@ public abstract class Command {
 
     public abstract int execute(Shell shell);
 
-    public Map<Argument, Field> getArguments() {
-        Map<Argument, Field> arguments = new HashMap<Argument, Field>();
+    public Map<String, Field> getArguments() {
+        Map<String, Field> arguments = new HashMap<String, Field>();
         Map<Parameter, Field> parameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(Parameter.class, getClass());
         for (final Parameter parameter : parameterFields.keySet()) {
             Field field = parameterFields.get(parameter);
-            Argument argument = null;
-            if (field.getType() == String.class) {
-                argument = new StringNamedArgument(parameter.name(), parameter.required());
-            } else if (field.getType() == Boolean.class) {
-                argument = new BooleanNamedArgument(parameter.name(), parameter.required());
-            } else {
-                throw new IllegalStateException("Argument of type " + field.getType().getName() + " not supported.");
-            }
-            arguments.put(argument, field);
-        }
-        Map<UnnamedParameter, Field> unnamedParameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(UnnamedParameter.class, getClass());
-        for (final UnnamedParameter parameter : unnamedParameterFields.keySet()) {
-            Field field = unnamedParameterFields.get(parameter);
-            Argument argument = null;
-            if (field.getType() == String.class) {
-                argument = new StringArgument();
-            } else {
-                throw new IllegalStateException("Argument of type " + field.getType().getName() + " not supported.");
-            }
-            arguments.put(argument, field);
+            arguments.put(parameter.name(), field);
         }
         return arguments;
     }
