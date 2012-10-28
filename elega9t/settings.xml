@@ -11,11 +11,11 @@
         <server>
             <id>sonatype-nexus-snapshots</id>
             <username>ydubey</username>
-            <password>P@ssw0rd</password>
+            <password></password>
         </server>
         <server>
             <id>sonatype-nexus-staging</id>
-            <username></username>
+            <username>ydubey</username>
             <password></password>
         </server>
     </servers>
