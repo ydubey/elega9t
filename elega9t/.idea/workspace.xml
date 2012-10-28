@@ -32,11 +32,16 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" afterPath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" afterPath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" />
+    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="YD: moved modules">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/elixir-api.iml" afterPath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/pom.xml" afterPath="$PROJECT_DIR$/../elixir/elixir-api/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java" afterPath="$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java" afterPath="$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/commons.iml" afterPath="$PROJECT_DIR$/../commons/commons.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" afterPath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir/pom.xml" afterPath="$PROJECT_DIR$/../elixir/pom.xml" />
     </list>
     <ignored path="elega9t.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -121,10 +126,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../carbon/carbon-api/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.2631579">
+            <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../elixir/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="16" selection-start="332" selection-end="332" vertical-scroll-proportion="0.16746412">
               <folding />
             </state>
           </provider>
@@ -147,8 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/EntityLoadException.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultLoadableEntity.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LoadableEntity.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LoadableEntityNode.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultLoadableEntityNode.java" />
@@ -163,6 +184,8 @@
         <option value="$PROJECT_DIR$/../carbon/pom.xml" />
         <option value="$PROJECT_DIR$/../carbon/carbon-standard/pom.xml" />
         <option value="$PROJECT_DIR$/../carbon/carbon-api/pom.xml" />
+        <option value="$PROJECT_DIR$/../elixir/elixir-api/pom.xml" />
+        <option value="$PROJECT_DIR$/../elixir/pom.xml" />
       </list>
     </option>
   </component>
@@ -288,7 +311,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
+              <option name="myItemId" value="elixir" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -298,49 +321,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
+              <option name="myItemId" value="elixir" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carbon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carbon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carbon-standard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carbon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="carbon-api" />
+              <option name="myItemId" value="elixir-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,11 +389,12 @@
       <recent name="com.elega9t.elixir" />
       <recent name="com.elega9t.commons.entity" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../carbon" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.elega9t.commons" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../elixir" />
+      <recent name="$PROJECT_DIR$/../carbon" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Shell">
@@ -807,7 +793,11 @@
       <created>1351446339655</created>
       <updated>1351446339655</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="YD: moved modules">
+      <created>1351446397107</created>
+      <updated>1351446397107</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -919,11 +909,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultGuiEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="27" selection-start="388" selection-end="388" vertical-scroll-proportion="0.215311" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/GuiEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="34" selection-start="392" selection-end="392" vertical-scroll-proportion="0.28708133" />
@@ -932,11 +917,6 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="23" selection-start="693" selection-end="693" vertical-scroll-proportion="-2.402062" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../elixir-api/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="30" selection-start="737" selection-end="737" vertical-scroll-proportion="0.5412371" />
       </provider>
     </entry>
     <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/sql/DatabaseMetaData.class">
@@ -949,12 +929,12 @@
         <state line="32" column="21" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.6223022" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java">
+    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java">
+    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="17" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" />
       </provider>
@@ -1010,7 +990,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../carbon/carbon-api/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.2631579">
+        <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="16" selection-start="332" selection-end="332" vertical-scroll-proportion="0.16746412">
           <folding />
         </state>
       </provider>

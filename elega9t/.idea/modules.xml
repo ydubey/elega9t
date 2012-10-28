@@ -8,7 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/../commons/commons.iml" filepath="$PROJECT_DIR$/../commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/elega9t.iml" filepath="$PROJECT_DIR$/elega9t.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir/elixir.iml" filepath="$PROJECT_DIR$/../elixir/elixir.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../elixir-api/elixir-api.iml" filepath="$PROJECT_DIR$/../elixir-api/elixir-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" filepath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir-db-provider/elixir-db-provider.iml" filepath="$PROJECT_DIR$/../elixir-db-provider/elixir-db-provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" filepath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/../fitnesse-params/fitnesse-params.iml" filepath="$PROJECT_DIR$/../fitnesse-params/fitnesse-params.iml" />
