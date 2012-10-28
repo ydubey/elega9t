@@ -7,7 +7,7 @@
     <parent>
         <artifactId>elega9t</artifactId>
         <groupId>com.elega9t</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../elega9t/pom.xml</relativePath>
     </parent>
 
