@@ -7,7 +7,7 @@
 
     <groupId>com.elega9t</groupId>
     <artifactId>elega9t</artifactId>
-    <version>0.0.1</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>elega9t</name>
@@ -17,8 +17,9 @@
     <modules>
         <module>../fitnesse-params</module>
         <module>../jmeter-jms-skip-jndi</module>
-        <module>../carbon</module>
         <module>../commons</module>
+        <module>../carbon</module>
+        <module>../elixir</module>
     </modules>
 
     <properties>
