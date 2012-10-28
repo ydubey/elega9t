@@ -16,8 +16,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>../carbon-api</module>
-        <module>../carbon-standard</module>
+        <module>carbon-api</module>
+        <module>carbon-standard</module>
     </modules>
 
 </project>
