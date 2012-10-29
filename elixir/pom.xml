@@ -4,20 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>elixir-api</module>
+        <module>../elixir-db-provider</module>
+    </modules>
 
     <parent>
         <artifactId>elega9t</artifactId>
         <groupId>com.elega9t</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../elega9t/pom.xml</relativePath>
     </parent>
 
-    <artifactId>carbon</artifactId>
+    <artifactId>elixir</artifactId>
     <packaging>pom</packaging>
-
-    <modules>
-        <module>carbon-api</module>
-        <module>carbon-standard</module>
-    </modules>
 
 </project>

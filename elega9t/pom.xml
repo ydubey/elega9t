@@ -17,8 +17,9 @@
     <modules>
         <module>../fitnesse-params</module>
         <module>../jmeter-jms-skip-jndi</module>
-        <module>../carbon</module>
         <module>../commons</module>
+        <module>../carbon</module>
+        <module>../elixir</module>
     </modules>
 
     <properties>

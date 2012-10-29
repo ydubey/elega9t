@@ -32,12 +32,16 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
+    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="YD: moved modules">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/elixir-api.iml" afterPath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/pom.xml" afterPath="$PROJECT_DIR$/../elixir/elixir-api/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java" afterPath="$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java" afterPath="$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/commons.iml" afterPath="$PROJECT_DIR$/../commons/commons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Command.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Command.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.xml" afterPath="$PROJECT_DIR$/settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" afterPath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir/pom.xml" afterPath="$PROJECT_DIR$/../elixir/pom.xml" />
     </list>
     <ignored path="elega9t.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,37 +99,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Interpreter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java">
+      <file leaf-file-name="modules.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="37" selection-start="2127" selection-end="2127" vertical-scroll-proportion="0.0">
+            <state line="6" column="124" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Shell.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
+            <state line="19" column="16" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArgumentParser.jj" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon/carbon-standard/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="59" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
+            <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExportCommand.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/ExportCommand.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../carbon/carbon-api/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.08450704">
+            <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../elixir/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="16" selection-start="332" selection-end="332" vertical-scroll-proportion="0.16746412">
               <folding />
             </state>
           </provider>
@@ -148,31 +170,26 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/Calculator.java" />
-        <option value="$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/CalculatorFixture.java" />
-        <option value="$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/ImprovedCalculatorFixture.java" />
-        <option value="$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/VariablesForFixtures.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" />
-        <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/ReplacementProvider.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/ReflectionUtilities.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java" />
-        <option value="$PROJECT_DIR$/../commons/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/settings.xml" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Command.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LoadableEntity.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/LoadableEntityNode.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultLoadableEntityNode.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/GuiEntity.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultGuiEntity.java" />
+        <option value="$PROJECT_DIR$/../elixir-api/pom.xml" />
+        <option value="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java" />
+        <option value="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java" />
+        <option value="$PROJECT_DIR$/../elixir-db-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/pom.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/../carbon/pom.xml" />
+        <option value="$PROJECT_DIR$/../carbon/carbon-standard/pom.xml" />
+        <option value="$PROJECT_DIR$/../carbon/carbon-api/pom.xml" />
+        <option value="$PROJECT_DIR$/../elixir/elixir-api/pom.xml" />
+        <option value="$PROJECT_DIR$/../elixir/pom.xml" />
       </list>
     </option>
   </component>
   <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="/apps/maven" />
-      </MavenGeneralSettings>
-    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -202,11 +219,37 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
         </PATH_ELEMENT>
       </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="carbon-standard" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="carbon-standard" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1174" />
+    <option name="x" value="4" />
+    <option name="y" value="22" />
+    <option name="width" value="1676" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -234,240 +277,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jmeter-jms-skip-jndi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javacc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shell" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shell" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intrprtr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shell" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intrprtr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="args" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -484,6 +293,40 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="elega9t" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elixir" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elixir" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elixir-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -543,10 +386,15 @@
       <recent name="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.elega9t.elixir" />
       <recent name="com.elega9t.commons.entity" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.elega9t.commons" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../elixir" />
+      <recent name="$PROJECT_DIR$/../carbon" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Shell">
@@ -913,35 +761,71 @@
       <created>1351243528836</created>
       <updated>1351243528836</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="YD: deployed 0.0.1 version of elega9t to staging">
+      <created>1351418391512</created>
+      <updated>1351418391512</updated>
+    </task>
+    <task id="LOCAL-00013" summary="YD: updated poms to use 0.0.1 of parent">
+      <created>1351419158103</created>
+      <updated>1351419158103</updated>
+    </task>
+    <task id="LOCAL-00014" summary="YD: Added Elixir module">
+      <created>1351427789644</created>
+      <updated>1351427789644</updated>
+    </task>
+    <task id="LOCAL-00015" summary="YD: Added LoadableEntity and LoadableEntityNode for elixir db model.">
+      <created>1351428411208</created>
+      <updated>1351428411208</updated>
+    </task>
+    <task id="LOCAL-00016" summary="YD: Added GuiEntity for elixir db model.">
+      <created>1351428666853</created>
+      <updated>1351428666853</updated>
+    </task>
+    <task id="LOCAL-00017" summary="YD: Added modules for elixir providers">
+      <created>1351446016845</created>
+      <updated>1351446016845</updated>
+    </task>
+    <task id="LOCAL-00018" summary="YD: moved modules">
+      <created>1351446268350</created>
+      <updated>1351446268350</updated>
+    </task>
+    <task id="LOCAL-00019" summary="YD: moved modules">
+      <created>1351446339655</created>
+      <updated>1351446339655</updated>
+    </task>
+    <task id="LOCAL-00020" summary="YD: moved modules">
+      <created>1351446397107</created>
+      <updated>1351446397107</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1174" extended-state="0" />
+    <frame x="4" y="22" width="1676" height="1028" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27984345" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27894157" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39911798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13704497" sideWeight="0.72015655" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14434889" sideWeight="0.7210584" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21627408" sideWeight="0.72015655" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21621622" sideWeight="0.7210584" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855567" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -983,7 +867,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: added shell framework to commons" />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: moved modules" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1009,6 +893,13 @@
     <MESSAGE value="YD: first draft of argument parser." />
     <MESSAGE value="YD: idea files" />
     <MESSAGE value="YD: added shell framework to commons" />
+    <MESSAGE value="YD: deployed 0.0.1 version of elega9t to staging" />
+    <MESSAGE value="YD: updated poms to use 0.0.1 of parent" />
+    <MESSAGE value="YD: Added Elixir module" />
+    <MESSAGE value="YD: Added LoadableEntity and LoadableEntityNode for elixir db model." />
+    <MESSAGE value="YD: Added GuiEntity for elixir db model." />
+    <MESSAGE value="YD: Added modules for elixir providers" />
+    <MESSAGE value="YD: moved modules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1018,98 +909,102 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../fitnesse-params/src/main/java/com/elega9t/fitnesse/calc/fixture/VariablesForFixtures.java">
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/GuiEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="30" selection-start="532" selection-end="532" vertical-scroll-proportion="0.18485916" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="27" selection-start="4459" selection-end="4459" vertical-scroll-proportion="0.704918" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="14" selection-start="907" selection-end="907" vertical-scroll-proportion="0.12568305" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/ReflectionUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="500" selection-end="500" vertical-scroll-proportion="0.2761087" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="366" selection-end="366" vertical-scroll-proportion="0.1264045" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/ReplacementProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="254" selection-end="254" vertical-scroll-proportion="0.084269665" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="35" selection-start="800" selection-end="800" vertical-scroll-proportion="0.315" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="45" selection-start="607" selection-end="607" vertical-scroll-proportion="0.3851964" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="52" selection-start="819" selection-end="819" vertical-scroll-proportion="0.44366196">
-          <folding />
-        </state>
+        <state line="15" column="34" selection-start="392" selection-end="392" vertical-scroll-proportion="0.28708133" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="-1.1549295">
+        <state line="19" column="23" selection-start="693" selection-end="693" vertical-scroll-proportion="-2.402062" />
+      </provider>
+    </entry>
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/sql/DatabaseMetaData.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="25" selection-start="2790" selection-end="2794" vertical-scroll-proportion="-4.276243" />
+      </provider>
+    </entry>
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/sql/Connection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="21" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.6223022" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir-db-provider/elixir-db-provider.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Command.java">
+    <entry file="file://$PROJECT_DIR$/../elixir-db-provider/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="915" selection-end="915" vertical-scroll-proportion="0.52816904">
-          <folding>
-            <element signature="e#577#592#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="37" selection-start="2127" selection-end="2127" vertical-scroll-proportion="0.0">
+        <state line="18" column="18" selection-start="640" selection-end="640" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java">
+    <entry file="file://$PROJECT_DIR$/../fitnesse-params/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj">
+    <entry file="file://$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="59" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
+        <state line="15" column="0" selection-start="552" selection-end="552" vertical-scroll-proportion="0.2556818">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/ExportCommand.java">
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.08450704">
+        <state line="6" column="124" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon/carbon-standard/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../carbon/carbon-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="27" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../elixir/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="16" selection-start="332" selection-end="332" vertical-scroll-proportion="0.16746412">
           <folding />
         </state>
       </provider>
