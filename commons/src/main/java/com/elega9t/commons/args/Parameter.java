@@ -7,22 +7,7 @@ package com.elega9t.commons.args;
 
 public class Parameter {
 
-    private final String name;
-
     private String value;
-
-    public Parameter(String name) {
-        this(name, null);
-    }
-
-    public Parameter(String name, String value) {
-        this.name = name;
-        this.value = value;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     public String getValue() {
         return value;
@@ -47,21 +32,18 @@ public class Parameter {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Parameter)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        Parameter parameter = (Parameter) o;
+        Parameter that = (Parameter) o;
 
-        if (!name.equals(parameter.name)) return false;
-        if (value != null ? !value.equals(parameter.value) : parameter.value != null) return false;
+        if (value != null ? !value.equals(that.value) : that.value != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + (value != null ? value.hashCode() : 0);
-        return result;
+        return value != null ? value.hashCode() : 0;
     }
 
 }

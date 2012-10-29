@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 
 import com.elega9t.commons.args.Parameter;
+import com.elega9t.commons.args.NamedParameter;
 import com.elega9t.commons.args.DuplicateParameterException;
 
 public class ArgumentParser {
@@ -71,10 +72,13 @@ Map<String, Parameter> parse() :
 {
     ( parameter = nextParameter()
         {
-            if(parameters.containsKey(parameter.getName())) {
-                throw new DuplicateParameterException(parameter.getName());
+            if(parameter instanceof NamedParameter) {
+                if (parameters.containsKey(((NamedParameter)parameter).getName())) {
+                    throw new DuplicateParameterException(((NamedParameter)parameter).getName());
+                } else {
+                    parameters.put(((NamedParameter)parameter).getName(), parameter);
+                }
             }
-            parameters.put(parameter.getName(), parameter);
         }
     )* <EOF>
     {
@@ -87,12 +91,22 @@ Parameter nextParameter() :
     Parameter parameter;
 }
 {
-    <OPTION_PREFIX><VALUE_STRING_NB>
-    {
-        parameter = new Parameter(token.toString());
-    }
-    ( ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { parameter.setValue(token.toString()); } )?
-    {
-        return parameter;
-    }
+    (
+        <OPTION_PREFIX><VALUE_STRING_NB>
+        {
+            parameter = new NamedParameter(token.toString());
+        }
+        ( LOOKAHEAD(2) ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { parameter.setValue(token.toString()); } )?
+        {
+            return parameter;
+        }
+    )
+    |
+    (
+        ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> )
+        {
+            parameter = new Parameter();
+            parameter.setValue(token.toString());
+        }
+    )
 }
