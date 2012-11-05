@@ -9,10 +9,15 @@ import com.elega9t.elixir.DatabaseConnection;
 import com.elega9t.elixir.DatabaseDriver;
 
 import java.sql.Connection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MySqlDatabaseDriver implements DatabaseDriver {
+
+    private Map<String, List<String>> drivers = new HashMap<String, List<String>>();
+
+    public MySqlDatabaseDriver() {
+        drivers.put("MM MySql", Arrays.asList("org.gjt.mm.mysql.Driver"));
+    }
 
     @Override
     public String databaseName() {
@@ -27,6 +32,11 @@ public class MySqlDatabaseDriver implements DatabaseDriver {
     @Override
     public String databaseWebsite() {
         return "http://www.mysql.com";
+    }
+
+    @Override
+    public Map<String, List<String>> getDrivers() {
+        return Collections.unmodifiableMap(drivers);
     }
 
     @Override

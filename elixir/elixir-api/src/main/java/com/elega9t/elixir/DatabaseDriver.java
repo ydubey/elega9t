@@ -7,6 +7,7 @@ package com.elega9t.elixir;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 public interface DatabaseDriver {
 
@@ -15,6 +16,8 @@ public interface DatabaseDriver {
     List<String> supportedVersions();
 
     String databaseWebsite();
+
+    Map<String, List<String>> getDrivers();
 
     DatabaseConnection getConnectionSkeleton(Connection connection, String databaseName);
 
