@@ -12,6 +12,8 @@
       <module fileurl="file://$PROJECT_DIR$/../elixir-db-provider/elixir-db-provider.iml" filepath="$PROJECT_DIR$/../elixir-db-provider/elixir-db-provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" filepath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/../fitnesse-params/fitnesse-params.iml" filepath="$PROJECT_DIR$/../fitnesse-params/fitnesse-params.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" filepath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-plugins.iml" filepath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-plugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" filepath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" />
     </modules>
   </component>
