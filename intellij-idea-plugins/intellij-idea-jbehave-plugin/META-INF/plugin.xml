@@ -4,32 +4,34 @@
   -->
 
 <idea-plugin version="2">
-  <name>intellij-idea-jbehave-plugin</name>
-  <description>IntelliJ Idea plugin for jBehave</description>
-  <version>1.0-SNAPSHOT</version>
-  <vendor>Elega9t Ltd.</vendor>
+    <id>com.elega9t.intellij.plugin.jbehave</id>
+    <name>intellij-idea-jbehave-plugin</name>
+    <description>IntelliJ Idea plugin for jBehave</description>
+    <version>1.0-SNAPSHOT</version>
+    <vendor>Elega9t Ltd.</vendor>
+    <category>Custom Languages</category>
 
-  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="107.105"/>
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="107.105"/>
 
-  <application-components>
-    <!-- Add your application components here -->
-  </application-components>
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
 
-  <project-components>
-    <!-- Add your project components here -->
-  </project-components>
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
 
-  <actions>
-    <!-- Add your actions here -->
-      <action id="jBehave.NewFeatureFile" class="com.elega9t.intellij.plugin.jbehave.actions.CreateNewFeatureFileAction"
-              text="jBehave Feature File" description="Create a new jBehave feature file">
-          <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
-      </action>
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="jBehave.NewFeatureFile" class="com.elega9t.intellij.plugin.jbehave.actions.CreateNewFeatureFileAction"
+                text="jBehave Feature File" description="Create a new jBehave feature file">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+        </action>
+    </actions>
 
-  <extensions defaultExtensionNs="com.intellij">
-      <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
-      <fileTypeFactory implementation="com.elega9t.intellij.plugin.jbehave.JBehaveFileTypeFactory" />
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+        <fileTypeFactory implementation="com.elega9t.intellij.plugin.jbehave.JBehaveFileTypeFactory" />
+    </extensions>
 </idea-plugin>
