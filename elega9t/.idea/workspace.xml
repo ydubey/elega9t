@@ -33,18 +33,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="YD: moved modules">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/META-INF/plugin.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" afterPath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" afterPath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/commons.iml" afterPath="$PROJECT_DIR$/../commons/commons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" afterPath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" afterPath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../fitnesse-params/fitnesse-params.iml" afterPath="$PROJECT_DIR$/../fitnesse-params/fitnesse-params.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../intellij-idea-plugins/pom.xml" afterPath="$PROJECT_DIR$/../intellij-idea-plugins/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" afterPath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" />
     </list>
     <ignored path="elega9t.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -789,7 +780,11 @@
       <created>1352463911545</created>
       <updated>1352463911545</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="YD: Added module for intellij jbehave plugin">
+      <created>1352464211253</created>
+      <updated>1352464211253</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -859,7 +854,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: Adding new module for intellij plugins" />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: Added module for intellij jbehave plugin" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -893,6 +888,7 @@
     <MESSAGE value="YD: Added modules for elixir providers" />
     <MESSAGE value="YD: moved modules" />
     <MESSAGE value="YD: Adding new module for intellij plugins" />
+    <MESSAGE value="YD: Added module for intellij jbehave plugin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
