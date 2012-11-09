@@ -22,6 +22,10 @@
 
   <actions>
     <!-- Add your actions here -->
+      <action id="jBehave.NewFeatureFile" class="com.elega9t.intellij.plugin.jbehave.actions.CreateNewFeatureFileAction"
+              text="jBehave Feature File" description="Create a new jBehave feature file">
+          <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+      </action>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
