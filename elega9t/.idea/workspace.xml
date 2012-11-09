@@ -32,10 +32,9 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="YD: moved modules">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" afterPath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/META-INF/plugin.xml" />
     </list>
     <ignored path="elega9t.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,10 +137,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../intellij-idea-plugins/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="47" selection-start="684" selection-end="684" vertical-scroll-proportion="0.4368932">
+            <state line="21" column="47" selection-start="684" selection-end="684" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/META-INF/plugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="22" selection-start="429" selection-end="429" vertical-scroll-proportion="0.22884881">
               <folding />
             </state>
           </provider>
@@ -173,7 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/GuiEntity.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/entity/DefaultGuiEntity.java" />
         <option value="$PROJECT_DIR$/../elixir-api/pom.xml" />
         <option value="$PROJECT_DIR$/../elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java" />
@@ -189,6 +196,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/pom.xml" />
         <option value="$PROJECT_DIR$/../intellij-idea-plugins/pom.xml" />
+        <option value="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/META-INF/plugin.xml" />
       </list>
     </option>
   </component>
@@ -305,6 +313,48 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="elega9t" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellij-idea-plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellij-idea-plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellij-idea-jbehave-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellij-idea-plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellij-idea-jbehave-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -784,7 +834,11 @@
       <created>1352464211253</created>
       <updated>1352464211253</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="YD: moved modules">
+      <created>1352464223747</created>
+      <updated>1352464223747</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -792,7 +846,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26908022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26908022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -854,7 +908,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: Added module for intellij jbehave plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: moved modules" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -886,9 +940,9 @@
     <MESSAGE value="YD: Added LoadableEntity and LoadableEntityNode for elixir db model." />
     <MESSAGE value="YD: Added GuiEntity for elixir db model." />
     <MESSAGE value="YD: Added modules for elixir providers" />
-    <MESSAGE value="YD: moved modules" />
     <MESSAGE value="YD: Adding new module for intellij plugins" />
     <MESSAGE value="YD: Added module for intellij jbehave plugin" />
+    <MESSAGE value="YD: moved modules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -898,11 +952,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../elixir/elixir-api/src/main/java/com/elega9t/elixir/DatabaseDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="17" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" />
@@ -983,7 +1032,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../intellij-idea-plugins/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="47" selection-start="684" selection-end="684" vertical-scroll-proportion="0.4368932">
+        <state line="21" column="47" selection-start="684" selection-end="684" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/META-INF/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="22" selection-start="429" selection-end="429" vertical-scroll-proportion="0.22884881">
           <folding />
         </state>
       </provider>

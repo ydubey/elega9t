@@ -1,8 +1,13 @@
+<!--
+  ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  -->
+
 <idea-plugin version="2">
-  <name>Plugin name here</name>
-  <description>short description of the plugin</description>
-  <version>1.0</version>
-  <vendor>YourCompany</vendor>
+  <name>intellij-idea-jbehave-plugin</name>
+  <description>IntelliJ Idea plugin for jBehave</description>
+  <version>1.0-SNAPSHOT</version>
+  <vendor>Elega9t Ltd.</vendor>
 
   <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
   <idea-version since-build="107.105"/>
