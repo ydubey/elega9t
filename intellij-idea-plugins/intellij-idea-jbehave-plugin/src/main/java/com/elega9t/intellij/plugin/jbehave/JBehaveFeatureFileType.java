@@ -39,7 +39,7 @@ public class JBehaveFeatureFileType extends LanguageFileType {
 
     @Override
     public Icon getIcon() {
-        return new ImageIcon(CreateNewFeatureFileAction.class.getResource("/com/elega9t/intellij/plugin/jbehave/feature.png"));
+        return JBehaveIcons.FEATURE_ICON;
     }
 
 }

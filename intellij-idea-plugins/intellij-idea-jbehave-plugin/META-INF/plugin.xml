@@ -29,6 +29,7 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
+      <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+      <fileTypeFactory implementation="com.elega9t.intellij.plugin.jbehave.JBehaveFileTypeFactory" />
   </extensions>
 </idea-plugin>

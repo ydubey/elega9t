@@ -5,6 +5,8 @@
 
 package com.elega9t.intellij.plugin.jbehave.actions;
 
+import com.elega9t.intellij.plugin.jbehave.JBehaveIcons;
+import com.elega9t.intellij.plugin.jbehave.JBehaveMessageBundle;
 import com.intellij.CommonBundle;
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.project.Project;
@@ -21,7 +23,7 @@ public class CreateNewFeatureFileAction extends CreateElementActionBase {
     private final String FEATURE_FILE_SUFFIX = ".feature";
 
     protected CreateNewFeatureFileAction() {
-        super("jBehave Feature File", "Create a new jBehave feature file", new ImageIcon(CreateNewFeatureFileAction.class.getResource("/com/elega9t/intellij/plugin/jbehave/feature.png")));
+        super(JBehaveMessageBundle.message("newfile.menu.action.text"), JBehaveMessageBundle.message("newfile.menu.action.description"), JBehaveIcons.FEATURE_ICON);
     }
 
     @NotNull
@@ -48,12 +50,12 @@ public class CreateNewFeatureFileAction extends CreateElementActionBase {
 
     @Override
     protected String getCommandName() {
-        return "jBehave Feature File";
+        return JBehaveMessageBundle.message("newfile.command.name");
     }
 
     @Override
     protected String getActionName(PsiDirectory directory, String s) {
-        return "jBehave Feature File";
+        return JBehaveMessageBundle.message("newfile.menu.action.text");
     }
 
 }
