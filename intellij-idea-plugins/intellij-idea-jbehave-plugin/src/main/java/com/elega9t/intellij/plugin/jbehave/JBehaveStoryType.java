@@ -33,7 +33,7 @@ public class JBehaveStoryType extends LanguageFileType {
     @NotNull
     @Override
     public String getDefaultExtension() {
-        return "feature";
+        return "story";
     }
 
     @Override

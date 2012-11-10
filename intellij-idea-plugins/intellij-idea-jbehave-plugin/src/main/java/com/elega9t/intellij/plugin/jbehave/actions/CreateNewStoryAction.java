@@ -18,8 +18,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class CreateNewStoryAction extends CreateElementActionBase {
 
-    private final String FEATURE_FILE_SUFFIX = ".feature";
-
     protected CreateNewStoryAction() {
         super(JBehaveMessageBundle.message("newfile.menu.action.text"), JBehaveMessageBundle.message("newfile.menu.action.description"), JBehaveIcons.FEATURE_ICON);
     }
@@ -35,9 +33,6 @@ public class CreateNewStoryAction extends CreateElementActionBase {
     @NotNull
     @Override
     protected PsiElement[] create(String name, PsiDirectory directory) throws Exception {
-        if(!name.endsWith(FEATURE_FILE_SUFFIX)) {
-            name = name + FEATURE_FILE_SUFFIX;
-        }
         return new PsiElement[] {PsiFileFactory.getInstance(directory.getProject()).createFileFromText(name, "Hi There")};
     }
 
