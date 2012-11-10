@@ -12,12 +12,12 @@ public class JBehaveLanguage extends Language {
     public static final JBehaveLanguage INSTANCE = new JBehaveLanguage();
 
     protected JBehaveLanguage() {
-        super("jBehave");
+        super("jBehaveStory");
     }
 
     @Override
     public String getDisplayName() {
-        return "jBehave";
+        return "jBehave Story";
     }
 
 }

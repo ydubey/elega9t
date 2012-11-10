@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class JBehaveStory extends PsiFileBase implements PsiFile {
 
-    protected JBehaveStory(@NotNull FileViewProvider viewProvider) {
+    public JBehaveStory(@NotNull FileViewProvider viewProvider) {
         super(viewProvider, JBehaveLanguage.INSTANCE);
     }
 

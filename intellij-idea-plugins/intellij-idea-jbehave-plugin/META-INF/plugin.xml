@@ -26,12 +26,12 @@
         <!-- Add your actions here -->
         <action id="jBehave.NewStory" class="com.elega9t.intellij.plugin.jbehave.actions.CreateNewStoryAction"
                 text="jBehave Story" description="Create a new jBehave story file">
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt S"/>
         </action>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
         <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
         <fileTypeFactory implementation="com.elega9t.intellij.plugin.jbehave.JBehaveFileTypeFactory" />
+        <lang.parserDefinition language="jBehaveStory" implementationClass="com.elega9t.intellij.plugin.jbehave.parser.JBehaveStoryParserDefinition"/>
     </extensions>
 </idea-plugin>
