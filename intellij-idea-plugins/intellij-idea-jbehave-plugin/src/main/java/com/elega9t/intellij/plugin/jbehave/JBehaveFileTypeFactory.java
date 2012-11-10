@@ -13,7 +13,7 @@ public class JBehaveFileTypeFactory extends FileTypeFactory {
 
     @Override
     public void createFileTypes(@NotNull FileTypeConsumer fileTypeConsumer) {
-        fileTypeConsumer.consume(JBehaveFeatureFileType.INSTANCE);
+        fileTypeConsumer.consume(JBehaveStoryType.INSTANCE);
     }
 
 }

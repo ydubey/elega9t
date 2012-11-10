@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class JBehaveFeatureFile implements PsiFile {
+public class JBehaveStory implements PsiFile {
 
     @Override
     public VirtualFile getVirtualFile() {

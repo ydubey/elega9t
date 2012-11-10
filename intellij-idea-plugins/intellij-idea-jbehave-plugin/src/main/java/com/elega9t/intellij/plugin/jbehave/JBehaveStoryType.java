@@ -5,17 +5,16 @@
 
 package com.elega9t.intellij.plugin.jbehave;
 
-import com.elega9t.intellij.plugin.jbehave.actions.CreateNewFeatureFileAction;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class JBehaveFeatureFileType extends LanguageFileType {
+public class JBehaveStoryType extends LanguageFileType {
 
-    public static final JBehaveFeatureFileType INSTANCE = new JBehaveFeatureFileType();
+    public static final JBehaveStoryType INSTANCE = new JBehaveStoryType();
 
-    protected JBehaveFeatureFileType() {
+    protected JBehaveStoryType() {
         super(JBehaveLanguage.INSTANCE);
     }
 

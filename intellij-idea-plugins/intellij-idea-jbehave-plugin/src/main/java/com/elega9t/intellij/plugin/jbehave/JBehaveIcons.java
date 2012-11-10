@@ -9,6 +9,6 @@ import javax.swing.*;
 
 public class JBehaveIcons {
 
-    public static final Icon FEATURE_ICON = new ImageIcon(JBehaveIcons.class.getResource("/com/elega9t/intellij/plugin/jbehave/feature.png"));
+    public static final Icon FEATURE_ICON = new ImageIcon(JBehaveIcons.class.getResource("/com/elega9t/intellij/plugin/jbehave/story.png"));
 
 }

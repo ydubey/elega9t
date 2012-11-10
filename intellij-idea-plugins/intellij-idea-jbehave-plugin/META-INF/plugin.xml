@@ -24,8 +24,8 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="jBehave.NewFeatureFile" class="com.elega9t.intellij.plugin.jbehave.actions.CreateNewFeatureFileAction"
-                text="jBehave Feature File" description="Create a new jBehave feature file">
+        <action id="jBehave.NewStory" class="com.elega9t.intellij.plugin.jbehave.actions.CreateNewStoryAction"
+                text="jBehave Story" description="Create a new jBehave story file">
             <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
         </action>
     </actions>

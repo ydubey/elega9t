@@ -16,13 +16,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFileFactory;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
-public class CreateNewFeatureFileAction extends CreateElementActionBase {
+public class CreateNewStoryAction extends CreateElementActionBase {
 
     private final String FEATURE_FILE_SUFFIX = ".feature";
 
-    protected CreateNewFeatureFileAction() {
+    protected CreateNewStoryAction() {
         super(JBehaveMessageBundle.message("newfile.menu.action.text"), JBehaveMessageBundle.message("newfile.menu.action.description"), JBehaveIcons.FEATURE_ICON);
     }
 
