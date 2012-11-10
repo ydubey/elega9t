@@ -13,13 +13,14 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import org.jetbrains.annotations.NotNull;
 
 public class CreateNewStoryAction extends CreateElementActionBase {
 
     protected CreateNewStoryAction() {
-        super(JBehaveMessageBundle.message("newfile.menu.action.text"), JBehaveMessageBundle.message("newfile.menu.action.description"), JBehaveIcons.FEATURE_ICON);
+        super(JBehaveMessageBundle.message("newfile.menu.action.text"), JBehaveMessageBundle.message("newfile.menu.action.description"), JBehaveIcons.STORY);
     }
 
     @NotNull
@@ -33,7 +34,26 @@ public class CreateNewStoryAction extends CreateElementActionBase {
     @NotNull
     @Override
     protected PsiElement[] create(String name, PsiDirectory directory) throws Exception {
-        return new PsiElement[] {PsiFileFactory.getInstance(directory.getProject()).createFileFromText(name, "Hi There")};
+        PsiFile file = JBehaveTemplatesFactory.createFileFromTemplate(directory, name, "JBehaveStory.story");
+        PsiElement lastChild = file.getLastChild();
+        Project project = directory.getProject();
+
+        if ((lastChild != null) && (lastChild.getNode() != null) &&
+                (lastChild.getNode().getElementType() != null))        // FIXME: tests for whitespace
+        {
+            file.add (createWhiteSpace (project));
+        }
+
+        file.add (createWhiteSpace (project));
+        PsiElement child = file.getLastChild();
+
+        return child != null ? new PsiElement[]{file, child} : new PsiElement[]{file};
+    }
+
+    private static PsiElement createWhiteSpace(Project project) {
+        PsiFile dummyFile = PsiFileFactory.getInstance (project).createFileFromText ("dummy.story", "\n");
+
+        return dummyFile.getFirstChild();
     }
 
     @Override

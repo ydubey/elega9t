@@ -38,7 +38,7 @@ public class JBehaveStoryType extends LanguageFileType {
 
     @Override
     public Icon getIcon() {
-        return JBehaveIcons.FEATURE_ICON;
+        return JBehaveIcons.STORY;
     }
 
 }
