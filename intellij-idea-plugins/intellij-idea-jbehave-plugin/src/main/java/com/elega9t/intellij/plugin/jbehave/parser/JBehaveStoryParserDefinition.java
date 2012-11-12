@@ -26,12 +26,12 @@ public class JBehaveStoryParserDefinition implements ParserDefinition {
     @NotNull
     @Override
     public Lexer createLexer(Project project) {
-        return null;
+        return new JBehaveStoryLexer();
     }
 
     @Override
     public PsiParser createParser(Project project) {
-        return null;
+        return new JBehaveStoryParser();
     }
     @Override
     public IFileElementType getFileNodeType() {
@@ -41,13 +41,13 @@ public class JBehaveStoryParserDefinition implements ParserDefinition {
     @NotNull
     @Override
     public TokenSet getWhitespaceTokens() {
-        return null;
+        return JBehaveStoryTokenTypes.WHITE_SPACES;
     }
 
     @NotNull
     @Override
     public TokenSet getCommentTokens() {
-        return null;
+        return JBehaveStoryTokenTypes.COMMENTS;
     }
 
     @NotNull

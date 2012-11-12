@@ -6,9 +6,13 @@
 package com.elega9t.intellij.plugin.jbehave;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.vfs.CharsetToolkit;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.encoding.EncodingManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.nio.charset.Charset;
 
 public class JBehaveStoryType extends LanguageFileType {
 
@@ -39,6 +43,12 @@ public class JBehaveStoryType extends LanguageFileType {
     @Override
     public Icon getIcon() {
         return JBehaveIcons.STORY;
+    }
+
+    public String getCharset(@NotNull VirtualFile file, final byte[] content) {
+        Charset charset = EncodingManager.getInstance().getDefaultCharsetForPropertiesFiles(file);
+        String defaultCharsetName = charset == null ? CharsetToolkit.getDefaultSystemCharset().name() : charset.name();
+        return defaultCharsetName;
     }
 
 }
