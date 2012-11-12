@@ -6,6 +6,7 @@
 package com.elega9t.commons.util;
 
 import org.jetbrains.annotations.Nullable;
+import org.junit.Before;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -87,6 +88,16 @@ public class ReflectionUtilities {
     public static Object invokeDeclaredMethod(String methodName, Object target, Class[] parameterTypes, Object[] parameters) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = target.getClass().getDeclaredMethod(methodName, parameterTypes);
         return invokeMethod(method, target, parameters);
+    }
+
+    public static void invokeDeclaredMethodWithAnnotation(Class<? extends Annotation> annotationClass, Object target) throws InvocationTargetException, IllegalAccessException {
+        Method[] declaredMethods = target.getClass().getDeclaredMethods();
+        for (Method declaredMethod : declaredMethods) {
+            Annotation annotation = declaredMethod.getAnnotation(annotationClass);
+            if(annotation != null) {
+                invokeMethod(declaredMethod, target, new Object[] {});
+            }
+        }
     }
 
     public static Object invokeMethod(Method method, Object target, Object[] parameters) throws InvocationTargetException, IllegalAccessException {
