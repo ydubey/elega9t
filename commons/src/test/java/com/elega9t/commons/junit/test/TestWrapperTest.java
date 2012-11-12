@@ -6,7 +6,7 @@
 package com.elega9t.commons.junit.test;
 
 import com.elega9t.commons.junit.MockTarget;
-import com.elega9t.commons.junit.Subject;
+import com.elega9t.commons.junit.TestSubject;
 import com.elega9t.commons.junit.WrapperTestRunner;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -17,14 +17,14 @@ import java.sql.Connection;
 public class TestWrapperTest {
 
     @MockTarget(Connection.class)
-    private Connection mock;
+    private Connection mockConnection;
 
-    @Subject
+    @TestSubject
     private TestWrapper test;
 
     @Before
     public void setUp() throws Exception {
-        test = new TestWrapper(mock);
+        test = new TestWrapper(mockConnection);
     }
 
 }

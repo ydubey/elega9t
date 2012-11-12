@@ -16,7 +16,7 @@ public class NoContractWrapperTestStub {
     @MockTarget(Connection.class)
     private Connection mock;
 
-    @Subject
+    @TestSubject
     private TestWrapper test;
 
 }

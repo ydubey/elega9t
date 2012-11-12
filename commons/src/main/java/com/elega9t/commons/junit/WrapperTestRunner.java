@@ -6,26 +6,23 @@
 package com.elega9t.commons.junit;
 
 import com.elega9t.commons.util.ReflectionUtilities;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.model.InitializationError;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.endsWith;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -41,11 +38,11 @@ public class WrapperTestRunner extends Runner {
 
     private Map<String,Method> testMethods = new HashMap<String, Method>();
 
-    public WrapperTestRunner(Class testClass) throws IllegalAccessException, InstantiationException {
+    public WrapperTestRunner(Class testClass) throws IllegalAccessException, InstantiationException, InitializationError {
         this.testClass = testClass;
         test = testClass.newInstance();
         mockTargetFields = initMockTargets();
-        Map<Subject, Field> subjectFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(Subject.class, testClass);
+        Map<TestSubject, Field> subjectFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(TestSubject.class, testClass);
         if(subjectFieldMap.size() != 1) {
             throw new IllegalArgumentException("There should be 1 test subject per test");
         }
@@ -57,21 +54,16 @@ public class WrapperTestRunner extends Runner {
     private Description createDescription() {
         Description suiteDescription = Description.createSuiteDescription(testClass);
         for (Class contractClass : mockTargetFields.keySet()) {
-            addTestDescriptionsForContact(suiteDescription, contractClass);
+            for (Method method : contractClass.getMethods()) {
+                String testName = createTestName(method);
+                suiteDescription.addChild(Description.createTestDescription(testClass, testName));
+                testMethods.put(testName, method);
+            }
         }
         return suiteDescription;
     }
 
-    private void addTestDescriptionsForContact(Description suiteDescription, Class contractClass) {
-        for (Method method : contractClass.getMethods()) {
-            String testName = createTestName(method);
-            suiteDescription.addChild(Description.createTestDescription(testClass, testName));
-            testMethods.put(testName, method);
-        }
-    }
-
     private String createTestName(Method method) {
-        final String argName = "arg";
         StringBuilder name = new StringBuilder(method.getName());
         name.append("(");
         Class<?>[] parameterTypes = method.getParameterTypes();
@@ -81,8 +73,6 @@ public class WrapperTestRunner extends Runner {
                 name.append(", ");
             }
             name.append(parameterType.getCanonicalName());
-            name.append(" ");
-            name.append(argName + index);
         }
         name.append(")");
         return name.toString();
@@ -99,10 +89,11 @@ public class WrapperTestRunner extends Runner {
         notifier.addListener(result.createListener());
         notifier.fireTestRunStarted(description);
         try {
+            ReflectionUtilities.invokeDeclaredMethodWithAnnotation(BeforeClass.class, test);
             for (Description testDescription : description.getChildren()) {
                 notifier.fireTestStarted(testDescription);
                 initMockTargets();
-                invokeBefore();
+                ReflectionUtilities.invokeDeclaredMethodWithAnnotation(Before.class, test);
                 Object subject = getSubject();
                 String methodName = testDescription.getMethodName();
                 Method method = testMethods.get(methodName);
@@ -119,23 +110,21 @@ public class WrapperTestRunner extends Runner {
                     });
                     method.invoke(subject);
                     try {
-                        assertTrue(methodName + " not invoked in the target mock", invokedInMock.get());
+                        assertTrue(methodName + " not invoked in the target mock " + mock, invokedInMock.get());
                         notifier.fireTestFinished(testDescription);
                     } catch(AssertionError e) {
-                        notifier.fireTestAssumptionFailed(new Failure(description, e));
+                        notifier.fireTestFailure(new Failure(testDescription, e));
                     }
                 } else {
                     notifier.fireTestIgnored(testDescription);
                 }
+                ReflectionUtilities.invokeDeclaredMethodWithAnnotation(After.class, test);
             }
+            ReflectionUtilities.invokeDeclaredMethodWithAnnotation(AfterClass.class, test);
         } catch(Throwable e) {
             notifier.fireTestFailure(new Failure(description, e));
         }
         notifier.fireTestRunFinished(result);
-    }
-
-    private void invokeBefore() throws InvocationTargetException, IllegalAccessException {
-        ReflectionUtilities.invokeDeclaredMethodWithAnnotation(Before.class, test);
     }
 
     private Object getSubject() throws IllegalAccessException {
