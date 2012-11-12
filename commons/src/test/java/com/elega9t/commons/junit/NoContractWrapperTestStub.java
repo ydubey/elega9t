@@ -13,7 +13,7 @@ import java.sql.Connection;
 @RunWith(WrapperTestRunner.class)
 public class NoContractWrapperTestStub {
 
-    @MockTarget
+    @MockTarget(Connection.class)
     private Connection mock;
 
     @Subject

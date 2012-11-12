@@ -10,6 +10,13 @@ import java.util.Map;
 import java.util.Properties;
 
 public class TestWrapper implements Connection {
+
+    private Connection connection;
+
+    public TestWrapper(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public Statement createStatement() throws SQLException {
         return null;
@@ -49,6 +56,7 @@ public class TestWrapper implements Connection {
 
     @Override
     public void close() throws SQLException {
+        connection.close();
     }
 
     @Override
@@ -67,7 +75,7 @@ public class TestWrapper implements Connection {
 
     @Override
     public boolean isReadOnly() throws SQLException {
-        return false;
+        return connection.isReadOnly();
     }
 
     @Override
