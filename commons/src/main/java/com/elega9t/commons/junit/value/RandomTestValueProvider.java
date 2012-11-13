@@ -9,7 +9,7 @@ import java.util.Random;
 
 public abstract class RandomTestValueProvider {
 
-    protected static final Random RANDOM = new Random(System.currentTimeMillis());
+    static final Random RANDOM = new Random(System.currentTimeMillis());
 
     private final Class[] classesHandled;
 

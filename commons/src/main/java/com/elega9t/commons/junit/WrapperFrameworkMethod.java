@@ -39,20 +39,17 @@ public class WrapperFrameworkMethod extends FrameworkMethod {
                 Object subject = subjectField.get(target);
                 Object mockTarget = mockTargetField.get(target);
                 Object returnValue = null;
-                if(getMethod().getParameterTypes().length == 0) {
-                    Object fromBase = null;
-                    Class<?> returnType = getMethod().getReturnType();
-                    if(notVoid(returnType)) {
-                        fromBase = RandomValueFactory.getInstance().create(returnType);
-                        when(getMethod().invoke(mockTarget)).thenReturn(fromBase);
-                    }
-                    returnValue = getMethod().invoke(subject);
-                    getMethod().invoke(verify(mockTarget));
-                    if(notVoid(returnType)) {
-                        assertEquals("return values are not equal.", fromBase, returnValue);
-                    }
-                } else {
-                    throw new AssertionError("Parameterized methods are not supported yet!!!");
+                Object[] testParameters = RandomValueFactory.getInstance().create(getMethod().getParameterTypes());
+                Object fromBase = null;
+                Class<?> returnType = getMethod().getReturnType();
+                if(notVoid(returnType)) {
+                    fromBase = RandomValueFactory.getInstance().create(returnType);
+                    when(getMethod().invoke(mockTarget, testParameters)).thenReturn(fromBase);
+                }
+                returnValue = getMethod().invoke(subject, testParameters);
+                getMethod().invoke(verify(mockTarget), testParameters);
+                if(notVoid(returnType)) {
+                    assertEquals("return values are not equal.", fromBase, returnValue);
                 }
                 return returnValue;
             }

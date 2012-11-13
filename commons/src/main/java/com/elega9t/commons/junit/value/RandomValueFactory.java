@@ -7,6 +7,7 @@ package com.elega9t.commons.junit.value;
 
 import com.sun.jmx.snmp.agent.SnmpStandardObjectServer;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,11 +40,29 @@ public class RandomValueFactory {
     }
 
     public Object create(Class<?> clazz) {
-        if(register.containsKey(clazz)) {
-            return register.get(clazz).create();
+        if(clazz.isArray()) {
+            Class<?> arrayType = clazz.getComponentType();
+            int randomSize = RandomTestValueProvider.RANDOM.nextInt(5) + 1;
+            Object value = Array.newInstance(arrayType, randomSize);
+            for(int index=0; index<randomSize; index++) {
+                Array.set(value, index, create(arrayType));
+            }
+            return value;
         } else {
-            return mock(clazz);
+            if(register.containsKey(clazz)) {
+                return register.get(clazz).create();
+            } else {
+                return mock(clazz);
+            }
         }
+    }
+
+    public Object[] create(Class<?>[] classes) {
+        Object[] values = new Object[classes.length];
+        for (int index = 0; index < classes.length; index++) {
+            values[index] = create(classes[index]);
+        }
+        return values;
     }
 
 }
