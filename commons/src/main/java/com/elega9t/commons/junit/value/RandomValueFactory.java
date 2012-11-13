@@ -20,7 +20,9 @@ public class RandomValueFactory {
     private Map<Class, RandomTestValueProvider> register = new HashMap<Class, RandomTestValueProvider>();
 
     private RandomValueFactory() {
+        register(new ByteRandomTestValueProvider());
         register(new BooleanRandomTestValueProvider());
+        register(new CharacterRandomTestValueProvider());
         register(new IntegerRandomTestValueProvider());
         register(new StringRandomTestValueProvider());
     }
