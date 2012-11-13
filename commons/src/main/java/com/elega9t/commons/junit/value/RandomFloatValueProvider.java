@@ -5,15 +5,15 @@
 
 package com.elega9t.commons.junit.value;
 
-public class LongRandomTestValueProvider extends RandomTestValueProvider {
+public class RandomFloatValueProvider extends RandomValueProvider {
 
-    protected LongRandomTestValueProvider() {
-        super(long.class, Long.class);
+    protected RandomFloatValueProvider() {
+        super(float.class, Float.class);
     }
 
     @Override
     public Object create() {
-        return RANDOM.nextLong();
+        return RANDOM.nextFloat();
     }
 
 }

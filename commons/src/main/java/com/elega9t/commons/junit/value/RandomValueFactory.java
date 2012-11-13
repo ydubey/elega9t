@@ -5,8 +5,6 @@
 
 package com.elega9t.commons.junit.value;
 
-import com.sun.jmx.snmp.agent.SnmpStandardObjectServer;
-
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,37 +15,37 @@ public class RandomValueFactory {
 
     private static final RandomValueFactory INSTANCE = new RandomValueFactory();
 
-    private Map<Class, RandomTestValueProvider> register = new HashMap<Class, RandomTestValueProvider>();
+    private Map<Class, RandomValueProvider> register = new HashMap<Class, RandomValueProvider>();
 
     private RandomValueFactory() {
-        register(new ByteRandomTestValueProvider());
-        register(new BooleanRandomTestValueProvider());
-        register(new CharacterRandomTestValueProvider());
-        register(new IntegerRandomTestValueProvider());
-        register(new LongRandomTestValueProvider());
-        register(new FloatRandomTestValueProvider());
-        register(new DoubleRandomTestValueProvider());
-        register(new StringRandomTestValueProvider());
+        register(new RandomByteValueProvider());
+        register(new RandomBooleanValueProvider());
+        register(new RandomCharacterValueProvider());
+        register(new RandomIntegerValueProvider());
+        register(new RandomLongValueProvider());
+        register(new RandomFloatValueProvider());
+        register(new RandomDoubleValueProvider());
+        register(new RandomStringValueProvider());
     }
 
     public static RandomValueFactory getInstance() {
         return INSTANCE;
     }
 
-    public void register(RandomTestValueProvider testValueProvider) {
+    public void register(RandomValueProvider testValueProvider) {
         for (Class<?> clazz : testValueProvider.valueProvidedFor()) {
             register(clazz, testValueProvider);
         }
     }
 
-    public void register(Class<?> clazz, RandomTestValueProvider testValueProvider) {
-        register.put(clazz, testValueProvider);
+    public void register(Class<?> clazz, RandomValueProvider valueProvider) {
+        register.put(clazz, valueProvider);
     }
 
     public Object create(Class<?> clazz) {
         if(clazz.isArray()) {
             Class<?> arrayType = clazz.getComponentType();
-            int randomSize = RandomTestValueProvider.RANDOM.nextInt(5) + 1;
+            int randomSize = RandomValueProvider.RANDOM.nextInt(5) + 1;
             Object value = Array.newInstance(arrayType, randomSize);
             for(int index=0; index<randomSize; index++) {
                 Array.set(value, index, create(arrayType));

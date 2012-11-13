@@ -5,9 +5,9 @@
 
 package com.elega9t.commons.junit.value;
 
-public class DoubleRandomTestValueProvider extends RandomTestValueProvider {
+public class RandomDoubleValueProvider extends RandomValueProvider {
 
-    protected DoubleRandomTestValueProvider() {
+    protected RandomDoubleValueProvider() {
         super(double.class, Double.class);
     }
 

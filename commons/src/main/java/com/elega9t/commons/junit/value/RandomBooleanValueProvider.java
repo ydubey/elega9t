@@ -5,17 +5,15 @@
 
 package com.elega9t.commons.junit.value;
 
-public class ByteRandomTestValueProvider extends RandomTestValueProvider {
+public class RandomBooleanValueProvider extends RandomValueProvider {
 
-    protected ByteRandomTestValueProvider() {
-        super(byte.class, Byte.class);
+    protected RandomBooleanValueProvider() {
+        super(boolean.class, Boolean.class);
     }
 
     @Override
     public Object create() {
-        byte[] value = new byte[1];
-        RANDOM.nextBytes(value);
-        return value[0];
+        return RANDOM.nextBoolean();
     }
 
 }

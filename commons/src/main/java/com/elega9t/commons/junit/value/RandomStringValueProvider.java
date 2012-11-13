@@ -5,15 +5,17 @@
 
 package com.elega9t.commons.junit.value;
 
-public class FloatRandomTestValueProvider extends RandomTestValueProvider {
+import java.util.UUID;
 
-    protected FloatRandomTestValueProvider() {
-        super(float.class, Float.class);
+public class RandomStringValueProvider extends RandomValueProvider {
+
+    protected RandomStringValueProvider() {
+        super(String.class);
     }
 
     @Override
     public Object create() {
-        return RANDOM.nextFloat();
+        return UUID.randomUUID().toString();
     }
 
 }

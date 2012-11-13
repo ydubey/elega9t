@@ -7,13 +7,13 @@ package com.elega9t.commons.junit.value;
 
 import java.util.Random;
 
-public abstract class RandomTestValueProvider {
+public abstract class RandomValueProvider {
 
     static final Random RANDOM = new Random(System.currentTimeMillis());
 
     private final Class[] classesHandled;
 
-    protected RandomTestValueProvider(Class<?>... classesHandled) {
+    protected RandomValueProvider(Class<?>... classesHandled) {
         this.classesHandled = classesHandled;
     }
 
