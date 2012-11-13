@@ -12,6 +12,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/../fitnesse-params/pom.xml" />
         <option value="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/pom.xml" />
       </set>
     </option>
