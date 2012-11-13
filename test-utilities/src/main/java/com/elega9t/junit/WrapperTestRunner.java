@@ -43,7 +43,8 @@ public class WrapperTestRunner extends BlockJUnit4ClassRunner {
     @Override
     protected String testName(FrameworkMethod method) {
         if(WrapperFrameworkMethod.class.isAssignableFrom(method.getClass())) {
-            StringBuilder name = new StringBuilder(method.getName());
+            StringBuilder name = new StringBuilder();
+            name.append(method.getName());
             name.append("(");
             Class<?>[] parameterTypes = method.getMethod().getParameterTypes();
             for (int index = 0, parameterTypesLength = parameterTypes.length; index < parameterTypesLength; index++) {
@@ -64,19 +65,29 @@ public class WrapperTestRunner extends BlockJUnit4ClassRunner {
     protected List<FrameworkMethod> computeTestMethods() {
         List<FrameworkMethod> testMethods = new ArrayList<FrameworkMethod>();
         testMethods.addAll(super.computeTestMethods());
+        List<FrameworkMethod> assertReturnValueMethods = getTestClass().getAnnotatedMethods(AssertReturnValues.class);
         final List<FrameworkField> mockTargetFields = getTestClass().getAnnotatedFields(MockTarget.class);
         for (FrameworkField mockTargetField : mockTargetFields) {
             for (Annotation annotation : mockTargetField.getAnnotations()) {
                 if(MockTarget.class.isAssignableFrom(annotation.getClass())) {
                     for (Class contract : ((MockTarget) annotation).value()) {
                         for (Method method : contract.getDeclaredMethods()) {
-                            testMethods.add(new WrapperFrameworkMethod(method, subjectField, mockTargetField));
+                            testMethods.add(new WrapperFrameworkMethod(method, subjectField, mockTargetField, getAssertionMethodFor(method, assertReturnValueMethods)));
                         }
                     }
                 }
             }
         }
         return testMethods;
+    }
+
+    private FrameworkMethod getAssertionMethodFor(Method method, List<FrameworkMethod> assertReturnValueMethods) {
+        for (FrameworkMethod assertReturnValueMethod : assertReturnValueMethods) {
+            if(assertReturnValueMethod.getMethod().getParameterTypes().length == 2 && assertReturnValueMethod.getMethod().getParameterTypes()[0].equals(method.getReturnType())) {
+                return assertReturnValueMethod;
+            }
+        }
+        return null;
     }
 
     @Override

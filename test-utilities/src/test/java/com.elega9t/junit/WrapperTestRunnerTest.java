@@ -6,12 +6,13 @@
 package com.elega9t.junit;
 
 import org.junit.Test;
+import org.junit.runners.model.InitializationError;
 
 public class WrapperTestRunnerTest {
 
-    @Test(expected = IllegalStateException.class)
-    public void throwsExceptionWhenNoContactDefined() throws Exception {
-        new WrapperTestRunner(NoContractWrapperTestStub.class);
+    @Test(expected = InitializationError.class)
+    public void throwsExceptionWhenNoTestSubject() throws Exception {
+        new WrapperTestRunner(NoTestSubjectWrapperTestStub.class);
     }
 
 }

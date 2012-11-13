@@ -22,11 +22,13 @@ public class WrapperFrameworkMethod extends FrameworkMethod {
 
     private final FrameworkField subjectField;
     private final FrameworkField mockTargetField;
+    private final FrameworkMethod assertionMethod;
 
-    public WrapperFrameworkMethod(Method method, FrameworkField subjectField, FrameworkField mockTargetField) {
+    public WrapperFrameworkMethod(Method method, FrameworkField subjectField, FrameworkField mockTargetField, FrameworkMethod assertionMethod) {
         super(method);
         this.subjectField = subjectField;
         this.mockTargetField = mockTargetField;
+        this.assertionMethod = assertionMethod;
         mockTargetField.getField().setAccessible(true);
         subjectField.getField().setAccessible(true);
     }
@@ -49,11 +51,19 @@ public class WrapperFrameworkMethod extends FrameworkMethod {
                 returnValue = getMethod().invoke(subject, testParameters);
                 getMethod().invoke(verify(mockTarget), testParameters);
                 if(notVoid(returnType)) {
-                    assertEquals("return values are not equal.", fromBase, returnValue);
+                    match(target, fromBase, returnValue);
                 }
                 return returnValue;
             }
         }.run();
+    }
+
+    private void match(Object test, Object fromBase, Object returnValue) throws Throwable {
+        if(assertionMethod == null) {
+            assertEquals("return values are not equal.", fromBase, returnValue);
+        } else {
+            assertionMethod.invokeExplosively(test, returnValue, fromBase);
+        }
     }
 
     protected boolean notVoid(Class<?> clazz) {

@@ -11,12 +11,9 @@ import org.junit.runner.RunWith;
 import java.sql.Connection;
 
 @RunWith(WrapperTestRunner.class)
-public class NoContractWrapperTestStub {
+public class NoTestSubjectWrapperTestStub {
 
     @MockTarget(Connection.class)
     private Connection mock;
-
-    @TestSubject
-    private TestWrapper test;
 
 }
