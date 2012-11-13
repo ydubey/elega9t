@@ -24,6 +24,9 @@ public class RandomValueFactory {
         register(new BooleanRandomTestValueProvider());
         register(new CharacterRandomTestValueProvider());
         register(new IntegerRandomTestValueProvider());
+        register(new LongRandomTestValueProvider());
+        register(new FloatRandomTestValueProvider());
+        register(new DoubleRandomTestValueProvider());
         register(new StringRandomTestValueProvider());
     }
 
