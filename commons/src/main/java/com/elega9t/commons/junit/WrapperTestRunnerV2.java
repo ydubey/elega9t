@@ -5,9 +5,6 @@
 
 package com.elega9t.commons.junit;
 
-import org.junit.runner.Description;
-import org.junit.runner.notification.Failure;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
@@ -18,30 +15,52 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.mock;
+
 public class WrapperTestRunnerV2 extends BlockJUnit4ClassRunner {
 
     private final FrameworkField testSubjectField;
 
     public WrapperTestRunnerV2(Class<?> testClass) throws InitializationError {
         super(testClass);
-        final List<FrameworkField> annotatedFields = getTestClass().getAnnotatedFields(TestSubject.class);
-        if(annotatedFields.size() != 1) {
-            throw new InitializationError("There should be only one @TestSubject per test");
+        final List<FrameworkField> testSubject = getTestClass().getAnnotatedFields(TestSubject.class);
+        if(testSubject.size() != 1) {
+            throw new InitializationError("There should be only one @TestSubject per test, found " + testSubject.size());
         }
-        testSubjectField = annotatedFields.get(0);
+        testSubjectField = testSubject.get(0);
+    }
+
+    @Override
+    protected String testName(FrameworkMethod method) {
+        if(WrapperFrameworkMethod.class.isAssignableFrom(method.getClass())) {
+            StringBuilder name = new StringBuilder(method.getName());
+            name.append("(");
+            Class<?>[] parameterTypes = method.getMethod().getParameterTypes();
+            for (int index = 0, parameterTypesLength = parameterTypes.length; index < parameterTypesLength; index++) {
+                Class<?> parameterType = parameterTypes[index];
+                if(index != 0) {
+                    name.append(", ");
+                }
+                name.append(parameterType.getCanonicalName());
+            }
+            name.append(")");
+            return name.toString();
+        } else {
+            return super.testName(method);
+        }
     }
 
     @Override
     protected List<FrameworkMethod> computeTestMethods() {
         List<FrameworkMethod> testMethods = new ArrayList<FrameworkMethod>();
         testMethods.addAll(super.computeTestMethods());
-        final List<FrameworkField> annotatedFields = getTestClass().getAnnotatedFields(MockTarget.class);
-        for (FrameworkField annotatedField : annotatedFields) {
-            for (Annotation annotation : annotatedField.getAnnotations()) {
+        final List<FrameworkField> mockTargets = getTestClass().getAnnotatedFields(MockTarget.class);
+        for (FrameworkField mockTarget : mockTargets) {
+            for (Annotation annotation : mockTarget.getAnnotations()) {
                 if(MockTarget.class.isAssignableFrom(annotation.getClass())) {
                     for (Class contract : ((MockTarget) annotation).value()) {
                         for (Method method : contract.getDeclaredMethods()) {
-                            testMethods.add(new WrapperFrameworkMethod(method, annotatedField));
+                            testMethods.add(new WrapperFrameworkMethod(method, mockTarget));
                         }
                     }
                 }
@@ -51,37 +70,18 @@ public class WrapperTestRunnerV2 extends BlockJUnit4ClassRunner {
     }
 
     @Override
-    protected Description describeChild(FrameworkMethod method) {
-        if(WrapperFrameworkMethod.class.isAssignableFrom(method.getClass())) {
-            final WrapperFrameworkMethod wrapperFrameworkMethod = (WrapperFrameworkMethod) method;
-            return Description.createTestDescription(getTestClass().getJavaClass(), wrapperFrameworkMethod.createTestName());
-        } else {
-            return super.describeChild(method);
-        }
+    protected Object createTest() throws Exception {
+        Object test = super.createTest();
+        initMocks(test);
+        return test;
     }
 
-    @Override
-    protected void runChild(FrameworkMethod method, RunNotifier notifier) {
-        if(WrapperFrameworkMethod.class.isAssignableFrom(method.getClass())) {
-            final Description description = describeChild(method);
-            final WrapperFrameworkMethod wrapperFrameworkMethod = (WrapperFrameworkMethod) method;
-            try {
-                final Object test = createTest();
-                if(wrapperFrameworkMethod.getMethod().getParameterTypes().length == 0) {
-                    wrapperFrameworkMethod.getMethod().invoke(getTestSubject());
-                } else {
-                    notifier.fireTestIgnored(description);
-                }
-            } catch (Exception e) {
-                notifier.fireTestFailure(new Failure(description, e));
-            }
-        } else {
-            super.runChild(method, notifier);
+    public void initMocks(Object test) throws IllegalAccessException {
+        List<FrameworkField> mockTargetFields = getTestClass().getAnnotatedFields(MockTarget.class);
+        for (FrameworkField mockTargetField : mockTargetFields) {
+            mockTargetField.getField().setAccessible(true);
+            mockTargetField.getField().set(test, mock(mockTargetField.getType()));
         }
-    }
-
-    private Object getTestSubject() throws Exception {
-        return testSubjectField.get(createTest());
     }
 
 }

@@ -10,32 +10,22 @@ import org.junit.runners.model.FrameworkMethod;
 
 import java.lang.reflect.Method;
 
+import static org.mockito.Mockito.mock;
+
 public class WrapperFrameworkMethod extends FrameworkMethod {
 
-    private final FrameworkField field;
+    private final FrameworkField mockTargetFrameworkField;
 
-    public WrapperFrameworkMethod(Method method, FrameworkField field) {
+    public WrapperFrameworkMethod(Method method, FrameworkField mockTargetFrameworkField) {
         super(method);
-        this.field = field;
+        this.mockTargetFrameworkField = mockTargetFrameworkField;
+        mockTargetFrameworkField.getField().setAccessible(true);
     }
 
-    public String createTestName() {
-        StringBuilder name = new StringBuilder(getMethod().getName());
-        name.append("(");
-        Class<?>[] parameterTypes = getMethod().getParameterTypes();
-        for (int index = 0, parameterTypesLength = parameterTypes.length; index < parameterTypesLength; index++) {
-            Class<?> parameterType = parameterTypes[index];
-            if(index != 0) {
-                name.append(", ");
-            }
-            name.append(parameterType.getCanonicalName());
-        }
-        name.append(")");
-        return name.toString();
-    }
-
-    public FrameworkField getField() {
-        return field;
+    @Override
+    public Object invokeExplosively(Object target, Object... params) throws Throwable {
+        System.out.println(mockTargetFrameworkField.get(target));
+        return null;
     }
 
 }
