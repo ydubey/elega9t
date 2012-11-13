@@ -40,13 +40,13 @@
     </developers>
 
     <modules>
+        <module>../test-utilities</module>
         <module>../fitnesse-params</module>
         <module>../jmeter-jms-skip-jndi</module>
         <module>../intellij-idea-plugins</module>
         <module>../commons</module>
         <module>../carbon</module>
         <module>../elixir</module>
-        <module>../test-utilities</module>
     </modules>
 
     <properties>
