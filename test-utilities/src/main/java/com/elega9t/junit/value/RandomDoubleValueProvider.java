@@ -3,17 +3,17 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.junit.value;
+package com.elega9t.junit.value;
 
-public class RandomLongValueProvider extends RandomValueProvider {
+public class RandomDoubleValueProvider extends RandomValueProvider {
 
-    protected RandomLongValueProvider() {
-        super(long.class, Long.class);
+    protected RandomDoubleValueProvider() {
+        super(double.class, Double.class);
     }
 
     @Override
     public Object create() {
-        return RANDOM.nextLong();
+        return RANDOM.nextDouble();
     }
 
 }

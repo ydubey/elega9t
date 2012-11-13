@@ -3,9 +3,9 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.junit;
+package com.elega9t.junit;
 
-import com.elega9t.commons.junit.test.TestWrapper;
+import com.elega9t.junit.test.TestWrapper;
 import org.junit.runner.RunWith;
 
 import java.sql.Connection;

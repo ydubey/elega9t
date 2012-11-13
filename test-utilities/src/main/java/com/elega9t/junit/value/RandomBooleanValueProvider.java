@@ -3,19 +3,17 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.junit.value;
+package com.elega9t.junit.value;
 
-import java.util.UUID;
+public class RandomBooleanValueProvider extends RandomValueProvider {
 
-public class RandomStringValueProvider extends RandomValueProvider {
-
-    protected RandomStringValueProvider() {
-        super(String.class);
+    protected RandomBooleanValueProvider() {
+        super(boolean.class, Boolean.class);
     }
 
     @Override
     public Object create() {
-        return UUID.randomUUID().toString();
+        return RANDOM.nextBoolean();
     }
 
 }
