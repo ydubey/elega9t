@@ -1,2 +1,2 @@
 !|Import|
-|com.elega9t.fitnesse.calc.fixture|
+|com.elega9t.fitnesse.eg.fixture|
