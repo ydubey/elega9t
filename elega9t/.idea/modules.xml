@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" filepath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-plugins.iml" filepath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-plugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" filepath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../test-utilities/test-utilities.iml" filepath="$PROJECT_DIR$/../test-utilities/test-utilities.iml" />
     </modules>
   </component>
 </project>

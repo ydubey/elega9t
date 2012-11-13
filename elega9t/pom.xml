@@ -46,6 +46,7 @@
         <module>../commons</module>
         <module>../carbon</module>
         <module>../elixir</module>
+        <module>../test-utilities</module>
     </modules>
 
     <properties>
