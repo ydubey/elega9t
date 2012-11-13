@@ -19,15 +19,25 @@ import static org.mockito.Mockito.mock;
 
 public class WrapperTestRunnerV2 extends BlockJUnit4ClassRunner {
 
-    private final FrameworkField testSubjectField;
+    private FrameworkField subjectField;
 
     public WrapperTestRunnerV2(Class<?> testClass) throws InitializationError {
         super(testClass);
-        final List<FrameworkField> testSubject = getTestClass().getAnnotatedFields(TestSubject.class);
-        if(testSubject.size() != 1) {
-            throw new InitializationError("There should be only one @TestSubject per test, found " + testSubject.size());
+    }
+
+    @Override
+    protected void collectInitializationErrors(List<Throwable> errors) {
+        validateTestSubject(errors);
+        super.collectInitializationErrors(errors);
+    }
+
+    protected void validateTestSubject(List<Throwable> errors) {
+        final List<FrameworkField> subject = getTestClass().getAnnotatedFields(TestSubject.class);
+        if(subject.size() != 1) {
+            errors.add(new Exception("There should be only one @TestSubject per test, found " + subject.size()));
+        } else {
+            this.subjectField = subject.get(0);
         }
-        testSubjectField = testSubject.get(0);
     }
 
     @Override
@@ -54,13 +64,13 @@ public class WrapperTestRunnerV2 extends BlockJUnit4ClassRunner {
     protected List<FrameworkMethod> computeTestMethods() {
         List<FrameworkMethod> testMethods = new ArrayList<FrameworkMethod>();
         testMethods.addAll(super.computeTestMethods());
-        final List<FrameworkField> mockTargets = getTestClass().getAnnotatedFields(MockTarget.class);
-        for (FrameworkField mockTarget : mockTargets) {
-            for (Annotation annotation : mockTarget.getAnnotations()) {
+        final List<FrameworkField> mockTargetFields = getTestClass().getAnnotatedFields(MockTarget.class);
+        for (FrameworkField mockTargetField : mockTargetFields) {
+            for (Annotation annotation : mockTargetField.getAnnotations()) {
                 if(MockTarget.class.isAssignableFrom(annotation.getClass())) {
                     for (Class contract : ((MockTarget) annotation).value()) {
                         for (Method method : contract.getDeclaredMethods()) {
-                            testMethods.add(new WrapperFrameworkMethod(method, mockTarget));
+                            testMethods.add(new WrapperFrameworkMethod(method, subjectField, mockTargetField));
                         }
                     }
                 }
