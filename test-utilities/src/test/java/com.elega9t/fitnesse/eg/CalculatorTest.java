@@ -1,4 +1,4 @@
-package com.elega9t.fitnesse.calc;
+package com.elega9t.fitnesse.eg;
 
 import org.junit.Before;
 import org.junit.Test;

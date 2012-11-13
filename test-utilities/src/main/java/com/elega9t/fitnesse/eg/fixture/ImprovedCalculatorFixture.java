@@ -3,9 +3,10 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.fitnesse.calc.fixture;
+package com.elega9t.fitnesse.eg.fixture;
 
-import com.elega9t.fitnesse.calc.Calculator;
+import com.elega9t.fitnesse.VariablesForFixtures;
+import com.elega9t.fitnesse.eg.Calculator;
 
 public class ImprovedCalculatorFixture extends VariablesForFixtures {
 
