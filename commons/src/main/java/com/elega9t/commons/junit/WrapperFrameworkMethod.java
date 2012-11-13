@@ -5,6 +5,7 @@
 
 package com.elega9t.commons.junit;
 
+import com.elega9t.commons.junit.value.RandomValueFactory;
 import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.runners.model.FrameworkField;
 import org.junit.runners.model.FrameworkMethod;
@@ -42,7 +43,7 @@ public class WrapperFrameworkMethod extends FrameworkMethod {
                     Object fromBase = null;
                     Class<?> returnType = getMethod().getReturnType();
                     if(notVoid(returnType)) {
-                        fromBase = RandomValueProvider.get(returnType);
+                        fromBase = RandomValueFactory.getInstance().create(returnType);
                         when(getMethod().invoke(mockTarget)).thenReturn(fromBase);
                     }
                     returnValue = getMethod().invoke(subject);
