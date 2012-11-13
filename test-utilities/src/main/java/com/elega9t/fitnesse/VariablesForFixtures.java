@@ -24,8 +24,9 @@ public class VariablesForFixtures extends ColumnFixture {
             Parse r = rows;
             Parse original = copy(Collections.<String, String>emptyMap(), r.more);
             r.more = null;
-            for (Map<String, String> values: variables) {
-                Parse copy = copy(values, original, "Scenario: <b>" + values +"</b>");
+            for (int index = 0, variablesSize = variables.size(); index < variablesSize; index++) {
+                Map<String, String> values = variables.get(index);
+                Parse copy = copy(values, original, "Scenario " + (index+1) + ": <b>" + values + "</b>");
                 fixValue(copy);
                 while (r.more != null) {
                     r = r.more;
