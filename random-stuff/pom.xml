@@ -15,4 +15,8 @@
     <artifactId>random-stuff</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>number-to-words</module>
+    </modules>
+
 </project>
