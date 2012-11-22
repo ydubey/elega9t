@@ -43,6 +43,7 @@
         <module>../random-stuff</module>
         <module>../test-utilities</module>
         <module>../jmeter-jms-skip-jndi</module>
+        <module>../cloudfoundry-cli</module>
         <module>../intellij-idea-plugins</module>
         <module>../commons</module>
         <module>../carbon</module>

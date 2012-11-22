@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/../carbon/carbon.iml" filepath="$PROJECT_DIR$/../carbon/carbon.iml" />
       <module fileurl="file://$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" filepath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" filepath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cloudfoundry-cli/cloudfoundry-cli.iml" filepath="$PROJECT_DIR$/../cloudfoundry-cli/cloudfoundry-cli.iml" />
       <module fileurl="file://$PROJECT_DIR$/../commons/commons.iml" filepath="$PROJECT_DIR$/../commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/elega9t.iml" filepath="$PROJECT_DIR$/elega9t.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir/elixir.iml" filepath="$PROJECT_DIR$/../elixir/elixir.iml" />
@@ -14,6 +15,8 @@
       <module fileurl="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" filepath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-plugins.iml" filepath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-plugins.iml" />
       <module fileurl="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" filepath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../random-stuff/number-to-words/number-to-words.iml" filepath="$PROJECT_DIR$/../random-stuff/number-to-words/number-to-words.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../random-stuff/random-stuff.iml" filepath="$PROJECT_DIR$/../random-stuff/random-stuff.iml" />
       <module fileurl="file://$PROJECT_DIR$/../test-utilities/test-utilities.iml" filepath="$PROJECT_DIR$/../test-utilities/test-utilities.iml" />
     </modules>
   </component>
