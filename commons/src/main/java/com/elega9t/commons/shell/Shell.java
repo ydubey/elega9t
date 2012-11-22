@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +29,8 @@ public class Shell {
     private int exitVal;
 
     private List<String> history = new ArrayList<String>();
+
+    private ConcurrentHashMap<String, Object> context = new ConcurrentHashMap<String, Object>();
 
     public Shell(@NotNull Interpreter interpreter) {
         EnvironmentProperty.init(this);
@@ -146,6 +149,10 @@ public class Shell {
                 EchoCommand.class
         ));
         shell.execute();
+    }
+
+    public void setContextElement(String name, Object obj) {
+        context.put(name, obj);
     }
 
 }
