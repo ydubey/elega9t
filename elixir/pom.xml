@@ -17,7 +17,7 @@
 
     <modules>
         <module>elixir-api</module>
-        <module>../elixir-db-provider</module>
+        <module>elixir-db-provider</module>
     </modules>
 
 </project>
