@@ -32,25 +32,10 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="YD: Added jbehave to elega9t pom and added module number-to-words">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/target/cloudfoundary-cli-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-db-provider.iml" afterPath="$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-db-provider.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/elixir-mysql.iml" afterPath="$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/elixir-mysql.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/pom.xml" afterPath="$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-db-provider/elixir-mysql/src/main/java/com/elega9t/elixir/mysql/MySqlDatabaseDriver.java" afterPath="$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/src/main/java/com/elega9t/elixir/mysql/MySqlDatabaseDriver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../elixir-db-provider/pom.xml" afterPath="$PROJECT_DIR$/../elixir/elixir-db-provider/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" afterPath="$PROJECT_DIR$/../carbon/carbon-api/carbon-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" afterPath="$PROJECT_DIR$/../carbon/carbon-standard/carbon-standard.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/cloudfoundry-cli.iml" afterPath="$PROJECT_DIR$/../cloudfoundry-cli/cloudfoundry-cli.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/commons.iml" afterPath="$PROJECT_DIR$/../commons/commons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/target/maven-archiver/pom.properties" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" afterPath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../elixir/pom.xml" afterPath="$PROJECT_DIR$/../elixir/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" afterPath="$PROJECT_DIR$/../intellij-idea-plugins/intellij-idea-jbehave-plugin/intellij-idea-jbehave-plugin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" afterPath="$PROJECT_DIR$/../jmeter-jms-skip-jndi/jmeter-jms-skip-jndi.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../random-stuff/number-to-words/number-to-words.iml" afterPath="$PROJECT_DIR$/../random-stuff/number-to-words/number-to-words.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test-utilities/test-utilities.iml" afterPath="$PROJECT_DIR$/../test-utilities/test-utilities.iml" />
     </list>
     <ignored path="elega9t.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -880,7 +865,11 @@
       <created>1353063860270</created>
       <updated>1353063860270</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="YD: moving elixir-db-provider module in elixir">
+      <created>1353658747247</created>
+      <updated>1353658747247</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -898,6 +887,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14460784" sideWeight="0.7331813" order="3" side_tool="false" content_ui="tabs" />
@@ -908,7 +898,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -950,7 +939,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: Adding description to module" />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: moving elixir-db-provider module in elixir" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -963,7 +952,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="YD: Adding JNDI InitialContextFactory for JMeter JMS testing without JNDI" />
     <MESSAGE value="YD: bare modules" />
     <MESSAGE value="YD: entity model." />
     <MESSAGE value="YD: using javac2 compiler, added profiles to elega9t" />
@@ -988,6 +976,7 @@
     <MESSAGE value="YD: Added parent module for random projects" />
     <MESSAGE value="YD: Added jbehave to elega9t pom and added module number-to-words" />
     <MESSAGE value="YD: Adding description to module" />
+    <MESSAGE value="YD: moving elixir-db-provider module in elixir" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
