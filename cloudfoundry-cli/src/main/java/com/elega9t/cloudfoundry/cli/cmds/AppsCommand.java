@@ -5,18 +5,16 @@
 
 package com.elega9t.cloudfoundry.cli.cmds;
 
+import com.elega9t.commons.renderer.ColumnDataProvider;
+import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
+import com.elega9t.commons.renderer.ObjectCollectionDataProvider;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.util.StringUtilities;
-import com.elega9t.commons.util.TextTable;
-import org.cloudfoundry.client.lib.CloudCredentials;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 import org.cloudfoundry.client.lib.domain.CloudApplication;
 
-import java.net.URL;
 import java.util.List;
-
-import static com.elega9t.commons.util.StringUtilities.join;
 
 public class AppsCommand extends Command {
 
@@ -28,40 +26,40 @@ public class AppsCommand extends Command {
     public int execute(Shell shell) {
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         List<CloudApplication> applications = client.getApplications();
-        TextTable<CloudApplication> textTable = new TextTable<CloudApplication>(applications,
-                new TextTable.ColumnValueProvider<CloudApplication>("Application") {
+        ConsoleTableDataRenderer consoleTableDataRenderer = new ConsoleTableDataRenderer();
+        shell.outln("");
+        shell.outln(consoleTableDataRenderer.render(new ObjectCollectionDataProvider(applications,
+                new ColumnDataProvider<CloudApplication>("Application") {
                     @Override
-                    public String valueOf(CloudApplication application) {
+                    public String value(CloudApplication application) {
                         return application.getName();
                     }
                 },
-                new TextTable.ColumnValueProvider<CloudApplication>("#") {
+                new ColumnDataProvider<CloudApplication>("#") {
                     @Override
-                    public String valueOf(CloudApplication application) {
+                    public String value(CloudApplication application) {
                         return String.valueOf(application.getInstances());
                     }
                 },
-                new TextTable.ColumnValueProvider<CloudApplication>("Health") {
+                new ColumnDataProvider<CloudApplication>("Health") {
                     @Override
-                    public String valueOf(CloudApplication application) {
+                    public String value(CloudApplication application) {
                         return application.getState().name();
                     }
                 },
-                new TextTable.ColumnValueProvider<CloudApplication>("URLS") {
+                new ColumnDataProvider<CloudApplication>("URLS") {
                     @Override
-                    public String valueOf(CloudApplication application) {
+                    public String value(CloudApplication application) {
                         return StringUtilities.join(application.getUris(), ", ");
                     }
                 },
-                new TextTable.ColumnValueProvider<CloudApplication>("Services") {
+                new ColumnDataProvider<CloudApplication>("Services") {
                     @Override
-                    public String valueOf(CloudApplication application) {
+                    public String value(CloudApplication application) {
                         return StringUtilities.join(application.getServices(), ", ");
                     }
                 }
-        );
-        shell.outln("");
-        shell.outln(textTable.toString());
+        )));
         return 0;
     }
 
