@@ -33,8 +33,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/target/maven-archiver/pom.properties" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/AppsCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/TargetCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/TextTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/Main.java" afterPath="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java" afterPath="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="elega9t.iws" />
@@ -93,38 +98,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../elixir/pom.xml">
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="16" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
+            <state line="26" column="33" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modules.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <file leaf-file-name="LoginCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="85" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.37251654">
+            <state line="15" column="13" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../elixir/elixir-db-provider/pom.xml">
+      <file leaf-file-name="AppsCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/AppsCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="25" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+            <state line="58" column="77" selection-start="2563" selection-end="2563" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/pom.xml">
+      <file leaf-file-name="StringUtilities.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="25" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+            <state line="12" column="13" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TextTable.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/TextTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="42" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.024390243">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1050#1064#0" expanded="true" />
+                <element signature="e#1111#1119#0" expanded="true" />
+                <element signature="e#1525#1533#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,22 +165,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../random-stuff/number-to-words/number-to-words.iml" />
-        <option value="$PROJECT_DIR$/../random-stuff/number-to-words/src/test/resources/stories/uk/ydubey/formatter/numtoword/integration/number_in_words_scenario.story" />
-        <option value="$PROJECT_DIR$/../random-stuff/number-to-words/README.md" />
-        <option value="$PROJECT_DIR$/../random-stuff/number-to-words/pom.xml" />
-        <option value="$PROJECT_DIR$/settings.xml" />
         <option value="$PROJECT_DIR$/../cloudfoundary-cli/pom.xml" />
         <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/Login.java" />
-        <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java" />
-        <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/Main.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" />
         <option value="$PROJECT_DIR$/../elixir/pom.xml" />
         <option value="$PROJECT_DIR$/../elixir/elixir-db-provider/pom.xml" />
         <option value="$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/pom.xml" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/Main.java" />
+        <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java" />
+        <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/TargetCommand.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/CliUtilities.java" />
+        <option value="$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/AppsCommand.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/TextTable.java" />
       </list>
     </option>
   </component>
@@ -213,9 +232,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2" />
-    <option name="width" value="1684" />
-    <option name="height" value="1029" />
+    <option name="width" value="1680" />
+    <option name="height" value="1025" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -277,7 +295,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elixir" />
+              <option name="myItemId" value="commons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,29 +305,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elixir" />
+              <option name="myItemId" value="commons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elixir-db-provider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elixir" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elixir-db-provider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elixir-mysql" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -319,7 +319,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -329,11 +337,119 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="elega9t" />
+              <option name="myItemId" value="commons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudfoundry-cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudfoundry-cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudfoundry-cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmds" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -343,16 +459,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects/elega9t/trunk/carbon-j2ee-jspc/src/main/javacc" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="263" />
@@ -368,9 +484,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -378,8 +494,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -387,6 +503,7 @@
       <recent name="com.elega9t.commons.entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.elega9t.cloudfoundry.cli.cmds" />
       <recent name="com.elega9t.carbon" />
       <recent name="com.elega9t.carbon.api" />
     </key>
@@ -599,24 +716,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -643,6 +742,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -869,36 +986,41 @@
       <created>1353658747247</created>
       <updated>1353658747247</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="YD: delete target folder">
+      <created>1353658844450</created>
+      <updated>1353658844450</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="1684" height="1029" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1025" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2668187" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2657503" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39823875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18673219" sideWeight="0.5372279" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14460784" sideWeight="0.7331813" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14987715" sideWeight="0.7342497" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18688725" sideWeight="0.7331813" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27822122" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18673219" sideWeight="0.18900344" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27720505" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760596" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -939,7 +1061,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="YD: moving elixir-db-provider module in elixir" />
+    <option name="LAST_COMMIT_MESSAGE" value="YD: delete target folder" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -952,7 +1074,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="YD: bare modules" />
     <MESSAGE value="YD: entity model." />
     <MESSAGE value="YD: using javac2 compiler, added profiles to elega9t" />
     <MESSAGE value="YD: Adding copyright to source files" />
@@ -977,6 +1098,7 @@
     <MESSAGE value="YD: Added jbehave to elega9t pom and added module number-to-words" />
     <MESSAGE value="YD: Adding description to module" />
     <MESSAGE value="YD: moving elixir-db-provider module in elixir" />
+    <MESSAGE value="YD: delete target folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -986,39 +1108,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/DateCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/SetCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/ExportCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.14827017" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/HistoryCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="0.123558484" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/ExitCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="0.123558484" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/EchoCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.14827017" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1885" selection-end="1885" vertical-scroll-proportion="0.024711696" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -1041,31 +1133,66 @@
         <state line="25" column="19" selection-start="733" selection-end="733" vertical-scroll-proportion="0.57591623" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java">
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="39" selection-start="853" selection-end="853" vertical-scroll-proportion="0.51194537" />
+        <state line="15" column="85" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.37251654" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../elixir/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="85" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.37251654">
-          <folding />
-        </state>
+        <state line="19" column="16" selection-start="641" selection-end="641" vertical-scroll-proportion="0.46191248" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../elixir/elixir-db-provider/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="25" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0" />
+        <state line="11" column="25" selection-start="461" selection-end="461" vertical-scroll-proportion="0.267423" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="25" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0" />
+        <state line="11" column="25" selection-start="461" selection-end="461" vertical-scroll-proportion="0.267423" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/Shell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="28" selection-start="3823" selection-end="3823" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/TargetCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="59" selection-start="526" selection-end="559" vertical-scroll-proportion="0.1416765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="33" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/LoginCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cloudfoundry-cli/src/main/java/com/elega9t/cloudfoundry/cli/cmds/AppsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="77" selection-start="2563" selection-end="2563" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/StringUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/util/TextTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="42" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.024390243">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1050#1064#0" expanded="true" />
+            <element signature="e#1111#1119#0" expanded="true" />
+            <element signature="e#1525#1533#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
@@ -1120,7 +1247,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>IDEA IU-117.798</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1132,12 +1259,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>cloudfoundry-cli</last-edited>
+          <last-edited>elixir-mysql</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

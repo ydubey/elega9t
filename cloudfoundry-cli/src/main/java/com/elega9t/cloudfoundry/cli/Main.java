@@ -5,7 +5,9 @@
 
 package com.elega9t.cloudfoundry.cli;
 
+import com.elega9t.cloudfoundry.cli.cmds.AppsCommand;
 import com.elega9t.cloudfoundry.cli.cmds.LoginCommand;
+import com.elega9t.cloudfoundry.cli.cmds.TargetCommand;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.*;
@@ -19,8 +21,10 @@ public class Main {
                 SetCommand.class,
                 HistoryCommand.class,
                 ExportCommand.class,
+                EchoCommand.class,
+                TargetCommand.class,
                 LoginCommand.class,
-                EchoCommand.class
+                AppsCommand.class
         ));
         shell.execute();
     }

@@ -6,6 +6,7 @@ import com.elega9t.commons.util.StringUtilities;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -116,12 +117,16 @@ public class Shell {
         return environment.resolve(environment.getValue(environmentProperty.name()));
     }
 
-    public void out(String msg) {
+    public void out(Object msg) {
         System.out.print(msg);
     }
 
-    public void outln(String msg) {
+    public void outln(Object msg) {
         System.out.println(msg);
+    }
+
+    public void error(Throwable t) {
+        outln(interpreter.getName() + ": " + t.getMessage());
     }
 
     public void nextInterpreter() {
@@ -153,6 +158,10 @@ public class Shell {
 
     public void setContextElement(String name, Object obj) {
         context.put(name, obj);
+    }
+
+    public Object getContextElement(String name) {
+        return context.get(name);
     }
 
 }
