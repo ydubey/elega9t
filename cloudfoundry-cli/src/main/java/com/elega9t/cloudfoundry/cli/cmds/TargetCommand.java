@@ -7,8 +7,7 @@ package com.elega9t.cloudfoundry.cli.cmds;
 
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
-import com.elega9t.commons.shell.intrprtr.UnnamedParameter;
-import org.cloudfoundry.client.lib.CloudFoundryClient;
+import com.elega9t.commons.shell.intrprtr.Parameter;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,7 +16,7 @@ public class TargetCommand extends Command {
 
     // http://api.nimbus-03.cg.bskyb.com
 
-    @UnnamedParameter(index=0)
+    @Parameter(index=0)
     private String url;
 
     public TargetCommand() {

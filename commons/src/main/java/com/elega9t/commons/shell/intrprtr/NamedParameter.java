@@ -7,8 +7,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface UnnamedParameter {
+public @interface NamedParameter {
 
-    int index();
+    String name();
+
+    boolean required() default true;
 
 }

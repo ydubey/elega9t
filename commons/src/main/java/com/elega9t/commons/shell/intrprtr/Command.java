@@ -5,7 +5,6 @@ import com.elega9t.commons.util.ReflectionUtilities;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public abstract class Command {
@@ -24,13 +23,13 @@ public abstract class Command {
 
     public Map<String, Field> getArguments() {
         Map<String, Field> arguments = new HashMap<String, Field>();
-        Map<Parameter, Field> parameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(Parameter.class, getClass());
-        for (final Parameter parameter : parameterFields.keySet()) {
-            Field field = parameterFields.get(parameter);
-            arguments.put(parameter.name(), field);
+        Map<NamedParameter, Field> parameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, getClass());
+        for (final NamedParameter namedParameter : parameterFields.keySet()) {
+            Field field = parameterFields.get(namedParameter);
+            arguments.put(namedParameter.name(), field);
         }
-        Map<UnnamedParameter, Field> unnamedParameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(UnnamedParameter.class, getClass());
-        for (final UnnamedParameter parameter : unnamedParameterFields.keySet()) {
+        Map<Parameter, Field> unnamedParameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(Parameter.class, getClass());
+        for (final Parameter parameter : unnamedParameterFields.keySet()) {
             Field field = unnamedParameterFields.get(parameter);
             arguments.put(parameter.index() + "", field);
         }

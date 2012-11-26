@@ -7,12 +7,12 @@ package com.elega9t.cloudfoundry.cli.cmds;
 
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
-import com.elega9t.commons.shell.intrprtr.UnnamedParameter;
+import com.elega9t.commons.shell.intrprtr.Parameter;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
 public class StartCommand extends Command {
 
-    @UnnamedParameter(index=0)
+    @Parameter(index=0)
     private String appName;
 
     public StartCommand() {

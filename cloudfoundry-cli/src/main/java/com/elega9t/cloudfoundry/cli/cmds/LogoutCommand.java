@@ -7,8 +7,6 @@ package com.elega9t.cloudfoundry.cli.cmds;
 
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
-import com.elega9t.commons.shell.intrprtr.UnnamedParameter;
-import org.cloudfoundry.client.lib.CloudCredentials;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
 import java.net.URL;
