@@ -26,7 +26,8 @@ public class Main {
                 AppsCommand.class,
                 StartCommand.class,
                 StopCommand.class,
-                RenameCommand.class
+                RenameCommand.class,
+                LogsCommand.class
         ));
         shell.execute();
     }
