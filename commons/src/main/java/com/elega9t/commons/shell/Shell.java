@@ -1,12 +1,12 @@
 package com.elega9t.commons.shell;
 
-import com.elega9t.commons.shell.intrprtr.cmd.*;
+import com.elega9t.commons.shell.intrprtr.Interpreter;
+import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.util.ReplacementProvider;
 import com.elega9t.commons.util.StringUtilities;
-import com.elega9t.commons.shell.intrprtr.Interpreter;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -144,15 +144,8 @@ public class Shell {
         nextInterpreter();
     }
 
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
-        Shell shell = new Shell(new Interpreter("yok",
-                ExitCommand.class,
-                DateCommand.class,
-                SetCommand.class,
-                HistoryCommand.class,
-                ExportCommand.class,
-                EchoCommand.class
-        ));
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException {
+        Shell shell = new Shell(new Interpreter("yok", ExitCommand.class.getPackage().getName()));
         shell.execute();
     }
 

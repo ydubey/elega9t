@@ -3,10 +3,13 @@ package com.elega9t.commons.shell.intrprtr;
 import com.elega9t.commons.args.*;
 import com.elega9t.commons.args.Parameter;
 import com.elega9t.commons.shell.Shell;
+import com.elega9t.commons.util.ReflectionUtilities;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Interpreter {
@@ -25,6 +28,13 @@ public class Interpreter {
         }
     }
 
+    public Interpreter(String name, String... commandsPackages) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+        this(name, new Class[0]);
+        for (String commandsPackage : commandsPackages) {
+            addCommands(commandsPackages);
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -36,8 +46,20 @@ public class Interpreter {
         }
     }
 
+    private void addCommands(String... commandsPackages) throws ClassNotFoundException, IOException, InstantiationException, IllegalAccessException {
+        final List<Class> commandClasses = ReflectionUtilities.getClasses(new ReflectionUtilities.ClassFilter() {
+            @Override
+            public boolean accept(Class aClass) {
+                return (aClass.getSuperclass() == Command.class);
+            }
+        }, commandsPackages);
+        for (Class commandClass : commandClasses) {
+            addCommand(commandClass);
+        }
+    }
+
     public int execute(Shell shell, String cmd) throws IllegalAccessException, InstantiationException, ParseException {
-        String commandName = null;
+        String commandName;
         if(cmd != null && cmd.contains(" ")) {
             commandName = cmd.substring(0, cmd.indexOf(" "));
             cmd = cmd.substring(cmd.indexOf(" ") + 1);

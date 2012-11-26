@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -12,20 +13,13 @@
         <relativePath>../../elega9t/pom.xml</relativePath>
     </parent>
 
-    <artifactId>elixir-api</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>elixir-cli</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.elega9t</groupId>
             <artifactId>commons</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.elega9t</groupId>
-            <artifactId>test-utilities</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -6,14 +6,15 @@
 package com.elega9t.commons.util;
 
 import org.jetbrains.annotations.Nullable;
-import org.junit.Before;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
 public class ReflectionUtilities {
 
@@ -104,5 +105,63 @@ public class ReflectionUtilities {
         method.setAccessible(true);
         return method.invoke(target, parameters);
     }
+
+    public static List<File> getPackageContent(String packageName) throws IOException {
+        final String packageFolder = packageName.replace(".", "/");
+        List<File> list = new ArrayList<File>();
+        Enumeration<URL> urls = Thread.currentThread().getContextClassLoader()
+                .getResources(packageFolder);
+        while (urls.hasMoreElements()) {
+            URL url = urls.nextElement();
+            File dir = new File(url.getFile());
+            for (File f : dir.listFiles()) {
+                list.add(f);
+            }
+        }
+        return list;
+    }
+
+    public static List<Class> getClasses(String... packageNames) throws IOException, ClassNotFoundException {
+        return getClasses(ACCEPT_ALL_CLASSES, packageNames);
+    }
+
+    public static List<Class> getClasses(ClassFilter classFilter, String... packageNames) throws IOException, ClassNotFoundException {
+        List<Class> classes = new ArrayList<Class>();
+        for (String packageName : packageNames) {
+            final String packageFolder = packageName.replace(".", "/");
+            List<File> resourcesInPackage = getPackageContent(packageFolder);
+            for (File file : resourcesInPackage) {
+                final String fileName = file.getAbsolutePath();
+                if(fileName.endsWith(".class")) {
+                    final int index = fileName.lastIndexOf(packageFolder);
+                    String className = fileName.substring(index);
+                    className = className.substring(0, className.length() - 6);
+                    className = className.replace("/", ".");
+                    final Class<?> aClass = Class.forName(className);
+                    if(classFilter.accept(aClass)) {
+                        classes.add(aClass);
+                    }
+                }
+            }
+        }
+        return classes;
+    }
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        System.out.println(getClasses("com.elega9t.commons.shell.intrprtr.cmd"));
+    }
+
+    public static interface ClassFilter {
+
+        boolean accept(Class aClass);
+
+    }
+
+    public static final ClassFilter ACCEPT_ALL_CLASSES = new ClassFilter() {
+        @Override
+        public boolean accept(Class aClass) {
+            return true;
+        }
+    };
 
 }
