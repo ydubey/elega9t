@@ -14,7 +14,7 @@ public abstract class ColumnDataProvider<T> {
     }
 
     public String name() {
-        return name();
+        return name;
     }
 
     public abstract String value(T obj);

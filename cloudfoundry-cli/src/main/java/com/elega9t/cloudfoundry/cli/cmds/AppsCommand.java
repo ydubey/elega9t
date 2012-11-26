@@ -5,6 +5,7 @@
 
 package com.elega9t.cloudfoundry.cli.cmds;
 
+import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.renderer.ColumnDataProvider;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
 import com.elega9t.commons.renderer.ObjectCollectionDataProvider;
@@ -26,7 +27,7 @@ public class AppsCommand extends Command {
     public int execute(Shell shell) {
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         List<CloudApplication> applications = client.getApplications();
-        ConsoleTableDataRenderer consoleTableDataRenderer = new ConsoleTableDataRenderer();
+        ConsoleTableDataRenderer consoleTableDataRenderer = new ConsoleTableDataRenderer(Border.PLAIN);
         shell.outln("");
         shell.outln(consoleTableDataRenderer.render(new ObjectCollectionDataProvider(applications,
                 new ColumnDataProvider<CloudApplication>("Application") {
