@@ -49,7 +49,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
     private void renderHeader(StringBuilder rendered, DataProvider dataProvider, int[] maxSize, Border border) {
         rendered.append(border.getTopLeft()).append(border.getHorizontal());
         for (int column=0; column<maxSize.length; column++) {
-            repeat(rendered, border.getHorizontal(), maxSize[column]);
+            repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
             if(column < maxSize.length -1) {
                 rendered.append(border.getColumnSeparatorStart()).append(border.getHorizontal());
             } else {
@@ -60,7 +60,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         rendered.append(border.getVertical()).append(border.getSpace());
         for (int column=0; column<maxSize.length; column++) {
             final String columnName = dataProvider.columnName(column);
-            rendered.append(columnName);
+            rendered.append(columnName).append(border.getSpace());
             repeat(rendered, border.getSpace(), maxSize[column] - columnName.length());
             if(column < maxSize.length -1) {
                 rendered.append(border.getVertical()).append(border.getSpace());
@@ -76,7 +76,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         }
         rendered.append(border.getHorizontal());
         for (int column=0; column<maxSize.length; column++) {
-            repeat(rendered, border.getHorizontal(), maxSize[column]);
+            repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
             if(column < maxSize.length -1) {
                 if(dataProvider.rowCount() > 0) {
                     rendered.append(border.getRowColumnJunction());
@@ -100,7 +100,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
             for(int column=0; column < maxSize.length; column++) {
                 rendered.append(border.getVertical()).append(border.getSpace());
                 final String value = dataProvider.value(row, column);
-                rendered.append(value);
+                rendered.append(value).append(border.getSpace());
                 repeat(rendered, border.getSpace(), maxSize[column] - value.length());
             }
             rendered.append(border.getVertical());
@@ -108,7 +108,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         }
         rendered.append(border.getBottomLeft()).append(border.getHorizontal());
         for (int column=0; column<maxSize.length; column++) {
-            repeat(rendered, border.getHorizontal(), maxSize[column]);
+            repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
             if(column < maxSize.length -1) {
                 rendered.append(border.getColumnSeparatorEnd()).append(border.getHorizontal());
             } else {
