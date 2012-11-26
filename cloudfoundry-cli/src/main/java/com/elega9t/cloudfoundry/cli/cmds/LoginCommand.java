@@ -17,9 +17,9 @@ import java.net.URL;
 public class LoginCommand extends Command {
 
     @UnnamedParameter(index=0)
-    private String name; // = "mcs@bskyb.com";
+    private String name;
     @UnnamedParameter(index=1)
-    private String password; // = "teamboundy";
+    private String password;
 
     public LoginCommand() {
         super("login");
