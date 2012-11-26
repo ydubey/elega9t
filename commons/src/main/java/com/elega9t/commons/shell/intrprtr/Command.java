@@ -32,7 +32,7 @@ public abstract class Command {
         Map<UnnamedParameter, Field> unnamedParameterFields = ReflectionUtilities.getDeclaredFieldsWithAnnotation(UnnamedParameter.class, getClass());
         for (final UnnamedParameter parameter : unnamedParameterFields.keySet()) {
             Field field = unnamedParameterFields.get(parameter);
-            arguments.put(parameter.value() + "", field);
+            arguments.put(parameter.index() + "", field);
         }
         return arguments;
     }
