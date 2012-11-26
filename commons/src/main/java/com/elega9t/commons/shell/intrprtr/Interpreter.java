@@ -57,7 +57,10 @@ public class Interpreter {
             for (String argument : arguments.keySet()) {
                 Field field = arguments.get(argument);
                 field.setAccessible(true);
-                field.set(command, parameters.get(argument).getValue());
+                Parameter parameter = parameters.get(argument);
+                if(parameter != null) {
+                    field.set(command, parameter.getValue());
+                }
             }
             return command.execute(shell);
         } else {

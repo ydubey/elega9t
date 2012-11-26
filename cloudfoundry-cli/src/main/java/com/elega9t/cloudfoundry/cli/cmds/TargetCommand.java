@@ -17,7 +17,7 @@ public class TargetCommand extends Command {
 
     // http://api.nimbus-03.cg.bskyb.com
 
-    @UnnamedParameter(0)
+    @UnnamedParameter(index=0)
     private String url;
 
     public TargetCommand() {
@@ -26,12 +26,16 @@ public class TargetCommand extends Command {
 
     @Override
     public int execute(Shell shell) {
-        try {
-            shell.setContextElement("cloudfoundry-target", new URL(url));
-            shell.outln("Successfully targeted to [" + url + "]");
-        } catch (MalformedURLException e) {
-            shell.error(e);
-            return 1;
+        if(url == null) {
+            shell.outln(shell.getContextElement("cloudfoundry-target"));
+        } else {
+            try {
+                shell.setContextElement("cloudfoundry-target", new URL(url));
+                shell.outln("Successfully targeted to [" + url + "]");
+            } catch (MalformedURLException e) {
+                shell.error(e);
+                return 1;
+            }
         }
         return 0;
     }
