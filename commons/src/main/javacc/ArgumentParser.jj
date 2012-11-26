@@ -68,6 +68,7 @@ Map<String, Parameter> parse() :
 {
     Map<String, Parameter> parameters = new LinkedHashMap<String, Parameter>();
     Parameter parameter;
+    int unnamedParameterCount = 0;
 }
 {
     ( parameter = nextParameter()
@@ -78,6 +79,9 @@ Map<String, Parameter> parse() :
                 } else {
                     parameters.put(((NamedParameter)parameter).getName(), parameter);
                 }
+            } else {
+                parameters.put(unnamedParameterCount+"", parameter);
+                unnamedParameterCount++;
             }
         }
     )* <EOF>
@@ -97,9 +101,6 @@ Parameter nextParameter() :
             parameter = new NamedParameter(token.toString());
         }
         ( LOOKAHEAD(2) ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { parameter.setValue(token.toString()); } )?
-        {
-            return parameter;
-        }
     )
     |
     (
@@ -109,4 +110,7 @@ Parameter nextParameter() :
             parameter.setValue(token.toString());
         }
     )
+    {
+            return parameter;
+    }
 }

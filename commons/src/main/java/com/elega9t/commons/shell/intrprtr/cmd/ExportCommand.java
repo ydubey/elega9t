@@ -6,7 +6,7 @@ import com.elega9t.commons.shell.intrprtr.UnnamedParameter;
 
 public class ExportCommand extends Command {
 
-    @UnnamedParameter()
+    @UnnamedParameter(index=0)
     private String what;
 
     public ExportCommand() {
