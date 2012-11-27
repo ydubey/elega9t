@@ -2,6 +2,7 @@ package com.elega9t.commons.shell.intrprtr;
 
 import com.elega9t.commons.args.*;
 import com.elega9t.commons.args.Parameter;
+import com.elega9t.commons.cp.ClassFilter;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.util.ReflectionUtilities;
 
@@ -47,7 +48,7 @@ public class Interpreter {
     }
 
     private void addCommands(String... commandsPackages) throws ClassNotFoundException, IOException, InstantiationException, IllegalAccessException {
-        final List<Class> commandClasses = ReflectionUtilities.getClasses(new ReflectionUtilities.ClassFilter() {
+        final List<Class> commandClasses = ReflectionUtilities.getClasses(new ClassFilter() {
             @Override
             public boolean accept(Class aClass) {
                 return (aClass.getSuperclass() == Command.class);

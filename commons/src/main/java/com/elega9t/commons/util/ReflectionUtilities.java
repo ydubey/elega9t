@@ -5,6 +5,7 @@
 
 package com.elega9t.commons.util;
 
+import com.elega9t.commons.cp.ClassFilter;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -149,12 +150,6 @@ public class ReflectionUtilities {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println(getClasses("com.elega9t.commons.shell.intrprtr.cmd"));
-    }
-
-    public static interface ClassFilter {
-
-        boolean accept(Class aClass);
-
     }
 
     public static final ClassFilter ACCEPT_ALL_CLASSES = new ClassFilter() {
