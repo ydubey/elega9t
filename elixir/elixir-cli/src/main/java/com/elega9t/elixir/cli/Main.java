@@ -46,7 +46,9 @@ public class Main {
                 try {
                     o = clazz.newInstance();
                     if(o instanceof DatabaseDriver) {
-                        drivers.add((DatabaseDriver) o);
+                        DatabaseDriver databaseDriver = (DatabaseDriver) o;
+                        databaseDriver.loadDrivers();
+                        drivers.add(databaseDriver);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

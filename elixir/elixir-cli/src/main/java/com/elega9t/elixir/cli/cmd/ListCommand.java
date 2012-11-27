@@ -18,7 +18,7 @@ public class ListCommand extends Command {
 
     private static final Map<String, Integer> operations = new HashMap<String, Integer>();
     static {
-        operations.put("db", 1);
+        operations.put("drivers", 1);
     }
 
     @Parameter(index=0)
@@ -35,7 +35,7 @@ public class ListCommand extends Command {
             case 1:
                 List<DatabaseDriver> drivers = (List<DatabaseDriver>) shell.getContextElement("elixir-drivers");
                 for (DatabaseDriver driver : drivers) {
-                    shell.outln(driver.databaseName());
+                    shell.outln(driver.databaseName() + " : " + (driver.isAvailable() ? "available" : "not available"));
                 }
                 break;
         }

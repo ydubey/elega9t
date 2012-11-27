@@ -9,14 +9,17 @@ import com.elega9t.elixir.DatabaseConnection;
 import com.elega9t.elixir.DatabaseDriver;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.*;
 
 public class MySqlDatabaseDriver implements DatabaseDriver {
 
     private Map<String, List<String>> drivers = new HashMap<String, List<String>>();
+    private boolean available = false;
 
     public MySqlDatabaseDriver() {
         drivers.put("MM MySql", Arrays.asList("org.gjt.mm.mysql.Driver"));
+        drivers.put("MySql", Arrays.asList("com.mysql.jdbc.Driver"));
     }
 
     @Override
@@ -37,6 +40,28 @@ public class MySqlDatabaseDriver implements DatabaseDriver {
     @Override
     public Map<String, List<String>> getDrivers() {
         return Collections.unmodifiableMap(drivers);
+    }
+
+    @Override
+    public void loadDrivers() {
+        Map<String, List<String>> drivers = getDrivers();
+        for (String driverName : drivers.keySet()) {
+            List<String> driverClasses = drivers.get(driverName);
+            try {
+                for (String driverClass : driverClasses) {
+                    Class.forName(driverClass);
+                }
+                available = true;
+                break;
+            } catch (ClassNotFoundException e) {
+                available = false;
+            }
+        }
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return available;
     }
 
     @Override

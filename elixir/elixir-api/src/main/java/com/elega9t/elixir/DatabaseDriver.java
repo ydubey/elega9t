@@ -19,6 +19,10 @@ public interface DatabaseDriver {
 
     Map<String, List<String>> getDrivers();
 
+    void loadDrivers();
+
+    boolean isAvailable();
+
     DatabaseConnection getConnectionSkeleton(Connection connection, String databaseName);
 
 }
