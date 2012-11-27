@@ -7,6 +7,7 @@ package com.elega9t.elixir.cli.cmd;
 
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
+import com.elega9t.commons.shell.intrprtr.NamedParameter;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.DatabaseConnection;
 import com.elega9t.elixir.DatabaseDriver;
@@ -19,10 +20,12 @@ public class ConnectCommand extends Command {
 
     @Parameter(index=0)
     private String databaseName;
-    @Parameter(index=1)
+    @NamedParameter(name="user", required = false)
     private String userName;
-    @Parameter(index=2)
+    @NamedParameter(name="passwd", required = false)
     private String password;
+    @NamedParameter(name="port", required = false)
+    private String port;
 
     public ConnectCommand() {
         super("connect");

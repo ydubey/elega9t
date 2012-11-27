@@ -13,10 +13,10 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.CommandNotFoundException;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
+import com.elega9t.commons.shell.intrprtr.cmd.HistoryCommand;
 import com.elega9t.elixir.DatabaseConnection;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ExecInterpreter extends Interpreter {
@@ -27,7 +27,7 @@ public class ExecInterpreter extends Interpreter {
     public ExecInterpreter(DatabaseConnection connection) throws InstantiationException, IllegalAccessException {
         super("exec");
         this.connection = connection;
-        addCommand(ExitCommand.class);
+        addCommand(ExitCommand.class, HistoryCommand.class);
     }
 
     @Override
@@ -37,10 +37,16 @@ public class ExecInterpreter extends Interpreter {
         } catch(CommandNotFoundException e) {
             try {
                 final PreparedStatement preparedStatement = connection.prepareStatement(cmd);
-                final ResultSet resultSet = preparedStatement.executeQuery();
-                shell.outln(renderer.render(new ResultSetDataProvider(resultSet)));
+                final boolean isResultSet = preparedStatement.execute();
+                if(isResultSet) {
+                    final ResultSetDataProvider dataProvider = new ResultSetDataProvider(preparedStatement.getResultSet());
+                    shell.outln(renderer.render(dataProvider));
+                    shell.outln(String.format("%d row(s) selected.", dataProvider.rowCount()));
+                } else {
+                    shell.outln(String.format("%d row(s) updated.", preparedStatement.getUpdateCount()));
+                }
             } catch (SQLException sqlE) {
-                shell.outln("ERROR: " + sqlE.getErrorCode() + " - " + sqlE.getMessage());
+                shell.outln(String.format("ERROR: %d - %s", sqlE.getErrorCode(), sqlE.getMessage()));
             }
         }
         return 0;
