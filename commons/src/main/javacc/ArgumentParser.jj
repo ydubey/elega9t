@@ -54,10 +54,7 @@ PARSER_END(ArgumentParser)
 }
 
 <*> TOKEN : {
-  <ALPHA_CHAR       : ["a"-"z", "A"-"Z"] >
-| <NUM_CHAR         : ["0"-"9"] >
-| <ALPHANUM_CHAR    : [ "a"-"z", "A"-"Z", "0"-"9" ] >
-| <VALUE_STRING_NB : ( ~["-", " ", "\t"] ( ~["\r", "\n", " ", "\t"] )* ) >
+  <VALUE_STRING_NB : ( ~["-", " ", "\t"] ( ~["\r", "\n", " ", "\t"] )* ) >
 | <SINGLE_QUOTED_STRING_NB : ( "'" ( ~["'", "\r", "\n"] )* "'" ) >
 | <DOUBLE_QUOTED_STRING_NB : ( "\"" ( ~["\"", "\r", "\n"] )* "\"" ) >
 | <WHITESPACE       : ( " " | "\t" ) >

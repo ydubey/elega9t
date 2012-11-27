@@ -10,6 +10,7 @@ import com.elega9t.elixir.DatabaseDriver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
 
 public class MySqlDatabaseDriver implements DatabaseDriver {
@@ -67,6 +68,12 @@ public class MySqlDatabaseDriver implements DatabaseDriver {
     @Override
     public DatabaseConnection getConnectionSkeleton(Connection connection, String databaseName) {
         return new DatabaseConnection(connection, databaseName);
+    }
+
+    @Override
+    public DatabaseConnection createConnection(String userName, String password) throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/mysql";
+        return new DatabaseConnection(DriverManager.getConnection(url, userName, password), "mysql");
     }
 
 }

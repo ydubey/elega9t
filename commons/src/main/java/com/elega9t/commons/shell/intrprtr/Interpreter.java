@@ -21,19 +21,19 @@ public class Interpreter {
 
     private final Context<Object> context = new Context<Object>();
 
-    public Interpreter(String name, Class<? extends Command>... commands) throws InstantiationException, IllegalAccessException {
+    public Interpreter(String name) {
         this.name = name;
         this.commands = new HashMap<String, Class<? extends Command>>();
-        for (Class<? extends Command> command : commands) {
-            addCommand(command);
-        }
+    }
+
+    public Interpreter(String name, Class<? extends Command>... commands) throws InstantiationException, IllegalAccessException {
+        this(name);
+        addCommand(commands);
     }
 
     public Interpreter(String name, String... commandsPackages) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
-        this(name, new Class[0]);
-        for (String commandsPackage : commandsPackages) {
-            addCommands(commandsPackages);
-        }
+        this(name);
+        addCommands(commandsPackages);
     }
 
     public String getName() {
@@ -73,7 +73,7 @@ public class Interpreter {
             Map<String, Parameter> commandLineParameters = parser.parse();
             Class<? extends Command> commandClass = commands.get(commandName);
             if(commandClass == null) {
-                throw new IllegalArgumentException(commandName + ": command not found");
+                throw new CommandNotFoundException(commandName + ": command not found");
             }
             Command command = commandClass.newInstance();
             Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);

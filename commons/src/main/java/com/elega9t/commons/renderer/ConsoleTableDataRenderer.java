@@ -96,23 +96,25 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
     }
 
     private void renderData(StringBuilder rendered, DataProvider dataProvider, int[] maxSize, Border border) {
-        for(int row = 0; row < dataProvider.rowCount(); row++) {
-            for(int column=0; column < maxSize.length; column++) {
-                rendered.append(border.getVertical()).append(border.getSpace());
-                final String value = dataProvider.value(row, column);
-                rendered.append(value).append(border.getSpace());
-                repeat(rendered, border.getSpace(), maxSize[column] - value.length());
+        if(dataProvider.rowCount() > 0) {
+            for(int row = 0; row < dataProvider.rowCount(); row++) {
+                for(int column=0; column < maxSize.length; column++) {
+                    rendered.append(border.getVertical()).append(border.getSpace());
+                    final String value = dataProvider.value(row, column);
+                    rendered.append(value).append(border.getSpace());
+                    repeat(rendered, border.getSpace(), maxSize[column] - value.length());
+                }
+                rendered.append(border.getVertical());
+                rendered.append("\n");
             }
-            rendered.append(border.getVertical());
-            rendered.append("\n");
-        }
-        rendered.append(border.getBottomLeft()).append(border.getHorizontal());
-        for (int column=0; column<maxSize.length; column++) {
-            repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
-            if(column < maxSize.length -1) {
-                rendered.append(border.getColumnSeparatorEnd()).append(border.getHorizontal());
-            } else {
-                rendered.append(border.getBottomRight());
+            rendered.append(border.getBottomLeft()).append(border.getHorizontal());
+            for (int column=0; column<maxSize.length; column++) {
+                repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
+                if(column < maxSize.length -1) {
+                    rendered.append(border.getColumnSeparatorEnd()).append(border.getHorizontal());
+                } else {
+                    rendered.append(border.getBottomRight());
+                }
             }
         }
     }

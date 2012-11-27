@@ -6,6 +6,7 @@
 package com.elega9t.elixir;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -24,5 +25,7 @@ public interface DatabaseDriver {
     boolean isAvailable();
 
     DatabaseConnection getConnectionSkeleton(Connection connection, String databaseName);
+
+    DatabaseConnection createConnection(String userName, String password) throws SQLException;
 
 }
