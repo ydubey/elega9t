@@ -33,8 +33,9 @@ public class ListCommand extends Command {
         Integer whatToDo = operations.get(what.toLowerCase());
         switch (whatToDo) {
             case 1:
-                List<DatabaseDriver> drivers = (List<DatabaseDriver>) shell.getContextElement("elixir-drivers");
-                for (DatabaseDriver driver : drivers) {
+                Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
+                for (String databaseName : drivers.keySet()) {
+                    DatabaseDriver driver = drivers.get(databaseName);
                     shell.outln(driver.databaseName() + " : " + (driver.isAvailable() ? "available" : "not available"));
                 }
                 break;

@@ -19,14 +19,16 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.elega9t.commons.cp.ClassPathUtilities.getClassPathElements;
 
 public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, IllegalAccessException, InstantiationException {
-        List<DatabaseDriver> drivers = new ArrayList<DatabaseDriver>();
+        Map<String, DatabaseDriver> drivers = new HashMap<String, DatabaseDriver>();
         List<ClassPathResource> classPathResources = ClassPathUtilities.getClassPathResources();
         for (ClassPathResource classPathResource : classPathResources) {
             List<Class> classes = classPathResource.listClasses(new FilenameFilter() {
@@ -48,7 +50,7 @@ public class Main {
                     if(o instanceof DatabaseDriver) {
                         DatabaseDriver databaseDriver = (DatabaseDriver) o;
                         databaseDriver.loadDrivers();
-                        drivers.add(databaseDriver);
+                        drivers.put(databaseDriver.databaseName().toLowerCase(), databaseDriver);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

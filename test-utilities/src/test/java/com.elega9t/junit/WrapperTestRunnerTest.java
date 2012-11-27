@@ -5,9 +5,11 @@
 
 package com.elega9t.junit;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.model.InitializationError;
 
+@Ignore
 public class WrapperTestRunnerTest {
 
     @Test(expected = InitializationError.class)

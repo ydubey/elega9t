@@ -24,14 +24,8 @@ public class ConnectCommand extends Command {
 
     @Override
     public int execute(Shell shell) {
-        List<DatabaseDriver> drivers = (List<DatabaseDriver>) shell.getContextElement("elixir-drivers");
-        DatabaseDriver databaseDriver = null;
-        for (DatabaseDriver driver : drivers) {
-            if(driver.databaseName().equalsIgnoreCase(databaseName)) {
-                databaseDriver = driver;
-                break;
-            }
-        }
+        Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
+        DatabaseDriver databaseDriver = drivers.get(databaseName.toLowerCase());
         shell.outln(databaseDriver.getDrivers());
         return 0;
     }

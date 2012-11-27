@@ -9,11 +9,13 @@ import com.elega9t.junit.MockTarget;
 import com.elega9t.junit.TestSubject;
 import com.elega9t.junit.WrapperTestRunner;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import java.sql.Connection;
 
 @RunWith(WrapperTestRunner.class)
+@Ignore
 public class TestWrapperTest {
 
     @MockTarget(Connection.class)
