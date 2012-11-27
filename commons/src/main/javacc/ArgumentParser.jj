@@ -95,7 +95,7 @@ Parameter nextParameter() :
     Parameter parameter;
 }
 {
-    (
+    ((
         <OPTION_PREFIX><VALUE_STRING_NB>
         {
             parameter = new NamedParameter(token.toString());
@@ -109,7 +109,7 @@ Parameter nextParameter() :
             parameter = new Parameter();
             parameter.setValue(token.toString());
         }
-    )
+    ))
     {
             return parameter;
     }

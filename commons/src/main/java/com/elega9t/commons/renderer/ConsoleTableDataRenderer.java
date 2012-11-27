@@ -115,7 +115,6 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
                 rendered.append(border.getBottomRight());
             }
         }
-        rendered.append("\n");
     }
 
     public static void main(String[] args) {

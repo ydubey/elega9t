@@ -10,20 +10,16 @@ import com.elega9t.commons.cp.ClassPathResource;
 import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
-import com.elega9t.commons.shell.intrprtr.cmd.*;
-import com.elega9t.commons.util.JarUtilities;
+import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.elixir.DatabaseDriver;
 import com.elega9t.elixir.cli.cmd.ConnectCommand;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.elega9t.commons.cp.ClassPathUtilities.getClassPathElements;
 
 public class Main {
 

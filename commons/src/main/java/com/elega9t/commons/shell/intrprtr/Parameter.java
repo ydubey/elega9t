@@ -11,4 +11,6 @@ public @interface Parameter {
 
     int index();
 
+    boolean required() default true;
+
 }

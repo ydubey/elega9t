@@ -10,7 +10,6 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.DatabaseDriver;
 
-import java.util.List;
 import java.util.Map;
 
 public class ConnectCommand extends Command {

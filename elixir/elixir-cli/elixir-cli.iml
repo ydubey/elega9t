@@ -5,6 +5,8 @@
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -17,6 +19,7 @@
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5-rc1" level="project" />
     <orderEntry type="module" module-name="elixir-mysql" />
     <orderEntry type="module" module-name="elixir-api" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.21" level="project" />
   </component>
 </module>
 

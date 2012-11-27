@@ -5,14 +5,19 @@
 
 package com.elega9t.elixir.cli.cmd;
 
+import com.elega9t.commons.renderer.Border;
+import com.elega9t.commons.renderer.ColumnDataProvider;
+import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
+import com.elega9t.commons.renderer.ObjectCollectionDataProvider;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.DatabaseDriver;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import static com.elega9t.commons.util.StringUtilities.join;
 
 public class ListCommand extends Command {
 
@@ -34,10 +39,27 @@ public class ListCommand extends Command {
         switch (whatToDo) {
             case 1:
                 Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
-                for (String databaseName : drivers.keySet()) {
-                    DatabaseDriver driver = drivers.get(databaseName);
-                    shell.outln(driver.databaseName() + " : " + (driver.isAvailable() ? "available" : "not available"));
-                }
+                ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(Border.SINGLE);
+                shell.outln(renderer.render(new ObjectCollectionDataProvider(drivers.values(),
+                        new ColumnDataProvider<DatabaseDriver>("Database Name") {
+                            @Override
+                            public String value(DatabaseDriver driver) {
+                                return driver.databaseName();
+                            }
+                        },
+                        new ColumnDataProvider<DatabaseDriver>("Driver Available") {
+                            @Override
+                            public String value(DatabaseDriver driver) {
+                                return driver.isAvailable() ? "YES" : "NO";
+                            }
+                        },
+                        new ColumnDataProvider<DatabaseDriver>("Supported Versions") {
+                            @Override
+                            public String value(DatabaseDriver driver) {
+                                return join(driver.supportedVersions());
+                            }
+                        }
+                )));
                 break;
         }
         return 0;

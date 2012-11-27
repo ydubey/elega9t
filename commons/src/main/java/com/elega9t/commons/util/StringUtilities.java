@@ -46,6 +46,10 @@ public class StringUtilities {
         return stringBuffer.toString();
     }
 
+    public static String join(List<String> values) {
+        return join(values, ", ");
+    }
+
     public static String join(List<String> values, String separator) {
         StringBuilder joined = new StringBuilder();
         for (int i = 0, valuesSize = values.size(); i < valuesSize; i++) {
