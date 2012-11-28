@@ -11,7 +11,7 @@ import com.elega9t.commons.shell.intrprtr.NamedParameter;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.DatabaseConnection;
 import com.elega9t.elixir.DatabaseDriver;
-import com.elega9t.elixir.cli.ExecInterpreter;
+import com.elega9t.elixir.cli.SqlInterpreter;
 
 import java.sql.SQLException;
 import java.util.Map;
@@ -38,7 +38,7 @@ public class ConnectCommand extends Command {
         try {
             final DatabaseConnection connection = databaseDriver.createConnection(userName, password);
             shell.outln("Connection successful!");
-            shell.switchInterpreter(new ExecInterpreter(connection));
+            shell.switchInterpreter(new SqlInterpreter(connection));
         } catch (SQLException e) {
             shell.outln("ERROR: " + e.getErrorCode() + " - " + e.getMessage());
             return 1;

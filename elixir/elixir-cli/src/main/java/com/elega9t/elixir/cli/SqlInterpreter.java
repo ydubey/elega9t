@@ -19,13 +19,13 @@ import com.elega9t.elixir.DatabaseConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ExecInterpreter extends Interpreter {
+public class SqlInterpreter extends Interpreter {
 
     private static final ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(Border.SINGLE);
     private final DatabaseConnection connection;
 
-    public ExecInterpreter(DatabaseConnection connection) throws InstantiationException, IllegalAccessException {
-        super("exec");
+    public SqlInterpreter(DatabaseConnection connection) throws InstantiationException, IllegalAccessException {
+        super("sql");
         this.connection = connection;
         addCommand(ExitCommand.class, HistoryCommand.class);
     }
