@@ -65,7 +65,7 @@ public class Interpreter {
     public void execute(Shell shell, String line) throws IllegalAccessException, InstantiationException, ParseException {
         String[] split = split(line, ';');
         for (int i = 0, splitLength = split.length; i < splitLength; i++) {
-            String cmd = split[i];
+            String cmd = split[i].trim();
             if(i > 0) {
                 shell.out(shell.getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
                 shell.outln(cmd);
