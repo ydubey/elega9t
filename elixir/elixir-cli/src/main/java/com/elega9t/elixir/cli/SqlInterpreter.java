@@ -31,9 +31,9 @@ public class SqlInterpreter extends Interpreter {
     }
 
     @Override
-    public int execute(Shell shell, String cmd) throws IllegalAccessException, InstantiationException, ParseException {
+    protected void executeCommand(Shell shell, String cmd) throws IllegalAccessException, InstantiationException, ParseException {
         try {
-            super.execute(shell, cmd);
+            super.executeCommand(shell, cmd);
         } catch(CommandNotFoundException e) {
             try {
                 final PreparedStatement preparedStatement = connection.prepareStatement(cmd);
@@ -49,7 +49,7 @@ public class SqlInterpreter extends Interpreter {
                 shell.outln(String.format("ERROR: %d - %s", sqlE.getErrorCode(), sqlE.getMessage()));
             }
         }
-        return 0;
+        shell.setExitVal(0);
     }
 
 }

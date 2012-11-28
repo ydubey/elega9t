@@ -3,6 +3,7 @@ package com.elega9t.commons.shell.intrprtr;
 import com.elega9t.commons.args.*;
 import com.elega9t.commons.args.Parameter;
 import com.elega9t.commons.cp.ClassFilter;
+import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.util.ReflectionUtilities;
 
@@ -12,6 +13,8 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.elega9t.commons.util.StringUtilities.split;
 
 public class Interpreter {
 
@@ -59,20 +62,32 @@ public class Interpreter {
         }
     }
 
-    public int execute(Shell shell, String cmd) throws IllegalAccessException, InstantiationException, ParseException {
+    public void execute(Shell shell, String line) throws IllegalAccessException, InstantiationException, ParseException {
+        String[] split = split(line, ';');
+        for (int i = 0, splitLength = split.length; i < splitLength; i++) {
+            String cmd = split[i];
+            if(i > 0) {
+                shell.out(shell.getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
+                shell.outln(cmd);
+            }
+            executeCommand(shell, cmd);
+        }
+    }
+
+    protected void executeCommand(Shell shell, String cmd) throws ParseException, InstantiationException, IllegalAccessException {
         String commandName;
-        if(cmd != null && cmd.contains(" ")) {
+        if (cmd != null && cmd.contains(" ")) {
             commandName = cmd.substring(0, cmd.indexOf(" "));
             cmd = cmd.substring(cmd.indexOf(" ") + 1);
         } else {
             commandName = cmd;
             cmd = "";
         }
-        if(commandName != null) {
+        if (commandName != null) {
             ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
             Map<String, Parameter> commandLineParameters = parser.parse();
             Class<? extends Command> commandClass = commands.get(commandName);
-            if(commandClass == null) {
+            if (commandClass == null) {
                 throw new CommandNotFoundException(commandName + ": command not found");
             }
             Command command = commandClass.newInstance();
@@ -81,9 +96,9 @@ public class Interpreter {
                 Field field = namedParameterFieldMap.get(namedParameter);
                 field.setAccessible(true);
                 Parameter parameter = commandLineParameters.get(namedParameter.name());
-                if(parameter != null) {
+                if (parameter != null) {
                     field.set(command, parameter.getValue());
-                } else if(namedParameter.required()) {
+                } else if (namedParameter.required()) {
                     throw new IllegalStateException("Parameter " + namedParameter.name() + " is required.");
                 }
             }
@@ -92,15 +107,16 @@ public class Interpreter {
                 Field field = parameterFieldMap.get(param);
                 field.setAccessible(true);
                 Parameter parameter = commandLineParameters.get(param.index() + "");
-                if(parameter != null) {
+                if (parameter != null) {
                     field.set(command, parameter.getValue());
-                } else if(param.required()) {
-                    throw new IllegalStateException("Parameter '"+ field.getName() +"' is required.");
+                } else if (param.required()) {
+                    throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
                 }
             }
-            return command.execute(shell);
+            int exitVal = command.execute(shell);
+            shell.setExitVal(exitVal);
         } else {
-            return 0;
+            shell.setExitVal(0);
         }
     }
 
