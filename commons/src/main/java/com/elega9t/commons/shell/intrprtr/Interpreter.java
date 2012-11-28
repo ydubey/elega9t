@@ -34,6 +34,16 @@ public class Interpreter {
         addCommand(commands);
     }
 
+    public Interpreter(String name, Package... commandsPackages) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+        this(name);
+        String packageNames[] = new String[commandsPackages.length];
+        for (int i = 0, commandsPackagesLength = commandsPackages.length; i < commandsPackagesLength; i++) {
+            Package commandsPackage = commandsPackages[i];
+            packageNames[i] = commandsPackage.getName();
+        }
+        addCommands(packageNames);
+    }
+
     public Interpreter(String name, String... commandsPackages) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
         this(name);
         addCommands(commandsPackages);

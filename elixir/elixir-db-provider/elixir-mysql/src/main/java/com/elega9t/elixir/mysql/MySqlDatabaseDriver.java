@@ -66,11 +66,6 @@ public class MySqlDatabaseDriver implements DatabaseDriver {
     }
 
     @Override
-    public DatabaseConnection getConnectionSkeleton(Connection connection, String databaseName) {
-        return new DatabaseConnection(connection, databaseName);
-    }
-
-    @Override
     public DatabaseConnection createConnection(String userName, String password) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/mysql";
         return new DatabaseConnection(DriverManager.getConnection(url, userName, password), "mysql");

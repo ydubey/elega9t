@@ -58,6 +58,12 @@ public class ListCommand extends Command {
                             public String value(DatabaseDriver driver) {
                                 return join(driver.supportedVersions());
                             }
+                        },
+                        new ColumnDataModel<DatabaseDriver>("Website") {
+                            @Override
+                            public String value(DatabaseDriver driver) {
+                                return driver.databaseWebsite();
+                            }
                         }
                 )));
                 break;

@@ -53,7 +53,7 @@ public class Main {
                 }
             }
         }
-        final Interpreter elx = new Interpreter("elx", ExitCommand.class.getPackage().getName(), ConnectCommand.class.getPackage().getName());
+        final Interpreter elx = new Interpreter("elx", ExitCommand.class.getPackage(), ConnectCommand.class.getPackage());
         Shell shell = new Shell(elx);
         shell.setContextElement("elixir-drivers", drivers);
         shell.execute();

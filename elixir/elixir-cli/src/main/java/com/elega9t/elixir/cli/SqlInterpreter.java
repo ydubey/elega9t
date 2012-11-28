@@ -36,15 +36,18 @@ public class SqlInterpreter extends Interpreter {
             super.executeCommand(shell, cmd);
         } catch(CommandNotFoundException e) {
             try {
+                long startTime = System.currentTimeMillis();
                 final PreparedStatement preparedStatement = connection.prepareStatement(cmd);
                 final boolean isResultSet = preparedStatement.execute();
+                long endTime = System.currentTimeMillis();
                 if(isResultSet) {
                     final ResultSetDataModel dataModel = new ResultSetDataModel(preparedStatement.getResultSet());
                     shell.outln(renderer.render(dataModel));
-                    shell.outln(String.format("%d row(s) selected.", dataModel.rowCount()));
+                    shell.out(String.format("%d row(s) selected", dataModel.rowCount()));
                 } else {
-                    shell.outln(String.format("%d row(s) updated.", preparedStatement.getUpdateCount()));
+                    shell.out(String.format("%d row(s) updated", preparedStatement.getUpdateCount()));
                 }
+                shell.outln(" (" + (endTime - startTime) + " ms )");
             } catch (SQLException sqlE) {
                 shell.outln(String.format("ERROR: %d - %s", sqlE.getErrorCode(), sqlE.getMessage()));
             }
