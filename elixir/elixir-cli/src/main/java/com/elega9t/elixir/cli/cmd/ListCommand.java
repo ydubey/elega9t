@@ -6,9 +6,9 @@
 package com.elega9t.elixir.cli.cmd;
 
 import com.elega9t.commons.renderer.Border;
-import com.elega9t.commons.renderer.ColumnDataProvider;
+import com.elega9t.commons.renderer.ColumnDataModel;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
-import com.elega9t.commons.renderer.ObjectCollectionDataProvider;
+import com.elega9t.commons.renderer.ObjectCollectionDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
@@ -40,20 +40,20 @@ public class ListCommand extends Command {
             case 1:
                 Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
                 ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(Border.SINGLE);
-                shell.outln(renderer.render(new ObjectCollectionDataProvider(drivers.values(),
-                        new ColumnDataProvider<DatabaseDriver>("Database Name") {
+                shell.outln(renderer.render(new ObjectCollectionDataModel(drivers.values(),
+                        new ColumnDataModel<DatabaseDriver>("Database Name") {
                             @Override
                             public String value(DatabaseDriver driver) {
                                 return driver.databaseName();
                             }
                         },
-                        new ColumnDataProvider<DatabaseDriver>("Driver Available") {
+                        new ColumnDataModel<DatabaseDriver>("Driver Available") {
                             @Override
                             public String value(DatabaseDriver driver) {
                                 return driver.isAvailable() ? "YES" : "NO";
                             }
                         },
-                        new ColumnDataProvider<DatabaseDriver>("Supported Versions") {
+                        new ColumnDataModel<DatabaseDriver>("Supported Versions") {
                             @Override
                             public String value(DatabaseDriver driver) {
                                 return join(driver.supportedVersions());

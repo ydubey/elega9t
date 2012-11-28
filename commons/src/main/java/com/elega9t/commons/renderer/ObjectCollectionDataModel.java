@@ -11,18 +11,18 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class ObjectCollectionDataProvider<T> implements DataProvider<T> {
+public class ObjectCollectionDataModel<T> implements DataModel<T> {
 
     private List<T> data;
-    private ColumnDataProvider<T>[] columnDataProviders;
+    private ColumnDataModel<T>[] columnDataModels;
 
-    public ObjectCollectionDataProvider(Collection<T> data, ColumnDataProvider<T>... columnDataProviders) {
+    public ObjectCollectionDataModel(Collection<T> data, ColumnDataModel<T>... columnDataModels) {
         this.data = new ArrayList<T>(data);
-        this.columnDataProviders = columnDataProviders;
+        this.columnDataModels = columnDataModels;
     }
 
-    public ObjectCollectionDataProvider(T[] data, ColumnDataProvider<T>... columnDataProviders) {
-        this(asList(data), columnDataProviders);
+    public ObjectCollectionDataModel(T[] data, ColumnDataModel<T>... columnDataModels) {
+        this(asList(data), columnDataModels);
     }
 
     @Override
@@ -32,17 +32,17 @@ public class ObjectCollectionDataProvider<T> implements DataProvider<T> {
 
     @Override
     public int columnCount() {
-        return columnDataProviders.length;
+        return columnDataModels.length;
     }
 
     @Override
     public String value(int row, int column) {
-        return columnDataProviders[column].value(data.get(row));
+        return columnDataModels[column].value(data.get(row));
     }
 
     @Override
     public String columnName(int column) {
-        return columnDataProviders[column].name();
+        return columnDataModels[column].name();
     }
 
 

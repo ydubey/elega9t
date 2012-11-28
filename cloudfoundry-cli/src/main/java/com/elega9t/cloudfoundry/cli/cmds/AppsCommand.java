@@ -6,9 +6,9 @@
 package com.elega9t.cloudfoundry.cli.cmds;
 
 import com.elega9t.commons.renderer.Border;
-import com.elega9t.commons.renderer.ColumnDataProvider;
+import com.elega9t.commons.renderer.ColumnDataModel;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
-import com.elega9t.commons.renderer.ObjectCollectionDataProvider;
+import com.elega9t.commons.renderer.ObjectCollectionDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.util.StringUtilities;
@@ -29,32 +29,32 @@ public class AppsCommand extends Command {
         List<CloudApplication> applications = client.getApplications();
         ConsoleTableDataRenderer consoleTableDataRenderer = new ConsoleTableDataRenderer(Border.PLAIN);
         shell.outln("");
-        shell.outln(consoleTableDataRenderer.render(new ObjectCollectionDataProvider(applications,
-                new ColumnDataProvider<CloudApplication>("Application") {
+        shell.outln(consoleTableDataRenderer.render(new ObjectCollectionDataModel(applications,
+                new ColumnDataModel<CloudApplication>("Application") {
                     @Override
                     public String value(CloudApplication application) {
                         return application.getName();
                     }
                 },
-                new ColumnDataProvider<CloudApplication>("#") {
+                new ColumnDataModel<CloudApplication>("#") {
                     @Override
                     public String value(CloudApplication application) {
                         return String.valueOf(application.getInstances());
                     }
                 },
-                new ColumnDataProvider<CloudApplication>("Health") {
+                new ColumnDataModel<CloudApplication>("Health") {
                     @Override
                     public String value(CloudApplication application) {
                         return application.getState().name();
                     }
                 },
-                new ColumnDataProvider<CloudApplication>("URLS") {
+                new ColumnDataModel<CloudApplication>("URLS") {
                     @Override
                     public String value(CloudApplication application) {
                         return StringUtilities.join(application.getUris(), ", ");
                     }
                 },
-                new ColumnDataProvider<CloudApplication>("Services") {
+                new ColumnDataModel<CloudApplication>("Services") {
                     @Override
                     public String value(CloudApplication application) {
                         return StringUtilities.join(application.getServices(), ", ");

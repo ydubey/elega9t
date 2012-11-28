@@ -11,12 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultSetDataProvider implements DataProvider<ResultSet> {
+public class ResultSetDataModel implements DataModel<ResultSet> {
 
     private final List<List<String>> data;
     private final List<String> columnNames;
 
-    public ResultSetDataProvider(ResultSet resultSet) throws SQLException {
+    public ResultSetDataModel(ResultSet resultSet) throws SQLException {
         final ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
         data = new ArrayList<List<String>>();

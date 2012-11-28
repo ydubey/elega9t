@@ -5,11 +5,11 @@
 
 package com.elega9t.commons.renderer;
 
-public abstract class ColumnDataProvider<T> {
+public abstract class ColumnDataModel<T> {
 
     private final String name;
 
-    public ColumnDataProvider(String name) {
+    public ColumnDataModel(String name) {
         this.name = name;
     }
 

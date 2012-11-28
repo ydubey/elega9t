@@ -8,7 +8,7 @@ package com.elega9t.elixir.cli;
 import com.elega9t.commons.args.ParseException;
 import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
-import com.elega9t.commons.renderer.ResultSetDataProvider;
+import com.elega9t.commons.renderer.ResultSetDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.CommandNotFoundException;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
@@ -39,9 +39,9 @@ public class SqlInterpreter extends Interpreter {
                 final PreparedStatement preparedStatement = connection.prepareStatement(cmd);
                 final boolean isResultSet = preparedStatement.execute();
                 if(isResultSet) {
-                    final ResultSetDataProvider dataProvider = new ResultSetDataProvider(preparedStatement.getResultSet());
-                    shell.outln(renderer.render(dataProvider));
-                    shell.outln(String.format("%d row(s) selected.", dataProvider.rowCount()));
+                    final ResultSetDataModel dataModel = new ResultSetDataModel(preparedStatement.getResultSet());
+                    shell.outln(renderer.render(dataModel));
+                    shell.outln(String.format("%d row(s) selected.", dataModel.rowCount()));
                 } else {
                     shell.outln(String.format("%d row(s) updated.", preparedStatement.getUpdateCount()));
                 }

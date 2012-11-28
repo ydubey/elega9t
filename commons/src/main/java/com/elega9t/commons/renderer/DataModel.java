@@ -1,6 +1,6 @@
 package com.elega9t.commons.renderer;
 
-public interface DataProvider<T> {
+public interface DataModel<T> {
 
     int rowCount();
 

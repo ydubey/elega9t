@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.renderer;
 
-public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider> {
+public class ConsoleTableDataRenderer implements TableDataRenderer<DataModel> {
 
     private final Border border;
 
@@ -18,24 +18,24 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
     }
 
     @Override
-    public String render(DataProvider dataProvider) {
+    public String render(DataModel dataModel) {
         StringBuilder rendered = new StringBuilder();
         // compute max column sizes
-        int[] maxSize = new int[dataProvider.columnCount()];
+        int[] maxSize = new int[dataModel.columnCount()];
         for (int index=0; index<maxSize.length; index++) {
-            maxSize[index] = dataProvider.columnName(index).length();
+            maxSize[index] = dataModel.columnName(index).length();
         }
-        for (int row=0; row<dataProvider.rowCount(); row++) {
+        for (int row=0; row< dataModel.rowCount(); row++) {
             for(int column=0; column<maxSize.length; column++) {
-                if(maxSize[column] < dataProvider.value(row, column).length()) {
-                    maxSize[column] = dataProvider.value(row, column).length();
+                if(maxSize[column] < dataModel.value(row, column).length()) {
+                    maxSize[column] = dataModel.value(row, column).length();
                 }
             }
         }
 
         // render header
-        renderHeader(rendered, dataProvider, maxSize, border);
-        renderData(rendered, dataProvider, maxSize, border);
+        renderHeader(rendered, dataModel, maxSize, border);
+        renderData(rendered, dataModel, maxSize, border);
 
         return rendered.toString();
     }
@@ -46,7 +46,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         }
     }
 
-    private void renderHeader(StringBuilder rendered, DataProvider dataProvider, int[] maxSize, Border border) {
+    private void renderHeader(StringBuilder rendered, DataModel dataModel, int[] maxSize, Border border) {
         rendered.append(border.getTopLeft()).append(border.getHorizontal());
         for (int column=0; column<maxSize.length; column++) {
             repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
@@ -59,7 +59,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         rendered.append("\n");
         rendered.append(border.getVertical()).append(border.getSpace());
         for (int column=0; column<maxSize.length; column++) {
-            final String columnName = dataProvider.columnName(column);
+            final String columnName = dataModel.columnName(column);
             rendered.append(columnName).append(border.getSpace());
             repeat(rendered, border.getSpace(), maxSize[column] - columnName.length());
             if(column < maxSize.length -1) {
@@ -69,7 +69,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
             }
         }
         rendered.append("\n");
-        if(dataProvider.rowCount() > 0) {
+        if(dataModel.rowCount() > 0) {
             rendered.append(border.getRowSeparatorStart());
         } else {
             rendered.append(border.getBottomLeft());
@@ -78,14 +78,14 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         for (int column=0; column<maxSize.length; column++) {
             repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
             if(column < maxSize.length -1) {
-                if(dataProvider.rowCount() > 0) {
+                if(dataModel.rowCount() > 0) {
                     rendered.append(border.getRowColumnJunction());
                 } else {
                     rendered.append(border.getColumnSeparatorEnd());
                 }
                 rendered.append(border.getHorizontal());
             } else {
-                if(dataProvider.rowCount() > 0) {
+                if(dataModel.rowCount() > 0) {
                     rendered.append(border.getRowSeparatorEnd());
                 } else {
                     rendered.append(border.getBottomRight());
@@ -95,12 +95,12 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
         rendered.append("\n");
     }
 
-    private void renderData(StringBuilder rendered, DataProvider dataProvider, int[] maxSize, Border border) {
-        if(dataProvider.rowCount() > 0) {
-            for(int row = 0; row < dataProvider.rowCount(); row++) {
+    private void renderData(StringBuilder rendered, DataModel dataModel, int[] maxSize, Border border) {
+        if(dataModel.rowCount() > 0) {
+            for(int row = 0; row < dataModel.rowCount(); row++) {
                 for(int column=0; column < maxSize.length; column++) {
                     rendered.append(border.getVertical()).append(border.getSpace());
-                    final String value = dataProvider.value(row, column);
+                    final String value = dataModel.value(row, column);
                     rendered.append(value).append(border.getSpace());
                     repeat(rendered, border.getSpace(), maxSize[column] - value.length());
                 }
@@ -120,7 +120,7 @@ public class ConsoleTableDataRenderer implements TableDataRenderer<DataProvider>
     }
 
     public static void main(String[] args) {
-        System.out.println(new ConsoleTableDataRenderer(Border.PLAIN).render(new DataProvider() {
+        System.out.println(new ConsoleTableDataRenderer(Border.PLAIN).render(new DataModel() {
             @Override
             public int rowCount() {
                 return 5;
