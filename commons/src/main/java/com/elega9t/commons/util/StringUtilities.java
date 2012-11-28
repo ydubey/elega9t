@@ -12,23 +12,12 @@ import java.util.regex.Pattern;
 
 public class StringUtilities {
 
-    public static List<String> split(String str) {
-        List<String> matchList = new ArrayList<String>();
-        Pattern regex = Pattern.compile("[^\\s\"']+|\"([^\"]*)\"|'([^']*)'");
-        Matcher regexMatcher = regex.matcher(str);
-        while (regexMatcher.find()) {
-            if (regexMatcher.group(1) != null) {
-                // Add double-quoted string without the quotes
-                matchList.add(regexMatcher.group(1));
-            } else if (regexMatcher.group(2) != null) {
-                // Add single-quoted string without the quotes
-                matchList.add(regexMatcher.group(2));
-            } else {
-                // Add unquoted word
-                matchList.add(regexMatcher.group());
-            }
-        }
-        return matchList;
+    public static String[] split(String str) {
+        return split(str, ',');
+    }
+
+    public static String[] split(String str, char delimiter) {
+        return str.split(delimiter + "(?!(?:[^\"" + delimiter + "]|[^\"]" + delimiter + "[^\"])+\")");
     }
 
     public static String replace(String patternString, String str, ReplacementProvider replacementProvider) {

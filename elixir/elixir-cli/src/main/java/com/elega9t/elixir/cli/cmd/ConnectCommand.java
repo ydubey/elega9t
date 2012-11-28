@@ -20,9 +20,9 @@ public class ConnectCommand extends Command {
 
     @Parameter(index=0)
     private String databaseName;
-    @NamedParameter(name="user", required = false)
+    @NamedParameter(name="user", required = true)
     private String userName;
-    @NamedParameter(name="passwd", required = false)
+    @NamedParameter(name="passwd", required = true)
     private String password;
     @NamedParameter(name="port", required = false)
     private String port;

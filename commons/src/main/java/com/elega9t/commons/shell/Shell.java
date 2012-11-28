@@ -15,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.elega9t.commons.util.StringUtilities.split;
+
 public class Shell {
 
     private static final Logger LOGGER = Logger.getLogger(Shell.class.getName());
@@ -54,18 +56,33 @@ public class Shell {
     public void execute() {
         outln("Elega9t shell v1.0.0");
         nextInterpreter();
+        String input = "";
         do {
-            out(getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
-            String line = scanner.nextLine().trim();
-            EnvironmentProperty.update(this);
-            try {
-                line = handleSpecialCommand(this, line);
-                history.add(line);
-                exitVal = interpreter.execute(this, line);
-            } catch (Exception e) {
-                LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
-                System.out.println(interpreter.getName() + ": " + e.getMessage());
-                exitVal = 1;
+            String[] lines = split(input, ';');
+            for (int i = 0, linesLength = lines.length; i < linesLength; i++) {
+                String line = lines[i].trim();
+                if(line.length() > 0) {
+                    EnvironmentProperty.update(this);
+                    try {
+                        line = handleSpecialCommand(this, line);
+                        history.add(line);
+                        exitVal = interpreter.execute(this, line);
+                    } catch (Exception e) {
+                        LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
+                        System.out.println(interpreter.getName() + ": " + e.getMessage());
+                        exitVal = 1;
+                    }
+                }
+                if(i <= linesLength - 1 && interpreter != null) {
+                    out(getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
+                }
+                if( i == linesLength - 1) {
+                    if(interpreter != null) {
+                        input = scanner.nextLine().trim();
+                    }
+                } else {
+                    outln(lines[i+1]);
+                }
             }
         } while(interpreter != null);
     }

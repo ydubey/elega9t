@@ -84,7 +84,7 @@ public class Interpreter {
                 if(parameter != null) {
                     field.set(command, parameter.getValue());
                 } else if(namedParameter.required()) {
-                    throw new IllegalStateException("Parameter " + namedParameter.name() + "is required.");
+                    throw new IllegalStateException("Parameter " + namedParameter.name() + " is required.");
                 }
             }
             Map<com.elega9t.commons.shell.intrprtr.Parameter, Field> parameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(com.elega9t.commons.shell.intrprtr.Parameter.class, commandClass);

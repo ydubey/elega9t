@@ -11,7 +11,7 @@ public enum EnvironmentProperty {
         protected String getValue(Shell shell) {
             Interpreter interpreter = shell.getInterpreter();
             if(interpreter == null) {
-                return "";
+                return shell.getEnvironment().getValue(INTERPRETER.name);
             } else {
                 return interpreter.getName();
             }
