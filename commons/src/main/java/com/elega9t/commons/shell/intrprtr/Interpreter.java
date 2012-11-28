@@ -85,49 +85,51 @@ public class Interpreter {
     }
 
     protected void executeCommand(Shell shell, String cmd) throws ParseException, InstantiationException, IllegalAccessException {
-        String commandName;
-        if (cmd != null && cmd.contains(" ")) {
-            commandName = cmd.substring(0, cmd.indexOf(" "));
-            cmd = cmd.substring(cmd.indexOf(" ") + 1);
-        } else {
-            commandName = cmd;
-            cmd = "";
-        }
-        if (commandName != null) {
-            ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
-            Map<String, Parameter> commandLineParameters = parser.parse();
-            Class<? extends Command> commandClass = commands.get(commandName);
-            if (commandClass == null) {
-                throw new CommandNotFoundException(commandName + ": command not found");
+        if(cmd.trim().length() > 0) {
+            String commandName;
+            if (cmd != null && cmd.contains(" ")) {
+                commandName = cmd.substring(0, cmd.indexOf(" "));
+                cmd = cmd.substring(cmd.indexOf(" ") + 1);
+            } else {
+                commandName = cmd;
+                cmd = "";
             }
-            Command command = commandClass.newInstance();
-            Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);
-            for (final NamedParameter namedParameter : namedParameterFieldMap.keySet()) {
-                Field field = namedParameterFieldMap.get(namedParameter);
-                field.setAccessible(true);
-                Parameter parameter = commandLineParameters.get(namedParameter.name());
-                if (parameter != null) {
-                    field.set(command, parameter.getValue());
-                } else if (namedParameter.required()) {
-                    throw new IllegalStateException("Parameter " + namedParameter.name() + " is required.");
+            if (commandName != null) {
+                ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
+                Map<String, Parameter> commandLineParameters = parser.parse();
+                Class<? extends Command> commandClass = commands.get(commandName);
+                if (commandClass == null) {
+                    throw new CommandNotFoundException(commandName + ": command not found");
                 }
-            }
-            Map<com.elega9t.commons.shell.intrprtr.Parameter, Field> parameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(com.elega9t.commons.shell.intrprtr.Parameter.class, commandClass);
-            for (final com.elega9t.commons.shell.intrprtr.Parameter param : parameterFieldMap.keySet()) {
-                Field field = parameterFieldMap.get(param);
-                field.setAccessible(true);
-                Parameter parameter = commandLineParameters.get(param.index() + "");
-                if (parameter != null) {
-                    field.set(command, parameter.getValue());
-                } else if (param.required()) {
-                    throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
+                Command command = commandClass.newInstance();
+                Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);
+                for (final NamedParameter namedParameter : namedParameterFieldMap.keySet()) {
+                    Field field = namedParameterFieldMap.get(namedParameter);
+                    field.setAccessible(true);
+                    Parameter parameter = commandLineParameters.get(namedParameter.name());
+                    if (parameter != null) {
+                        field.set(command, parameter.getValue());
+                    } else if (namedParameter.required()) {
+                        throw new IllegalStateException("Parameter " + namedParameter.name() + " is required.");
+                    }
                 }
+                Map<com.elega9t.commons.shell.intrprtr.Parameter, Field> parameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(com.elega9t.commons.shell.intrprtr.Parameter.class, commandClass);
+                for (final com.elega9t.commons.shell.intrprtr.Parameter param : parameterFieldMap.keySet()) {
+                    Field field = parameterFieldMap.get(param);
+                    field.setAccessible(true);
+                    Parameter parameter = commandLineParameters.get(param.index() + "");
+                    if (parameter != null) {
+                        field.set(command, parameter.getValue());
+                    } else if (param.required()) {
+                        throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
+                    }
+                }
+                int exitVal = command.execute(shell);
+                shell.setExitVal(exitVal);
+                return;
             }
-            int exitVal = command.execute(shell);
-            shell.setExitVal(exitVal);
-        } else {
-            shell.setExitVal(0);
         }
+        shell.setExitVal(0);
     }
 
 }

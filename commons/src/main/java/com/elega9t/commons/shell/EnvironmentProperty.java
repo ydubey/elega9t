@@ -2,6 +2,8 @@ package com.elega9t.commons.shell;
 
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 public enum EnvironmentProperty {
@@ -15,6 +17,24 @@ public enum EnvironmentProperty {
             } else {
                 return interpreter.getName();
             }
+        }
+    },
+
+    PWD() {
+        @Override
+        protected String getValue(Shell shell) {
+            try {
+                return new File(".").getCanonicalPath();
+            } catch (IOException e) {
+                return new File(".").getAbsolutePath();
+            }
+        }
+    },
+
+    PWD_NAME() {
+        @Override
+        protected String getValue(Shell shell) {
+            return new File(PWD.getValue(shell)).getName();
         }
     },
 
@@ -42,7 +62,7 @@ public enum EnvironmentProperty {
     PROMPT(false) {
         @Override
         protected String getValue(Shell shell) {
-            return "$INTERPRETER$";
+            return "[$INTERPRETER $PWD_NAME]$";
         }
     };
 

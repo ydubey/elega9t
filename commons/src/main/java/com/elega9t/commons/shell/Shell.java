@@ -4,6 +4,8 @@ import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.util.ReplacementProvider;
 import com.elega9t.commons.util.StringUtilities;
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -69,7 +71,7 @@ public class Shell {
                 interpreter.execute(this, line);
             } catch (Exception e) {
                 LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
-                System.out.println(interpreter.getName() + ": " + e.getMessage());
+                outln(interpreter.getName() + ": " + e.getMessage());
                 setExitVal(1);
             }
         } while(interpreter != null);
@@ -123,11 +125,13 @@ public class Shell {
     }
 
     public void out(Object msg) {
-        System.out.print(msg);
+        AnsiConsole.out.print(msg);
+        AnsiConsole.out().flush();
     }
 
     public void outln(Object msg) {
-        System.out.println(msg);
+        AnsiConsole.out.println(msg);
+        AnsiConsole.out().flush();
     }
 
     public void error(Throwable t) {
