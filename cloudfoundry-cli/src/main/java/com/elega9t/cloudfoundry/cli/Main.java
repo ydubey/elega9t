@@ -10,26 +10,12 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.*;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
-        Shell shell = new Shell(new Interpreter("yok",
-                ExitCommand.class,
-                DateCommand.class,
-                SetCommand.class,
-                HistoryCommand.class,
-                ExportCommand.class,
-                EchoCommand.class,
-                ClearCommand.class,
-                TargetCommand.class,
-                LoginCommand.class,
-                LogoutCommand.class,
-                AppsCommand.class,
-                StartCommand.class,
-                StopCommand.class,
-                RenameCommand.class,
-                LogsCommand.class
-        ));
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException {
+        Shell shell = new Shell(new Interpreter("yok", ExitCommand.class.getPackage(), TargetCommand.class.getPackage()));
         shell.execute();
     }
 

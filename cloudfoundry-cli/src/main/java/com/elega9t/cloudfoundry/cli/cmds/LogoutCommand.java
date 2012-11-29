@@ -21,6 +21,9 @@ public class LogoutCommand extends Command {
     public int execute(Shell shell) {
         URL target = (URL) shell.getContextElement("cloudfoundry-target");
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
+        if(client == null) {
+            throw new IllegalStateException("You haven't logged in to cloudfoundry yet.");
+        }
         client.logout();
         shell.outln("Successfully logged out from [" + target + "]");
         return 0;

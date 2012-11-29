@@ -9,6 +9,7 @@ import com.elega9t.commons.cp.ClassFilter;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -114,9 +115,25 @@ public class ReflectionUtilities {
                 .getResources(packageFolder);
         while (urls.hasMoreElements()) {
             URL url = urls.nextElement();
-            File dir = new File(url.getFile());
-            for (File f : dir.listFiles()) {
-                list.add(f);
+            if("jar".equalsIgnoreCase(url.getProtocol())) {
+                int separatorIndex = url.getFile().indexOf("!");
+                File file = new File(url.getFile().substring(5, separatorIndex));
+                final String root = url.getFile().substring(separatorIndex + 2);
+                List<String> entriesList = JarUtilities.list(file, new FilenameFilter() {
+                    @Override
+                    public boolean accept(File dir, String name) {
+                        return name.startsWith(root) && name.substring(root.length() + 1).indexOf('/') == -1;
+                    }
+                });
+                for (String entry : entriesList) {
+                    list.add(new File(entry));
+                }
+                list.size();
+            } else {
+                File dir = new File(url.getFile());
+                for (File file : dir.listFiles()) {
+                    list.add(file);
+                }
             }
         }
         return list;

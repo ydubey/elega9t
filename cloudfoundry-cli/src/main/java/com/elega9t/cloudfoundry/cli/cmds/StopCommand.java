@@ -22,6 +22,9 @@ public class StopCommand extends Command {
     @Override
     public int execute(Shell shell) {
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
+        if(client == null) {
+            throw new IllegalStateException("You haven't logged in to cloudfoundry yet.");
+        }
         client.stopApplication(appName);
         return 0;
     }

@@ -25,16 +25,12 @@ public class TargetCommand extends Command {
 
     @Override
     public int execute(Shell shell) {
-        if(url == null) {
-            shell.outln(shell.getContextElement("cloudfoundry-target"));
-        } else {
-            try {
-                shell.setContextElement("cloudfoundry-target", new URL(url));
-                shell.outln("Successfully targeted to [" + url + "]");
-            } catch (MalformedURLException e) {
-                shell.error(e);
-                return 1;
-            }
+        try {
+            shell.setContextElement("cloudfoundry-target", new URL(url));
+            shell.outln("Successfully targeted to [" + url + "]");
+        } catch (MalformedURLException e) {
+            shell.error(e);
+            return 1;
         }
         return 0;
     }
