@@ -20,6 +20,7 @@ public class Main {
                 HistoryCommand.class,
                 ExportCommand.class,
                 EchoCommand.class,
+                ClearCommand.class,
                 TargetCommand.class,
                 LoginCommand.class,
                 LogoutCommand.class,
