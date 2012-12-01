@@ -8,7 +8,6 @@ package com.elega9t.elixir.mysql;
 import com.elega9t.elixir.DatabaseConnection;
 import com.elega9t.elixir.DatabaseDriver;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;

@@ -5,12 +5,13 @@
 
 package com.elega9t.commons.shell.intrprtr.cmd;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 
-public class ClearCommand extends Command {
+public class ClearCommand extends DefaultEntity implements Command {
 
     public ClearCommand() {
         super("clear");

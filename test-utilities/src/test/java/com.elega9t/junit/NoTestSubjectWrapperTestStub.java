@@ -5,7 +5,6 @@
 
 package com.elega9t.junit;
 
-import com.elega9t.junit.test.TestWrapper;
 import org.junit.runner.RunWith;
 
 import java.sql.Connection;

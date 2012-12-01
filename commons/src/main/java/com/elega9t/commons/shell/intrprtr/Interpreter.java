@@ -1,6 +1,6 @@
 package com.elega9t.commons.shell.intrprtr;
 
-import com.elega9t.commons.args.*;
+import com.elega9t.commons.args.ArgumentParser;
 import com.elega9t.commons.args.Parameter;
 import com.elega9t.commons.cp.ClassFilter;
 import com.elega9t.commons.shell.EnvironmentProperty;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.elega9t.commons.util.StringUtilities.split;
+import static java.util.Arrays.asList;
 
 public class Interpreter {
 
@@ -64,7 +65,7 @@ public class Interpreter {
         final List<Class> commandClasses = ReflectionUtilities.getClasses(new ClassFilter() {
             @Override
             public boolean accept(Class aClass) {
-                return (aClass.getSuperclass() == Command.class);
+                return (asList(aClass.getInterfaces()).contains(Command.class));
             }
         }, commandsPackages);
         for (Class commandClass : commandClasses) {
@@ -72,7 +73,7 @@ public class Interpreter {
         }
     }
 
-    public void execute(Shell shell, String line) throws IllegalAccessException, InstantiationException, ParseException {
+    public void execute(Shell shell, String line) throws Exception {
         String[] split = split(line, ';');
         for (int i = 0, splitLength = split.length; i < splitLength; i++) {
             String cmd = split[i].trim();
@@ -84,7 +85,7 @@ public class Interpreter {
         }
     }
 
-    protected void executeCommand(Shell shell, String cmd) throws ParseException, InstantiationException, IllegalAccessException {
+    protected void executeCommand(Shell shell, String cmd) throws Exception {
         if(cmd.trim().length() > 0) {
             String commandName;
             if (cmd != null && cmd.contains(" ")) {

@@ -1,8 +1,8 @@
 package com.elega9t.commons.shell;
 
-import com.elega9t.commons.util.StringUtilities;
-import com.elega9t.commons.util.ReplacementProvider;
 import com.elega9t.commons.shell.intrprtr.Context;
+import com.elega9t.commons.util.ReplacementProvider;
+import com.elega9t.commons.util.StringUtilities;
 
 public class Environment extends Context<String> {
 

@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.cli.cmd;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.NamedParameter;
@@ -13,10 +14,9 @@ import com.elega9t.elixir.DatabaseConnection;
 import com.elega9t.elixir.DatabaseDriver;
 import com.elega9t.elixir.cli.SqlInterpreter;
 
-import java.sql.SQLException;
 import java.util.Map;
 
-public class ConnectCommand extends Command {
+public class ConnectCommand extends DefaultEntity implements Command {
 
     @Parameter(index=0)
     private String databaseName;
@@ -32,19 +32,13 @@ public class ConnectCommand extends Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell) throws Exception {
         Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
         DatabaseDriver databaseDriver = drivers.get(databaseName.toLowerCase());
-        try {
-            final DatabaseConnection connection = databaseDriver.createConnection(userName, password);
-            shell.outln("Connection successful!");
-            shell.switchInterpreter(new SqlInterpreter(connection));
-        } catch (SQLException e) {
-            shell.outln("ERROR: " + e.getErrorCode() + " - " + e.getMessage());
-            return 1;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        final DatabaseConnection connection = databaseDriver.createConnection(userName, password);
+        shell.setContextElement("connection", connection);
+        shell.outln("Connection successful!");
+        shell.switchInterpreter(new SqlInterpreter(connection));
         return 0;
     }
 

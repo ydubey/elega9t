@@ -5,7 +5,6 @@
 
 package com.elega9t.elixir.cli;
 
-import com.elega9t.commons.args.ParseException;
 import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
 import com.elega9t.commons.renderer.ResultSetDataModel;
@@ -31,7 +30,7 @@ public class SqlInterpreter extends Interpreter {
     }
 
     @Override
-    protected void executeCommand(Shell shell, String cmd) throws IllegalAccessException, InstantiationException, ParseException {
+    protected void executeCommand(Shell shell, String cmd) throws Exception {
         try {
             super.executeCommand(shell, cmd);
         } catch(CommandNotFoundException e) {

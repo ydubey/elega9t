@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.cli.cmd;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.renderer.ColumnDataModel;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 import static com.elega9t.commons.util.StringUtilities.join;
 
-public class ListCommand extends Command {
+public class ListCommand extends DefaultEntity implements Command {
 
     private static final Map<String, Integer> operations = new HashMap<String, Integer>();
     static {

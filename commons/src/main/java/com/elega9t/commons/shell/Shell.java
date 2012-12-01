@@ -4,7 +4,6 @@ import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.util.ReplacementProvider;
 import com.elega9t.commons.util.StringUtilities;
-import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 import org.jetbrains.annotations.NotNull;
 

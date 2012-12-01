@@ -1,10 +1,11 @@
 package com.elega9t.commons.shell.intrprtr.cmd;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 
-public class DateCommand extends Command {
+public class DateCommand extends DefaultEntity implements Command {
 
     public DateCommand() {
         super("date");
