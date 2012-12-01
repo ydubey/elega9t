@@ -1,5 +1,6 @@
 package com.elega9t.commons.shell;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.renderer.table.Border;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
@@ -17,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Shell {
+public class Shell extends DefaultEntity {
 
     private static final Logger LOGGER = Logger.getLogger(Shell.class.getName());
 
@@ -36,6 +37,7 @@ public class Shell {
     private ConcurrentHashMap<String, Object> context = new ConcurrentHashMap<String, Object>();
 
     public Shell(@NotNull Interpreter interpreter) {
+        super("Elega9t Shell, v1.0.0");
         EnvironmentProperty.init(this);
         interpreterStack.push(interpreter);
         scanner = new Scanner(System.in);
@@ -59,7 +61,7 @@ public class Shell {
     }
 
     public void execute() {
-        outln("Elega9t Shell v1.0.0");
+        outln(getName());
         nextInterpreter();
         do {
             out(getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");

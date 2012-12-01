@@ -3,6 +3,7 @@ package com.elega9t.commons.shell.intrprtr;
 import com.elega9t.commons.args.ArgumentParser;
 import com.elega9t.commons.args.Parameter;
 import com.elega9t.commons.cp.ClassFilter;
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.util.ReflectionUtilities;
@@ -17,16 +18,14 @@ import java.util.Map;
 import static com.elega9t.commons.util.StringUtilities.split;
 import static java.util.Arrays.asList;
 
-public class Interpreter {
-
-    private final String name;
+public class Interpreter extends DefaultEntity {
 
     private final Map<String, Class<? extends Command>> commands;
 
     private final Context<Object> context = new Context<Object>();
 
     public Interpreter(String name) {
-        this.name = name;
+        super(name);
         this.commands = new HashMap<String, Class<? extends Command>>();
     }
 
@@ -48,10 +47,6 @@ public class Interpreter {
     public Interpreter(String name, String... commandsPackages) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
         this(name);
         addCommands(commandsPackages);
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void addCommand(Class<? extends Command>... commands) throws IllegalAccessException, InstantiationException {
@@ -111,7 +106,7 @@ public class Interpreter {
                     if (parameter != null) {
                         field.set(command, parameter.getValue());
                     } else if (namedParameter.required()) {
-                        throw new IllegalStateException("Parameter " + namedParameter.name() + " is required.");
+                        throw new IllegalStateException("Parameter '" + namedParameter.name() + "' is required.");
                     }
                 }
                 Map<com.elega9t.commons.shell.intrprtr.Parameter, Field> parameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(com.elega9t.commons.shell.intrprtr.Parameter.class, commandClass);
