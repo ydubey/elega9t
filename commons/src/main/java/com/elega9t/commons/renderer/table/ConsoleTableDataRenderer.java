@@ -5,7 +5,9 @@
 
 package com.elega9t.commons.renderer.table;
 
-public class ConsoleTableDataRenderer implements TableDataRenderer<DataModel> {
+import com.elega9t.commons.renderer.Renderer;
+
+public class ConsoleTableDataRenderer implements Renderer<DataModel> {
 
     private final Border border;
 

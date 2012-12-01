@@ -3,9 +3,9 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.renderer.table;
+package com.elega9t.commons.renderer;
 
-public interface TableDataRenderer<T> {
+public interface Renderer<T> {
 
     public String render(T data);
 
