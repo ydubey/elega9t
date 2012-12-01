@@ -22,7 +22,7 @@ public class ConnectCommand extends DefaultEntity implements Command {
     private String databaseName;
     @NamedParameter(name="user", required = true)
     private String userName;
-    @NamedParameter(name="passwd", required = true)
+    @NamedParameter(name="password", required = true)
     private String password;
     @NamedParameter(name="port", required = false)
     private String port;

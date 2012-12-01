@@ -20,7 +20,7 @@ public class SqlCommand extends DefaultEntity implements Command {
     @Override
     public int execute(Shell shell) throws Exception {
         DatabaseConnection connection = (DatabaseConnection) shell.getContextElement("connection");
-        if(connection == null) {
+        if(connection != null) {
             shell.switchInterpreter(new SqlInterpreter(connection));
         } else {
             throw new IllegalArgumentException("No database connection exists. Please connect to a database first.");
