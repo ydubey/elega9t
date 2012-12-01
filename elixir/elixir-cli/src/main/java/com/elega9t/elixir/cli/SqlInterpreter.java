@@ -5,9 +5,9 @@
 
 package com.elega9t.elixir.cli;
 
-import com.elega9t.commons.renderer.Border;
-import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
-import com.elega9t.commons.renderer.ResultSetDataModel;
+import com.elega9t.commons.renderer.table.Border;
+import com.elega9t.commons.renderer.table.ConsoleTableDataRenderer;
+import com.elega9t.commons.renderer.table.ResultSetDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.CommandNotFoundException;
 import com.elega9t.commons.shell.intrprtr.Interpreter;

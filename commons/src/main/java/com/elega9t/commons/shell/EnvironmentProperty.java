@@ -1,6 +1,6 @@
 package com.elega9t.commons.shell;
 
-import com.elega9t.commons.renderer.Border;
+import com.elega9t.commons.renderer.table.Border;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.elega9t.commons.renderer;
+package com.elega9t.commons.renderer.table;
 
 public interface DataModel<T> {
 

@@ -6,9 +6,9 @@
 package com.elega9t.cloudfoundry.cli.cmds;
 
 import com.elega9t.commons.entity.DefaultEntity;
-import com.elega9t.commons.renderer.ColumnDataModel;
-import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
-import com.elega9t.commons.renderer.ObjectCollectionDataModel;
+import com.elega9t.commons.renderer.table.ColumnDataModel;
+import com.elega9t.commons.renderer.table.ConsoleTableDataRenderer;
+import com.elega9t.commons.renderer.table.ObjectCollectionDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.util.StringUtilities;
