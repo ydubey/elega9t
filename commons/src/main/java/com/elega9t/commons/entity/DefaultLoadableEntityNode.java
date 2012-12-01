@@ -5,16 +5,10 @@
 
 package com.elega9t.commons.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class DefaultLoadableEntityNode extends DefaultLoadableEntity implements LoadableEntityNode {
-
-    private List<LoadableEntityNode> children;
+public class DefaultLoadableEntityNode extends DefaultEntityNode implements LoadableEntityNode {
 
     public DefaultLoadableEntityNode(String name) {
         super(name);
-        children = new ArrayList<LoadableEntityNode>();
     }
 
     @Override
@@ -23,27 +17,7 @@ public class DefaultLoadableEntityNode extends DefaultLoadableEntity implements 
         loadChildren();
     }
 
-    protected void loadChildren() {
-    }
-
-    @Override
-    public int getChildCount() {
-        return children.size();
-    }
-
-    @Override
-    public void addChild(LoadableEntityNode node) {
-        children.add(node);
-    }
-
-    @Override
-    public boolean removeChild(LoadableEntityNode node) {
-        return children.remove(node);
-    }
-
-    @Override
-    public void clear() {
-        children.clear();
+    public void load() {
     }
 
 }

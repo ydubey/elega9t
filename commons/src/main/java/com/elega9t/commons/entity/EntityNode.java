@@ -5,8 +5,14 @@
 
 package com.elega9t.commons.entity;
 
-public interface LoadableEntityNode extends LoadableEntity, EntityNode {
+public interface EntityNode extends Entity {
 
-    void loadAll() throws EntityLoadException;
+    int getChildCount();
+
+    void addChild(LoadableEntityNode node);
+
+    boolean removeChild(LoadableEntityNode node);
+
+    void clear();
 
 }
