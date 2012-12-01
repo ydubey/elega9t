@@ -10,8 +10,8 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.NamedParameter;
 import com.elega9t.commons.shell.intrprtr.Parameter;
-import com.elega9t.elixir.DatabaseConnection;
-import com.elega9t.elixir.DatabaseDriver;
+import com.elega9t.elixir.Connection;
+import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.cli.SqlInterpreter;
 
 import java.util.Map;
@@ -33,9 +33,9 @@ public class ConnectCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell) throws Exception {
-        Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
-        DatabaseDriver databaseDriver = drivers.get(databaseName.toLowerCase());
-        final DatabaseConnection connection = databaseDriver.createConnection(userName, password);
+        Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
+        Driver driver = drivers.get(databaseName.toLowerCase());
+        final Connection connection = driver.createConnection(userName, password);
         shell.setContextElement("connection", connection);
         shell.outln("Connection successful!");
         shell.switchInterpreter(new SqlInterpreter(connection));

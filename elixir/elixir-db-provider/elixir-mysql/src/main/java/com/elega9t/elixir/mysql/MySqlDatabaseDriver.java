@@ -5,14 +5,14 @@
 
 package com.elega9t.elixir.mysql;
 
-import com.elega9t.elixir.DatabaseConnection;
-import com.elega9t.elixir.DatabaseDriver;
+import com.elega9t.elixir.Connection;
+import com.elega9t.elixir.Driver;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;
 
-public class MySqlDatabaseDriver implements DatabaseDriver {
+public class MySqlDatabaseDriver implements Driver {
 
     private Map<String, List<String>> drivers = new HashMap<String, List<String>>();
     private boolean available = false;
@@ -65,9 +65,9 @@ public class MySqlDatabaseDriver implements DatabaseDriver {
     }
 
     @Override
-    public DatabaseConnection createConnection(String userName, String password) throws SQLException {
+    public Connection createConnection(String userName, String password) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/mysql";
-        final DatabaseConnection connection = new DatabaseConnection(DriverManager.getConnection(url, userName, password), "mysql");
+        final Connection connection = new Connection(DriverManager.getConnection(url, userName, password), "mysql");
         return connection;
     }
 

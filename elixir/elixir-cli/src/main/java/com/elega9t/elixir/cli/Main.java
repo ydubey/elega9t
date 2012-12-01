@@ -11,7 +11,7 @@ import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
-import com.elega9t.elixir.DatabaseDriver;
+import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.cli.cmd.ConnectCommand;
 
 import java.io.File;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, IllegalAccessException, InstantiationException {
-        Map<String, DatabaseDriver> drivers = new HashMap<String, DatabaseDriver>();
+        Map<String, Driver> drivers = new HashMap<String, Driver>();
         List<ClassPathResource> classPathResources = ClassPathUtilities.getClassPathResources();
         for (ClassPathResource classPathResource : classPathResources) {
             List<Class> classes = classPathResource.listClasses(new FilenameFilter() {
@@ -43,10 +43,10 @@ public class Main {
                 Object o = null;
                 try {
                     o = clazz.newInstance();
-                    if(o instanceof DatabaseDriver) {
-                        DatabaseDriver databaseDriver = (DatabaseDriver) o;
-                        databaseDriver.loadDrivers();
-                        drivers.put(databaseDriver.databaseName().toLowerCase(), databaseDriver);
+                    if(o instanceof Driver) {
+                        Driver driver = (Driver) o;
+                        driver.loadDrivers();
+                        drivers.put(driver.databaseName().toLowerCase(), driver);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

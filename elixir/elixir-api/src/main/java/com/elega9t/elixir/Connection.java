@@ -11,11 +11,11 @@ import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 
-public class DatabaseConnection extends DefaultLoadableEntityNode implements Connection {
+public class Connection extends DefaultLoadableEntityNode implements java.sql.Connection {
 
-    private final Connection connection;
+    private final java.sql.Connection connection;
 
-    public DatabaseConnection(Connection connection, String name) {
+    public Connection(java.sql.Connection connection, String name) {
         super(name);
         this.connection = connection;
     }

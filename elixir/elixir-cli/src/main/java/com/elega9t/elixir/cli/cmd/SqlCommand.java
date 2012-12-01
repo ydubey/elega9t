@@ -8,7 +8,7 @@ package com.elega9t.elixir.cli.cmd;
 import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
-import com.elega9t.elixir.DatabaseConnection;
+import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.cli.SqlInterpreter;
 
 public class SqlCommand extends DefaultEntity implements Command {
@@ -19,7 +19,7 @@ public class SqlCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell) throws Exception {
-        DatabaseConnection connection = (DatabaseConnection) shell.getContextElement("connection");
+        Connection connection = (Connection) shell.getContextElement("connection");
         if(connection != null) {
             shell.switchInterpreter(new SqlInterpreter(connection));
         } else {

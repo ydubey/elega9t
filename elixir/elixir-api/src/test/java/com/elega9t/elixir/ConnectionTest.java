@@ -11,22 +11,20 @@ import com.elega9t.junit.WrapperTestRunner;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import java.sql.Connection;
-
 @RunWith(WrapperTestRunner.class)
-public class DatabaseConnectionTest {
+public class ConnectionTest {
 
     private static final String NAME = "DATABASE_NAME";
 
-    @MockTarget(Connection.class)
-    private Connection mockConnection;
+    @MockTarget(java.sql.Connection.class)
+    private java.sql.Connection mockConnection;
 
     @TestSubject
-    private DatabaseConnection test;
+    private Connection test;
 
     @Before
     public void setUp() throws Exception {
-        test = new DatabaseConnection(mockConnection, NAME);
+        test = new Connection(mockConnection, NAME);
     }
 
 }

@@ -12,7 +12,7 @@ import com.elega9t.commons.renderer.ObjectCollectionDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
-import com.elega9t.elixir.DatabaseDriver;
+import com.elega9t.elixir.Driver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,30 +38,30 @@ public class ListCommand extends DefaultEntity implements Command {
         Integer whatToDo = operations.get(what.toLowerCase());
         switch (whatToDo) {
             case 1:
-                Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
+                Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
                 ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(shell.getBorder());
                 shell.outln(renderer.render(new ObjectCollectionDataModel(drivers.values(),
-                        new ColumnDataModel<DatabaseDriver>("Database Name") {
+                        new ColumnDataModel<Driver>("Database Name") {
                             @Override
-                            public String value(DatabaseDriver driver) {
+                            public String value(Driver driver) {
                                 return driver.databaseName();
                             }
                         },
-                        new ColumnDataModel<DatabaseDriver>("Driver Available") {
+                        new ColumnDataModel<Driver>("Driver Available") {
                             @Override
-                            public String value(DatabaseDriver driver) {
+                            public String value(Driver driver) {
                                 return driver.isAvailable() ? "YES" : "NO";
                             }
                         },
-                        new ColumnDataModel<DatabaseDriver>("Supported Versions") {
+                        new ColumnDataModel<Driver>("Supported Versions") {
                             @Override
-                            public String value(DatabaseDriver driver) {
+                            public String value(Driver driver) {
                                 return join(driver.supportedVersions());
                             }
                         },
-                        new ColumnDataModel<DatabaseDriver>("Website") {
+                        new ColumnDataModel<Driver>("Website") {
                             @Override
-                            public String value(DatabaseDriver driver) {
+                            public String value(Driver driver) {
                                 return driver.databaseWebsite();
                             }
                         }

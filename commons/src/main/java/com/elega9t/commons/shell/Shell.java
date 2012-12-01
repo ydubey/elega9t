@@ -70,7 +70,7 @@ public class Shell {
                 history.add(line);
                 interpreter.execute(this, line);
             } catch (Exception e) {
-                LOGGER.log(Level.INFO, "Command [" + line + "] threw exception", e);
+                LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
                 outln(interpreter.getName() + ": " + e.getMessage());
                 setExitVal(1);
             }

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public interface DatabaseDriver {
+public interface Driver {
 
     String databaseName();
 
@@ -23,6 +23,6 @@ public interface DatabaseDriver {
 
     boolean isAvailable();
 
-    DatabaseConnection createConnection(String userName, String password) throws SQLException;
+    Connection createConnection(String userName, String password) throws SQLException;
 
 }

@@ -13,7 +13,7 @@ import com.elega9t.commons.shell.intrprtr.CommandNotFoundException;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.shell.intrprtr.cmd.HistoryCommand;
-import com.elega9t.elixir.DatabaseConnection;
+import com.elega9t.elixir.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,9 +21,9 @@ import java.sql.SQLException;
 public class SqlInterpreter extends Interpreter {
 
     private static final ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(Border.SINGLE);
-    private final DatabaseConnection connection;
+    private final Connection connection;
 
-    public SqlInterpreter(DatabaseConnection connection) throws InstantiationException, IllegalAccessException {
+    public SqlInterpreter(Connection connection) throws InstantiationException, IllegalAccessException {
         super("sql");
         this.connection = connection;
         addCommand(ExitCommand.class, HistoryCommand.class);
