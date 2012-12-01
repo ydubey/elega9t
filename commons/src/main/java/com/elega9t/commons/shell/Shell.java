@@ -1,5 +1,6 @@
 package com.elega9t.commons.shell;
 
+import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.util.ReplacementProvider;
@@ -69,7 +70,7 @@ public class Shell {
                 history.add(line);
                 interpreter.execute(this, line);
             } catch (Exception e) {
-                LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
+                LOGGER.log(Level.INFO, "Command [" + line + "] threw exception", e);
                 outln(interpreter.getName() + ": " + e.getMessage());
                 setExitVal(1);
             }
@@ -121,6 +122,16 @@ public class Shell {
 
     public String getEnvironmentProperty(EnvironmentProperty environmentProperty) {
         return environment.resolve(environment.getValue(environmentProperty.name()));
+    }
+
+    public Border getBorder() {
+        try {
+            return Border.valueOf(getEnvironmentProperty(EnvironmentProperty.BORDER));
+        } catch (IllegalArgumentException e) {
+            Border defaultBorder = Border.PLAIN;
+            environment.setProperty("BORDER", defaultBorder.name());
+            return defaultBorder;
+        }
     }
 
     public void out(Object msg) {

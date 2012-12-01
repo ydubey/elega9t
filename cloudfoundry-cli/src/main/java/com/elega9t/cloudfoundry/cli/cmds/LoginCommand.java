@@ -5,6 +5,7 @@
 
 package com.elega9t.cloudfoundry.cli.cmds;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
@@ -13,7 +14,7 @@ import org.cloudfoundry.client.lib.CloudFoundryClient;
 
 import java.net.URL;
 
-public class LoginCommand extends Command {
+public class LoginCommand extends DefaultEntity implements Command {
 
     @Parameter(index=0)
     private String name;

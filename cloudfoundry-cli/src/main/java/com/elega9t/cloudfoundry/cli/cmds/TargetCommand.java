@@ -5,6 +5,7 @@
 
 package com.elega9t.cloudfoundry.cli.cmds;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
@@ -12,7 +13,7 @@ import com.elega9t.commons.shell.intrprtr.Parameter;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class TargetCommand extends Command {
+public class TargetCommand extends DefaultEntity implements Command {
 
     // http://api.nimbus-03.cg.bskyb.com
 

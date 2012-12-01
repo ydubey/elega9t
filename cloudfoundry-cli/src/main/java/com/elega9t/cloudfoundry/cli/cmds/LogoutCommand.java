@@ -5,13 +5,14 @@
 
 package com.elega9t.cloudfoundry.cli.cmds;
 
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
 import java.net.URL;
 
-public class LogoutCommand extends Command {
+public class LogoutCommand extends DefaultEntity implements Command {
 
     public LogoutCommand() {
         super("logout");

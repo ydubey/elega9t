@@ -5,7 +5,7 @@
 
 package com.elega9t.cloudfoundry.cli.cmds;
 
-import com.elega9t.commons.renderer.Border;
+import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.renderer.ColumnDataModel;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
 import com.elega9t.commons.renderer.ObjectCollectionDataModel;
@@ -17,7 +17,7 @@ import org.cloudfoundry.client.lib.domain.CloudApplication;
 
 import java.util.List;
 
-public class AppsCommand extends Command {
+public class AppsCommand extends DefaultEntity implements Command {
 
     public AppsCommand() {
         super("apps");
@@ -27,7 +27,7 @@ public class AppsCommand extends Command {
     public int execute(Shell shell) {
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         List<CloudApplication> applications = client.getApplications();
-        ConsoleTableDataRenderer consoleTableDataRenderer = new ConsoleTableDataRenderer(Border.PLAIN);
+        ConsoleTableDataRenderer consoleTableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
         shell.outln("");
         shell.outln(consoleTableDataRenderer.render(new ObjectCollectionDataModel(applications,
                 new ColumnDataModel<CloudApplication>("Application") {

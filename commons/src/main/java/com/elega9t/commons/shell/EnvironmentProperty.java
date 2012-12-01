@@ -1,5 +1,6 @@
 package com.elega9t.commons.shell;
 
+import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 
 import java.io.File;
@@ -63,6 +64,14 @@ public enum EnvironmentProperty {
         @Override
         protected String getValue(Shell shell) {
             return "[$INTERPRETER $PWD_NAME]$";
+        }
+    },
+
+    BORDER(false) {
+        @Override
+        protected String getValue(Shell shell) {
+            final String property = shell.getEnvironmentProperty(BORDER);
+            return property == null || property.trim().length()==0 ? Border.PLAIN.name() : property;
         }
     };
 

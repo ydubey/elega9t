@@ -6,7 +6,6 @@
 package com.elega9t.elixir.cli.cmd;
 
 import com.elega9t.commons.entity.DefaultEntity;
-import com.elega9t.commons.renderer.Border;
 import com.elega9t.commons.renderer.ColumnDataModel;
 import com.elega9t.commons.renderer.ConsoleTableDataRenderer;
 import com.elega9t.commons.renderer.ObjectCollectionDataModel;
@@ -40,7 +39,7 @@ public class ListCommand extends DefaultEntity implements Command {
         switch (whatToDo) {
             case 1:
                 Map<String, DatabaseDriver> drivers = (Map<String, DatabaseDriver>) shell.getContextElement("elixir-drivers");
-                ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(Border.SINGLE);
+                ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(shell.getBorder());
                 shell.outln(renderer.render(new ObjectCollectionDataModel(drivers.values(),
                         new ColumnDataModel<DatabaseDriver>("Database Name") {
                             @Override
