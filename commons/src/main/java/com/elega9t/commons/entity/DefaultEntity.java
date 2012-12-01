@@ -35,4 +35,9 @@ public class DefaultEntity implements Entity {
         return name != null ? name.hashCode() : 0;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

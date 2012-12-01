@@ -44,4 +44,9 @@ public class DefaultUniqueEntity extends DefaultEntity implements UniqueEntity {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return getUniqueName();
+    }
+
 }
