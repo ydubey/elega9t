@@ -5,13 +5,15 @@
 
 package com.elega9t.commons.entity;
 
-public interface EntityNode extends Entity {
+public interface EntityNode<T extends EntityNode> extends Entity {
 
     int getChildCount();
 
-    void addChild(LoadableEntityNode node);
+    T getChild(int index);
 
-    boolean removeChild(LoadableEntityNode node);
+    void addChild(T node);
+
+    boolean removeChild(T node);
 
     void clear();
 

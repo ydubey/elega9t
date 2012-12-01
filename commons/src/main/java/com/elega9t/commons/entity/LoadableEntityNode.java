@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.entity;
 
-public interface LoadableEntityNode extends LoadableEntity, EntityNode {
+public interface LoadableEntityNode<T extends LoadableEntityNode> extends LoadableEntity, EntityNode<T> {
 
     void loadAll() throws EntityLoadException;
 

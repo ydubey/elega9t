@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.entity;
 
-public class DefaultLoadableEntityNode extends DefaultEntityNode implements LoadableEntityNode {
+public class DefaultLoadableEntityNode<T extends LoadableEntityNode> extends DefaultEntityNode<T> implements LoadableEntityNode<T> {
 
     public DefaultLoadableEntityNode(String name) {
         super(name);
