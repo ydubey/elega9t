@@ -8,12 +8,12 @@ package com.elega9t.elixir.cli.cmd;
 import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.renderer.table.ConsoleTableDataRenderer;
 import com.elega9t.commons.renderer.table.PropertiesDataModel;
+import com.elega9t.commons.renderer.tree.ConsoleTreeRenderer;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.Connection;
 
-import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +26,7 @@ public class ConnectionCommand extends DefaultEntity implements Command {
         operations.put("client", 2);
         operations.put("warnings", 3);
         operations.put("autocommit", 4);
+        operations.put("tree", 5);
     }
 
     @Parameter(index=0)
@@ -36,7 +37,7 @@ public class ConnectionCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws SQLException {
+    public int execute(Shell shell) throws Exception {
         Connection connection = (Connection) shell.getContextElement("connection");
         if(connection != null) {
             Integer whatToDo = operations.get(what.toLowerCase());
@@ -45,8 +46,8 @@ public class ConnectionCommand extends DefaultEntity implements Command {
                     shell.outln(connection.getCatalog());
                     break;
                 case 2:
-                    ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(shell.getBorder());
-                    shell.outln(renderer.render(new PropertiesDataModel(connection.getClientInfo())));
+                    ConsoleTableDataRenderer tableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
+                    shell.outln(tableDataRenderer.render(new PropertiesDataModel(connection.getClientInfo())));
                     break;
                 case 3:
                     SQLWarning warnings = connection.getWarnings();
@@ -57,6 +58,11 @@ public class ConnectionCommand extends DefaultEntity implements Command {
                     break;
                 case 4:
                     shell.outln(connection.getAutoCommit());
+                    break;
+                case 5:
+                    connection.loadAll();
+                    ConsoleTreeRenderer treeRenderer = new ConsoleTreeRenderer(shell.getBorder());
+                    shell.outln(treeRenderer.render(connection));
                     break;
             }
         } else {

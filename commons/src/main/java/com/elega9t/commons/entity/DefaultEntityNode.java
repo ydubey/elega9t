@@ -17,9 +17,6 @@ public class DefaultEntityNode<T extends EntityNode> extends DefaultEntity imple
         children = new ArrayList<T>();
     }
 
-    protected void loadChildren() {
-    }
-
     @Override
     public int getChildCount() {
         return children.size();

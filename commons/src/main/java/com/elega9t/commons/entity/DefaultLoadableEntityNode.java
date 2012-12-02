@@ -17,7 +17,15 @@ public class DefaultLoadableEntityNode<T extends LoadableEntityNode> extends Def
         loadChildren();
     }
 
-    public void load() {
+    public void load() throws EntityLoadException {
+    }
+
+    protected void loadChildren() throws EntityLoadException {
+        final int childCount = getChildCount();
+        for(int index=0; index < childCount; index++) {
+            final T child = getChild(index);
+            child.loadAll();
+        }
     }
 
 }

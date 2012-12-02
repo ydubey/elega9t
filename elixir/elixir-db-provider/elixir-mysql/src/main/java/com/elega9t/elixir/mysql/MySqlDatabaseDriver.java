@@ -7,6 +7,7 @@ package com.elega9t.elixir.mysql;
 
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
+import com.elega9t.elixir.Schemas;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -68,6 +69,7 @@ public class MySqlDatabaseDriver implements Driver {
     public Connection createConnection(String userName, String password) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/mysql";
         final Connection connection = new Connection(DriverManager.getConnection(url, userName, password), "mysql");
+        connection.addChild(new Schemas(connection));
         return connection;
     }
 
