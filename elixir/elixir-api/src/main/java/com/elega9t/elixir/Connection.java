@@ -6,14 +6,16 @@
 package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.DefaultLoadableEntityNode;
+import com.elega9t.commons.entity.EntityLoadException;
 
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 
-public class Connection extends DefaultLoadableEntityNode implements java.sql.Connection {
+public class Connection extends DefaultLoadableEntityNode<Schemas> implements java.sql.Connection {
 
     private final java.sql.Connection connection;
+    private Schemas schemas;
 
     public Connection(java.sql.Connection connection, String name) {
         super(name);
@@ -263,6 +265,17 @@ public class Connection extends DefaultLoadableEntityNode implements java.sql.Co
     @Override
     public boolean isWrapperFor(Class<?> aClass) throws SQLException {
         return connection.isWrapperFor(aClass);
+    }
+
+    @Override
+    public void load() throws EntityLoadException {
+        clear();
+        schemas = new Schemas(this);
+        addChild(schemas);
+    }
+
+    public Schemas getSchemas() {
+        return schemas;
     }
 
 }

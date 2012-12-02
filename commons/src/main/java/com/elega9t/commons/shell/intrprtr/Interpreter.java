@@ -11,6 +11,7 @@ import com.elega9t.commons.util.ReflectionUtilities;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,6 +127,10 @@ public class Interpreter extends DefaultEntity {
             }
         }
         shell.setExitVal(0);
+    }
+
+    public Collection<Class<? extends Command>> getCommands() {
+        return commands.values();
     }
 
 }

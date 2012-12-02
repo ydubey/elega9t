@@ -8,29 +8,23 @@ package com.elega9t.elixir;
 import com.elega9t.commons.entity.DefaultLoadableEntityNode;
 import com.elega9t.commons.entity.EntityLoadException;
 
-public class Schema extends DefaultLoadableEntityNode<Tables> {
+public class Table extends DefaultLoadableEntityNode {
 
-    private final Schemas schemas;
-    private Tables tables;
+    private final Tables tables;
 
-    public Schema(Schemas schemas, String name) {
+    public Table(Tables tables, String name) {
         super(name);
-        this.schemas = schemas;
+        this.tables = tables;
     }
 
     @Override
     public void load() throws EntityLoadException {
         clear();
-        tables = new Tables(this);
-        addChild(tables);
+        //addChild(new Tables(this));
     }
 
     public Connection getConnection() {
-        return schemas.getConnection();
-    }
-
-    public Tables getTables() {
-        return tables;
+        return tables.getConnection();
     }
 
 }

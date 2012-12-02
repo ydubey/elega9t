@@ -11,6 +11,10 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class HelpCommand extends DefaultEntity implements Command {
 
     @Parameter(index = 0, required = false)
@@ -26,6 +30,15 @@ public class HelpCommand extends DefaultEntity implements Command {
             shell.outln(shell.getName());
             final Interpreter interpreter = shell.getInterpreter();
             shell.outln("Using '" + interpreter.getName() + "' interpreter. Commands available under this interpreter are:");
+            List<String> commands = new ArrayList<String>();
+            for (Class<? extends Command> commandClass : interpreter.getCommands()) {
+                final Command command = commandClass.newInstance();
+                commands.add(command.getName());
+            }
+            Collections.sort(commands);
+            for (String command : commands) {
+                shell.outln(command);
+            }
         }
         return 0;
     }

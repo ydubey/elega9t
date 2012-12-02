@@ -6,13 +6,15 @@
 package com.elega9t.elixir.cli.cmd;
 
 import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.renderer.table.ColumnDataModel;
 import com.elega9t.commons.renderer.table.ConsoleTableDataRenderer;
+import com.elega9t.commons.renderer.table.EntityNodeDataModel;
 import com.elega9t.commons.renderer.table.PropertiesDataModel;
 import com.elega9t.commons.renderer.tree.ConsoleTreeRenderer;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
-import com.elega9t.elixir.Connection;
+import com.elega9t.elixir.*;
 
 import java.sql.SQLWarning;
 import java.util.HashMap;
@@ -27,6 +29,8 @@ public class ConnectionCommand extends DefaultEntity implements Command {
         operations.put("warnings", 3);
         operations.put("autocommit", 4);
         operations.put("tree", 5);
+        operations.put("schemas", 6);
+        operations.put("tables", 7);
     }
 
     @Parameter(index=0)
@@ -63,6 +67,34 @@ public class ConnectionCommand extends DefaultEntity implements Command {
                     connection.loadAll();
                     ConsoleTreeRenderer treeRenderer = new ConsoleTreeRenderer(shell.getBorder());
                     shell.outln(treeRenderer.render(connection));
+                    break;
+                case 6:
+                    connection.loadAll();
+                    final Schemas schemas = connection.getSchemas();
+                    tableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
+                    shell.outln(tableDataRenderer.render(
+                            new EntityNodeDataModel<Schema>(schemas,
+                            new ColumnDataModel<Schema>("Name") {
+                                @Override
+                                public String value(Schema schema) {
+                                    return schema.getName();
+                                }
+                            }
+                    )));
+                    break;
+                case 7:
+                    connection.loadAll();
+                    final Tables tables = connection.getSchemas().getChild(0).getTables();
+                    tableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
+                    shell.outln(tableDataRenderer.render(
+                            new EntityNodeDataModel<Table>(tables,
+                            new ColumnDataModel<Table>("Name") {
+                                @Override
+                                public String value(Table table) {
+                                    return table.getName();
+                                }
+                            }
+                    )));
                     break;
             }
         } else {

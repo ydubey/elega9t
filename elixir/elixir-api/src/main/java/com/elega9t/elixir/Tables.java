@@ -12,32 +12,31 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Schemas extends DefaultLoadableEntityNode<Schema> {
+public class Tables extends DefaultLoadableEntityNode<Table> {
 
-    private final Connection connection;
+    private final Schema schema;
 
-    public Schemas(Connection connection) {
-        super("SCHEMAS");
-        this.connection = connection;
+    public Tables(Schema schema) {
+        super("TABLES");
+        this.schema = schema;
     }
 
     @Override
     public void load() throws EntityLoadException {
+        clear();
         try {
-            final DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet resultSet = metaData.getSchemas();
+            final DatabaseMetaData metaData = getConnection().getMetaData();
+            final ResultSet resultSet = metaData.getTables(null, schema.getName(), null, null);
             while (resultSet.next()) {
-                addChild(new Schema(this, resultSet.getString("TABLE_SCHEM")));
+                addChild(new Table(this, resultSet.getString("TABLE_NAME")));
             }
-            resultSet.close();
-            addChild(new Schema(this, "%"));
         } catch (SQLException e) {
             throw new EntityLoadException(e);
         }
     }
 
     public Connection getConnection() {
-        return connection;
+        return schema.getConnection();
     }
 
 }
