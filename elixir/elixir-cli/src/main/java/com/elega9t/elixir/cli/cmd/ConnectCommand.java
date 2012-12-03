@@ -20,9 +20,9 @@ public class ConnectCommand extends DefaultEntity implements Command {
 
     @Parameter(index=0)
     private String databaseName;
-    @NamedParameter(name="user", required = true)
+    @NamedParameter(name="user", required = false)
     private String userName;
-    @NamedParameter(name="password", required = true)
+    @NamedParameter(name="password", required = false)
     private String password;
     @NamedParameter(name="port", required = false)
     private String port;
@@ -35,6 +35,12 @@ public class ConnectCommand extends DefaultEntity implements Command {
     public int execute(Shell shell) throws Exception {
         Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
         Driver driver = drivers.get(databaseName.toLowerCase());
+        if(userName == null) {
+            userName = shell.input("User Name: ");
+        }
+        if(password == null) {
+            password = shell.input("Password: ");
+        }
         final Connection connection = driver.createConnection(userName, password);
         shell.setContextElement("connection", connection);
         shell.outln("Connection successful!");

@@ -178,4 +178,14 @@ public class Shell extends DefaultEntity {
         return context.get(name);
     }
 
+    public String input(String echo) {
+        out(echo);
+        return scanner.nextLine();
+    }
+
+    public String password(String echo) {
+        out(echo);
+        return scanner.nextLine();
+    }
+
 }
