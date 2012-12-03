@@ -11,13 +11,13 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Tables extends DatabaseEntity<TableType> {
+public class TableType extends DatabaseEntity<Table> {
 
-    private final String catalogueName;
-    private final String schemaName;
+    private String catalogueName;
+    private String schemaName;
 
-    public Tables(String catalogueName, String schemaName, Connection connection) {
-        super("TABLES", connection);
+    public TableType(String catalogueName, String schemaName, String name, Connection connection) {
+        super(name, connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;
     }
@@ -27,9 +27,9 @@ public class Tables extends DatabaseEntity<TableType> {
         clear();
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
-            final ResultSet resultSet = metaData.getTableTypes();
+            final ResultSet resultSet = metaData.getTables(catalogueName, schemaName, null, new String[] { getName() });
             while (resultSet.next()) {
-                addChild(new TableType(catalogueName, schemaName, resultSet.getString("TABLE_TYPE"), getConnection()));
+                addChild(new Table(catalogueName, schemaName, resultSet.getString("TABLE_NAME"), getConnection()));
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);

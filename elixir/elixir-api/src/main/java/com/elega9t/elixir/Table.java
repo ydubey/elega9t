@@ -7,16 +7,21 @@ package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.EntityLoadException;
 
-public class Table extends DatabaseEntity {
+public class Table extends DatabaseEntity<Columns> {
 
-    public Table(String name, Connection connection) {
+    private final String catalogueName;
+    private final String schemaName;
+
+    public Table(String catalogueName, String schemaName, String name, Connection connection) {
         super(name, connection);
+        this.catalogueName = catalogueName;
+        this.schemaName = schemaName;
     }
 
     @Override
     public void load() throws EntityLoadException {
         clear();
-        //addChild(new Tables(this));
+        addChild(new Columns(catalogueName, schemaName, getName(), getConnection()));
     }
 
 }

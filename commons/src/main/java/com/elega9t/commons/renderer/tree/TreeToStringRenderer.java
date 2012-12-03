@@ -44,7 +44,7 @@ public class TreeToStringRenderer implements Renderer<EntityNode> {
             }
             rendered.append(border.getHorizontal()).append(border.getHorizontal());
         }
-        rendered.append(data.getName()).append("\n");
+        rendered.append(data.toString()).append("\n");
         final int childCount = data.getChildCount();
         for(int index=0; index< childCount; index++) {
             isLast = index == childCount - 1;
