@@ -5,26 +5,18 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.DefaultLoadableEntityNode;
 import com.elega9t.commons.entity.EntityLoadException;
 
-public class Table extends DefaultLoadableEntityNode {
+public class Table extends DatabaseEntity {
 
-    private final Tables tables;
-
-    public Table(Tables tables, String name) {
-        super(name);
-        this.tables = tables;
+    public Table(String name, Connection connection) {
+        super(name, connection);
     }
 
     @Override
     public void load() throws EntityLoadException {
         clear();
         //addChild(new Tables(this));
-    }
-
-    public Connection getConnection() {
-        return tables.getConnection();
     }
 
 }

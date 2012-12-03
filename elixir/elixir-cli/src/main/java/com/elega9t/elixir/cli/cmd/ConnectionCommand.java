@@ -6,11 +6,9 @@
 package com.elega9t.elixir.cli.cmd;
 
 import com.elega9t.commons.entity.DefaultEntity;
-import com.elega9t.commons.renderer.table.ColumnDataModel;
-import com.elega9t.commons.renderer.table.ConsoleTableDataRenderer;
-import com.elega9t.commons.renderer.table.EntityNodeDataModel;
+import com.elega9t.commons.renderer.table.TableToStringRenderer;
 import com.elega9t.commons.renderer.table.PropertiesDataModel;
-import com.elega9t.commons.renderer.tree.ConsoleTreeRenderer;
+import com.elega9t.commons.renderer.tree.TreeToStringRenderer;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
@@ -50,8 +48,8 @@ public class ConnectionCommand extends DefaultEntity implements Command {
                     shell.outln(connection.getCatalog());
                     break;
                 case 2:
-                    ConsoleTableDataRenderer tableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
-                    shell.outln(tableDataRenderer.render(new PropertiesDataModel(connection.getClientInfo())));
+                    TableToStringRenderer tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
+                    shell.outln(tableToStringRenderer.render(new PropertiesDataModel(connection.getClientInfo())));
                     break;
                 case 3:
                     SQLWarning warnings = connection.getWarnings();
@@ -65,37 +63,37 @@ public class ConnectionCommand extends DefaultEntity implements Command {
                     break;
                 case 5:
                     connection.loadAll();
-                    ConsoleTreeRenderer treeRenderer = new ConsoleTreeRenderer(shell.getBorder());
+                    TreeToStringRenderer treeRenderer = new TreeToStringRenderer(shell.getBorder());
                     shell.outln(treeRenderer.render(connection));
                     break;
-                case 6:
-                    connection.loadAll();
-                    final Schemas schemas = connection.getSchemas();
-                    tableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
-                    shell.outln(tableDataRenderer.render(
-                            new EntityNodeDataModel<Schema>(schemas,
-                            new ColumnDataModel<Schema>("Name") {
-                                @Override
-                                public String value(Schema schema) {
-                                    return schema.getName();
-                                }
-                            }
-                    )));
-                    break;
-                case 7:
-                    connection.loadAll();
-                    final Tables tables = connection.getSchemas().getChild(0).getTables();
-                    tableDataRenderer = new ConsoleTableDataRenderer(shell.getBorder());
-                    shell.outln(tableDataRenderer.render(
-                            new EntityNodeDataModel<Table>(tables,
-                            new ColumnDataModel<Table>("Name") {
-                                @Override
-                                public String value(Table table) {
-                                    return table.getName();
-                                }
-                            }
-                    )));
-                    break;
+//                case 6:
+//                    connection.loadAll();
+//                    final Schemas schemas = connection.getSchemas();
+//                    tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
+//                    shell.outln(tableToStringRenderer.render(
+//                            new EntityNodeDataModel<Schema>(schemas,
+//                            new ColumnDataModel<Schema>("Name") {
+//                                @Override
+//                                public String value(Schema schema) {
+//                                    return schema.getName();
+//                                }
+//                            }
+//                    )));
+//                    break;
+//                case 7:
+//                    connection.loadAll();
+//                    final Tables tables = connection.getSchemas().getChild(0).getTables();
+//                    tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
+//                    shell.outln(tableToStringRenderer.render(
+//                            new EntityNodeDataModel<Table>(tables,
+//                            new ColumnDataModel<Table>("Name") {
+//                                @Override
+//                                public String value(Table table) {
+//                                    return table.getName();
+//                                }
+//                            }
+//                    )));
+//                    break;
             }
         } else {
             throw new IllegalArgumentException("No database connection exists. Please connect to a database first.");

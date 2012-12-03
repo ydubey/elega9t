@@ -6,7 +6,7 @@
 package com.elega9t.elixir.cli;
 
 import com.elega9t.commons.renderer.table.Border;
-import com.elega9t.commons.renderer.table.ConsoleTableDataRenderer;
+import com.elega9t.commons.renderer.table.TableToStringRenderer;
 import com.elega9t.commons.renderer.table.ResultSetDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.CommandNotFoundException;
@@ -20,7 +20,7 @@ import java.sql.SQLException;
 
 public class SqlInterpreter extends Interpreter {
 
-    private static final ConsoleTableDataRenderer renderer = new ConsoleTableDataRenderer(Border.SINGLE);
+    private static final TableToStringRenderer RENDERER = new TableToStringRenderer(Border.SINGLE);
     private final Connection connection;
 
     public SqlInterpreter(Connection connection) throws InstantiationException, IllegalAccessException {
@@ -41,7 +41,7 @@ public class SqlInterpreter extends Interpreter {
                 long endTime = System.currentTimeMillis();
                 if(isResultSet) {
                     final ResultSetDataModel dataModel = new ResultSetDataModel(preparedStatement.getResultSet());
-                    shell.outln(renderer.render(dataModel));
+                    shell.outln(RENDERER.render(dataModel));
                     shell.out(String.format("%d row(s) selected", dataModel.rowCount()));
                 } else {
                     shell.out(String.format("%d row(s) updated", preparedStatement.getUpdateCount()));

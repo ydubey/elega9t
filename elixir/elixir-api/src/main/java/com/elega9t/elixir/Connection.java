@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 
-public class Connection extends DefaultLoadableEntityNode<Schemas> implements java.sql.Connection {
+public class Connection extends DefaultLoadableEntityNode<DatabaseEntity> implements java.sql.Connection {
 
     private final java.sql.Connection connection;
     private Schemas schemas;
@@ -265,17 +265,6 @@ public class Connection extends DefaultLoadableEntityNode<Schemas> implements ja
     @Override
     public boolean isWrapperFor(Class<?> aClass) throws SQLException {
         return connection.isWrapperFor(aClass);
-    }
-
-    @Override
-    public void load() throws EntityLoadException {
-        clear();
-        schemas = new Schemas(this);
-        addChild(schemas);
-    }
-
-    public Schemas getSchemas() {
-        return schemas;
     }
 
 }

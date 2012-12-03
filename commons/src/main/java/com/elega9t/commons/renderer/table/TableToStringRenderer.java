@@ -7,15 +7,15 @@ package com.elega9t.commons.renderer.table;
 
 import com.elega9t.commons.renderer.Renderer;
 
-public class ConsoleTableDataRenderer implements Renderer<DataModel> {
+public class TableToStringRenderer implements Renderer<DataModel> {
 
     private final Border border;
 
-    public ConsoleTableDataRenderer() {
+    public TableToStringRenderer() {
         this(Border.SINGLE);
     }
 
-    public ConsoleTableDataRenderer(Border border) {
+    public TableToStringRenderer(Border border) {
         this.border = border;
     }
 
@@ -122,7 +122,7 @@ public class ConsoleTableDataRenderer implements Renderer<DataModel> {
     }
 
     public static void main(String[] args) {
-        System.out.println(new ConsoleTableDataRenderer(Border.PLAIN).render(new DataModel() {
+        System.out.println(new TableToStringRenderer(Border.PLAIN).render(new DataModel() {
             @Override
             public int rowCount() {
                 return 5;

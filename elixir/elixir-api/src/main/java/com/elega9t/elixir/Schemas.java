@@ -5,39 +5,33 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.DefaultLoadableEntityNode;
 import com.elega9t.commons.entity.EntityLoadException;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Schemas extends DefaultLoadableEntityNode<Schema> {
+public class Schemas extends DatabaseEntity<Schema> {
 
-    private final Connection connection;
+    private String catalogueName;
 
-    public Schemas(Connection connection) {
-        super("SCHEMAS");
-        this.connection = connection;
+    public Schemas(String catalogueName, Connection connection) {
+        super("SCHEMAS", connection);
+        this.catalogueName = catalogueName;
     }
 
     @Override
     public void load() throws EntityLoadException {
         try {
-            final DatabaseMetaData metaData = connection.getMetaData();
+            final DatabaseMetaData metaData = getConnection().getMetaData();
             ResultSet resultSet = metaData.getSchemas();
             while (resultSet.next()) {
-                addChild(new Schema(this, resultSet.getString("TABLE_SCHEM")));
+                addChild(new Schema(catalogueName, resultSet.getString("TABLE_SCHEM"), getConnection()));
             }
             resultSet.close();
-            addChild(new Schema(this, "%"));
         } catch (SQLException e) {
             throw new EntityLoadException(e);
         }
-    }
-
-    public Connection getConnection() {
-        return connection;
     }
 
 }

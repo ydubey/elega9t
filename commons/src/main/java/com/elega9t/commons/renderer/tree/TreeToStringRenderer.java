@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsoleTreeRenderer implements Renderer<EntityNode> {
+public class TreeToStringRenderer implements Renderer<EntityNode> {
 
     private final Border border;
 
-    public ConsoleTreeRenderer(Border border) {
+    public TreeToStringRenderer(Border border) {
         this.border = border;
     }
 
@@ -57,7 +57,7 @@ public class ConsoleTreeRenderer implements Renderer<EntityNode> {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(new ConsoleTreeRenderer(Border.SINGLE).render(new FolderEntityNode()));
+        System.out.println(new TreeToStringRenderer(Border.SINGLE).render(new FolderEntityNode()));
     }
 
 }

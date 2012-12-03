@@ -5,20 +5,21 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.DefaultLoadableEntityNode;
 import com.elega9t.commons.entity.EntityLoadException;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Tables extends DefaultLoadableEntityNode<Table> {
+public class Tables extends DatabaseEntity<Table> {
 
-    private final Schema schema;
+    private final String catalogueName;
+    private final String schemaName;
 
-    public Tables(Schema schema) {
-        super("TABLES");
-        this.schema = schema;
+    public Tables(String catalogueName, String schemaName, Connection connection) {
+        super("TABLES", connection);
+        this.catalogueName = catalogueName;
+        this.schemaName = schemaName;
     }
 
     @Override
@@ -26,17 +27,13 @@ public class Tables extends DefaultLoadableEntityNode<Table> {
         clear();
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
-            final ResultSet resultSet = metaData.getTables(null, schema.getName(), null, null);
+            final ResultSet resultSet = metaData.getTables(catalogueName, schemaName, null, null);
             while (resultSet.next()) {
-                addChild(new Table(this, resultSet.getString("TABLE_NAME")));
+                addChild(new Table(resultSet.getString("TABLE_NAME"), getConnection()));
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);
         }
-    }
-
-    public Connection getConnection() {
-        return schema.getConnection();
     }
 
 }
