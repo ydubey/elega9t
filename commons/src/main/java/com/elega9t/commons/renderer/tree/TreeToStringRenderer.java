@@ -5,11 +5,14 @@
 
 package com.elega9t.commons.renderer.tree;
 
+import com.elega9t.commons.entity.EntityLoadException;
 import com.elega9t.commons.entity.EntityNode;
 import com.elega9t.commons.renderer.Renderer;
 import com.elega9t.commons.renderer.table.Border;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,28 +26,38 @@ public class TreeToStringRenderer implements Renderer<EntityNode> {
 
     @Override
     public String render(EntityNode data) {
-        StringBuilder rendered = new StringBuilder();
-        render(rendered, data, 0, false, new ArrayList<Integer>());
-        return rendered.toString();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(byteArrayOutputStream);
+        render(data, out);
+        return new String(byteArrayOutputStream.toByteArray());
     }
 
-    protected void render(StringBuilder rendered, EntityNode data, int level, boolean isLast, List<Integer> parentLevelsNotTerminated) {
+    @Override
+    public void render(EntityNode data, PrintStream out) {
+        render(data, out, 0, false, new ArrayList<Integer>());
+    }
+
+    protected void render(EntityNode data, PrintStream out, int level, boolean isLast, List<Integer> parentLevelsNotTerminated) {
         for(int index=0; index<level; index++) {
             final char space = border.getSpace();
-            rendered.append(space).append(space).append(space);
+            out.print(space);
+            out.print(space);
+            out.print(space);
             if(index != level - 1 && parentLevelsNotTerminated.contains(index)) {
-                rendered.append(border.getVertical());
+                out.print(border.getVertical());
             }
         }
         if(level > 0) {
             if(isLast) {
-                rendered.append(border.getBottomLeft());
+                out.print(border.getBottomLeft());
             } else {
-                rendered.append(border.getRowSeparatorStart());
+                out.print(border.getRowSeparatorStart());
             }
-            rendered.append(border.getHorizontal()).append(border.getHorizontal());
+            out.print(border.getHorizontal());
+            out.print(border.getHorizontal());
         }
-        rendered.append(data.toString()).append("\n");
+        out.print(data.toString());
+        out.println();
         final int childCount = data.getChildCount();
         for(int index=0; index< childCount; index++) {
             isLast = index == childCount - 1;
@@ -52,12 +65,12 @@ public class TreeToStringRenderer implements Renderer<EntityNode> {
             if(!isLast) {
                 parentLevels.add(level);
             }
-            render(rendered, data.getChild(index), level + 1, isLast, parentLevels);
+            render(data.getChild(index), out, level + 1, isLast, parentLevels);
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        System.out.println(new TreeToStringRenderer(Border.SINGLE).render(new FolderEntityNode()));
+    public static void main(String[] args) throws IOException, EntityLoadException {
+        new TreeToStringRenderer(Border.SINGLE).render(new FolderEntityNode(), System.out);
     }
 
 }

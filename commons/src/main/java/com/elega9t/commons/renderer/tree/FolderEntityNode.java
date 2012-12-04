@@ -5,26 +5,39 @@
 
 package com.elega9t.commons.renderer.tree;
 
-import com.elega9t.commons.entity.DefaultEntityNode;
+import com.elega9t.commons.entity.DefaultLazyLoadEntityNode;
+import com.elega9t.commons.entity.EntityLoadException;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FolderEntityNode extends DefaultEntityNode<FolderEntityNode> {
+public class FolderEntityNode extends DefaultLazyLoadEntityNode<FolderEntityNode> {
 
-    public FolderEntityNode() throws IOException {
+    private File file;
+
+    public FolderEntityNode() throws IOException, EntityLoadException {
         this(new File("."));
     }
 
-    public FolderEntityNode(String file) throws IOException {
+    public FolderEntityNode(String file) throws IOException, EntityLoadException {
         this(new File(file));
     }
 
-    public FolderEntityNode(File file) throws IOException {
+    public FolderEntityNode(File file) throws IOException, EntityLoadException {
         super(file.getCanonicalFile().getName());
+        this.file = file;
+    }
+
+    @Override
+    protected void loadChildren() throws EntityLoadException {
+        super.loadChildren();
         if(file.isDirectory()) {
             for (File child : file.listFiles()) {
-                addChild(new FolderEntityNode(child));
+                try {
+                    addChild(new FolderEntityNode(child));
+                } catch (IOException e) {
+                    throw new EntityLoadException(e);
+                }
             }
         }
     }

@@ -5,8 +5,12 @@
 
 package com.elega9t.commons.renderer;
 
+import java.io.PrintStream;
+
 public interface Renderer<T> {
 
-    public String render(T data);
+    String render(T data);
+
+    void render(T data, PrintStream out);
 
 }

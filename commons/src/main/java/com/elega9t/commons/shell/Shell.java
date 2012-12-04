@@ -10,6 +10,7 @@ import org.fusesource.jansi.AnsiConsole;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -36,11 +37,14 @@ public class Shell extends DefaultEntity {
 
     private ConcurrentHashMap<String, Object> context = new ConcurrentHashMap<String, Object>();
 
+    public PrintStream out;
+
     public Shell(@NotNull Interpreter interpreter) {
         super("Elega9t Shell, v1.0.0");
         EnvironmentProperty.init(this);
         interpreterStack.push(interpreter);
         scanner = new Scanner(System.in);
+        this.out = AnsiConsole.out;
     }
 
     public Interpreter getInterpreter() {
@@ -137,13 +141,13 @@ public class Shell extends DefaultEntity {
     }
 
     public void out(Object msg) {
-        AnsiConsole.out.print(msg);
-        AnsiConsole.out().flush();
+        out.print(msg);
+        out.flush();
     }
 
     public void outln(Object msg) {
-        AnsiConsole.out.println(msg);
-        AnsiConsole.out().flush();
+        out.println(msg);
+        out.flush();
     }
 
     public void error(Throwable t) {

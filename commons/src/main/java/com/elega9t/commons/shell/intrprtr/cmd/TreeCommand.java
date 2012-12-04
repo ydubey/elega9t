@@ -6,6 +6,7 @@
 package com.elega9t.commons.shell.intrprtr.cmd;
 
 import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.EntityLoadException;
 import com.elega9t.commons.renderer.tree.TreeToStringRenderer;
 import com.elega9t.commons.renderer.tree.FolderEntityNode;
 import com.elega9t.commons.shell.EnvironmentProperty;
@@ -21,9 +22,9 @@ public class TreeCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws IOException {
+    public int execute(Shell shell) throws IOException, EntityLoadException {
         TreeToStringRenderer renderer = new TreeToStringRenderer(shell.getBorder());
-        shell.outln(renderer.render(new FolderEntityNode(shell.getEnvironmentProperty(EnvironmentProperty.PWD))));
+        renderer.render(new FolderEntityNode(shell.getEnvironmentProperty(EnvironmentProperty.PWD)), shell.out);
         return 0;
     }
 

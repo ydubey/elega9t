@@ -7,6 +7,9 @@ package com.elega9t.commons.renderer.table;
 
 import com.elega9t.commons.renderer.Renderer;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class TableToStringRenderer implements Renderer<DataModel> {
 
     private final Border border;
@@ -20,102 +23,116 @@ public class TableToStringRenderer implements Renderer<DataModel> {
     }
 
     @Override
-    public String render(DataModel dataModel) {
-        StringBuilder rendered = new StringBuilder();
+    public String render(DataModel data) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(byteArrayOutputStream);
+        render(data, out);
+        return new String(byteArrayOutputStream.toByteArray());
+    }
+
+    @Override
+    public void render(DataModel data, PrintStream out) {
         // compute max column sizes
-        int[] maxSize = new int[dataModel.columnCount()];
+        int[] maxSize = new int[data.columnCount()];
         for (int index=0; index<maxSize.length; index++) {
-            maxSize[index] = dataModel.columnName(index).length();
+            maxSize[index] = data.columnName(index).length();
         }
-        for (int row=0; row< dataModel.rowCount(); row++) {
+        for (int row=0; row< data.rowCount(); row++) {
             for(int column=0; column<maxSize.length; column++) {
-                if(maxSize[column] < dataModel.value(row, column).length()) {
-                    maxSize[column] = dataModel.value(row, column).length();
+                if(maxSize[column] < data.value(row, column).length()) {
+                    maxSize[column] = data.value(row, column).length();
                 }
             }
         }
 
         // render header
-        renderHeader(rendered, dataModel, maxSize, border);
-        renderData(rendered, dataModel, maxSize, border);
-
-        return rendered.toString();
+        renderHeader(data, out, maxSize, border);
+        renderData(data, out, maxSize, border);
     }
 
-    private void repeat(StringBuilder rendered, char character, int count) {
+    private void repeat(PrintStream out, char character, int count) {
         for(int i=0; i<count; i++) {
-            rendered.append(character);
+            out.print(character);
         }
     }
 
-    private void renderHeader(StringBuilder rendered, DataModel dataModel, int[] maxSize, Border border) {
-        rendered.append(border.getTopLeft()).append(border.getHorizontal());
+    private void renderHeader(DataModel data, PrintStream out, int[] maxSize, Border border) {
+        out.print(border.getTopLeft());
+        out.print(border.getHorizontal());
         for (int column=0; column<maxSize.length; column++) {
-            repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
+            repeat(out, border.getHorizontal(), maxSize[column] + 1);
             if(column < maxSize.length -1) {
-                rendered.append(border.getColumnSeparatorStart()).append(border.getHorizontal());
+                out.print(border.getColumnSeparatorStart());
+                out.print(border.getHorizontal());
             } else {
-                rendered.append(border.getTopRight());
+                out.print(border.getTopRight());
             }
         }
-        rendered.append("\n");
-        rendered.append(border.getVertical()).append(border.getSpace());
+        out.println();
+        out.print(border.getVertical());
+        out.print(border.getSpace());
         for (int column=0; column<maxSize.length; column++) {
-            final String columnName = dataModel.columnName(column);
-            rendered.append(columnName).append(border.getSpace());
-            repeat(rendered, border.getSpace(), maxSize[column] - columnName.length());
+            final String columnName = data.columnName(column);
+            out.print(columnName);
+            out.print(border.getSpace());
+            repeat(out, border.getSpace(), maxSize[column] - columnName.length());
             if(column < maxSize.length -1) {
-                rendered.append(border.getVertical()).append(border.getSpace());
+                out.print(border.getVertical());
+                out.print(border.getSpace());
             } else {
-                rendered.append(border.getVertical());
+                out.print(border.getVertical());
             }
         }
-        rendered.append("\n");
-        if(dataModel.rowCount() > 0) {
-            rendered.append(border.getRowSeparatorStart());
+        out.print("\n");
+        if(data.rowCount() > 0) {
+            out.print(border.getRowSeparatorStart());
         } else {
-            rendered.append(border.getBottomLeft());
+            out.print(border.getBottomLeft());
         }
-        rendered.append(border.getHorizontal());
+        out.print(border.getHorizontal());
         for (int column=0; column<maxSize.length; column++) {
-            repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
+            repeat(out, border.getHorizontal(), maxSize[column] + 1);
             if(column < maxSize.length -1) {
-                if(dataModel.rowCount() > 0) {
-                    rendered.append(border.getRowColumnJunction());
+                if(data.rowCount() > 0) {
+                    out.print(border.getRowColumnJunction());
                 } else {
-                    rendered.append(border.getColumnSeparatorEnd());
+                    out.print(border.getColumnSeparatorEnd());
                 }
-                rendered.append(border.getHorizontal());
+                out.print(border.getHorizontal());
             } else {
-                if(dataModel.rowCount() > 0) {
-                    rendered.append(border.getRowSeparatorEnd());
+                if(data.rowCount() > 0) {
+                    out.print(border.getRowSeparatorEnd());
                 } else {
-                    rendered.append(border.getBottomRight());
+                    out.print(border.getBottomRight());
                 }
             }
         }
-        rendered.append("\n");
+        out.print("\n");
     }
 
-    private void renderData(StringBuilder rendered, DataModel dataModel, int[] maxSize, Border border) {
-        if(dataModel.rowCount() > 0) {
-            for(int row = 0; row < dataModel.rowCount(); row++) {
+    private void renderData(DataModel data, PrintStream out, int[] maxSize, Border border) {
+        if(data.rowCount() > 0) {
+            for(int row = 0; row < data.rowCount(); row++) {
                 for(int column=0; column < maxSize.length; column++) {
-                    rendered.append(border.getVertical()).append(border.getSpace());
-                    final String value = dataModel.value(row, column);
-                    rendered.append(value).append(border.getSpace());
-                    repeat(rendered, border.getSpace(), maxSize[column] - value.length());
+                    out.print(border.getVertical());
+                    out.print(border.getSpace());
+                    final String value = data.value(row, column);
+                    out.print(value);
+                    out.print(border.getSpace());
+                    repeat(out, border.getSpace(), maxSize[column] - value.length());
                 }
-                rendered.append(border.getVertical());
-                rendered.append("\n");
+                out.print(border.getVertical());
+                out.print("\n");
             }
-            rendered.append(border.getBottomLeft()).append(border.getHorizontal());
+            out.print(border.getBottomLeft());
+            out.print(border.getHorizontal());
             for (int column=0; column<maxSize.length; column++) {
-                repeat(rendered, border.getHorizontal(), maxSize[column] + 1);
+                repeat(out, border.getHorizontal(), maxSize[column] + 1);
                 if(column < maxSize.length -1) {
-                    rendered.append(border.getColumnSeparatorEnd()).append(border.getHorizontal());
+                    out.print(border.getColumnSeparatorEnd());
+                    out.print(border.getHorizontal());
                 } else {
-                    rendered.append(border.getBottomRight());
+                    out.print(border.getBottomRight());
                 }
             }
         }
