@@ -36,10 +36,12 @@ public class ConnectCommand extends DefaultEntity implements Command {
         Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
         Driver driver = drivers.get(databaseName.toLowerCase());
         if(userName == null) {
-            userName = shell.input("User Name: ");
+            shell.out.print("User Name: ");
+            userName = shell.in.readLine();
         }
         if(password == null) {
-            password = shell.input("Password: ");
+            shell.out.print("Password: ");
+            password = shell.in.readLine();
         }
         final Connection connection = driver.createConnection(userName, password);
         shell.setContextElement("connection", connection);

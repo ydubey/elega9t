@@ -6,10 +6,11 @@ import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.util.ReplacementProvider;
 import com.elega9t.commons.util.StringUtilities;
-import org.fusesource.jansi.AnsiConsole;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +39,15 @@ public class Shell extends DefaultEntity {
     private ConcurrentHashMap<String, Object> context = new ConcurrentHashMap<String, Object>();
 
     public PrintStream out;
+    public BufferedReader in;
 
     public Shell(@NotNull Interpreter interpreter) {
         super("Elega9t Shell, v1.0.0");
         EnvironmentProperty.init(this);
         interpreterStack.push(interpreter);
         scanner = new Scanner(System.in);
-        this.out = AnsiConsole.out;
+        this.out = System.out;
+        this.in = new BufferedReader(new InputStreamReader(System.in));
     }
 
     public Interpreter getInterpreter() {
@@ -180,16 +183,6 @@ public class Shell extends DefaultEntity {
 
     public Object getContextElement(String name) {
         return context.get(name);
-    }
-
-    public String input(String echo) {
-        out(echo);
-        return scanner.nextLine();
-    }
-
-    public String password(String echo) {
-        out(echo);
-        return scanner.nextLine();
     }
 
 }
