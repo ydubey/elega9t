@@ -12,15 +12,15 @@ public class Table extends DatabaseEntity<Columns> {
     private final String catalogueName;
     private final String schemaName;
 
-    public Table(String catalogueName, String schemaName, String name, Connection connection) {
+    public Table(String catalogueName, String schemaName, String name, Connection connection) throws EntityLoadException {
         super(name, connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;
     }
 
     @Override
-    public void load() throws EntityLoadException {
-        clear();
+    protected void loadChildren() throws EntityLoadException {
+        super.loadChildren();
         addChild(new Columns(catalogueName, schemaName, getName(), getConnection()));
     }
 

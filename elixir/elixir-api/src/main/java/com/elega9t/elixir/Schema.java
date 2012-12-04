@@ -7,19 +7,31 @@ package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.EntityLoadException;
 
-public class Schema extends DatabaseEntity<Tables> {
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Schema extends DatabaseEntity<TableType> {
 
     private String catalogueName;
 
-    public Schema(String catalogueName, String name, Connection connection) {
+    public Schema(String catalogueName, String name, Connection connection) throws EntityLoadException {
         super(name, connection);
         this.catalogueName = catalogueName;
     }
 
     @Override
-    public void load() throws EntityLoadException {
-        clear();
-        addChild(new Tables(catalogueName, getName(), getConnection()));
+    protected void loadChildren() throws EntityLoadException {
+        super.loadChildren();
+        try {
+            final DatabaseMetaData metaData = getConnection().getMetaData();
+            final ResultSet resultSet = metaData.getTableTypes();
+            while (resultSet.next()) {
+                addChild(new TableType(catalogueName, getName(), resultSet.getString("TABLE_TYPE"), getConnection()));
+            }
+        } catch (SQLException e) {
+            throw new EntityLoadException(e);
+        }
     }
 
 }

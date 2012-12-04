@@ -5,13 +5,14 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.DefaultLoadableEntityNode;
+import com.elega9t.commons.entity.DefaultLazyLoadEntityNode;
+import com.elega9t.commons.entity.EntityLoadException;
 
-public class DatabaseEntity<T extends DatabaseEntity> extends DefaultLoadableEntityNode<T> {
+public class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityNode<T> {
 
     private final Connection connection;
 
-    public DatabaseEntity(String name, Connection connection) {
+    public DatabaseEntity(String name, Connection connection) throws EntityLoadException {
         super(name);
         this.connection = connection;
     }

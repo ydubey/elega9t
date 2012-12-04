@@ -16,15 +16,15 @@ public class Tables extends DatabaseEntity<TableType> {
     private final String catalogueName;
     private final String schemaName;
 
-    public Tables(String catalogueName, String schemaName, Connection connection) {
+    public Tables(String catalogueName, String schemaName, Connection connection) throws EntityLoadException {
         super("TABLES", connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;
     }
 
     @Override
-    public void load() throws EntityLoadException {
-        clear();
+    protected void loadChildren() throws EntityLoadException {
+        super.loadChildren();
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getTableTypes();

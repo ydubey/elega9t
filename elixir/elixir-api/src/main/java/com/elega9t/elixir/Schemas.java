@@ -15,13 +15,14 @@ public class Schemas extends DatabaseEntity<Schema> {
 
     private String catalogueName;
 
-    public Schemas(String catalogueName, Connection connection) {
+    public Schemas(String catalogueName, Connection connection) throws EntityLoadException {
         super("SCHEMAS", connection);
         this.catalogueName = catalogueName;
     }
 
     @Override
-    public void load() throws EntityLoadException {
+    protected void loadChildren() throws EntityLoadException {
+        super.loadChildren();
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             ResultSet resultSet = metaData.getSchemas();

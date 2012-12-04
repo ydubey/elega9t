@@ -21,7 +21,7 @@ public class Column extends DatabaseEntity<Columns> {
     private final String defaultValue;
     private final String autoIncrement;
 
-    public Column(String catalogueName, String schemaName, String tableName, String name, int dataType, String typeName, int size, int decimalDigits, int radix, int nullable, String defaultValue, String isAutoIncrement, Connection connection) {
+    public Column(String catalogueName, String schemaName, String tableName, String name, int dataType, String typeName, int size, int decimalDigits, int radix, int nullable, String defaultValue, String isAutoIncrement, Connection connection) throws EntityLoadException {
         super(name, connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;

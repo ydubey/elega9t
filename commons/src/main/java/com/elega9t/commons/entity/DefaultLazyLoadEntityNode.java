@@ -18,6 +18,7 @@ public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends Def
     }
 
     protected void loadChildren() throws EntityLoadException {
+        clear();
         childrenLoaded = true;
     }
 

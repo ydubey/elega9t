@@ -17,7 +17,7 @@ public class Columns extends DatabaseEntity<Column> {
     private final String schemaName;
     private final String tableName;
 
-    public Columns(String catalogueName, String schemaName, String tableName, Connection connection) {
+    public Columns(String catalogueName, String schemaName, String tableName, Connection connection) throws EntityLoadException {
         super("COLUMNS", connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;
@@ -25,8 +25,8 @@ public class Columns extends DatabaseEntity<Column> {
     }
 
     @Override
-    public void load() throws EntityLoadException {
-        clear();
+    protected void loadChildren() throws EntityLoadException {
+        super.loadChildren();
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getColumns(catalogueName, schemaName, tableName, null);
