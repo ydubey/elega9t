@@ -32,11 +32,14 @@ public class FolderEntityNode extends DefaultLazyLoadEntityNode<FolderEntityNode
     protected void loadChildren() throws EntityLoadException {
         super.loadChildren();
         if(file.isDirectory()) {
-            for (File child : file.listFiles()) {
-                try {
-                    addChild(new FolderEntityNode(child));
-                } catch (IOException e) {
-                    throw new EntityLoadException(e);
+            final File[] files = file.listFiles();
+            if(files != null) {
+                for (File child : files) {
+                    try {
+                        addChild(new FolderEntityNode(child));
+                    } catch (IOException e) {
+                        throw new EntityLoadException(e);
+                    }
                 }
             }
         }

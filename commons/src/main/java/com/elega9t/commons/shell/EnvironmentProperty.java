@@ -9,7 +9,7 @@ import java.util.Date;
 
 public enum EnvironmentProperty {
 
-    INTERPRETER() {
+    INTERPRETER("elega9t.shell.interpreter") {
         @Override
         protected String getValue(Shell shell) {
             Interpreter interpreter = shell.getInterpreter();
@@ -21,7 +21,7 @@ public enum EnvironmentProperty {
         }
     },
 
-    PWD() {
+    PWD("elega9t.pwd") {
         @Override
         protected String getValue(Shell shell) {
             try {
@@ -32,7 +32,7 @@ public enum EnvironmentProperty {
         }
     },
 
-    PWD_NAME() {
+    PWD_NAME("elega9t.pwd.name") {
         @Override
         protected String getValue(Shell shell) {
             return new File(PWD.getValue(shell)).getName();
@@ -46,28 +46,28 @@ public enum EnvironmentProperty {
         }
     },
 
-    DATE() {
+    DATE("elega9t.date") {
         @Override
         protected String getValue(Shell shell) {
             return new Date().toString();
         }
     },
 
-    TIME() {
+    TIME("elega9t.time") {
         @Override
         protected String getValue(Shell shell) {
             return System.currentTimeMillis() + "";
         }
     },
 
-    PROMPT(false) {
+    PROMPT("elega9t.prompt", false) {
         @Override
         protected String getValue(Shell shell) {
-            return "[$INTERPRETER $PWD_NAME]$";
+            return "[$elega9t.shell.interpreter $elega9t.pwd.name]$";
         }
     },
 
-    BORDER(false) {
+    BORDER("elega9t.border", false) {
         @Override
         protected String getValue(Shell shell) {
             final String property = shell.getEnvironmentProperty(BORDER);

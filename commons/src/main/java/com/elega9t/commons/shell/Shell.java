@@ -81,6 +81,7 @@ public class Shell extends DefaultEntity {
             } catch (Exception e) {
                 LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
                 out.println(interpreter.getName() + ": " + e.getMessage());
+                e.printStackTrace(out);
                 setExitVal(1);
             }
         } while(interpreter != null);
@@ -130,7 +131,7 @@ public class Shell extends DefaultEntity {
     }
 
     public String getEnvironmentProperty(EnvironmentProperty environmentProperty) {
-        return environment.resolve(environment.getValue(environmentProperty.name()));
+        return environment.resolve(environment.getValue(environmentProperty.getName()));
     }
 
     public Border getBorder() {
