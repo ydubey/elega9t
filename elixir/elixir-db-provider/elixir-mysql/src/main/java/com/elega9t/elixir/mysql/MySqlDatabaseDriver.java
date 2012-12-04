@@ -8,8 +8,7 @@ package com.elega9t.elixir.mysql;
 import com.elega9t.commons.entity.EntityLoadException;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
-import com.elega9t.elixir.TableType;
-import com.elega9t.elixir.Tables;
+import com.elega9t.elixir.TableTypes;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -72,10 +71,10 @@ public class MySqlDatabaseDriver implements Driver {
         String url = "jdbc:mysql://localhost:3306/mysql";
         final Connection connection = new Connection(DriverManager.getConnection(url, userName, password), "mysql");
         try {
-            Tables tables = new Tables(connection.getCatalog(), "%", connection);
-            int tableTypesCount = tables.getChildCount();
+            TableTypes tableTypes = new TableTypes(connection.getCatalog(), "%", connection);
+            int tableTypesCount = tableTypes.getChildCount();
             for(int index=0; index< tableTypesCount; index++) {
-                connection.addChild(tables.getChild(index));
+                connection.addChild(tableTypes.getChild(index));
             }
             connection.loadAll();
         } catch (EntityLoadException e) {

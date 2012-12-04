@@ -11,12 +11,12 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Tables extends DatabaseEntity<TableType> {
+public class TableTypes extends DatabaseEntity<TableType> {
 
     private final String catalogueName;
     private final String schemaName;
 
-    public Tables(String catalogueName, String schemaName, Connection connection) throws EntityLoadException {
+    public TableTypes(String catalogueName, String schemaName, Connection connection) throws EntityLoadException {
         super("TABLES", connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;

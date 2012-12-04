@@ -82,7 +82,7 @@ public class ConnectionCommand extends DefaultEntity implements Command {
 //                    break;
 //                case 7:
 //                    connection.loadAll();
-//                    final Tables tables = connection.getSchemas().getChild(0).getTables();
+//                    final TableTypes tables = connection.getSchemas().getChild(0).getTables();
 //                    tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
 //                    shell.outln(tableToStringRenderer.render(
 //                            new EntityNodeDataModel<Table>(tables,
