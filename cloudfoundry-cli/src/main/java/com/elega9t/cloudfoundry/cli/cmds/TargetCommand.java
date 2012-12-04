@@ -10,6 +10,8 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -25,12 +27,12 @@ public class TargetCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         try {
             shell.setContextElement("cloudfoundry-target", new URL(url));
-            shell.outln("Successfully targeted to [" + url + "]");
+            out.println("Successfully targeted to [" + url + "]");
         } catch (MalformedURLException e) {
-            shell.error(e);
+            out.println(shell.getInterpreter().getName() + ": " + e.getMessage());
             return 1;
         }
         return 0;

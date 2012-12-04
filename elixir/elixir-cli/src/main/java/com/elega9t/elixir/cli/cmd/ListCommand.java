@@ -14,6 +14,8 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.Driver;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,13 +36,13 @@ public class ListCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         Integer whatToDo = operations.get(what.toLowerCase());
         switch (whatToDo) {
             case 1:
                 Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
                 TableToStringRenderer renderer = new TableToStringRenderer(shell.getBorder());
-                shell.outln(renderer.render(new ObjectCollectionDataModel(drivers.values(),
+                out.println(renderer.render(new ObjectCollectionDataModel(drivers.values(),
                         new ColumnDataModel<Driver>("Database Name") {
                             @Override
                             public String value(Driver driver) {

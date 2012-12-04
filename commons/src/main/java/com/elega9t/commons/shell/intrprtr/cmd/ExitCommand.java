@@ -4,6 +4,9 @@ import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class ExitCommand extends DefaultEntity implements Command {
 
     public ExitCommand() {
@@ -11,7 +14,7 @@ public class ExitCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         shell.nextInterpreter();
         return 0;
     }

@@ -11,6 +11,9 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.cli.SqlInterpreter;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class SqlCommand extends DefaultEntity implements Command {
 
     public SqlCommand() {
@@ -18,7 +21,7 @@ public class SqlCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws Exception {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
         Connection connection = (Connection) shell.getContextElement("connection");
         if(connection != null) {
             shell.switchInterpreter(new SqlInterpreter(connection));

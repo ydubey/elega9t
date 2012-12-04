@@ -14,6 +14,8 @@ import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.cli.SqlInterpreter;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.util.Map;
 
 public class ConnectCommand extends DefaultEntity implements Command {
@@ -32,20 +34,20 @@ public class ConnectCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws Exception {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
         Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
         Driver driver = drivers.get(databaseName.toLowerCase());
         if(userName == null) {
-            shell.out.print("User Name: ");
-            userName = shell.in.readLine();
+            out.print("User Name: ");
+            userName = in.readLine();
         }
         if(password == null) {
-            shell.out.print("Password: ");
-            password = shell.in.readLine();
+            out.print("Password: ");
+            password = in.readLine();
         }
         final Connection connection = driver.createConnection(userName, password);
         shell.setContextElement("connection", connection);
-        shell.outln("Connection successful!");
+        out.println("Connection successful!");
         shell.switchInterpreter(new SqlInterpreter(connection));
         return 0;
     }

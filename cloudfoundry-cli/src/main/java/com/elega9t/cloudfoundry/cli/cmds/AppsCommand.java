@@ -15,6 +15,8 @@ import com.elega9t.commons.util.StringUtilities;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 import org.cloudfoundry.client.lib.domain.CloudApplication;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.util.List;
 
 public class AppsCommand extends DefaultEntity implements Command {
@@ -24,12 +26,12 @@ public class AppsCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         List<CloudApplication> applications = client.getApplications();
         TableToStringRenderer tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
-        shell.outln("");
-        shell.outln(tableToStringRenderer.render(new ObjectCollectionDataModel(applications,
+        out.println("");
+        out.println(tableToStringRenderer.render(new ObjectCollectionDataModel(applications,
                 new ColumnDataModel<CloudApplication>("Application") {
                     @Override
                     public String value(CloudApplication application) {

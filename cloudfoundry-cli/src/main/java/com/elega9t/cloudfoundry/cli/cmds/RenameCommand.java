@@ -11,6 +11,9 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class RenameCommand extends DefaultEntity implements Command {
 
     @Parameter(index=0)
@@ -24,7 +27,7 @@ public class RenameCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         if(client == null) {
             throw new IllegalStateException("You haven't logged in to cloudfoundry yet.");

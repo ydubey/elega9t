@@ -14,6 +14,8 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.*;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.sql.SQLWarning;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,38 +41,38 @@ public class ConnectionCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws Exception {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
         Connection connection = (Connection) shell.getContextElement("connection");
         if(connection != null) {
             Integer whatToDo = operations.get(what.toLowerCase());
             switch (whatToDo) {
                 case 1:
-                    shell.outln(connection.getCatalog());
+                    out.println(connection.getCatalog());
                     break;
                 case 2:
                     TableToStringRenderer tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
-                    shell.outln(tableToStringRenderer.render(new PropertiesDataModel(connection.getClientInfo())));
+                    out.println(tableToStringRenderer.render(new PropertiesDataModel(connection.getClientInfo())));
                     break;
                 case 3:
                     SQLWarning warnings = connection.getWarnings();
                     while(warnings != null) {
-                        shell.outln("Code:" + warnings.getErrorCode() + ": " + warnings.getMessage());
+                        out.println("Code:" + warnings.getErrorCode() + ": " + warnings.getMessage());
                         warnings = warnings.getNextWarning();
                     }
                     break;
                 case 4:
-                    shell.outln(connection.getAutoCommit());
+                    out.println(connection.getAutoCommit());
                     break;
                 case 5:
                     connection.loadAll();
                     TreeToStringRenderer treeRenderer = new TreeToStringRenderer(shell.getBorder());
-                    shell.outln(treeRenderer.render(connection));
+                    out.println(treeRenderer.render(connection));
                     break;
 //                case 6:
 //                    connection.loadAll();
 //                    final Schemas schemas = connection.getSchemas();
 //                    tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
-//                    shell.outln(tableToStringRenderer.render(
+//                    out.println(tableToStringRenderer.render(
 //                            new EntityNodeDataModel<Schema>(schemas,
 //                            new ColumnDataModel<Schema>("Name") {
 //                                @Override
@@ -84,7 +86,7 @@ public class ConnectionCommand extends DefaultEntity implements Command {
 //                    connection.loadAll();
 //                    final TableTypes tables = connection.getSchemas().getChild(0).getTables();
 //                    tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
-//                    shell.outln(tableToStringRenderer.render(
+//                    out.println(tableToStringRenderer.render(
 //                            new EntityNodeDataModel<Table>(tables,
 //                            new ColumnDataModel<Table>("Name") {
 //                                @Override

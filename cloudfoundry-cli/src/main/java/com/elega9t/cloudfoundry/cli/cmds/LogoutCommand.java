@@ -10,6 +10,8 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.net.URL;
 
 public class LogoutCommand extends DefaultEntity implements Command {
@@ -19,14 +21,14 @@ public class LogoutCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         URL target = (URL) shell.getContextElement("cloudfoundry-target");
         CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         if(client == null) {
             throw new IllegalStateException("You haven't logged in to cloudfoundry yet.");
         }
         client.logout();
-        shell.outln("Successfully logged out from [" + target + "]");
+        out.println("Successfully logged out from [" + target + "]");
         return 0;
     }
 

@@ -10,9 +10,7 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class CatCommand extends DefaultEntity implements Command {
 
@@ -24,17 +22,17 @@ public class CatCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws IOException {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws IOException {
         InputStream inputStream = new FileInputStream(fileName);
         byte[] buffer = new byte[1024];
         int read;
         do {
             read = inputStream.read(buffer);
             if(read > 0) {
-                shell.out(new String(buffer, 0, read));
+                out.print(new String(buffer, 0, read));
             }
         } while(read > 0);
-        shell.outln("");
+        out.println();
         return 0;
     }
 

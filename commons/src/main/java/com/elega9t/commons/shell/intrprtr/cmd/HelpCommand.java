@@ -11,6 +11,8 @@ import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,11 +27,11 @@ public class HelpCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws Exception {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
         if(commandName == null) {
-            shell.outln(shell.getName());
+            out.println(shell.getName());
             final Interpreter interpreter = shell.getInterpreter();
-            shell.outln("Using '" + interpreter.getName() + "' interpreter. Commands available under this interpreter are:");
+            out.println("Using '" + interpreter.getName() + "' interpreter. Commands available under this interpreter are:");
             List<String> commands = new ArrayList<String>();
             for (Class<? extends Command> commandClass : interpreter.getCommands()) {
                 final Command command = commandClass.newInstance();
@@ -37,7 +39,7 @@ public class HelpCommand extends DefaultEntity implements Command {
             }
             Collections.sort(commands);
             for (String command : commands) {
-                shell.outln(command);
+                out.println(command);
             }
         }
         return 0;

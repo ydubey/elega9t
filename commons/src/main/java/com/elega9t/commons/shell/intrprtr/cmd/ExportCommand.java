@@ -5,6 +5,9 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class ExportCommand extends DefaultEntity implements Command {
 
     @Parameter(index=0)
@@ -15,7 +18,7 @@ public class ExportCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
         int separatorIndex = what.indexOf("=");
         if(separatorIndex != -1) {
             shell.getEnvironment().setProperty(what.substring(0, separatorIndex), what.substring(separatorIndex+1));

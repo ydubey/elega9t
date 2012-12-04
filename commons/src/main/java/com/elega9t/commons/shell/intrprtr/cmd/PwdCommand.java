@@ -10,6 +10,9 @@ import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class PwdCommand extends DefaultEntity implements Command {
 
     public PwdCommand() {
@@ -17,8 +20,8 @@ public class PwdCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
-        shell.outln(shell.getEnvironmentProperty(EnvironmentProperty.PWD));
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
+        out.println(shell.getEnvironmentProperty(EnvironmentProperty.PWD));
         return 0;
     }
 

@@ -10,6 +10,9 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.elixir.Connection;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class DisconnectCommand extends DefaultEntity implements Command {
 
     public DisconnectCommand() {
@@ -17,11 +20,11 @@ public class DisconnectCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws Exception {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
         Connection connection = (Connection) shell.getContextElement("connection");
         if(connection != null) {
             connection.close();
-            shell.outln("Connection closed.");
+            out.println("Connection closed.");
         } else {
             throw new IllegalArgumentException("No database connection exists. Please connect to a database first.");
         }

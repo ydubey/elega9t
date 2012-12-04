@@ -38,8 +38,8 @@ public class Shell extends DefaultEntity {
 
     private ConcurrentHashMap<String, Object> context = new ConcurrentHashMap<String, Object>();
 
-    public PrintStream out;
-    public BufferedReader in;
+    private PrintStream out;
+    private BufferedReader in;
 
     public Shell(@NotNull Interpreter interpreter) {
         super("Elega9t Shell, v1.0.0");
@@ -68,19 +68,19 @@ public class Shell extends DefaultEntity {
     }
 
     public void execute() {
-        outln(getName());
+        out.println(getName());
         nextInterpreter();
         do {
-            out(getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
+            out.print(getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
             String line = scanner.nextLine().trim();
             EnvironmentProperty.update(this);
             try {
                 line = handleSpecialCommand(this, line);
                 history.add(line);
-                interpreter.execute(this, line);
+                interpreter.execute(this, in, out, line);
             } catch (Exception e) {
                 LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
-                outln(interpreter.getName() + ": " + e.getMessage());
+                out.println(interpreter.getName() + ": " + e.getMessage());
                 setExitVal(1);
             }
         } while(interpreter != null);
@@ -143,24 +143,10 @@ public class Shell extends DefaultEntity {
         }
     }
 
-    public void out(Object msg) {
-        out.print(msg);
-        out.flush();
-    }
-
-    public void outln(Object msg) {
-        out.println(msg);
-        out.flush();
-    }
-
-    public void error(Throwable t) {
-        outln(interpreter.getName() + ": " + t.getMessage());
-    }
-
     public void nextInterpreter() {
         Interpreter nextInterpreter = interpreterStack.size() == 0 ? null : interpreterStack.pop();
         if(nextInterpreter != null) {
-            outln("shell: switching to '" + nextInterpreter.getName() + "' interpreter.");
+            out.println("shell: switching to '" + nextInterpreter.getName() + "' interpreter.");
         }
         interpreter = nextInterpreter;
         EnvironmentProperty.update(this);

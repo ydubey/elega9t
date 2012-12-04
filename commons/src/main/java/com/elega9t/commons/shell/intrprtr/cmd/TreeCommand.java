@@ -13,7 +13,9 @@ import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class TreeCommand extends DefaultEntity implements Command {
 
@@ -22,9 +24,9 @@ public class TreeCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) throws IOException, EntityLoadException {
+    public int execute(Shell shell, BufferedReader in, PrintStream out) throws IOException, EntityLoadException {
         TreeToStringRenderer renderer = new TreeToStringRenderer(shell.getBorder());
-        renderer.render(new FolderEntityNode(shell.getEnvironmentProperty(EnvironmentProperty.PWD)), shell.out);
+        renderer.render(new FolderEntityNode(shell.getEnvironmentProperty(EnvironmentProperty.PWD)), out);
         return 0;
     }
 

@@ -8,8 +8,10 @@ import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.util.ReflectionUtilities;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashMap;
@@ -69,19 +71,19 @@ public class Interpreter extends DefaultEntity {
         }
     }
 
-    public void execute(Shell shell, String line) throws Exception {
+    public void execute(Shell shell, BufferedReader in, PrintStream out, String line) throws Exception {
         String[] split = split(line, ';');
         for (int i = 0, splitLength = split.length; i < splitLength; i++) {
             String cmd = split[i].trim();
             if(i > 0) {
-                shell.out(shell.getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
-                shell.outln(cmd);
+                out.print(shell.getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
+                out.println(cmd);
             }
-            executeCommand(shell, cmd);
+            executeCommand(shell, in, out, cmd);
         }
     }
 
-    protected void executeCommand(Shell shell, String cmd) throws Exception {
+    protected void executeCommand(Shell shell, BufferedReader in, PrintStream out, String cmd) throws Exception {
         if(cmd.trim().length() > 0) {
             String commandName;
             if (cmd != null && cmd.contains(" ")) {
@@ -121,7 +123,7 @@ public class Interpreter extends DefaultEntity {
                         throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
                     }
                 }
-                int exitVal = command.execute(shell);
+                int exitVal = command.execute(shell, in, out);
                 shell.setExitVal(exitVal);
                 return;
             }

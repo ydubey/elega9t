@@ -5,6 +5,9 @@ import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 public class DateCommand extends DefaultEntity implements Command {
 
     public DateCommand() {
@@ -12,8 +15,8 @@ public class DateCommand extends DefaultEntity implements Command {
     }
 
     @Override
-    public int execute(Shell shell) {
-        shell.outln(shell.getEnvironment().getValue(EnvironmentProperty.DATE.name()));
+    public int execute(Shell shell, BufferedReader in, PrintStream out) {
+        out.println(shell.getEnvironment().getValue(EnvironmentProperty.DATE.name()));
         return 0;
     }
 

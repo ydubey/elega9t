@@ -15,6 +15,8 @@ import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.commons.shell.intrprtr.cmd.HistoryCommand;
 import com.elega9t.elixir.Connection;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -30,9 +32,9 @@ public class SqlInterpreter extends Interpreter {
     }
 
     @Override
-    protected void executeCommand(Shell shell, String cmd) throws Exception {
+    protected void executeCommand(Shell shell, BufferedReader in, PrintStream out, String cmd) throws Exception {
         try {
-            super.executeCommand(shell, cmd);
+            super.executeCommand(shell, in, out, cmd);
         } catch(CommandNotFoundException e) {
             try {
                 long startTime = System.currentTimeMillis();
@@ -41,14 +43,14 @@ public class SqlInterpreter extends Interpreter {
                 long endTime = System.currentTimeMillis();
                 if(isResultSet) {
                     final ResultSetDataModel dataModel = new ResultSetDataModel(preparedStatement.getResultSet());
-                    shell.outln(RENDERER.render(dataModel));
-                    shell.out(String.format("%d row(s) selected", dataModel.rowCount()));
+                    out.println(RENDERER.render(dataModel));
+                    out.print(String.format("%d row(s) selected", dataModel.rowCount()));
                 } else {
-                    shell.out(String.format("%d row(s) updated", preparedStatement.getUpdateCount()));
+                    out.print(String.format("%d row(s) updated", preparedStatement.getUpdateCount()));
                 }
-                shell.outln(" (" + (endTime - startTime) + " ms )");
+                out.println(" (" + (endTime - startTime) + " ms)");
             } catch (SQLException sqlE) {
-                shell.outln(String.format("ERROR: %d - %s", sqlE.getErrorCode(), sqlE.getMessage()));
+                out.println(String.format("ERROR: %d - %s", sqlE.getErrorCode(), sqlE.getMessage()));
             }
         }
         shell.setExitVal(0);
