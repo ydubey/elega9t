@@ -81,7 +81,9 @@ public class Shell extends DefaultEntity {
             } catch (Exception e) {
                 LOGGER.log(Level.FINE, "Command [" + line + "] threw exception", e);
                 out.println(interpreter.getName() + ": " + e.getMessage());
-                e.printStackTrace(out);
+                if (Boolean.valueOf(getEnvironmentProperty(EnvironmentProperty.DEBUG))) {
+                    e.printStackTrace(out);
+                }
                 setExitVal(1);
             }
         } while(interpreter != null);

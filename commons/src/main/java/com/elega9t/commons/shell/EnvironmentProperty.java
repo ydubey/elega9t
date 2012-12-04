@@ -73,6 +73,14 @@ public enum EnvironmentProperty {
             final String property = shell.getEnvironmentProperty(BORDER);
             return property == null || property.trim().length()==0 ? Border.PLAIN.name() : property;
         }
+    },
+
+    DEBUG("elega9t.shell.debug", false) {
+        @Override
+        protected String getValue(Shell shell) {
+            final String property = shell.getEnvironmentProperty(DEBUG);
+            return property == null || property.trim().length()==0 ? Boolean.FALSE.toString() : property;
+        }
     };
 
     private final String name;
