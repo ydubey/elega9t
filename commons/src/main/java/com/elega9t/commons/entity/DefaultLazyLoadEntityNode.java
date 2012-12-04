@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.entity;
 
-public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends DefaultLoadableEntityNode<T> implements LoadableEntityNode<T> {
+public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends DefaultLoadableEntityNode<T> {
 
     private boolean childrenLoaded = false;
 
