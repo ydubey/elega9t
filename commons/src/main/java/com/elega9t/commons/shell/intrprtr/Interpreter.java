@@ -8,15 +8,13 @@ import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.util.ReflectionUtilities;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.*;
 
 import static com.elega9t.commons.util.StringUtilities.split;
 import static java.util.Arrays.asList;
@@ -71,7 +69,7 @@ public class Interpreter extends DefaultEntity {
         }
     }
 
-    public void execute(Shell shell, BufferedReader in, PrintStream out, String line) throws Exception {
+    public void execute(final Shell shell, BufferedReader in, PrintStream out, String line) throws Exception {
         String[] split = split(line, ';');
         for (int i = 0, splitLength = split.length; i < splitLength; i++) {
             String cmd = split[i].trim();
@@ -79,8 +77,54 @@ public class Interpreter extends DefaultEntity {
                 out.print(shell.getEnvironmentProperty(EnvironmentProperty.PROMPT) + " ");
                 out.println(cmd);
             }
-            executeCommand(shell, in, out, cmd);
+            String[] piped = cmd.split("\\|");
+            int pipedLength = piped.length;
+            ExecutorService executor = Executors.newFixedThreadPool(splitLength);
+            CompletionService completion = new ExecutorCompletionService(executor);
+
+            PipedOutputStream pipedOut =  null;
+            PipedInputStream pipedIn = null;
+
+            for (int pipedElementIndex = 0; pipedElementIndex < pipedLength; pipedElementIndex++) {
+                final String pipedElement = piped[pipedElementIndex].trim();
+
+                BufferedReader callableIn;
+                PrintStream callableOut;
+                if(pipedElementIndex == 0) {
+                    callableIn = in;
+                } else {
+                    pipedIn = new PipedInputStream();
+                    callableIn = new BufferedReader(new InputStreamReader(pipedIn));
+                }
+                if(pipedElementIndex == pipedLength - 1) {
+                    callableOut = out;
+                } else {
+                    pipedOut = new PipedOutputStream();
+                    callableOut = new PrintStream(pipedOut);
+                }
+
+                if(pipedElementIndex > 0 && pipedElementIndex < pipedLength) {
+                    pipedIn.connect(pipedOut);
+                }
+                sumbit(shell, completion, pipedElement, callableIn, callableOut);
+            }
+            for (int count = 0; count < pipedLength; count++) {
+                completion.take();
+            }
+            executor.shutdown();
         }
+    }
+
+    private void sumbit(final Shell shell, CompletionService completion, final String pipedElement, final BufferedReader callableIn, final PrintStream callableOut) {
+        completion.submit(
+                new Callable() {
+                    @Override
+                    public Long call() throws Exception {
+                        long time = System.currentTimeMillis();
+                        executeCommand(shell, callableIn, callableOut, pipedElement);
+                        return System.currentTimeMillis() - time;
+                    }
+                });
     }
 
     protected void executeCommand(Shell shell, BufferedReader in, PrintStream out, String cmd) throws Exception {

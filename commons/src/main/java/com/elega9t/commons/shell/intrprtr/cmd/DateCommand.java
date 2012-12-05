@@ -16,7 +16,7 @@ public class DateCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) {
-        out.println(shell.getEnvironment().getValue(EnvironmentProperty.DATE.name()));
+        out.println(shell.getEnvironmentProperty(EnvironmentProperty.DATE));
         return 0;
     }
 
