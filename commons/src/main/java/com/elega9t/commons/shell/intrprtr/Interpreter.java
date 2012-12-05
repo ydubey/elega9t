@@ -90,6 +90,7 @@ public class Interpreter extends DefaultEntity {
 
                 BufferedReader callableIn;
                 PrintStream callableOut;
+
                 if(pipedElementIndex == 0) {
                     callableIn = in;
                 } else {
@@ -103,6 +104,7 @@ public class Interpreter extends DefaultEntity {
                     callableOut = new PrintStream(pipedOut);
                     pipedIn = new PipedInputStream();
                 }
+
                 sumbit(shell, completion, pipedElement, callableIn, callableOut);
             }
             for (int count = 0; count < pipedLength; count++) {
