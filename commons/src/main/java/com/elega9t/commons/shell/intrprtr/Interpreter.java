@@ -82,8 +82,8 @@ public class Interpreter extends DefaultEntity {
             ExecutorService executor = Executors.newFixedThreadPool(splitLength);
             CompletionService completion = new ExecutorCompletionService(executor);
 
-            PipedOutputStream pipedOut =  null;
-            PipedInputStream pipedIn = null;
+            PipedOutputStream pipedOut =  new PipedOutputStream();
+            PipedInputStream pipedIn = new PipedInputStream();
 
             for (int pipedElementIndex = 0; pipedElementIndex < pipedLength; pipedElementIndex++) {
                 final String pipedElement = piped[pipedElementIndex].trim();
@@ -93,18 +93,15 @@ public class Interpreter extends DefaultEntity {
                 if(pipedElementIndex == 0) {
                     callableIn = in;
                 } else {
-                    pipedIn = new PipedInputStream();
+                    pipedIn.connect(pipedOut);
+                    pipedOut = new PipedOutputStream();
                     callableIn = new BufferedReader(new InputStreamReader(pipedIn));
                 }
                 if(pipedElementIndex == pipedLength - 1) {
                     callableOut = out;
                 } else {
-                    pipedOut = new PipedOutputStream();
                     callableOut = new PrintStream(pipedOut);
-                }
-
-                if(pipedElementIndex > 0 && pipedElementIndex < pipedLength) {
-                    pipedIn.connect(pipedOut);
+                    pipedIn = new PipedInputStream();
                 }
                 sumbit(shell, completion, pipedElement, callableIn, callableOut);
             }
