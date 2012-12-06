@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class ConnectionCommand extends DefaultEntity implements Command {
 
-    @RequiredContextElement(name="connection", notSetMessage = "No database connection exists. Please connect to a database first.")
+    @RequiredContextElement(name="elixir-connection", notSetMessage = "No database connection exists. Please connect to a database first.")
     private Connection connection;
 
     private static final Map<String, Integer> operations = new HashMap<String, Integer>();

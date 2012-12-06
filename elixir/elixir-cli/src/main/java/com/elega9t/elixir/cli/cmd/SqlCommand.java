@@ -17,7 +17,7 @@ import java.io.PrintStream;
 
 public class SqlCommand extends DefaultEntity implements Command {
 
-    @RequiredContextElement(name="connection", notSetMessage = "No database connection exists. Please connect to a database first.")
+    @RequiredContextElement(name="elixir-connection", notSetMessage = "No database connection exists. Please connect to a database first.")
     private Connection connection;
 
     public SqlCommand() {

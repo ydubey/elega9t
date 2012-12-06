@@ -49,7 +49,7 @@ public class ConnectCommand extends DefaultEntity implements Command {
             password = in.readLine();
         }
         final Connection connection = driver.createConnection(userName, password);
-        shell.setContextElement("connection", connection);
+        shell.setContextElement("elixir-connection", connection);
         out.println("Connection successful!");
         shell.switchInterpreter(new SqlInterpreter(connection));
         return 0;
