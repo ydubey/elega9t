@@ -22,26 +22,6 @@ import com.elega9t.commons.args.NamedParsedArgument;
 import com.elega9t.commons.args.DuplicateArgumentException;
 
 public class ArgumentParser {
-
-  final static String NL = System.getProperty("line.separator");
-
-  private static String getTokenText(Token first, Token cur) {
-    Token t;
-    StringBuffer sb = new StringBuffer();
-
-    for (t=first; t != cur.next; t = t.next) {
-      if (t.specialToken != null) {
-        Token tt=t.specialToken;
-        while (tt.specialToken != null)
-          tt = tt.specialToken;
-        for (; tt != null; tt = tt.next)
-          sb.append(tt.image);
-      };
-      sb.append(t.image);
-    };
-    return sb.toString();
-  }
-
 }
 
 PARSER_END(ArgumentParser)
