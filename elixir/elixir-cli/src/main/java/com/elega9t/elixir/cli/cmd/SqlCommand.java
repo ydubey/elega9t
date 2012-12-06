@@ -8,6 +8,7 @@ package com.elega9t.elixir.cli.cmd;
 import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
+import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.cli.SqlInterpreter;
 
@@ -16,18 +17,16 @@ import java.io.PrintStream;
 
 public class SqlCommand extends DefaultEntity implements Command {
 
+    @RequiredContextElement(name="connection", notSetMessage = "No database connection exists. Please connect to a database first.")
+    private Connection connection;
+
     public SqlCommand() {
         super("sql");
     }
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
-        Connection connection = (Connection) shell.getContextElement("connection");
-        if(connection != null) {
-            shell.switchInterpreter(new SqlInterpreter(connection));
-        } else {
-            throw new IllegalArgumentException("No database connection exists. Please connect to a database first.");
-        }
+        shell.switchInterpreter(new SqlInterpreter(connection));
         return 0;
     }
 

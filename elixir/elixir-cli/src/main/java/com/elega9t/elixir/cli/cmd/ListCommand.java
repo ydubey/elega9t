@@ -12,6 +12,7 @@ import com.elega9t.commons.renderer.table.ObjectCollectionDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
+import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import com.elega9t.elixir.Driver;
 
 import java.io.BufferedReader;
@@ -22,6 +23,9 @@ import java.util.Map;
 import static com.elega9t.commons.util.StringUtilities.join;
 
 public class ListCommand extends DefaultEntity implements Command {
+
+    @RequiredContextElement(name="elixir-drivers", notSetMessage = "No drivers are available.")
+    private Map<String, Driver> drivers;
 
     private static final Map<String, Integer> operations = new HashMap<String, Integer>();
     static {
@@ -40,7 +44,6 @@ public class ListCommand extends DefaultEntity implements Command {
         Integer whatToDo = operations.get(what.toLowerCase());
         switch (whatToDo) {
             case 1:
-                Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
                 TableToStringRenderer renderer = new TableToStringRenderer(shell.getBorder());
                 out.println(renderer.render(new ObjectCollectionDataModel(drivers.values(),
                         new ColumnDataModel<Driver>("Database Name") {

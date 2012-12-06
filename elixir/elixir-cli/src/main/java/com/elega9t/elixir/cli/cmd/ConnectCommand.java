@@ -10,6 +10,7 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.NamedParameter;
 import com.elega9t.commons.shell.intrprtr.Parameter;
+import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.cli.SqlInterpreter;
@@ -19,6 +20,9 @@ import java.io.PrintStream;
 import java.util.Map;
 
 public class ConnectCommand extends DefaultEntity implements Command {
+
+    @RequiredContextElement(name="elixir-drivers", notSetMessage = "No drivers are available.")
+    private Map<String, Driver> drivers;
 
     @Parameter(index=0)
     private String databaseName;
@@ -35,7 +39,6 @@ public class ConnectCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
-        Map<String, Driver> drivers = (Map<String, Driver>) shell.getContextElement("elixir-drivers");
         Driver driver = drivers.get(databaseName.toLowerCase());
         if(userName == null) {
             out.print("User Name: ");
