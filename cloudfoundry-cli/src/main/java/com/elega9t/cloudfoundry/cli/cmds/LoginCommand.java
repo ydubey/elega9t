@@ -9,6 +9,7 @@ import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
+import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import org.cloudfoundry.client.lib.CloudCredentials;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
@@ -17,6 +18,9 @@ import java.io.PrintStream;
 import java.net.URL;
 
 public class LoginCommand extends DefaultEntity implements Command {
+
+    @RequiredContextElement(name="cloudfoundry-target", notSetMessage = "cloudfoundry target is not set. Please use the target command to set the target url.")
+    private URL target;
 
     @Parameter(index=0)
     private String name;
@@ -29,10 +33,6 @@ public class LoginCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) {
-        URL target = (URL) shell.getContextElement("cloudfoundry-target");
-        if(target == null) {
-            throw new IllegalStateException("cloudfoundry target is not set. Please use the target command to set the target url.");
-        }
         CloudFoundryClient client = new CloudFoundryClient(new CloudCredentials(name, password), target);
         client.login();
         out.println("Successfully logged into [" + target + "]");

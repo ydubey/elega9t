@@ -11,6 +11,7 @@ import com.elega9t.commons.renderer.table.TableToStringRenderer;
 import com.elega9t.commons.renderer.table.ObjectCollectionDataModel;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
+import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import com.elega9t.commons.util.StringUtilities;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 import org.cloudfoundry.client.lib.domain.CloudApplication;
@@ -21,13 +22,15 @@ import java.util.List;
 
 public class AppsCommand extends DefaultEntity implements Command {
 
+    @RequiredContextElement(name="cloudfoundry-client", notSetMessage = "You haven't logged in to cloudfoundry yet.")
+    private CloudFoundryClient client;
+
     public AppsCommand() {
         super("apps");
     }
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) {
-        CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
         List<CloudApplication> applications = client.getApplications();
         TableToStringRenderer tableToStringRenderer = new TableToStringRenderer(shell.getBorder());
         out.println("");

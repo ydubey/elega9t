@@ -9,12 +9,16 @@ import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
+import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import org.cloudfoundry.client.lib.CloudFoundryClient;
 
 import java.io.BufferedReader;
 import java.io.PrintStream;
 
 public class StartCommand extends DefaultEntity implements Command {
+
+    @RequiredContextElement(name="cloudfoundry-client", notSetMessage = "You haven't logged in to cloudfoundry yet.")
+    private CloudFoundryClient client;
 
     @Parameter(index=0)
     private String appName;
@@ -25,10 +29,6 @@ public class StartCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) {
-        CloudFoundryClient client = (CloudFoundryClient) shell.getContextElement("cloudfoundry-client");
-        if(client == null) {
-            throw new IllegalStateException("You haven't logged in to cloudfoundry yet.");
-        }
         client.startApplication(appName);
         return 0;
     }

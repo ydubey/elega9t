@@ -29,8 +29,8 @@ public class LogsCommand extends DefaultEntity implements Command {
         if(client == null) {
             throw new IllegalStateException("You haven't logged in to cloudfoundry yet.");
         }
-        shell.out(client.getFile(appName, 0, "logs/stderr.log"));
-        shell.out(client.getFile(appName, 0, "logs/stdout.log"));
+        out.print(client.getFile(appName, 0, "logs/stderr.log"));
+        out.print(client.getFile(appName, 0, "logs/stdout.log"));
         return 0;
     }
 

@@ -166,6 +166,17 @@ public class Interpreter extends DefaultEntity {
                         throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
                     }
                 }
+                Map<RequiredContextElement, Field> contextElementFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(RequiredContextElement.class, commandClass);
+                for (final RequiredContextElement contextElement : contextElementFieldMap.keySet()) {
+                    Object shellContextElement = shell.getContextElement(contextElement.name());
+                    if(shellContextElement != null) {
+                        Field field = contextElementFieldMap.get(contextElement);
+                        field.setAccessible(true);
+                        field.set(command, shellContextElement);
+                    } else {
+                        throw new IllegalStateException(contextElement.notSetMessage());
+                    }
+                }
                 int exitVal = command.execute(shell, in, out);
                 shell.setExitVal(exitVal);
                 return;
