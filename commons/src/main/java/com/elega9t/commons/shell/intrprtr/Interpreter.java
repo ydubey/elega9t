@@ -137,13 +137,24 @@ public class Interpreter extends DefaultEntity {
                 cmd = "";
             }
             if (commandName != null) {
-                ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
-                Map<String, Parameter> commandLineParameters = parser.parse();
                 Class<? extends Command> commandClass = commands.get(commandName);
                 if (commandClass == null) {
                     throw new CommandNotFoundException(commandName + ": command not found");
                 }
                 Command command = commandClass.newInstance();
+                Map<RequiredContextElement, Field> contextElementFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(RequiredContextElement.class, commandClass);
+                for (final RequiredContextElement contextElement : contextElementFieldMap.keySet()) {
+                    Object shellContextElement = shell.getContextElement(contextElement.name());
+                    if(shellContextElement != null) {
+                        Field field = contextElementFieldMap.get(contextElement);
+                        field.setAccessible(true);
+                        field.set(command, shellContextElement);
+                    } else {
+                        throw new IllegalStateException(contextElement.notSetMessage());
+                    }
+                }
+                ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
+                Map<String, Parameter> commandLineParameters = parser.parse();
                 Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);
                 for (final NamedParameter namedParameter : namedParameterFieldMap.keySet()) {
                     Field field = namedParameterFieldMap.get(namedParameter);
@@ -164,17 +175,6 @@ public class Interpreter extends DefaultEntity {
                         field.set(command, parameter.getValue());
                     } else if (param.required()) {
                         throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
-                    }
-                }
-                Map<RequiredContextElement, Field> contextElementFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(RequiredContextElement.class, commandClass);
-                for (final RequiredContextElement contextElement : contextElementFieldMap.keySet()) {
-                    Object shellContextElement = shell.getContextElement(contextElement.name());
-                    if(shellContextElement != null) {
-                        Field field = contextElementFieldMap.get(contextElement);
-                        field.setAccessible(true);
-                        field.set(command, shellContextElement);
-                    } else {
-                        throw new IllegalStateException(contextElement.notSetMessage());
                     }
                 }
                 int exitVal = command.execute(shell, in, out);
