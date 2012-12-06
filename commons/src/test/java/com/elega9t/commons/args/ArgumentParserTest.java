@@ -21,7 +21,7 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
 
-        final Map<String, Parameter> parameters = test.parse();
+        final Map<String, ParsedArgument> parameters = test.parse();
 
         assertEquals(1, parameters.size());
         for (String param : parameters.keySet()) {
@@ -36,7 +36,7 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
 
-        final Map<String, Parameter> parameters = test.parse();
+        final Map<String, ParsedArgument> parameters = test.parse();
 
         assertEquals(1, parameters.size());
         for (String param : parameters.keySet()) {
@@ -47,11 +47,11 @@ public class ArgumentParserTest {
 
     @Test
     public void canParseMultipleOptionsWithValue() throws Exception {
-        NamedParameter[] expectedParameters = { new NamedParameter("option", "xyz"), new NamedParameter("anotherOp", "abc")};
+        NamedParsedArgument[] expectedParameters = { new NamedParsedArgument("option", "xyz"), new NamedParsedArgument("anotherOp", "abc")};
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Parameter> parameters = test.parse();
+        final Map<String, ParsedArgument> parameters = test.parse();
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -64,11 +64,11 @@ public class ArgumentParserTest {
 
     @Test
     public void canParseMultipleMixedOptionsWithAndWithoutValue() throws Exception {
-        NamedParameter[] expectedParameters = { new NamedParameter("option", "xyz"), new NamedParameter("anotherOp"), new NamedParameter("op", "opValue")};
+        NamedParsedArgument[] expectedParameters = { new NamedParsedArgument("option", "xyz"), new NamedParsedArgument("anotherOp"), new NamedParsedArgument("op", "opValue")};
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Parameter> parameters = test.parse();
+        final Map<String, ParsedArgument> parameters = test.parse();
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -81,11 +81,11 @@ public class ArgumentParserTest {
 
     @Test
     public void canParseMultipleMixedOptionsWithSingleQuotedValue() throws Exception {
-        NamedParameter[] expectedParameters = { new NamedParameter("option", "'xyz'"), new NamedParameter("anotherOp"), new NamedParameter("op", "opValue")};
+        NamedParsedArgument[] expectedParameters = { new NamedParsedArgument("option", "'xyz'"), new NamedParsedArgument("anotherOp"), new NamedParsedArgument("op", "opValue")};
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Parameter> parameters = test.parse();
+        final Map<String, ParsedArgument> parameters = test.parse();
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -98,11 +98,11 @@ public class ArgumentParserTest {
 
     @Test
     public void canParseMultipleMixedOptionsWithDoubleQuotedValue() throws Exception {
-        NamedParameter[] expectedParameters = { new NamedParameter("option", "xyz"), new NamedParameter("anotherOp"), new NamedParameter("op", "\"opValue\"")};
+        NamedParsedArgument[] expectedParameters = { new NamedParsedArgument("option", "xyz"), new NamedParsedArgument("anotherOp"), new NamedParsedArgument("op", "\"opValue\"")};
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Parameter> parameters = test.parse();
+        final Map<String, ParsedArgument> parameters = test.parse();
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -113,18 +113,18 @@ public class ArgumentParserTest {
         }
     }
 
-    @Test(expected = DuplicateParameterException.class)
+    @Test(expected = DuplicateArgumentException.class)
     public void throwsDuplicateParameterExceptionWhenDuplicateParameterSpecified() throws Exception {
-        NamedParameter[] expectedParameters = { new NamedParameter("option", "xyz"), new NamedParameter("option")};
+        NamedParsedArgument[] expectedParameters = { new NamedParsedArgument("option", "xyz"), new NamedParsedArgument("option")};
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
         test.parse();
     }
 
-    private String toString(NamedParameter[] expectedParameters) {
+    private String toString(NamedParsedArgument[] expectedParameters) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (NamedParameter expectedParameter : expectedParameters) {
+        for (NamedParsedArgument expectedParameter : expectedParameters) {
             stringBuilder.append("-");
             stringBuilder.append(expectedParameter.getName());
             stringBuilder.append(" ");

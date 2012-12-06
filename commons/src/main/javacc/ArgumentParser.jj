@@ -17,9 +17,9 @@ package com.elega9t.commons.args;
 import java.util.Map;
 import java.util.LinkedHashMap;
 
-import com.elega9t.commons.args.Parameter;
-import com.elega9t.commons.args.NamedParameter;
-import com.elega9t.commons.args.DuplicateParameterException;
+import com.elega9t.commons.args.ParsedArgument;
+import com.elega9t.commons.args.NamedParsedArgument;
+import com.elega9t.commons.args.DuplicateArgumentException;
 
 public class ArgumentParser {
 
@@ -61,53 +61,53 @@ PARSER_END(ArgumentParser)
 | <OPTION_PREFIX    : ( "-" ) >
 }
 
-Map<String, Parameter> parse() :
+Map<String, ParsedArgument> parse() :
 {
-    Map<String, Parameter> parameters = new LinkedHashMap<String, Parameter>();
-    Parameter parameter;
+    Map<String, ParsedArgument> arguments = new LinkedHashMap<String, ParsedArgument>();
+    ParsedArgument argument;
     int unnamedParameterCount = 0;
 }
 {
-    ( parameter = nextParameter()
+    ( argument = nextParameter()
         {
-            if(parameter instanceof NamedParameter) {
-                if (parameters.containsKey(((NamedParameter)parameter).getName())) {
-                    throw new DuplicateParameterException(((NamedParameter)parameter).getName());
+            if(argument instanceof NamedParsedArgument) {
+                if (arguments.containsKey(((NamedParsedArgument)argument).getName())) {
+                    throw new DuplicateArgumentException(((NamedParsedArgument)argument).getName());
                 } else {
-                    parameters.put(((NamedParameter)parameter).getName(), parameter);
+                    arguments.put(((NamedParsedArgument)argument).getName(), argument);
                 }
             } else {
-                parameters.put(unnamedParameterCount+"", parameter);
+                arguments.put(unnamedParameterCount+"", argument);
                 unnamedParameterCount++;
             }
         }
     )* <EOF>
     {
-        return parameters;
+        return arguments;
     }
 }
 
-Parameter nextParameter() :
+ParsedArgument nextParameter() :
 {
-    Parameter parameter;
+    ParsedArgument argument;
 }
 {
     ((
         <OPTION_PREFIX><VALUE_STRING_NB>
         {
-            parameter = new NamedParameter(token.toString());
+            argument = new NamedParsedArgument(token.toString());
         }
-        ( LOOKAHEAD(2) ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { parameter.setValue(token.toString()); } )?
+        ( LOOKAHEAD(2) ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { argument.setValue(token.toString()); } )?
     )
     |
     (
         ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> )
         {
-            parameter = new Parameter();
-            parameter.setValue(token.toString());
+            argument = new ParsedArgument();
+            argument.setValue(token.toString());
         }
     ))
     {
-            return parameter;
+            return argument;
     }
 }

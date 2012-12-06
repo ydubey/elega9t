@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.args;
 
-public class Parameter {
+public class ParsedArgument {
 
     private String value;
 
@@ -34,7 +34,7 @@ public class Parameter {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Parameter that = (Parameter) o;
+        ParsedArgument that = (ParsedArgument) o;
 
         if (value != null ? !value.equals(that.value) : that.value != null) return false;
 

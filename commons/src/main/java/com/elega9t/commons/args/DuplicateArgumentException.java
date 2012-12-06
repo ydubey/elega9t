@@ -5,9 +5,9 @@
 
 package com.elega9t.commons.args;
 
-public class DuplicateParameterException extends RuntimeException {
+public class DuplicateArgumentException extends RuntimeException {
 
-    public DuplicateParameterException(String s) {
+    public DuplicateArgumentException(String s) {
         super(s);
     }
 

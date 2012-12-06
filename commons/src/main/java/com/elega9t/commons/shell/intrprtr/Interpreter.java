@@ -1,7 +1,7 @@
 package com.elega9t.commons.shell.intrprtr;
 
 import com.elega9t.commons.args.ArgumentParser;
-import com.elega9t.commons.args.Parameter;
+import com.elega9t.commons.args.ParsedArgument;
 import com.elega9t.commons.cp.ClassFilter;
 import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.EnvironmentProperty;
@@ -162,14 +162,14 @@ public class Interpreter extends DefaultEntity {
                     }
                 }
                 ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
-                Map<String, Parameter> commandLineParameters = parser.parse();
+                Map<String, ParsedArgument> parsedArguments = parser.parse();
                 Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);
                 for (final NamedParameter namedParameter : namedParameterFieldMap.keySet()) {
                     Field field = namedParameterFieldMap.get(namedParameter);
                     field.setAccessible(true);
-                    Parameter parameter = commandLineParameters.get(namedParameter.name());
-                    if (parameter != null) {
-                        setValue(command, field, parameter.getValue());
+                    ParsedArgument parsedArgument = parsedArguments.get(namedParameter.name());
+                    if (parsedArgument != null) {
+                        setValue(command, field, parsedArgument.getValue());
                     } else if (namedParameter.required()) {
                         throw new IllegalStateException("Parameter '" + namedParameter.name() + "' is required.");
                     }
@@ -178,9 +178,9 @@ public class Interpreter extends DefaultEntity {
                 for (final com.elega9t.commons.shell.intrprtr.Parameter param : parameterFieldMap.keySet()) {
                     Field field = parameterFieldMap.get(param);
                     field.setAccessible(true);
-                    Parameter parameter = commandLineParameters.get(param.index() + "");
-                    if (parameter != null) {
-                        setValue(command, field, parameter.getValue());
+                    ParsedArgument parsedArgument = parsedArguments.get(param.index() + "");
+                    if (parsedArgument != null) {
+                        setValue(command, field, parsedArgument.getValue());
                     } else if (param.required()) {
                         throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
                     }

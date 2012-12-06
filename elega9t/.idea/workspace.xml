@@ -33,34 +33,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52cca89f-bc29-41e9-bc6f-72253919df95" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/ReverseTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/TransformFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/Transformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/TwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToBigDecimalTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToBooleanTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToByteArrayTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToDoubleTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToFileTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToFloatTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToIntegerTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToListTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToLongTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToStringArrayTwoWayTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/ReverseTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/TransformFactoryTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToBigDecimalTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToBooleanTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToByteArrayTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToDoubleTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToFileTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToFloatTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToIntegerTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToListTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToLongTwoWayTransformerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToStringArrayTwoWayTransformerTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateParameterException.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateArgumentException.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/NamedParameter.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/NamedParsedArgument.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/Parameter.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/ParsedArgument.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/GrepCommand.java" afterPath="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/cmd/GrepCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" afterPath="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" afterPath="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/args/ArgumentParserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="elega9t.iws" />
@@ -119,22 +97,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Interpreter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java">
+      <file leaf-file-name="ArgumentParser.jj" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="191" column="36" selection-start="9112" selection-end="9112" vertical-scroll-proportion="0.806366">
+            <state line="74" column="47" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.4185137">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransformFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/TransformFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="27" selection-start="2133" selection-end="2133" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -156,8 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/Transformer.java" />
-        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/TwoWayTransformer.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToBooleanTwoWayTransformer.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToBigDecimalTwoWayTransformer.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToByteArrayTwoWayTransformer.java" />
@@ -171,7 +136,9 @@
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/TransformFactory.java" />
         <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/impl/StringToIntegerTwoWayTransformerTest.java" />
         <option value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons/transform/TransformFactoryTest.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/NamedParsedArgument.java" />
         <option value="$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java" />
+        <option value="$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj" />
       </list>
     </option>
   </component>
@@ -276,6 +243,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -595,6 +572,10 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javacc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -750,14 +731,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elega9t" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="args" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -776,16 +777,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="258" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="260" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="258" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects/elega9t/trunk/carbon-j2ee-jspc/src/main/javacc" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="263" />
@@ -801,9 +802,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/../commons/src/test/java/com/elega9t/commons" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -811,8 +812,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -1029,24 +1030,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1073,6 +1056,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -1361,7 +1362,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258317" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14400429" sideWeight="0.7759296" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14561027" sideWeight="0.7759296" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24785867" sideWeight="0.7759296" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27495107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1457,41 +1458,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToFileTwoWayTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToFloatTwoWayTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToIntegerTwoWayTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="27" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToListTwoWayTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="27" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToLongTwoWayTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="27" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/impl/StringToStringArrayTwoWayTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="27" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
@@ -1559,16 +1525,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/transform/TransformFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="27" selection-start="2133" selection-end="2133" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="49" column="27" selection-start="2133" selection-end="2133" vertical-scroll-proportion="0.41329858">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Parameter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="18" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/DuplicateArgumentException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="250" selection-end="250" vertical-scroll-proportion="0.07822686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/args/NamedParsedArgument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="778" selection-end="778" vertical-scroll-proportion="0.5084746">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../commons/src/main/java/com/elega9t/commons/shell/intrprtr/Interpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="191" column="36" selection-start="9112" selection-end="9112" vertical-scroll-proportion="0.806366">
+        <state line="180" column="49" selection-start="8620" selection-end="8620" vertical-scroll-proportion="3.1034484">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../commons/src/main/javacc/ArgumentParser.jj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="47" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.4185137">
           <folding />
         </state>
       </provider>
