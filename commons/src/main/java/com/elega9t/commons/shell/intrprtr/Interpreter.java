@@ -11,10 +11,7 @@ import com.elega9t.commons.util.ReflectionUtilities;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.*;
 
 import static com.elega9t.commons.util.StringUtilities.split;
@@ -162,9 +159,12 @@ public class Interpreter extends DefaultEntity {
                         throw new IllegalStateException(contextElement.notSetMessage());
                     }
                 }
-                ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
-                Map<String, Argument> parsedArguments = parser.parse();
+
                 Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);
+
+                ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
+                Map<String, Argument> parsedArguments = parser.parse(getBooleanParameters(namedParameterFieldMap));
+
                 for (final NamedParameter namedParameter : namedParameterFieldMap.keySet()) {
                     Field field = namedParameterFieldMap.get(namedParameter);
                     field.setAccessible(true);
@@ -194,15 +194,21 @@ public class Interpreter extends DefaultEntity {
         shell.setExitVal(0);
     }
 
+    private List<String> getBooleanParameters(Map<NamedParameter, Field> namedParameters) {
+        List<String> booleanParameters = new ArrayList<String>();
+        for (NamedParameter namedParameter : namedParameters.keySet()) {
+            final Field field = namedParameters.get(namedParameter);
+            if(field.getType() == Boolean.class || field.getType() == boolean.class) {
+                booleanParameters.add(namedParameter.name());
+            }
+        }
+        return booleanParameters;
+    }
+
     private void setValue(Shell shell, Command command, Field field, String value) throws IllegalAccessException {
         Object valueToSet = null;
-        if(value != null) {
-            value = shell.resolve(value);
-            valueToSet = TransformFactory.transform(String.class, field.getType(), value);
-        } else if(field.getType() == Boolean.class || field.getType() == boolean.class) {
-            valueToSet = true;
-        }
-
+        value = shell.resolve(value);
+        valueToSet = TransformFactory.transform(String.class, field.getType(), value);
         field.set(command, valueToSet);
     }
 

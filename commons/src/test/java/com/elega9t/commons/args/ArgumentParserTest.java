@@ -8,10 +8,11 @@ package com.elega9t.commons.args;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 public class ArgumentParserTest {
 
@@ -21,12 +22,12 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
 
-        final Map<String, Argument> parameters = test.parse();
+        final Map<String, Argument> parameters = test.parse(Arrays.asList("option"));
 
         assertEquals(1, parameters.size());
         for (String param : parameters.keySet()) {
             assertEquals("option", param);
-            assertNull(parameters.get(param).getValue());
+            assertEquals("true", parameters.get(param).getValue());
         }
     }
 
@@ -36,7 +37,7 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(arg.getBytes()));
 
-        final Map<String, Argument> parameters = test.parse();
+        final Map<String, Argument> parameters = test.parse(Collections.<String>emptyList());
 
         assertEquals(1, parameters.size());
         for (String param : parameters.keySet()) {
@@ -51,7 +52,7 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Argument> parameters = test.parse();
+        final Map<String, Argument> parameters = test.parse(Collections.<String>emptyList());
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -68,7 +69,8 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Argument> parameters = test.parse();
+        final Map<String, Argument> parameters = test.parse(Arrays.asList("anotherOp"));
+        expectedParameters[1].setValue("true");
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -85,7 +87,8 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Argument> parameters = test.parse();
+        final Map<String, Argument> parameters = test.parse(Arrays.asList("anotherOp"));
+        expectedParameters[1].setValue("true");
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -102,7 +105,8 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        final Map<String, Argument> parameters = test.parse();
+        final Map<String, Argument> parameters = test.parse(Arrays.asList("anotherOp"));
+        expectedParameters[1].setValue("true");
 
         assertEquals(expectedParameters.length, parameters.size());
         int index = 0;
@@ -119,7 +123,7 @@ public class ArgumentParserTest {
 
         ArgumentParser test = new ArgumentParser(new ByteArrayInputStream(toString(expectedParameters).getBytes()));
 
-        test.parse();
+        test.parse(Arrays.asList("option"));
     }
 
     private String toString(NamedArgument[] expectedParameters) {

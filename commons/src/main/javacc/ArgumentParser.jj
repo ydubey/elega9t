@@ -15,6 +15,9 @@ PARSER_BEGIN(ArgumentParser)
 package com.elega9t.commons.args;
 
 import java.util.Map;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 
 import com.elega9t.commons.args.Argument;
@@ -41,14 +44,14 @@ PARSER_END(ArgumentParser)
 | <OPTION_PREFIX    : ( "-" ) >
 }
 
-Map<String, Argument> parse() :
+Map<String, Argument> parse(List<String> booleanParameters) :
 {
     Map<String, Argument> arguments = new LinkedHashMap<String, Argument>();
     Argument argument;
     int unnamedParameterCount = 0;
 }
 {
-    ( argument = nextParameter()
+    ( argument = nextParameter(booleanParameters)
         {
             if(argument instanceof NamedArgument) {
                 if (arguments.containsKey(((NamedArgument)argument).getName())) {
@@ -67,17 +70,22 @@ Map<String, Argument> parse() :
     }
 }
 
-Argument nextParameter() :
+Argument nextParameter(List<String> booleanParameters) :
 {
     Argument argument;
+    String name;
 }
 {
     ((
         <OPTION_PREFIX><VALUE_STRING_NB>
         {
-            argument = new NamedArgument(token.toString());
+            name = token.toString();
+            argument = new NamedArgument(name);
+            if(!booleanParameters.contains(name))
+                argument.setValue(getValue());
+            else
+                argument.setValue("true");
         }
-        ( LOOKAHEAD(2) ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { argument.setValue(token.toString()); } )?
     )
     |
     (
@@ -90,4 +98,11 @@ Argument nextParameter() :
     {
             return argument;
     }
+}
+
+String getValue() :
+{
+}
+{
+        ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { return token.toString(); }
 }
