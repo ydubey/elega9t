@@ -17,8 +17,8 @@ package com.elega9t.commons.args;
 import java.util.Map;
 import java.util.LinkedHashMap;
 
-import com.elega9t.commons.args.ParsedArgument;
-import com.elega9t.commons.args.NamedParsedArgument;
+import com.elega9t.commons.args.Argument;
+import com.elega9t.commons.args.NamedArgument;
 import com.elega9t.commons.args.DuplicateArgumentException;
 
 public class ArgumentParser {
@@ -41,20 +41,20 @@ PARSER_END(ArgumentParser)
 | <OPTION_PREFIX    : ( "-" ) >
 }
 
-Map<String, ParsedArgument> parse() :
+Map<String, Argument> parse() :
 {
-    Map<String, ParsedArgument> arguments = new LinkedHashMap<String, ParsedArgument>();
-    ParsedArgument argument;
+    Map<String, Argument> arguments = new LinkedHashMap<String, Argument>();
+    Argument argument;
     int unnamedParameterCount = 0;
 }
 {
     ( argument = nextParameter()
         {
-            if(argument instanceof NamedParsedArgument) {
-                if (arguments.containsKey(((NamedParsedArgument)argument).getName())) {
-                    throw new DuplicateArgumentException(((NamedParsedArgument)argument).getName());
+            if(argument instanceof NamedArgument) {
+                if (arguments.containsKey(((NamedArgument)argument).getName())) {
+                    throw new DuplicateArgumentException(((NamedArgument)argument).getName());
                 } else {
-                    arguments.put(((NamedParsedArgument)argument).getName(), argument);
+                    arguments.put(((NamedArgument)argument).getName(), argument);
                 }
             } else {
                 arguments.put(unnamedParameterCount+"", argument);
@@ -67,15 +67,15 @@ Map<String, ParsedArgument> parse() :
     }
 }
 
-ParsedArgument nextParameter() :
+Argument nextParameter() :
 {
-    ParsedArgument argument;
+    Argument argument;
 }
 {
     ((
         <OPTION_PREFIX><VALUE_STRING_NB>
         {
-            argument = new NamedParsedArgument(token.toString());
+            argument = new NamedArgument(token.toString());
         }
         ( LOOKAHEAD(2) ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> ) { argument.setValue(token.toString()); } )?
     )
@@ -83,7 +83,7 @@ ParsedArgument nextParameter() :
     (
         ( <VALUE_STRING_NB> | <SINGLE_QUOTED_STRING_NB> | <DOUBLE_QUOTED_STRING_NB> )
         {
-            argument = new ParsedArgument();
+            argument = new Argument();
             argument.setValue(token.toString());
         }
     ))

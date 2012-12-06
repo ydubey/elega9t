@@ -5,15 +5,15 @@
 
 package com.elega9t.commons.args;
 
-public class NamedParsedArgument extends ParsedArgument {
+public class NamedArgument extends Argument {
 
     private final String name;
 
-    public NamedParsedArgument(String name) {
+    public NamedArgument(String name) {
         this(name, null);
     }
 
-    public NamedParsedArgument(String name, String value) {
+    public NamedArgument(String name, String value) {
         this.name = name;
         setValue(value);
     }
@@ -25,10 +25,10 @@ public class NamedParsedArgument extends ParsedArgument {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof NamedParsedArgument)) return false;
+        if (!(o instanceof NamedArgument)) return false;
         if (!super.equals(o)) return false;
 
-        NamedParsedArgument parameter = (NamedParsedArgument) o;
+        NamedArgument parameter = (NamedArgument) o;
 
         if (name != null ? !name.equals(parameter.name) : parameter.name != null) return false;
 
