@@ -2,6 +2,28 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/../test-utilities/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../test-utilities/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../carbon/carbon-api/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../carbon/carbon-api/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../jmeter-jms-skip-jndi/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../commons/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../commons/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../random-stuff/number-to-words/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../random-stuff/number-to-words/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../carbon/carbon-standard/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../carbon/carbon-standard/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../cloudfoundry-cli/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../cloudfoundry-cli/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-db-provider/elixir-mysql/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-cli/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-cli/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-api/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-api/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+    </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="?*.properties" />
@@ -16,10 +38,46 @@
       <entry name="?*.ftl" />
       <entry name="?*.ft" />
     </wildcardResourcePatterns>
-    <annotationProcessing enabled="false" useClasspath="true" />
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_STRING" value="-target 1.6" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="carbon-api" />
+        <module name="carbon-standard" />
+        <module name="cloudfoundry-cli" />
+        <module name="commons" />
+        <module name="elixir-api" />
+        <module name="elixir-cli" />
+        <module name="elixir-mysql" />
+        <module name="jmeter-jms-skip-jndi" />
+        <module name="number-to-words" />
+        <module name="test-utilities" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="carbon" target="1.6" />
+      <module name="carbon-api" target="1.6" />
+      <module name="carbon-standard" target="1.6" />
+      <module name="cloudfoundry-cli" target="1.6" />
+      <module name="commons" target="1.6" />
+      <module name="elega9t" target="1.6" />
+      <module name="elixir" target="1.6" />
+      <module name="elixir-api" target="1.6" />
+      <module name="elixir-cli" target="1.6" />
+      <module name="elixir-db-provider" target="1.6" />
+      <module name="elixir-mysql" target="1.6" />
+      <module name="intellij-idea-jbehave-plugin" target="1.6" />
+      <module name="intellij-idea-plugins" target="1.6" />
+      <module name="jmeter-jms-skip-jndi" target="1.6" />
+      <module name="number-to-words" target="1.6" />
+      <module name="random-stuff" target="1.6" />
+      <module name="test-utilities" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

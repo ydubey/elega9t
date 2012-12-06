@@ -36,6 +36,8 @@ public class TransformFactoryTest {
             StringToDoubleTwoWayTransformer.getInstance(),
             StringToBigDecimalTwoWayTransformer.getInstance(),
             StringToListTwoWayTransformer.getInstance(),
+            StringToSetTwoWayTransformer.getInstance(),
+            StringToCollectionTwoWayTransformer.getInstance(),
             StringToStringArrayTwoWayTransformer.getInstance(),
             StringToByteArrayTwoWayTransformer.getInstance(),
             StringToCharArrayTwoWayTransformer.getInstance(),

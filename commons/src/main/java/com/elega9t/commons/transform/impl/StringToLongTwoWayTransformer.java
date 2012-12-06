@@ -2,7 +2,7 @@ package com.elega9t.commons.transform.impl;
 
 import com.elega9t.commons.transform.TwoWayTransformer;
 
-public class StringToLongTwoWayTransformer implements TwoWayTransformer<String, Long> {
+public final class StringToLongTwoWayTransformer implements TwoWayTransformer<String, Long> {
 
     private static StringToLongTwoWayTransformer instance = new StringToLongTwoWayTransformer();
 

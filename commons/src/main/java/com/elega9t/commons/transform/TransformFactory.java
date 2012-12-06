@@ -17,6 +17,8 @@ public final class TransformFactory {
         registerTransformer(StringToDoubleTwoWayTransformer.getInstance());
         registerTransformer(StringToBigDecimalTwoWayTransformer.getInstance());
         registerTransformer(StringToListTwoWayTransformer.getInstance());
+        registerTransformer(StringToSetTwoWayTransformer.getInstance());
+        registerTransformer(StringToCollectionTwoWayTransformer.getInstance());
         registerTransformer(StringToStringArrayTwoWayTransformer.getInstance());
         registerTransformer(StringToByteArrayTwoWayTransformer.getInstance());
         registerTransformer(StringToCharArrayTwoWayTransformer.getInstance());
