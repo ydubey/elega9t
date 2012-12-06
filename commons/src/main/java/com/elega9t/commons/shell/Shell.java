@@ -107,13 +107,15 @@ public class Shell extends DefaultEntity {
     }
 
     public String resolve(String str) {
-        str = StringUtilities.replace("\\$\\(([. ]+)", str, new ReplacementProvider() {
-            @Override
-            public String getReplacement(String match) {
-                return "Hi";
-            }
-        });
-        return environment.resolve(str);
+        boolean resolve = true;
+        if (str != null && ((str.startsWith("\"") && str.endsWith("\"")) || (str.startsWith("'") && str.endsWith("'")))) {
+            resolve = !str.startsWith("'");
+            str = str.substring(1, str.length() - 1);
+        }
+        if(resolve) {
+            str = environment.resolve(str);
+        }
+        return str;
     }
 
     public String getLastFromHistory() {

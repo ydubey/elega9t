@@ -144,6 +144,7 @@ public class Interpreter extends DefaultEntity {
                 commandName = cmd;
                 cmd = "";
             }
+            commandName = shell.resolve(commandName);
             if (commandName != null) {
                 Class<? extends Command> commandClass = commands.get(commandName);
                 if (commandClass == null) {
@@ -169,7 +170,7 @@ public class Interpreter extends DefaultEntity {
                     field.setAccessible(true);
                     Argument parsedArgument = parsedArguments.get(namedParameter.name());
                     if (parsedArgument != null) {
-                        setValue(command, field, parsedArgument.getValue());
+                        setValue(shell, command, field, parsedArgument.getValue());
                     } else if (namedParameter.required()) {
                         throw new IllegalStateException("Parameter '" + namedParameter.name() + "' is required.");
                     }
@@ -180,7 +181,7 @@ public class Interpreter extends DefaultEntity {
                     field.setAccessible(true);
                     Argument parsedArgument = parsedArguments.get(param.index() + "");
                     if (parsedArgument != null) {
-                        setValue(command, field, parsedArgument.getValue());
+                        setValue(shell, command, field, parsedArgument.getValue());
                     } else if (param.required()) {
                         throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
                     }
@@ -193,14 +194,16 @@ public class Interpreter extends DefaultEntity {
         shell.setExitVal(0);
     }
 
-    private void setValue(Command command, Field field, Object value) throws IllegalAccessException {
+    private void setValue(Shell shell, Command command, Field field, String value) throws IllegalAccessException {
+        Object valueToSet = null;
         if(value != null) {
-            value = TransformFactory.transform((Class<Object>) value.getClass(), field.getType(), value);
+            value = shell.resolve(value);
+            valueToSet = TransformFactory.transform(String.class, field.getType(), value);
         } else if(field.getType() == Boolean.class || field.getType() == boolean.class) {
-            value = true;
+            valueToSet = true;
         }
 
-        field.set(command, value);
+        field.set(command, valueToSet);
     }
 
     public Collection<Class<? extends Command>> getCommands() {
