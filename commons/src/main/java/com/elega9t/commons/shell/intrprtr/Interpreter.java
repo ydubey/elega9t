@@ -6,6 +6,7 @@ import com.elega9t.commons.cp.ClassFilter;
 import com.elega9t.commons.entity.DefaultEntity;
 import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
+import com.elega9t.commons.transform.TransformFactory;
 import com.elega9t.commons.util.ReflectionUtilities;
 
 import java.io.*;
@@ -108,7 +109,11 @@ public class Interpreter extends DefaultEntity {
                 sumbit(shell, completion, pipedElement, callableIn, callableOut);
             }
             for (int count = 0; count < pipedLength; count++) {
-                completion.take();
+                Future future = completion.take();
+                Throwable thrown = (Throwable) future.get();
+                if(thrown != null) {
+                    out.println("Error: " + thrown.getMessage());
+                }
             }
             executor.shutdown();
         }
@@ -118,10 +123,13 @@ public class Interpreter extends DefaultEntity {
         completion.submit(
                 new Callable() {
                     @Override
-                    public Long call() throws Exception {
-                        long time = System.currentTimeMillis();
-                        executeCommand(shell, callableIn, callableOut, pipedElement);
-                        return System.currentTimeMillis() - time;
+                    public Throwable call() {
+                        try {
+                            executeCommand(shell, callableIn, callableOut, pipedElement);
+                            return null;
+                        } catch (Exception e) {
+                            return e;
+                        }
                     }
                 });
     }
@@ -161,7 +169,7 @@ public class Interpreter extends DefaultEntity {
                     field.setAccessible(true);
                     Parameter parameter = commandLineParameters.get(namedParameter.name());
                     if (parameter != null) {
-                        field.set(command, parameter.getValue());
+                        setValue(command, field, parameter.getValue());
                     } else if (namedParameter.required()) {
                         throw new IllegalStateException("Parameter '" + namedParameter.name() + "' is required.");
                     }
@@ -172,7 +180,7 @@ public class Interpreter extends DefaultEntity {
                     field.setAccessible(true);
                     Parameter parameter = commandLineParameters.get(param.index() + "");
                     if (parameter != null) {
-                        field.set(command, parameter.getValue());
+                        setValue(command, field, parameter.getValue());
                     } else if (param.required()) {
                         throw new IllegalStateException("Parameter '" + field.getName() + "' is required.");
                     }
@@ -183,6 +191,16 @@ public class Interpreter extends DefaultEntity {
             }
         }
         shell.setExitVal(0);
+    }
+
+    private void setValue(Command command, Field field, Object value) throws IllegalAccessException {
+        if(value != null) {
+            value = TransformFactory.transform((Class<Object>) value.getClass(), field.getType(), value);
+        } else if(field.getType() == Boolean.class || field.getType() == boolean.class) {
+            value = true;
+        }
+
+        field.set(command, value);
     }
 
     public Collection<Class<? extends Command>> getCommands() {
