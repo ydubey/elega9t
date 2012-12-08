@@ -49,7 +49,7 @@ public class ListCommand extends DefaultEntity implements Command {
                         new ColumnDataModel<Driver>("Database Name") {
                             @Override
                             public String value(Driver driver) {
-                                return driver.databaseName();
+                                return driver.getName();
                             }
                         },
                         new ColumnDataModel<Driver>("Driver Available") {

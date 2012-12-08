@@ -5,13 +5,13 @@
 
 package com.elega9t.elixir;
 
+import com.elega9t.commons.entity.LoadableEntity;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public interface Driver {
-
-    String databaseName();
+public interface Driver extends LoadableEntity {
 
     List<String> supportedVersions();
 
@@ -19,7 +19,7 @@ public interface Driver {
 
     Map<String, List<String>> getDrivers();
 
-    void loadDrivers();
+    void load();
 
     boolean isAvailable();
 

@@ -45,8 +45,8 @@ public class Main {
                     o = clazz.newInstance();
                     if(o instanceof Driver) {
                         Driver driver = (Driver) o;
-                        driver.loadDrivers();
-                        drivers.put(driver.databaseName().toLowerCase(), driver);
+                        driver.load();
+                        drivers.put(driver.getName().toLowerCase(), driver);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

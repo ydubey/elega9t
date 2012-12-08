@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.mysql;
 
+import com.elega9t.commons.entity.DefaultLoadableEntity;
 import com.elega9t.commons.entity.EntityLoadException;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
@@ -14,19 +15,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;
 
-public class MySqlDatabaseDriver implements Driver {
+public class MySqlDatabaseDriver extends DefaultLoadableEntity implements Driver {
 
     private Map<String, List<String>> drivers = new HashMap<String, List<String>>();
     private boolean available = false;
 
     public MySqlDatabaseDriver() {
+        super("MySql");
         drivers.put("MM MySql", Arrays.asList("org.gjt.mm.mysql.Driver"));
         drivers.put("MySql", Arrays.asList("com.mysql.jdbc.Driver"));
-    }
-
-    @Override
-    public String databaseName() {
-        return "MySQL";
     }
 
     @Override
@@ -45,7 +42,7 @@ public class MySqlDatabaseDriver implements Driver {
     }
 
     @Override
-    public void loadDrivers() {
+    public void load() {
         Map<String, List<String>> drivers = getDrivers();
         for (String driverName : drivers.keySet()) {
             List<String> driverClasses = drivers.get(driverName);
