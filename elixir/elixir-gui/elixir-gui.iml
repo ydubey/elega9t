@@ -11,6 +11,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="commons" />
+    <orderEntry type="library" name="Maven: net.java.dev.javacc:javacc:5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.intellij:annotations:9.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
+    <orderEntry type="library" name="Maven: org.fusesource.jansi:jansi:1.9" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5-rc1" level="project" />
+    <orderEntry type="module" module-name="elixir-api" />
   </component>
 </module>
 

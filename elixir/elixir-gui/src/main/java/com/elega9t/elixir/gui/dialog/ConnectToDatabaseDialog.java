@@ -5,21 +5,20 @@
 
 package com.elega9t.elixir.gui.dialog;
 
+import com.elega9t.commons.util.SwingUtilities;
 import com.elega9t.elixir.gui.ResourceStrings;
+import com.elega9t.elixir.gui.form.Main;
 
-/**
- *
- * @author yogesh
- */
 public class ConnectToDatabaseDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form ConnectToDatabaseDialog
      */
-    public ConnectToDatabaseDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public ConnectToDatabaseDialog(Main main, boolean modal) {
+        super(main, modal);
         initComponents();
-        setLocationRelativeTo(parent);
+        setLocationRelativeTo(main);
+        SwingUtilities.escapeToDispose(this);
     }
     
     public void openDialog() {
@@ -35,12 +34,39 @@ public class ConnectToDatabaseDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonsPanel = new javax.swing.JPanel();
+        connectButton = new javax.swing.JButton();
+        testConnectionButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(ResourceStrings.dialog.connectToDatabase.getString("title"));
+        setSize(new java.awt.Dimension(800, 500));
 
-        pack();
+        buttonsPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10));
+
+        connectButton.setText(ResourceStrings.buttons.getString("connect"));
+        buttonsPanel.add(connectButton);
+
+        testConnectionButton.setText(ResourceStrings.buttons.getString("test.connection"));
+        buttonsPanel.add(testConnectionButton);
+
+        cancelButton.setText(ResourceStrings.buttons.getString("cancel"));
+        buttonsPanel.add(cancelButton);
+
+        helpButton.setText(ResourceStrings.buttons.getString("help"));
+        buttonsPanel.add(helpButton);
+
+        getContentPane().add(buttonsPanel, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton connectButton;
+    private javax.swing.JButton helpButton;
+    private javax.swing.JButton testConnectionButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,14 +5,11 @@
 
 package com.elega9t.elixir.gui;
 
-/**
- *
- * @author yogesh
- */
 public interface ResourceStrings {
     
     java.util.ResourceBundle main = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/main");
     java.util.ResourceBundle menu = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/menu");
+    java.util.ResourceBundle buttons = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/buttons");
     
     interface dialog {
         

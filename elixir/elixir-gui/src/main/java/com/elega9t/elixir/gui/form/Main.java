@@ -7,6 +7,8 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
+import com.elega9t.elixir.gui.panel.TextBackgroundPanel;
+import com.elega9t.elixir.gui.panel.TextBackgroundPanel.BackgroundText;
 
 public class Main extends javax.swing.JFrame {
 
@@ -29,14 +31,22 @@ public class Main extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
         connectToDatabaseToolBarButton = new javax.swing.JButton();
-        bodyPanel = new javax.swing.JPanel();
+        bodyPanel = new TextBackgroundPanel(
+            new BackgroundText(ResourceStrings.main.getString("title"), 100, 30).bold(),
+            new BackgroundText(ResourceStrings.main.getString("website"), 130, 20),
+            new BackgroundText("Not connected to a database", 220, 20).underlined().bold(),
+            new BackgroundText("\u2023 Connect to a database with \u2318\u21E7C", 255, 17),
+            new BackgroundText("\u2023 Exit with \u2318\u21E7X", 280, 17).alighWithPrevious()
+        );
+        bottomPanel = new javax.swing.JPanel();
+        statusLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         connectToDatabaseFileMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(ResourceStrings.main.getString("main.title"));
+        setTitle(ResourceStrings.main.getString("title"));
         setExtendedState(MAXIMIZED_BOTH);
 
         topPanel.setLayout(new java.awt.BorderLayout());
@@ -60,6 +70,14 @@ public class Main extends javax.swing.JFrame {
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
+
+        bottomPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        bottomPanel.setLayout(new java.awt.BorderLayout());
+
+        statusLabel.setText(ResourceStrings.main.getString("title"));
+        bottomPanel.add(statusLabel, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(bottomPanel, java.awt.BorderLayout.PAGE_END);
 
         fileMenu.setText(ResourceStrings.menu.getString("main.file.menu"));
 
@@ -90,11 +108,13 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JPanel bottomPanel;
     private javax.swing.JMenuItem connectToDatabaseFileMenuItem;
     private javax.swing.JButton connectToDatabaseToolBarButton;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel statusLabel;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
