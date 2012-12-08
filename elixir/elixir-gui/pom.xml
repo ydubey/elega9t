@@ -9,17 +9,12 @@
         <artifactId>elega9t</artifactId>
         <groupId>com.elega9t</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../elega9t/pom.xml</relativePath>
+        <relativePath>../../elega9t/pom.xml</relativePath>
     </parent>
 
-    <artifactId>elixir</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>elixir-gui</artifactId>
 
-    <modules>
-        <module>elixir-api</module>
-        <module>elixir-db-provider</module>
-        <module>elixir-cli</module>
-        <module>elixir-gui</module>
-    </modules>
+    <dependencies>
+    </dependencies>
 
 </project>
