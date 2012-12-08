@@ -24,30 +24,38 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBar = new javax.swing.JToolBar();
+        connectToolBarButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        fileMenu = new javax.swing.JMenu();
+        editMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/gui"); // NOI18N
-        setTitle(bundle.getString("main.title")); // NOI18N
+        setTitle(ResourceStrings.main.getString("main.title"));
         setExtendedState(MAXIMIZED_BOTH);
 
         toolBar.setRollover(true);
+
+        connectToolBarButton.setText("jButton1");
+        connectToolBarButton.setFocusable(false);
+        connectToolBarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        connectToolBarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(connectToolBarButton);
+
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
 
-        jMenu1.setText("File");
-        menuBar.add(jMenu1);
+        fileMenu.setText("File");
+        menuBar.add(fileMenu);
 
-        jMenu2.setText("Edit");
-        menuBar.add(jMenu2);
+        editMenu.setText("Edit");
+        menuBar.add(editMenu);
 
         setJMenuBar(menuBar);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton connectToolBarButton;
+    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
