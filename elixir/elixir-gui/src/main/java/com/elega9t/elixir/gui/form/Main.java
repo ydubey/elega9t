@@ -6,6 +6,7 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.elixir.gui.ResourceStrings;
+import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 
 public class Main extends javax.swing.JFrame {
 
@@ -27,10 +28,11 @@ public class Main extends javax.swing.JFrame {
 
         topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        connectToDatabaseToolBarButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        connectToDatabaseFileMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,11 +43,16 @@ public class Main extends javax.swing.JFrame {
 
         toolBar.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/connect_to_database.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(jButton1);
+        connectToDatabaseToolBarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/connect_to_database.png"))); // NOI18N
+        connectToDatabaseToolBarButton.setFocusable(false);
+        connectToDatabaseToolBarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        connectToDatabaseToolBarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        connectToDatabaseToolBarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                connectToDatabaseToolBarButtonActionPerformed(evt);
+            }
+        });
+        toolBar.add(connectToDatabaseToolBarButton);
 
         topPanel.add(toolBar, java.awt.BorderLayout.CENTER);
 
@@ -55,6 +62,16 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         fileMenu.setText(ResourceStrings.menu.getString("main.file.menu"));
+
+        connectToDatabaseFileMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/connect_to_database.png"))); // NOI18N
+        connectToDatabaseFileMenuItem.setText(ResourceStrings.menu.getString("file.menu.connectToDatabase"));
+        connectToDatabaseFileMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                connectToDatabaseFileMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(connectToDatabaseFileMenuItem);
+
         menuBar.add(fileMenu);
 
         editMenu.setText(ResourceStrings.menu.getString("main.edit.menu"));
@@ -63,11 +80,20 @@ public class Main extends javax.swing.JFrame {
         setJMenuBar(menuBar);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void connectToDatabaseToolBarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectToDatabaseToolBarButtonActionPerformed
+        connectToDatabaseFileMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_connectToDatabaseToolBarButtonActionPerformed
+
+    private void connectToDatabaseFileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectToDatabaseFileMenuItemActionPerformed
+        new ConnectToDatabaseDialog(this, true).openDialog();
+    }//GEN-LAST:event_connectToDatabaseFileMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JMenuItem connectToDatabaseFileMenuItem;
+    private javax.swing.JButton connectToDatabaseToolBarButton;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JPanel topPanel;

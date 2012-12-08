@@ -14,4 +14,10 @@ public interface ResourceStrings {
     java.util.ResourceBundle main = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/main");
     java.util.ResourceBundle menu = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/menu");
     
+    interface dialog {
+        
+        java.util.ResourceBundle connectToDatabase = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/dialog/connectToDatabase");
+        
+    }
+    
 }
