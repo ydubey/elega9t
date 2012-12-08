@@ -41,6 +41,9 @@ public class HelpCommand extends DefaultEntity implements Command {
             for (String command : commands) {
                 out.println(command);
             }
+        } else {
+            final Command command = shell.getInterpreter().getCommand(commandName);
+            out.println(command.getName());
         }
         return 0;
     }

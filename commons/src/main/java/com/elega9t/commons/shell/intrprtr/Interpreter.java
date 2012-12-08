@@ -143,12 +143,8 @@ public class Interpreter extends DefaultEntity {
             }
             commandName = shell.resolve(commandName);
             if (commandName != null) {
-                Class<? extends Command> commandClass = commands.get(commandName);
-                if (commandClass == null) {
-                    throw new CommandNotFoundException(commandName + ": command not found");
-                }
-                Command command = commandClass.newInstance();
-                Map<RequiredContextElement, Field> contextElementFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(RequiredContextElement.class, commandClass);
+                Command command = getCommand(commandName);
+                Map<RequiredContextElement, Field> contextElementFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(RequiredContextElement.class, command.getClass());
                 for (final RequiredContextElement contextElement : contextElementFieldMap.keySet()) {
                     Object shellContextElement = shell.getContextElement(contextElement.name());
                     if(shellContextElement != null) {
@@ -160,7 +156,7 @@ public class Interpreter extends DefaultEntity {
                     }
                 }
 
-                Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, commandClass);
+                Map<NamedParameter, Field> namedParameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(NamedParameter.class, command.getClass());
 
                 ArgumentParser parser = new ArgumentParser(new ByteArrayInputStream(cmd.getBytes()));
                 Map<String, Argument> parsedArguments = parser.parse(getBooleanParameters(namedParameterFieldMap));
@@ -175,7 +171,7 @@ public class Interpreter extends DefaultEntity {
                         throw new IllegalStateException("Parameter '" + namedParameter.name() + "' is required.");
                     }
                 }
-                Map<com.elega9t.commons.shell.intrprtr.Parameter, Field> parameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(com.elega9t.commons.shell.intrprtr.Parameter.class, commandClass);
+                Map<com.elega9t.commons.shell.intrprtr.Parameter, Field> parameterFieldMap = ReflectionUtilities.getDeclaredFieldsWithAnnotation(com.elega9t.commons.shell.intrprtr.Parameter.class, command.getClass());
                 for (final com.elega9t.commons.shell.intrprtr.Parameter param : parameterFieldMap.keySet()) {
                     Field field = parameterFieldMap.get(param);
                     field.setAccessible(true);
@@ -214,6 +210,14 @@ public class Interpreter extends DefaultEntity {
 
     public Collection<Class<? extends Command>> getCommands() {
         return commands.values();
+    }
+
+    public Command getCommand(String commandName) throws IllegalAccessException, InstantiationException {
+        Class<? extends Command> commandClass = commands.get(commandName);
+        if (commandClass == null) {
+            throw new CommandNotFoundException(commandName + ": command not found");
+        }
+        return commandClass.newInstance();
     }
 
 }
