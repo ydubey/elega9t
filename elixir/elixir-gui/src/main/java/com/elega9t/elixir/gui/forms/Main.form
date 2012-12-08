@@ -6,12 +6,16 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="ResourceStrings.menu.getString(&quot;main.file.menu&quot;)" type="code"/>
+            </Property>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="editMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="ResourceStrings.menu.getString(&quot;main.edit.menu&quot;)" type="code"/>
+            </Property>
           </Properties>
         </Menu>
       </SubComponents>

@@ -5,6 +5,8 @@
 
 package com.elega9t.elixir.gui;
 
+import com.elega9t.elixir.gui.forms.Main;
+
 public class Launcher {
 
     /**
