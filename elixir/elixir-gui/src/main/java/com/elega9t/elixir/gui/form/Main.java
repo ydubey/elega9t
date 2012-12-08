@@ -3,7 +3,7 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.elixir.gui.forms;
+package com.elega9t.elixir.gui.form;
 
 import com.elega9t.elixir.gui.ResourceStrings;
 
@@ -25,8 +25,10 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
-        connectToolBarButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        bodyPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
@@ -35,15 +37,22 @@ public class Main extends javax.swing.JFrame {
         setTitle(ResourceStrings.main.getString("main.title"));
         setExtendedState(MAXIMIZED_BOTH);
 
+        topPanel.setLayout(new java.awt.BorderLayout());
+
         toolBar.setRollover(true);
 
-        connectToolBarButton.setText("jButton1");
-        connectToolBarButton.setFocusable(false);
-        connectToolBarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        connectToolBarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(connectToolBarButton);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/connect_to_database.png"))); // NOI18N
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(jButton1);
 
-        getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
+        topPanel.add(toolBar, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
+
+        bodyPanel.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         fileMenu.setText(ResourceStrings.menu.getString("main.file.menu"));
         menuBar.add(fileMenu);
@@ -55,10 +64,12 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton connectToolBarButton;
+    private javax.swing.JPanel bodyPanel;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JToolBar toolBar;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }

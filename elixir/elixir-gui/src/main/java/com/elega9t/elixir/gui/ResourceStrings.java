@@ -11,7 +11,7 @@ package com.elega9t.elixir.gui;
  */
 public interface ResourceStrings {
     
-    java.util.ResourceBundle main = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/main");
-    java.util.ResourceBundle menu = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/menu");
+    java.util.ResourceBundle main = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/main");
+    java.util.ResourceBundle menu = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/menu");
     
 }
