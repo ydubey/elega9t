@@ -11,7 +11,7 @@ import com.elega9t.commons.geo.model.GeoLocationInfo;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class GeoLocationFactory {
+public class GeoLocationResolver {
 
     private static final GeoLocationProvider geoLocationProvider = new HostIpDotInfoGeoLocationProvider();
 

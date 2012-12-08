@@ -10,12 +10,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class GeoLocationFactoryTest {
+public class GeoLocationResolverTest {
 
     @Test
     public void canLookupUsIp() throws Exception {
         String ip = "12.215.42.19.43";
-        GeoLocationInfo geoLocationInfo = GeoLocationFactory.lookup(ip);
+        GeoLocationInfo geoLocationInfo = GeoLocationResolver.lookup(ip);
         assertEquals(ip, geoLocationInfo.getIp());
         assertEquals("UNITED STATES", geoLocationInfo.getCountry());
         assertEquals("US", geoLocationInfo.getCountryCode());
@@ -25,7 +25,7 @@ public class GeoLocationFactoryTest {
     @Test
     public void canLookupUkIp() throws Exception {
         String ip = "80.238.1.133";
-        GeoLocationInfo geoLocationInfo = GeoLocationFactory.lookup(ip);
+        GeoLocationInfo geoLocationInfo = GeoLocationResolver.lookup(ip);
         assertEquals(ip, geoLocationInfo.getIp());
         assertEquals("UNITED KINGDOM", geoLocationInfo.getCountry());
         assertEquals("GB", geoLocationInfo.getCountryCode());
@@ -34,7 +34,7 @@ public class GeoLocationFactoryTest {
 
     @Test
     public void canLookupLoopBack() throws Exception {
-        GeoLocationInfo geoLocationInfo = GeoLocationFactory.lookup("127.0.0.1");
+        GeoLocationInfo geoLocationInfo = GeoLocationResolver.lookup("127.0.0.1");
         assertEquals("127.0.0.1", geoLocationInfo.getIp());
         assertEquals("(Private Address)", geoLocationInfo.getCountry());
         assertEquals("XX", geoLocationInfo.getCountryCode());
