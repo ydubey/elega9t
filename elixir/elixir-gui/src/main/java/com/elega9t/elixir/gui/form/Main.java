@@ -7,7 +7,6 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.BackgroundText;
-import com.elega9t.elixir.gui.components.TextBackgroundPanel;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import java.awt.datatransfer.DataFlavor;
@@ -17,9 +16,13 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 public class Main extends javax.swing.JFrame {
 
+    private DefaultMutableTreeNode connections = new DefaultMutableTreeNode("Connections"); 
+    
     /**
      * Creates new form Main
      */
@@ -50,8 +53,8 @@ public class Main extends javax.swing.JFrame {
             new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
         );
         leftBasePanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        connectionsTreeScrollPane = new javax.swing.JScrollPane();
+        connectionsTree = new JTree(connections);
         bottomPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -99,9 +102,9 @@ public class Main extends javax.swing.JFrame {
 
         leftBasePanel.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setViewportView(jTree1);
+        connectionsTreeScrollPane.setViewportView(connectionsTree);
 
-        leftBasePanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        leftBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);
 
         bodySplitPane.setLeftComponent(leftBasePanel);
 
@@ -163,11 +166,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JMenuItem connectToDatabaseFileMenuItem;
     private javax.swing.JButton connectToDatabaseToolBarButton;
+    private javax.swing.JTree connectionsTree;
+    private javax.swing.JScrollPane connectionsTreeScrollPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JPanel leftBasePanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel rightBasePanel;
