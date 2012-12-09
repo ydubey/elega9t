@@ -61,7 +61,6 @@
         <module name="elixir-cli" />
         <module name="elixir-gui" />
         <module name="elixir-mysql" />
-        <module name="elixir-release" />
         <module name="jmeter-jms-skip-jndi" />
         <module name="number-to-words" />
         <module name="test-utilities" />
