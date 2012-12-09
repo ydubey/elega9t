@@ -27,6 +27,8 @@
       <directory url="file://$PROJECT_DIR$/../elixir/elixir-gui/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../elixir/elixir-resources/target/generated-sources/annotations" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../elixir/elixir-resources/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-release/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elixir/elixir-release/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
@@ -59,6 +61,7 @@
         <module name="elixir-cli" />
         <module name="elixir-gui" />
         <module name="elixir-mysql" />
+        <module name="elixir-release" />
         <module name="jmeter-jms-skip-jndi" />
         <module name="number-to-words" />
         <module name="test-utilities" />
@@ -77,6 +80,7 @@
       <module name="elixir-db-provider" target="1.6" />
       <module name="elixir-gui" target="1.6" />
       <module name="elixir-mysql" target="1.6" />
+      <module name="elixir-release" target="1.6" />
       <module name="intellij-idea-jbehave-plugin" target="1.6" />
       <module name="intellij-idea-plugins" target="1.6" />
       <module name="jmeter-jms-skip-jndi" target="1.6" />
