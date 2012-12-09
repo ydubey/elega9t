@@ -36,6 +36,12 @@
             <artifactId>elixir-gui</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.codehaus.izpack</groupId>-->
+            <!--<artifactId>izpack-standalone-compiler</artifactId>-->
+            <!--<version>4.3.5</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -55,6 +61,64 @@
                                 <descriptor>assembly.xml</descriptor>
                             </descriptors>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                <!--<version>1.1</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>create-installer-area</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<tasks>-->
+                                <!--<untar dest="target/staging" compression="gzip">-->
+                                    <!--<fileset dir="target">-->
+                                        <!--<include name="*.tar.gz"/>-->
+                                    <!--</fileset>-->
+                                <!--</untar>-->
+                            <!--</tasks>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.0</version>
+                <executions>
+                    <execution>
+                        <id>standard-installer</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <stripVersion>true</stripVersion>
+                            <excludeGroupIds>org.codehaus.izpack</excludeGroupIds> <!-- dont want standalone compiler -->
+                            <outputDirectory>${project.build.directory}/staging/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.izpack</groupId>
+                <artifactId>izpack-maven-plugin</artifactId>
+                <version>5.0.0-beta10</version>
+                <configuration>
+                    <izpackBasedir>staging</izpackBasedir>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>standard-installer</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>izpack</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
