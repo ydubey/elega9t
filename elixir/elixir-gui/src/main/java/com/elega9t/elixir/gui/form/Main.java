@@ -6,9 +6,17 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.elixir.gui.ResourceStrings;
+import com.elega9t.elixir.gui.components.BackgroundText;
+import com.elega9t.elixir.gui.components.TextBackgroundPanel;
+import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
-import com.elega9t.elixir.gui.panel.TextBackgroundPanel;
-import com.elega9t.elixir.gui.panel.TextBackgroundPanel.BackgroundText;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDropEvent;
+import java.io.File;
+import java.util.List;
+import javax.swing.JPanel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -31,13 +39,19 @@ public class Main extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
         connectToDatabaseToolBarButton = new javax.swing.JButton();
-        bodyPanel = new TextBackgroundPanel(
+        bodyPanel = new javax.swing.JPanel();
+        bodySplitPane = new javax.swing.JSplitPane();
+        rightBasePanel = new javax.swing.JPanel();
+        editorTabbedPane = new TextBackgroundSplitPane(
             new BackgroundText(ResourceStrings.main.getString("title"), 100, 30).bold(),
             new BackgroundText(ResourceStrings.main.getString("website"), 130, 20),
-            new BackgroundText("Not connected to a database", 220, 20).underlined().bold(),
-            new BackgroundText("\u2023 Connect to a database with \u2318\u21E7C", 255, 17),
-            new BackgroundText("\u2023 Exit with \u2318\u21E7X", 280, 17).alighWithPrevious()
+            new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
+            new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
+            new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
         );
+        leftBasePanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         bottomPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -69,6 +83,30 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
+
+        bodySplitPane.setDividerLocation(200);
+        bodySplitPane.setOneTouchExpandable(true);
+
+        rightBasePanel.setLayout(new java.awt.BorderLayout());
+        rightBasePanel.add(editorTabbedPane, java.awt.BorderLayout.CENTER);
+        editorTabbedPane.setDropTarget(new DropTarget() {
+            public synchronized void drop(DropTargetDropEvent evt) {
+                editorTabbedPaneDropEvent(evt);
+            }
+        });
+
+        bodySplitPane.setRightComponent(rightBasePanel);
+
+        leftBasePanel.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setViewportView(jTree1);
+
+        leftBasePanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        bodySplitPane.setLeftComponent(leftBasePanel);
+
+        bodyPanel.add(bodySplitPane, java.awt.BorderLayout.CENTER);
+
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         bottomPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -106,14 +144,33 @@ public class Main extends javax.swing.JFrame {
         new ConnectToDatabaseDialog(this, true).openDialog();
     }//GEN-LAST:event_connectToDatabaseFileMenuItemActionPerformed
 
+    private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
+        try {
+            evt.acceptDrop(DnDConstants.ACTION_COPY);
+            List<File> droppedFiles = (List<File>)
+                evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+            for (File file : droppedFiles) {
+                editorTabbedPane.addTab(file.getName(), new JPanel());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JSplitPane bodySplitPane;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JMenuItem connectToDatabaseFileMenuItem;
     private javax.swing.JButton connectToDatabaseToolBarButton;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
+    private javax.swing.JPanel leftBasePanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPanel rightBasePanel;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JPanel topPanel;

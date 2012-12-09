@@ -3,7 +3,7 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.elixir.gui.panel;
+package com.elega9t.elixir.gui.components;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,8 +12,6 @@ import java.awt.Graphics;
 public class TextBackgroundPanel extends javax.swing.JPanel {
     
     private final BackgroundText[] backgroundText;
-    private final int fontSizeDec = 5;
-    private final int verticalGap = 10;
 
     /**
      * Creates new form TextBackgroundPanel
@@ -43,8 +41,8 @@ public class TextBackgroundPanel extends javax.swing.JPanel {
         int lastXPos = -1;
         for(int index=0; index < backgroundText.length; index++) {
             final BackgroundText bgText = backgroundText[index];
-            int yPos = bgText.y;
-            int stringHeight = (int) graphics.getFontMetrics().getStringBounds(bgText.text, graphics).getHeight();
+            int yPos = bgText.getY();
+            int stringHeight = (int) graphics.getFontMetrics().getStringBounds(bgText.getText(), graphics).getHeight();
             if(yPos == -1) {
                 yPos = (getHeight() - stringHeight) / 2;
             }    
@@ -53,68 +51,23 @@ public class TextBackgroundPanel extends javax.swing.JPanel {
     }
 
     private int paintString(Graphics graphics, BackgroundText backgroundText, int yPos, int lastXPos) {
-        graphics.setFont(new Font(getFont().getName(), backgroundText.bold ? Font.BOLD : Font.PLAIN, backgroundText.fontSize));
-        int stringWidth = (int) graphics.getFontMetrics().getStringBounds(backgroundText.text, graphics).getWidth();
+        graphics.setFont(new Font(getFont().getName(), backgroundText.isBold() ? Font.BOLD : Font.PLAIN, backgroundText.getFontSize()));
+        int stringWidth = (int) graphics.getFontMetrics().getStringBounds(backgroundText.getText(), graphics).getWidth();
         int xPos = lastXPos;
-        if(xPos == -1 || !backgroundText.alighWithPrevious) {
+        if(xPos == -1 || !backgroundText.isAlighWithPrevious()) {
             xPos = (getWidth() - stringWidth) / 2;
         }
         graphics.setColor(Color.WHITE);
-        graphics.drawString(backgroundText.text, xPos + 1, yPos + 1);
-        if(backgroundText.underline) {
+        graphics.drawString(backgroundText.getText(), xPos + 1, yPos + 1);
+        if(backgroundText.isUnderline()) {
             graphics.drawLine(xPos + 1, yPos + 6, xPos + stringWidth, yPos + 6);
         }
         graphics.setColor(new Color(0, 0, 0, 0.6f));
-        graphics.drawString(backgroundText.text, xPos, yPos);
-        if(backgroundText.underline) {
+        graphics.drawString(backgroundText.getText(), xPos, yPos);
+        if(backgroundText.isUnderline()) {
             graphics.drawLine(xPos, yPos + 5, xPos + stringWidth, yPos + 5);
         }
         return xPos;
-    }
-    
-    public static class BackgroundText {
-        
-        private final String text;
-        
-        private final int y;
-        
-        private final int fontSize;
-        
-        private boolean underline;
-        
-        private boolean bold;
-        
-        private boolean alighWithPrevious;
-
-        public BackgroundText(String text) {
-            this(text, -1);
-        }
-
-        public BackgroundText(String text, int y) {
-            this(text, y, 30);
-        }
-
-        public BackgroundText(String text, int y, int fontSize) {
-            this.text = text;
-            this.y = y;
-            this.fontSize = fontSize;
-        }
-        
-        public BackgroundText underlined() {
-            this.underline = true;
-            return this;
-        }
-        
-        public BackgroundText bold() {
-            this.bold = true;
-            return this;
-        }
-        
-        public BackgroundText alighWithPrevious() {
-            this.alighWithPrevious = true;
-            return this;
-        }
-        
     }
     
 }
