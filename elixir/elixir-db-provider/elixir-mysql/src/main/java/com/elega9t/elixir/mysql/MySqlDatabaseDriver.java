@@ -71,7 +71,7 @@ public class MySqlDatabaseDriver extends DefaultLoadableEntity implements Driver
             TableTypes tableTypes = new TableTypes(connection.getCatalog(), "%", connection);
             int tableTypesCount = tableTypes.getChildCount();
             for(int index=0; index< tableTypesCount; index++) {
-                connection.addChild(tableTypes.getChild(index));
+                connection.addChild(tableTypes.getChildAt(index));
             }
             connection.loadAll();
         } catch (EntityLoadException e) {

@@ -9,7 +9,7 @@ public interface EntityNode<T extends EntityNode> extends Entity {
 
     int getChildCount();
 
-    T getChild(int index);
+    T getChildAt(int index);
 
     void addChild(T node);
 

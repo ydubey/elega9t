@@ -23,7 +23,7 @@ public class DefaultLoadableEntityNode<T extends LoadableEntityNode> extends Def
     protected void loadChildren() throws EntityLoadException {
         final int childCount = getChildCount();
         for(int index=0; index < childCount; index++) {
-            final T child = getChild(index);
+            final T child = getChildAt(index);
             child.loadAll();
         }
     }

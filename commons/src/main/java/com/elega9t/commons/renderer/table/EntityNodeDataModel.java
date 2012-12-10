@@ -29,7 +29,7 @@ public class EntityNodeDataModel<T extends EntityNode> implements DataModel<T> {
 
     @Override
     public String value(int row, int column) {
-        return columnDataModels[column].value(entityNode.getChild(row));
+        return columnDataModels[column].value(entityNode.getChildAt(row));
     }
 
     @Override

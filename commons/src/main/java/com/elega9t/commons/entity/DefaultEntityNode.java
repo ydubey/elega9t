@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DefaultEntityNode<T extends EntityNode> extends DefaultEntity implements EntityNode<T> {
 
-    private List<T> children;
+    protected List<T> children;
 
     public DefaultEntityNode(String name) {
         super(name);
@@ -23,7 +23,7 @@ public class DefaultEntityNode<T extends EntityNode> extends DefaultEntity imple
     }
 
     @Override
-    public T getChild(int index) {
+    public T getChildAt(int index) {
         return children.get(index);
     }
 

@@ -5,25 +5,24 @@
 
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.commons.entity.DefaultGuiEntity;
+import com.elega9t.commons.entity.GuiEntityNode;
 import com.elega9t.commons.swing.BackgroundText;
-import com.elega9t.commons.swing.GuiEntityTreeCellRenderer;
+import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
+
+import javax.swing.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.util.List;
-import javax.swing.JPanel;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
 
 public class Main extends javax.swing.JFrame {
 
-    private DefaultMutableTreeNode savedConnections = new DefaultMutableTreeNode(new DefaultGuiEntity(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png"))));
+    private GuiEntityNode savedConnections = new GuiEntityNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")));
     
     /**
      * Creates new form Main
@@ -104,7 +103,7 @@ public class Main extends javax.swing.JFrame {
 
         leftBasePanel.setLayout(new java.awt.BorderLayout());
 
-        connectionsTree.setCellRenderer(new GuiEntityTreeCellRenderer());
+        connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTreeScrollPane.setViewportView(connectionsTree);
 
         leftBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);

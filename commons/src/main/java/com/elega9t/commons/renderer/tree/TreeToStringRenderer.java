@@ -65,7 +65,7 @@ public class TreeToStringRenderer implements Renderer<EntityNode> {
             if(!isLast) {
                 parentLevels.add(level);
             }
-            render(data.getChild(index), out, level + 1, isLast, parentLevels);
+            render(data.getChildAt(index), out, level + 1, isLast, parentLevels);
         }
     }
 

@@ -35,7 +35,7 @@ public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends Def
     }
 
     @Override
-    public T getChild(int index) {
+    public T getChildAt(int index) {
         if(!childrenLoaded) {
             try {
                 loadChildren();
@@ -43,7 +43,7 @@ public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends Def
                 throw new IllegalStateException(e);
             }
         }
-        return super.getChild(index);
+        return super.getChildAt(index);
     }
 
     @Override
