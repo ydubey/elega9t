@@ -5,13 +5,14 @@
 
 package com.elega9t.commons.swing;
 
-import com.elega9t.commons.swing.BackgroundText;
-
 import javax.swing.*;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Enumeration;
 
 public class SwingUtilities {
 
@@ -54,6 +55,26 @@ public class SwingUtilities {
             }
             lastXPos = xPos;
         }
+    }
+
+    public static void expandAll(JTree tree, TreeNode node) {
+        if (node.getChildCount() >= 0) {
+            for (Enumeration e = node.children(); e.hasMoreElements();) {
+                TreeNode n = (TreeNode) e.nextElement();
+                expandAll(tree, n);
+            }
+        }
+        tree.expandPath(new TreePath(node));
+    }
+
+    public static void collapseAll(JTree tree, TreeNode node) {
+        if (node.getChildCount() >= 0) {
+            for (Enumeration e = node.children(); e.hasMoreElements();) {
+                TreeNode n = (TreeNode) e.nextElement();
+                expandAll(tree, n);
+            }
+        }
+        tree.collapsePath(new TreePath(node));
     }
 
 }

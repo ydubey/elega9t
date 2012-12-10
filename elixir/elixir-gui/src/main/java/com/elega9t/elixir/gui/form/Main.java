@@ -8,11 +8,12 @@ package com.elega9t.elixir.gui.form;
 import com.elega9t.commons.entity.GuiEntityNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
+import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
+import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 
-import javax.swing.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -29,6 +30,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        loadConfig();
     }
 
     /**
@@ -54,8 +56,15 @@ public class Main extends javax.swing.JFrame {
             new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
         );
         leftBasePanel = new javax.swing.JPanel();
+        leftPanelTabbedPane = new javax.swing.JTabbedPane();
+        connectionsTreeBasePanel = new javax.swing.JPanel();
+        connectionTreeToolBarPanel = new javax.swing.JPanel();
+        connectionsTreeToolBar = new javax.swing.JToolBar();
+        expandAllButton = new javax.swing.JButton();
+        collapseAllButton = new javax.swing.JButton();
+        connectionsTreeToolBarSeparator1 = new javax.swing.JToolBar.Separator();
         connectionsTreeScrollPane = new javax.swing.JScrollPane();
-        connectionsTree = new JTree(savedConnections);
+        connectionsTree = new javax.swing.JTree(savedConnections);
         bottomPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -66,6 +75,11 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(ResourceStrings.main.getString("title"));
         setExtendedState(MAXIMIZED_BOTH);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         topPanel.setLayout(new java.awt.BorderLayout());
 
@@ -103,10 +117,50 @@ public class Main extends javax.swing.JFrame {
 
         leftBasePanel.setLayout(new java.awt.BorderLayout());
 
+        connectionsTreeBasePanel.setLayout(new java.awt.BorderLayout());
+
+        connectionTreeToolBarPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        connectionsTreeToolBar.setFloatable(false);
+        connectionsTreeToolBar.setRollover(true);
+
+        expandAllButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/expand_all.png"))); // NOI18N
+        expandAllButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        expandAllButton.setFocusable(false);
+        expandAllButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        expandAllButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        expandAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                expandAllButtonActionPerformed(evt);
+            }
+        });
+        connectionsTreeToolBar.add(expandAllButton);
+
+        collapseAllButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/collapse_all.png"))); // NOI18N
+        collapseAllButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        collapseAllButton.setFocusable(false);
+        collapseAllButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        collapseAllButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        collapseAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                collapseAllButtonActionPerformed(evt);
+            }
+        });
+        connectionsTreeToolBar.add(collapseAllButton);
+        connectionsTreeToolBar.add(connectionsTreeToolBarSeparator1);
+
+        connectionTreeToolBarPanel.add(connectionsTreeToolBar);
+
+        connectionsTreeBasePanel.add(connectionTreeToolBarPanel, java.awt.BorderLayout.PAGE_START);
+
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTreeScrollPane.setViewportView(connectionsTree);
 
-        leftBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);
+        connectionsTreeBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);
+
+        leftPanelTabbedPane.addTab(ResourceStrings.main.getString("connections"), connectionsTreeBasePanel);
+
+        leftBasePanel.add(leftPanelTabbedPane, java.awt.BorderLayout.CENTER);
 
         bodySplitPane.setLeftComponent(leftBasePanel);
 
@@ -149,31 +203,54 @@ public class Main extends javax.swing.JFrame {
         new ConnectToDatabaseDialog(this, true).openDialog();
     }//GEN-LAST:event_connectToDatabaseFileMenuItemActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        expandAllButtonActionPerformed(null);
+    }//GEN-LAST:event_formComponentShown
+
+    private void expandAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expandAllButtonActionPerformed
+        SwingUtilities.expandAll(connectionsTree, savedConnections);
+    }//GEN-LAST:event_expandAllButtonActionPerformed
+
+    private void collapseAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collapseAllButtonActionPerformed
+        SwingUtilities.collapseAll(connectionsTree, savedConnections);
+    }//GEN-LAST:event_collapseAllButtonActionPerformed
+
     private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
         try {
             evt.acceptDrop(DnDConstants.ACTION_COPY);
             List<File> droppedFiles = (List<File>)
                 evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
             for (File file : droppedFiles) {
-                editorTabbedPane.addTab(file.getName(), new JPanel());
+                editorTabbedPane.addTab(file.getName(), new EditorPanel());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
+
+    private void loadConfig() {
+        savedConnections.addChild(new ConnectionGuiEntity("MySQL"));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JSplitPane bodySplitPane;
     private javax.swing.JPanel bottomPanel;
+    private javax.swing.JButton collapseAllButton;
     private javax.swing.JMenuItem connectToDatabaseFileMenuItem;
     private javax.swing.JButton connectToDatabaseToolBarButton;
+    private javax.swing.JPanel connectionTreeToolBarPanel;
     private javax.swing.JTree connectionsTree;
+    private javax.swing.JPanel connectionsTreeBasePanel;
     private javax.swing.JScrollPane connectionsTreeScrollPane;
+    private javax.swing.JToolBar connectionsTreeToolBar;
+    private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
     private javax.swing.JMenu editMenu;
     private javax.swing.JTabbedPane editorTabbedPane;
+    private javax.swing.JButton expandAllButton;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JPanel leftBasePanel;
+    private javax.swing.JTabbedPane leftPanelTabbedPane;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel rightBasePanel;
     private javax.swing.JLabel statusLabel;
