@@ -7,6 +7,8 @@ package com.elega9t.elixir.gui;
 
 import com.elega9t.elixir.gui.form.Main;
 
+import javax.swing.*;
+
 public class Launcher {
 
     /**
@@ -19,7 +21,14 @@ public class Launcher {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Main().setVisible(true);
+                Main main = new Main();
+                main.setVisible(true);
+                main.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

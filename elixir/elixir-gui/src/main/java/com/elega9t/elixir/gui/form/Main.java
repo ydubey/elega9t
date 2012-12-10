@@ -6,7 +6,7 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.elixir.gui.ResourceStrings;
-import com.elega9t.elixir.gui.components.BackgroundText;
+import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import java.awt.datatransfer.DataFlavor;
@@ -38,7 +38,6 @@ public class Main extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
         connectToDatabaseToolBarButton = new javax.swing.JButton();

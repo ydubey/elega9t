@@ -4,10 +4,12 @@
  */
 package com.elega9t.elixir.gui.components;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import com.elega9t.commons.swing.BackgroundText;
+
+import java.awt.*;
 import javax.swing.JTabbedPane;
+
+import static com.elega9t.commons.swing.SwingUtilities.paintBackgroundText;
 
 public class TextBackgroundSplitPane extends JTabbedPane {
     
@@ -30,36 +32,7 @@ public class TextBackgroundSplitPane extends JTabbedPane {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        int lastXPos = -1;
-        for(int index=0; index < backgroundText.length; index++) {
-            final BackgroundText bgText = backgroundText[index];
-            int yPos = bgText.getY();
-            int stringHeight = (int) graphics.getFontMetrics().getStringBounds(bgText.getText(), graphics).getHeight();
-            if(yPos == -1) {
-                yPos = (getHeight() - stringHeight) / 2;
-            }    
-            lastXPos = paintString(graphics, bgText, yPos, lastXPos);
-        }
-    }
-
-    private int paintString(Graphics graphics, BackgroundText backgroundText, int yPos, int lastXPos) {
-        graphics.setFont(new Font(getFont().getName(), backgroundText.isBold() ? Font.BOLD : Font.PLAIN, backgroundText.getFontSize()));
-        int stringWidth = (int) graphics.getFontMetrics().getStringBounds(backgroundText.getText(), graphics).getWidth();
-        int xPos = lastXPos;
-        if(xPos == -1 || !backgroundText.isAlighWithPrevious()) {
-            xPos = (getWidth() - stringWidth) / 2;
-        }
-        graphics.setColor(Color.WHITE);
-        graphics.drawString(backgroundText.getText(), xPos + 1, yPos + 1);
-        if(backgroundText.isUnderline()) {
-            graphics.drawLine(xPos + 1, yPos + 6, xPos + stringWidth, yPos + 6);
-        }
-        graphics.setColor(new Color(0, 0, 0, 0.6f));
-        graphics.drawString(backgroundText.getText(), xPos, yPos);
-        if(backgroundText.isUnderline()) {
-            graphics.drawLine(xPos, yPos + 5, xPos + stringWidth, yPos + 5);
-        }
-        return xPos;
+        paintBackgroundText(graphics, getFont(), getHeight(), getWidth(), backgroundText);
     }
     
 }
