@@ -5,8 +5,10 @@
 
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.elixir.gui.ResourceStrings;
+import com.elega9t.commons.entity.DefaultGuiEntity;
 import com.elega9t.commons.swing.BackgroundText;
+import com.elega9t.commons.swing.GuiEntityTreeCellRenderer;
+import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import java.awt.datatransfer.DataFlavor;
@@ -21,7 +23,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 public class Main extends javax.swing.JFrame {
 
-    private DefaultMutableTreeNode connections = new DefaultMutableTreeNode("Connections"); 
+    private DefaultMutableTreeNode savedConnections = new DefaultMutableTreeNode(new DefaultGuiEntity(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png"))));
     
     /**
      * Creates new form Main
@@ -38,6 +40,7 @@ public class Main extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
         connectToDatabaseToolBarButton = new javax.swing.JButton();
@@ -53,7 +56,7 @@ public class Main extends javax.swing.JFrame {
         );
         leftBasePanel = new javax.swing.JPanel();
         connectionsTreeScrollPane = new javax.swing.JScrollPane();
-        connectionsTree = new JTree(connections);
+        connectionsTree = new JTree(savedConnections);
         bottomPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -101,6 +104,7 @@ public class Main extends javax.swing.JFrame {
 
         leftBasePanel.setLayout(new java.awt.BorderLayout());
 
+        connectionsTree.setCellRenderer(new GuiEntityTreeCellRenderer());
         connectionsTreeScrollPane.setViewportView(connectionsTree);
 
         leftBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);

@@ -11,6 +11,6 @@ import java.io.Reader;
 
 public class JBehaveStoryLexer extends FlexAdapter {
     public JBehaveStoryLexer() {
-        super(new _JBehaveStoryLexer((Reader) null));
+        super(null);
     }
 }

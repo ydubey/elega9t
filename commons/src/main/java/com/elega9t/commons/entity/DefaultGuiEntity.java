@@ -13,7 +13,12 @@ public class DefaultGuiEntity extends DefaultEntity implements GuiEntity {
     private String tooltip;
 
     public DefaultGuiEntity(String name) {
+        this(name, null);
+    }
+
+    public DefaultGuiEntity(String name, Icon icon) {
         super(name);
+        this.icon = icon;
     }
 
     @Override
