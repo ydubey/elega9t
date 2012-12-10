@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.entity;
 
-public class DefaultEntity implements Entity {
+public class DefaultEntity implements Entity, Comparable<DefaultEntity> {
 
     private final String name;
 
@@ -38,6 +38,11 @@ public class DefaultEntity implements Entity {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(DefaultEntity o) {
+        return name.compareTo(o.name);
     }
 
 }
