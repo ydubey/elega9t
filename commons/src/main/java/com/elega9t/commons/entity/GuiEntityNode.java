@@ -20,8 +20,13 @@ public class GuiEntityNode<T extends GuiEntityNode> extends DefaultEntityNode<T>
     }
 
     public GuiEntityNode(String name, Icon icon) {
+        this(name, icon, null);
+    }
+
+    public GuiEntityNode(String name, Icon icon, String tooltip) {
         super(name);
         this.icon = icon;
+        this.tooltip = tooltip;
     }
 
     @Override

@@ -22,7 +22,7 @@ import java.util.List;
 
 public class Main extends javax.swing.JFrame {
 
-    private GuiEntityNode savedConnections = new GuiEntityNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")));
+    private GuiEntityNode savedConnections = new GuiEntityNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
     
     /**
      * Creates new form Main
