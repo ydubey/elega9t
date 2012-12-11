@@ -257,9 +257,15 @@
                           <SubComponents>
                             <Component class="javax.swing.JTree" name="connectionsTree">
                               <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                    <EmptyBorder bottom="10" left="10" right="10" top="10"/>
+                                  </Border>
+                                </Property>
                                 <Property name="cellRenderer" type="javax.swing.tree.TreeCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                                   <Connection code="new GuiEntityNodeTreeCellRenderer()" type="code"/>
                                 </Property>
+                                <Property name="rowHeight" type="int" value="20"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTree(savedConnections)"/>

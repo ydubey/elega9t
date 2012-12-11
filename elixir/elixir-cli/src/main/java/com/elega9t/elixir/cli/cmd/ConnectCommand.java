@@ -14,15 +14,13 @@ import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.cli.SqlInterpreter;
+import com.elega9t.elixir.mgr.DriverManager;
 
 import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.Map;
 
 public class ConnectCommand extends DefaultEntity implements Command {
-
-    @RequiredContextElement(name="elixir-drivers", notSetMessage = "No drivers are available.")
-    private Map<String, Driver> drivers;
 
     @Parameter(index=0)
     private String databaseName;
@@ -39,7 +37,7 @@ public class ConnectCommand extends DefaultEntity implements Command {
 
     @Override
     public int execute(Shell shell, BufferedReader in, PrintStream out) throws Exception {
-        Driver driver = drivers.get(databaseName.toLowerCase());
+        Driver driver = DriverManager.getInstance().getDriver(databaseName.toLowerCase());
         if(userName == null) {
             out.print("User Name: ");
             userName = in.readLine();

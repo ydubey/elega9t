@@ -154,7 +154,9 @@ public class Main extends javax.swing.JFrame {
 
         connectionsTreeBasePanel.add(connectionTreeToolBarPanel, java.awt.BorderLayout.PAGE_START);
 
+        connectionsTree.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
+        connectionsTree.setRowHeight(20);
         connectionsTreeScrollPane.setViewportView(connectionsTree);
 
         connectionsTreeBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);

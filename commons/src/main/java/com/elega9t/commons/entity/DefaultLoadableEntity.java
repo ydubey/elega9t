@@ -5,6 +5,8 @@
 
 package com.elega9t.commons.entity;
 
+import java.io.IOException;
+
 public class DefaultLoadableEntity extends DefaultEntity implements LoadableEntity {
 
     public DefaultLoadableEntity(String name) {
@@ -12,7 +14,7 @@ public class DefaultLoadableEntity extends DefaultEntity implements LoadableEnti
     }
 
     @Override
-    public void load() throws EntityLoadException {
+    public void load() throws EntityLoadException, ClassNotFoundException, IOException {
     }
 
 }
