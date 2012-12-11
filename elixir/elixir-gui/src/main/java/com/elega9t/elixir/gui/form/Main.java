@@ -235,7 +235,7 @@ public class Main extends javax.swing.JFrame {
             ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
             try {
                 connection.connect();
-                editorTabbedPane.addTab(connection.getName(), new EditorPanel());
+                editorTabbedPane.addTab(connection.getName(), connection.getIcon(), new EditorPanel());
             } catch (SQLException e) {
                 errorOccured(e);
             }
