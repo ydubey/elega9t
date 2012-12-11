@@ -13,4 +13,9 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
         super(connectionDetails.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database.png")));
     }
 
+    @Override
+    public boolean isLeaf() {
+        return false;
+    }
+
 }

@@ -5,6 +5,8 @@
 
 package com.elega9t.commons.swing;
 
+import com.elega9t.commons.util.Predicate;
+
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
@@ -58,23 +60,45 @@ public class SwingUtilities {
     }
 
     public static void expandAll(JTree tree, TreeNode node) {
+        expandAll(tree, node, new Predicate<TreeNode>() {
+            @Override
+            public boolean evaluate(TreeNode value) {
+                return true;
+            }
+        });
+    }
+
+    public static void expandAll(JTree tree, TreeNode node, Predicate<TreeNode> predicate) {
         if (node.getChildCount() >= 0) {
             for (Enumeration e = node.children(); e.hasMoreElements();) {
                 TreeNode n = (TreeNode) e.nextElement();
-                expandAll(tree, n);
+                expandAll(tree, n, predicate);
             }
         }
-        tree.expandPath(new TreePath(node));
+        if(predicate.evaluate(node)) {
+            tree.expandPath(new TreePath(node));
+        }
     }
 
     public static void collapseAll(JTree tree, TreeNode node) {
+        collapseAll(tree, node, new Predicate<TreeNode>() {
+            @Override
+            public boolean evaluate(TreeNode value) {
+                return true;
+            }
+        });
+    }
+
+    public static void collapseAll(JTree tree, TreeNode node, Predicate<TreeNode> predicate) {
         if (node.getChildCount() >= 0) {
             for (Enumeration e = node.children(); e.hasMoreElements();) {
                 TreeNode n = (TreeNode) e.nextElement();
-                expandAll(tree, n);
+                collapseAll(tree, n, predicate);
             }
         }
-        tree.collapsePath(new TreePath(node));
+        if(predicate.evaluate(node)) {
+            tree.collapsePath(new TreePath(node));
+        }
     }
 
 }

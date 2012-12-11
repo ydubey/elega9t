@@ -9,12 +9,14 @@ import com.elega9t.commons.entity.GuiEntityNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;
+import com.elega9t.commons.util.Predicate;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 
+import javax.swing.tree.TreeNode;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -76,11 +78,6 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(ResourceStrings.main.getString("title"));
         setExtendedState(MAXIMIZED_BOTH);
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
 
         topPanel.setLayout(new java.awt.BorderLayout());
 
@@ -154,9 +151,16 @@ public class Main extends javax.swing.JFrame {
 
         connectionsTreeBasePanel.add(connectionTreeToolBarPanel, java.awt.BorderLayout.PAGE_START);
 
-        connectionsTree.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        connectionsTree.setBorder(javax.swing.BorderFactory.createEmptyBorder(7, 7, 7, 7));
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
+        connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
+            }
+            public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
+                connectionsTreeTreeWillExpand(evt);
+            }
+        });
         connectionsTreeScrollPane.setViewportView(connectionsTree);
 
         connectionsTreeBasePanel.add(connectionsTreeScrollPane, java.awt.BorderLayout.CENTER);
@@ -206,10 +210,6 @@ public class Main extends javax.swing.JFrame {
         new ConnectToDatabaseDialog(this, true).openDialog();
     }//GEN-LAST:event_connectToDatabaseFileMenuItemActionPerformed
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        expandAllButtonActionPerformed(null);
-    }//GEN-LAST:event_formComponentShown
-
     private void expandAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expandAllButtonActionPerformed
         SwingUtilities.expandAll(connectionsTree, savedConnections);
     }//GEN-LAST:event_expandAllButtonActionPerformed
@@ -217,6 +217,13 @@ public class Main extends javax.swing.JFrame {
     private void collapseAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collapseAllButtonActionPerformed
         SwingUtilities.collapseAll(connectionsTree, savedConnections);
     }//GEN-LAST:event_collapseAllButtonActionPerformed
+
+    private void connectionsTreeTreeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_connectionsTreeTreeWillExpand
+        Object component = evt.getPath().getLastPathComponent();
+        if(component instanceof ConnectionGuiEntity) {
+            System.out.println("Loading");
+        }
+    }//GEN-LAST:event_connectionsTreeTreeWillExpand
 
     private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
         try {
@@ -235,6 +242,12 @@ public class Main extends javax.swing.JFrame {
         ConnectionDetails mysqlConnectionDetails = new ConnectionDetails("root@localhost [mysql]", "mysql", "root", "password", "mysql");
         ConnectionGuiEntity mySQL = new ConnectionGuiEntity(mysqlConnectionDetails);
         savedConnections.addChild(mySQL);
+        SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
+            @Override
+            public boolean evaluate(TreeNode value) {
+                return !(value instanceof ConnectionGuiEntity);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
