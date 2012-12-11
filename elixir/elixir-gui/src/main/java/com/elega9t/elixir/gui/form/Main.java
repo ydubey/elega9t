@@ -10,11 +10,14 @@ import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.util.Predicate;
+import com.elega9t.elixir.Connection;
+import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+import com.elega9t.elixir.mgr.DriverManager;
 
 import javax.swing.tree.TreeNode;
 import java.awt.datatransfer.DataFlavor;
@@ -22,6 +25,7 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Main extends javax.swing.JFrame {
@@ -221,7 +225,14 @@ public class Main extends javax.swing.JFrame {
     private void connectionsTreeTreeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_connectionsTreeTreeWillExpand
         Object component = evt.getPath().getLastPathComponent();
         if(component instanceof ConnectionGuiEntity) {
-            System.out.println("Loading");
+            ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
+            ConnectionDetails connectionDetails = connection.getConnectionDetails();
+            Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
+            try {
+                Connection driverConnection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_connectionsTreeTreeWillExpand
 

@@ -9,8 +9,15 @@ import com.elega9t.elixir.gui.config.ConnectionDetails;
 
 public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
 
+    private final ConnectionDetails connectionDetails;
+
     public ConnectionGuiEntity(ConnectionDetails connectionDetails) {
         super(connectionDetails.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database.png")));
+        this.connectionDetails = connectionDetails;
+    }
+
+    public ConnectionDetails getConnectionDetails() {
+        return connectionDetails;
     }
 
     @Override
