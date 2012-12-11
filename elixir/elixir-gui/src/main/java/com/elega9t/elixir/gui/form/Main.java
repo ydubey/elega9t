@@ -21,6 +21,7 @@ import com.elega9t.elixir.mgr.DriverManager;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
+import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -230,10 +231,11 @@ public class Main extends javax.swing.JFrame {
 
     private void connectionsTreeTreeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_connectionsTreeTreeWillExpand
         Object component = evt.getPath().getLastPathComponent();
-        if(component instanceof ConnectionGuiEntity) {
+        if(component instanceof ConnectionGuiEntity && !((ConnectionGuiEntity)component).isConnected()) {
             ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
             try {
                 connection.connect();
+                editorTabbedPane.addTab(connection.getName(), new EditorPanel());
             } catch (SQLException e) {
                 errorOccured(e);
             }
