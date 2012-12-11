@@ -43,4 +43,8 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
         }
     }
 
+    public boolean isConnected() {
+        return connection != null;
+    }
+
 }

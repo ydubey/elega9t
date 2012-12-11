@@ -32,6 +32,7 @@ public class Launcher {
                 main.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 try {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    SwingUtilities.updateComponentTreeUI(main);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

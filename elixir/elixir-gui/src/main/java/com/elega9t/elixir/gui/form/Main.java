@@ -216,7 +216,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_connectToDatabaseFileMenuItemActionPerformed
 
     private void expandAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expandAllButtonActionPerformed
-        SwingUtilities.expandAll(connectionsTree, savedConnections);
+        SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
+            @Override
+            public boolean evaluate(TreeNode value) {
+                return !(value instanceof ConnectionGuiEntity) || ((ConnectionGuiEntity)value).isConnected();
+            }
+        });
     }//GEN-LAST:event_expandAllButtonActionPerformed
 
     private void collapseAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collapseAllButtonActionPerformed
@@ -252,12 +257,7 @@ public class Main extends javax.swing.JFrame {
         ConnectionDetails mysqlConnectionDetails = new ConnectionDetails("root@localhost [mysql]", "mysql", "root", "password", "mysql");
         ConnectionGuiEntity mySQL = new ConnectionGuiEntity(mysqlConnectionDetails);
         savedConnections.addChild(mySQL);
-        SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
-            @Override
-            public boolean evaluate(TreeNode value) {
-                return !(value instanceof ConnectionGuiEntity);
-            }
-        });
+        expandAllButtonActionPerformed(null);
     }
 
     private void errorOccured(Exception e) {
