@@ -47,10 +47,16 @@ public class EditorPanel extends javax.swing.JPanel {
 
         editorSplitPane = new javax.swing.JSplitPane();
         topPanel = new javax.swing.JPanel();
+        topPanelToolbarPanel = new javax.swing.JPanel();
+        queryPanelToolBar = new javax.swing.JToolBar();
+        executeQueryButton = new javax.swing.JButton();
         queryEditorScrollPane = new javax.swing.JScrollPane();
         queryEditorPane = new javax.swing.JEditorPane();
         bottomPanel = new javax.swing.JPanel();
         resultsTabbedPane = new javax.swing.JTabbedPane();
+        resultTablePanel = new javax.swing.JPanel();
+        resultTableScrollPane = new javax.swing.JScrollPane();
+        resultTable = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -59,6 +65,22 @@ public class EditorPanel extends javax.swing.JPanel {
 
         topPanel.setLayout(new java.awt.BorderLayout());
 
+        topPanelToolbarPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        queryPanelToolBar.setFloatable(false);
+        queryPanelToolBar.setRollover(true);
+
+        executeQueryButton.setIcon(new javax.swing.ImageIcon("/home/dev/projects/elega9t/elixir/elixir-gui/src/main/resources/com/elega9t/elixir/gui/icons/execute_query.png")); // NOI18N
+        executeQueryButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        executeQueryButton.setFocusable(false);
+        executeQueryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        executeQueryButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        queryPanelToolBar.add(executeQueryButton);
+
+        topPanelToolbarPanel.add(queryPanelToolBar);
+
+        topPanel.add(topPanelToolbarPanel, java.awt.BorderLayout.PAGE_START);
+
         queryEditorScrollPane.setViewportView(queryEditorPane);
 
         topPanel.add(queryEditorScrollPane, java.awt.BorderLayout.CENTER);
@@ -66,6 +88,26 @@ public class EditorPanel extends javax.swing.JPanel {
         editorSplitPane.setTopComponent(topPanel);
 
         bottomPanel.setLayout(new java.awt.BorderLayout());
+
+        resultTablePanel.setLayout(new java.awt.BorderLayout());
+
+        resultTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        resultTableScrollPane.setViewportView(resultTable);
+
+        resultTablePanel.add(resultTableScrollPane, java.awt.BorderLayout.CENTER);
+
+        resultsTabbedPane.addTab("Results", resultTablePanel);
+
         bottomPanel.add(resultsTabbedPane, java.awt.BorderLayout.CENTER);
 
         editorSplitPane.setRightComponent(bottomPanel);
@@ -75,9 +117,15 @@ public class EditorPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JSplitPane editorSplitPane;
+    private javax.swing.JButton executeQueryButton;
     private javax.swing.JEditorPane queryEditorPane;
     private javax.swing.JScrollPane queryEditorScrollPane;
+    private javax.swing.JToolBar queryPanelToolBar;
+    private javax.swing.JTable resultTable;
+    private javax.swing.JPanel resultTablePanel;
+    private javax.swing.JScrollPane resultTableScrollPane;
     private javax.swing.JTabbedPane resultsTabbedPane;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JPanel topPanelToolbarPanel;
     // End of variables declaration//GEN-END:variables
 }
