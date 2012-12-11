@@ -5,10 +5,12 @@
 
 package com.elega9t.elixir.gui.entity;
 
+import com.elega9t.elixir.gui.config.ConnectionDetails;
+
 public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
 
-    public ConnectionGuiEntity(String name) {
-        super(name, new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database.png")));
+    public ConnectionGuiEntity(ConnectionDetails connectionDetails) {
+        super(connectionDetails.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database.png")));
     }
 
 }

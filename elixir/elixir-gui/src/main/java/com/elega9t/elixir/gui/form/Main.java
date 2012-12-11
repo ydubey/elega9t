@@ -11,6 +11,7 @@ import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
+import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 
@@ -229,8 +230,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void loadConfig() {
-        ConnectionGuiEntity mySQL = new ConnectionGuiEntity("MySQL");
-        mySQL.addChild(new ConnectionGuiEntity("MySQL1"));
+        ConnectionDetails mysqlConnectionDetails = new ConnectionDetails("root@localhost [mysql]", "mysql", "root", "password", "mysql");
+        ConnectionGuiEntity mySQL = new ConnectionGuiEntity(mysqlConnectionDetails);
         savedConnections.addChild(mySQL);
     }
 
