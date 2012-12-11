@@ -15,6 +15,7 @@ import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
+import com.elega9t.elixir.gui.dialog.SettingsDialog;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.mgr.DriverManager;
@@ -80,6 +81,7 @@ public class Main extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         connectToDatabaseFileMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
+        settingsMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(ResourceStrings.main.getString("title"));
@@ -161,10 +163,10 @@ public class Main extends javax.swing.JFrame {
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
         connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 connectionsTreeTreeWillExpand(evt);
+            }
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         connectionsTreeScrollPane.setViewportView(connectionsTree);
@@ -203,6 +205,15 @@ public class Main extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         editMenu.setText(ResourceStrings.menu.getString("main.edit.menu"));
+
+        settingsMenuItem.setText(ResourceStrings.menu.getString("edit.menu.settings"));
+        settingsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(settingsMenuItem);
+
         menuBar.add(editMenu);
 
         setJMenuBar(menuBar);
@@ -241,6 +252,10 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_connectionsTreeTreeWillExpand
+
+    private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
+        new SettingsDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_settingsMenuItemActionPerformed
 
     private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
         try {
@@ -287,6 +302,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane leftPanelTabbedPane;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel rightBasePanel;
+    private javax.swing.JMenuItem settingsMenuItem;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JPanel topPanel;

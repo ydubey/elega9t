@@ -70,7 +70,7 @@ public class EditorPanel extends javax.swing.JPanel {
         queryPanelToolBar.setFloatable(false);
         queryPanelToolBar.setRollover(true);
 
-        executeQueryButton.setIcon(new javax.swing.ImageIcon("/home/dev/projects/elega9t/elixir/elixir-gui/src/main/resources/com/elega9t/elixir/gui/icons/execute_query.png")); // NOI18N
+        executeQueryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/execute_query.png"))); // NOI18N
         executeQueryButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         executeQueryButton.setFocusable(false);
         executeQueryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

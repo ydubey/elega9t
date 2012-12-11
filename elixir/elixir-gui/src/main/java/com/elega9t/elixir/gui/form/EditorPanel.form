@@ -60,7 +60,7 @@
                     <Component class="javax.swing.JButton" name="executeQueryButton">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="/home/dev/projects/elega9t/elixir/elixir-gui/src/main/resources/com/elega9t/elixir/gui/icons/execute_query.png"/>
+                          <Image iconType="3" name="/com/elega9t/elixir/gui/icons/execute_query.png"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">

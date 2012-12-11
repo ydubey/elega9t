@@ -14,6 +14,7 @@ public interface ResourceStrings {
     interface dialog {
         
         java.util.ResourceBundle connectToDatabase = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/dialog/connectToDatabase");
+        java.util.ResourceBundle settings = java.util.ResourceBundle.getBundle("com/elega9t/elixir/gui/i18n/dialog/settings");
         
     }
     
