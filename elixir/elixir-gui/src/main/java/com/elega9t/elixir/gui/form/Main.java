@@ -229,7 +229,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void loadConfig() {
-        savedConnections.addChild(new ConnectionGuiEntity("MySQL"));
+        ConnectionGuiEntity mySQL = new ConnectionGuiEntity("MySQL");
+        mySQL.addChild(new ConnectionGuiEntity("MySQL1"));
+        savedConnections.addChild(mySQL);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
