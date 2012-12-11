@@ -19,6 +19,7 @@ import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.mgr.DriverManager;
 
+import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
@@ -226,12 +227,10 @@ public class Main extends javax.swing.JFrame {
         Object component = evt.getPath().getLastPathComponent();
         if(component instanceof ConnectionGuiEntity) {
             ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
-            ConnectionDetails connectionDetails = connection.getConnectionDetails();
-            Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
             try {
-                Connection driverConnection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
+                connection.connect();
             } catch (SQLException e) {
-                e.printStackTrace();
+                errorOccured(e);
             }
         }
     }//GEN-LAST:event_connectionsTreeTreeWillExpand
@@ -245,7 +244,7 @@ public class Main extends javax.swing.JFrame {
                 editorTabbedPane.addTab(file.getName(), new EditorPanel());
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            errorOccured(ex);
         }
     }
 
@@ -259,6 +258,10 @@ public class Main extends javax.swing.JFrame {
                 return !(value instanceof ConnectionGuiEntity);
             }
         });
+    }
+
+    private void errorOccured(Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
