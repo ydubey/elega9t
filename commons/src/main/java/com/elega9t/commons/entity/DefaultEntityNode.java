@@ -5,7 +5,8 @@
 
 package com.elega9t.commons.entity;
 
-import java.util.ArrayList;
+import com.elega9t.commons.util.SortedList;
+
 import java.util.List;
 
 public class DefaultEntityNode<T extends EntityNode> extends DefaultEntity implements EntityNode<T> {
@@ -14,7 +15,7 @@ public class DefaultEntityNode<T extends EntityNode> extends DefaultEntity imple
 
     public DefaultEntityNode(String name) {
         super(name);
-        children = new ArrayList<T>();
+        children = new SortedList<T>();
     }
 
     @Override

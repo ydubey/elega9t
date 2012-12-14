@@ -9,20 +9,14 @@ import com.elega9t.commons.entity.GuiEntityNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;
+import com.elega9t.commons.swing.config.ConfigDialog;
 import com.elega9t.commons.util.Predicate;
-import com.elega9t.elixir.Connection;
-import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
+import com.elega9t.elixir.gui.components.config.LookAndFeelConfigElement;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
-import com.elega9t.elixir.gui.dialog.SettingsDialog;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
-import com.elega9t.elixir.mgr.DriverManager;
-
-import javax.swing.*;
-import javax.swing.tree.TreeNode;
-import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -30,6 +24,8 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.*;
+import javax.swing.tree.TreeNode;
 
 public class Main extends javax.swing.JFrame {
 
@@ -254,7 +250,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_connectionsTreeTreeWillExpand
 
     private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
-        new SettingsDialog(this, true).setVisible(true);
+        new ConfigDialog(
+                this, 
+                true, 
+                ResourceStrings.buttons.getString("apply"), 
+                ResourceStrings.buttons.getString("cancel"), 
+                ResourceStrings.buttons.getString("help"),
+                new LookAndFeelConfigElement()
+                ).setVisible(true);
     }//GEN-LAST:event_settingsMenuItemActionPerformed
 
     private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
