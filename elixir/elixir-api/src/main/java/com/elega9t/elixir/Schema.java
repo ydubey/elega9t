@@ -34,4 +34,9 @@ public class Schema extends DatabaseEntity<TableType> {
         }
     }
 
+    @Override
+    public <R> R visit(DatabaseEntityVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }

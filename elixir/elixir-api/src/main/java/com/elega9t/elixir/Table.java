@@ -24,4 +24,9 @@ public class Table extends DatabaseEntity<Columns> {
         addChild(new Columns(catalogueName, schemaName, getName(), getConnection()));
     }
 
+    @Override
+    public <R> R visit(DatabaseEntityVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }

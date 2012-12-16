@@ -36,4 +36,9 @@ public class TableType extends DatabaseEntity<Table> {
         }
     }
 
+    @Override
+    public <R> R visit(DatabaseEntityVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }

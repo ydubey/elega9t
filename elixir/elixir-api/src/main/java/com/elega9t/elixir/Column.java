@@ -45,4 +45,10 @@ public class Column extends DatabaseEntity<Columns> {
     public String toString() {
         return super.toString() + " ["+typeName+"]";
     }
+
+    @Override
+    public <R> R visit(DatabaseEntityVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }

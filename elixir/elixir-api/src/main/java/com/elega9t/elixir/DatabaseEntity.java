@@ -8,7 +8,7 @@ package com.elega9t.elixir;
 import com.elega9t.commons.entity.DefaultLazyLoadEntityNode;
 import com.elega9t.commons.entity.EntityLoadException;
 
-public class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityNode<T> {
+public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityNode<T> {
 
     private final Connection connection;
 
@@ -20,5 +20,7 @@ public class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEnt
     public Connection getConnection() {
         return connection;
     }
+
+    public abstract <R> R visit(DatabaseEntityVisitor<R> visitor);
 
 }

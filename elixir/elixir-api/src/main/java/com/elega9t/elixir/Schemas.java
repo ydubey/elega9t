@@ -21,6 +21,11 @@ public class Schemas extends DatabaseEntity<Schema> {
     }
 
     @Override
+    public <R> R visit(DatabaseEntityVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
     protected void loadChildren() throws EntityLoadException {
         super.loadChildren();
         try {

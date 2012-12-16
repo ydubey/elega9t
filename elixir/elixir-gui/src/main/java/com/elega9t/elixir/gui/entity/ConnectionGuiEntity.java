@@ -37,9 +37,10 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
         Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
         connection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
         int childCount = connection.getChildCount();
+        DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
         for(int index=0; index<childCount; index++) {
             DatabaseEntity entity = connection.getChildAt(index);
-            addChild(new DatabaseGuiEntity(entity.getName(), null));
+            addChild((DatabaseGuiEntity) entity.visit(factory));
         }
     }
 

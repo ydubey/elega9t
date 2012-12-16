@@ -48,4 +48,9 @@ public class Columns extends DatabaseEntity<Column> {
         }
     }
 
+    @Override
+    public <R> R visit(DatabaseEntityVisitor<R> visitor) {
+        return visitor.visit(this);
+    }
+
 }
