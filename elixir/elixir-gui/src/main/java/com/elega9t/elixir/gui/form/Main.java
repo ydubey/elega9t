@@ -105,7 +105,7 @@ public class Main extends javax.swing.JFrame {
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
-        bodySplitPane.setDividerLocation(200);
+        bodySplitPane.setDividerLocation(300);
         bodySplitPane.setOneTouchExpandable(true);
 
         rightBasePanel.setLayout(new java.awt.BorderLayout());

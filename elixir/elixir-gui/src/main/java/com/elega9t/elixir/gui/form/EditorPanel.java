@@ -1,32 +1,7 @@
-/*
- * The MIT License
- *
- * Copyright 2012 yogesh.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package com.elega9t.elixir.gui.form;
 
-/**
- *
- * @author yogesh
- */
+import javax.swing.table.DefaultTableModel;
+
 public class EditorPanel extends javax.swing.JPanel {
 
     /**
@@ -57,6 +32,9 @@ public class EditorPanel extends javax.swing.JPanel {
         resultTablePanel = new javax.swing.JPanel();
         resultTableScrollPane = new javax.swing.JScrollPane();
         resultTable = new javax.swing.JTable();
+        messagesPanel = new javax.swing.JPanel();
+        messagesScrollPane = new javax.swing.JScrollPane();
+        messagesTextArea = new javax.swing.JTextArea();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -91,22 +69,22 @@ public class EditorPanel extends javax.swing.JPanel {
 
         resultTablePanel.setLayout(new java.awt.BorderLayout());
 
-        resultTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        resultTable.setModel(new DefaultTableModel());
         resultTableScrollPane.setViewportView(resultTable);
 
         resultTablePanel.add(resultTableScrollPane, java.awt.BorderLayout.CENTER);
 
         resultsTabbedPane.addTab("Results", resultTablePanel);
+
+        messagesPanel.setLayout(new java.awt.BorderLayout());
+
+        messagesTextArea.setColumns(20);
+        messagesTextArea.setRows(5);
+        messagesScrollPane.setViewportView(messagesTextArea);
+
+        messagesPanel.add(messagesScrollPane, java.awt.BorderLayout.CENTER);
+
+        resultsTabbedPane.addTab("Messages", messagesPanel);
 
         bottomPanel.add(resultsTabbedPane, java.awt.BorderLayout.CENTER);
 
@@ -118,6 +96,9 @@ public class EditorPanel extends javax.swing.JPanel {
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JSplitPane editorSplitPane;
     private javax.swing.JButton executeQueryButton;
+    private javax.swing.JPanel messagesPanel;
+    private javax.swing.JScrollPane messagesScrollPane;
+    private javax.swing.JTextArea messagesTextArea;
     private javax.swing.JEditorPane queryEditorPane;
     private javax.swing.JScrollPane queryEditorScrollPane;
     private javax.swing.JToolBar queryPanelToolBar;
