@@ -13,10 +13,13 @@ import com.elega9t.commons.swing.config.ConfigDialog;
 import com.elega9t.commons.util.Predicate;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
-import com.elega9t.elixir.gui.components.config.LookAndFeelConfigElement;
+import com.elega9t.elixir.gui.components.config.ui.lnf.LookAndFeelConfigPanel;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+
+import javax.swing.*;
+import javax.swing.tree.TreeNode;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -24,8 +27,6 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
-import javax.swing.*;
-import javax.swing.tree.TreeNode;
 
 public class Main extends javax.swing.JFrame {
 
@@ -252,11 +253,12 @@ public class Main extends javax.swing.JFrame {
     private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
         new ConfigDialog(
                 this, 
-                true, 
+                true,
+                ResourceStrings.dialog.settings.getString("title"),
                 ResourceStrings.buttons.getString("apply"), 
                 ResourceStrings.buttons.getString("cancel"), 
                 ResourceStrings.buttons.getString("help"),
-                new LookAndFeelConfigElement()
+                new LookAndFeelConfigPanel()
                 ).setVisible(true);
     }//GEN-LAST:event_settingsMenuItemActionPerformed
 

@@ -7,14 +7,24 @@ package com.elega9t.commons.swing.config;
 
 public class ConfigPanel extends javax.swing.JPanel {
 
+    private final String[] parentCategory;
+
     /**
      * Creates new form ConfigPanel
      */
-    public ConfigPanel() {
+    public ConfigPanel(String... parentCategory) {
+        this.parentCategory = parentCategory;
         initComponents();
     }
 
-    public void applyConfigChange() {
+    public String[] getParentCategory() {
+        return parentCategory;
+    }
+
+    public void initConfig() {
+    }
+
+    public void applyConfigChange(java.awt.Container container, java.awt.event.ActionEvent evt) {
     }
     
     /**
