@@ -11,37 +11,37 @@ public class DatabaseGuiEntityFactory implements DatabaseEntityVisitor<DatabaseG
 
     @Override
     public DatabaseGuiEntity visit(Columns columns) {
-        return null;
+        return new ColumnsGuiEntity(columns);
     }
 
     @Override
     public DatabaseGuiEntity visit(Column column) {
-        return null;
+        return new ColumnGuiEntity(column);
     }
 
     @Override
     public DatabaseGuiEntity visit(Schema schema) {
-        return null;
+        return new DatabaseGuiEntity(schema.getName(), null);
     }
 
     @Override
     public DatabaseGuiEntity visit(Schemas schemas) {
-        return null;
+        return new DatabaseGuiEntity(schemas.getName(), null);
     }
 
     @Override
     public DatabaseGuiEntity visit(Table table) {
-        return null;
+        return new TableGuiEntity(table);
     }
 
     @Override
     public DatabaseGuiEntity visit(TableType tableType) {
-        return new TableTypeGuiEntity(tableType.getName());
+        return new TableTypeGuiEntity(tableType);
     }
 
     @Override
     public DatabaseGuiEntity visit(TableTypes tableTypes) {
-        return null;
+        return new DatabaseGuiEntity(tableTypes.getName(), null);
     }
 
 }

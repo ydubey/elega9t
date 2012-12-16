@@ -6,13 +6,12 @@
 package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.DefaultLazyLoadEntityNode;
-import com.elega9t.commons.entity.EntityLoadException;
 
 public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityNode<T> {
 
     private final Connection connection;
 
-    public DatabaseEntity(String name, Connection connection) throws EntityLoadException {
+    public DatabaseEntity(String name, Connection connection) {
         super(name);
         this.connection = connection;
     }

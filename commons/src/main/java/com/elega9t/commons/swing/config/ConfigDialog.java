@@ -111,6 +111,7 @@ public class ConfigDialog extends javax.swing.JDialog {
         settingBreadcrumbPanel.setLayout(new javax.swing.BoxLayout(settingBreadcrumbPanel, javax.swing.BoxLayout.LINE_AXIS));
         configBasePanel.add(settingBreadcrumbPanel, java.awt.BorderLayout.PAGE_START);
 
+        configPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 10, 10));
         configPanel.setLayout(new java.awt.CardLayout());
         configBasePanel.add(configPanel, java.awt.BorderLayout.CENTER);
 

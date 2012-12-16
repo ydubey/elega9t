@@ -9,12 +9,12 @@ public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends Def
 
     private boolean childrenLoaded = false;
 
-    public DefaultLazyLoadEntityNode(String name) throws EntityLoadException {
+    public DefaultLazyLoadEntityNode(String name) {
         super(name);
         load();
     }
 
-    public void load() throws EntityLoadException {
+    public void load() {
     }
 
     protected void loadChildren() throws EntityLoadException {
@@ -74,6 +74,10 @@ public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends Def
     public void clear() {
         super.clear();
         childrenLoaded = false;
+    }
+
+    public boolean isChildrenLoaded() {
+        return childrenLoaded;
     }
 
 }

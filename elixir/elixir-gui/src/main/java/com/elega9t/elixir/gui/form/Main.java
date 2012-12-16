@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.gui.form;
 
+import com.elega9t.commons.entity.EntityLoadException;
 import com.elega9t.commons.entity.GuiEntityNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
@@ -17,9 +18,6 @@ import com.elega9t.elixir.gui.components.config.ui.lnf.LookAndFeelConfigPanel;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
-
-import javax.swing.*;
-import javax.swing.tree.TreeNode;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -27,6 +25,8 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.*;
+import javax.swing.tree.TreeNode;
 
 public class Main extends javax.swing.JFrame {
 
@@ -228,7 +228,7 @@ public class Main extends javax.swing.JFrame {
         SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
             @Override
             public boolean evaluate(TreeNode value) {
-                return !(value instanceof ConnectionGuiEntity) || ((ConnectionGuiEntity)value).isConnected();
+                return !(value instanceof ConnectionGuiEntity) || ((ConnectionGuiEntity)value).isChildrenLoaded();
             }
         });
     }//GEN-LAST:event_expandAllButtonActionPerformed
@@ -239,12 +239,12 @@ public class Main extends javax.swing.JFrame {
 
     private void connectionsTreeTreeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_connectionsTreeTreeWillExpand
         Object component = evt.getPath().getLastPathComponent();
-        if(component instanceof ConnectionGuiEntity && !((ConnectionGuiEntity)component).isConnected()) {
+        if(component instanceof ConnectionGuiEntity && !((ConnectionGuiEntity)component).isChildrenLoaded()) {
             ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
             try {
-                connection.connect();
+                connection.loadChildren();
                 editorTabbedPane.addTab(connection.getName(), connection.getIcon(), new EditorPanel());
-            } catch (SQLException e) {
+            } catch (EntityLoadException e) {
                 errorOccured(e);
             }
         }

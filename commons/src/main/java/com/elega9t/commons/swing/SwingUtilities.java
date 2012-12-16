@@ -69,7 +69,7 @@ public class SwingUtilities {
     }
 
     public static void expandAll(JTree tree, TreeNode node, Predicate<TreeNode> predicate) {
-        if (node.getChildCount() >= 0) {
+        if (predicate.evaluate(node) && node.getChildCount() >= 0) {
             for (Enumeration e = node.children(); e.hasMoreElements();) {
                 TreeNode n = (TreeNode) e.nextElement();
                 expandAll(tree, n, predicate);

@@ -44,6 +44,7 @@ public class LookAndFeelConfigPanel extends ConfigPanel {
 
         add(lookAndFeelConfigPanel);
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox lookAndFeelComboBox;
@@ -58,7 +59,7 @@ public class LookAndFeelConfigPanel extends ConfigPanel {
         for (UIManager.LookAndFeelInfo installedLookAndFeel : installedLookAndFeels) {
             final LookAndFeelEntity lookAndFeelEntity = new LookAndFeelEntity(installedLookAndFeel);
             model.addElement(lookAndFeelEntity);
-            if(currentLookAndFeel == installedLookAndFeel.getName()) {
+            if(currentLookAndFeel.equals(installedLookAndFeel.getName())) {
                 model.setSelectedItem(lookAndFeelEntity);
             }
         }

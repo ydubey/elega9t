@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.swing;
 
-import com.elega9t.commons.entity.GuiEntityNode;
+import com.elega9t.commons.entity.GuiEntity;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -16,10 +16,10 @@ public class GuiEntityNodeTreeCellRenderer extends DefaultTreeCellRenderer {
     @Override
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
         Component component = super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
-        if(value instanceof GuiEntityNode) {
-            GuiEntityNode guiEntityNode = (GuiEntityNode) value;
-            setIcon(guiEntityNode.getIcon());
-            setToolTipText(guiEntityNode.getTooltip());
+        if(value instanceof GuiEntity) {
+            GuiEntity guiEntity = (GuiEntity) value;
+            setIcon(guiEntity.getIcon());
+            setToolTipText(guiEntity.getTooltip());
         }
         return component;
     }

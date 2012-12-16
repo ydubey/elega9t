@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.gui.entity;
 
+import com.elega9t.commons.entity.EntityLoadException;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.DatabaseEntity;
 import com.elega9t.elixir.Driver;
@@ -28,24 +29,20 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
         return connectionDetails;
     }
 
-    @Override
-    public boolean isLeaf() {
-        return false;
-    }
-
-    public void connect() throws SQLException {
+    public void loadChildren() throws EntityLoadException {
+        super.loadChildren();
         Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
-        connection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
-        int childCount = connection.getChildCount();
-        DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
-        for(int index=0; index<childCount; index++) {
-            DatabaseEntity entity = connection.getChildAt(index);
-            addChild((DatabaseGuiEntity) entity.visit(factory));
+        try {
+            connection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
+            int childCount = connection.getChildCount();
+            DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
+            for(int index=0; index<childCount; index++) {
+                DatabaseEntity entity = connection.getChildAt(index);
+                addChild((DatabaseGuiEntity) entity.visit(factory));
+            }
+        } catch (SQLException e) {
+            throw new EntityLoadException(e);
         }
-    }
-
-    public boolean isConnected() {
-        return connection != null;
     }
 
 }

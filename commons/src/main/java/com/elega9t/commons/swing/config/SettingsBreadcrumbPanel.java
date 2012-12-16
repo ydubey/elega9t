@@ -28,6 +28,7 @@ public class SettingsBreadcrumbPanel extends javax.swing.JPanel {
 
         breadcrumbLabel = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 0, 10));
         setLayout(new java.awt.BorderLayout());
 
         breadcrumbLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -54,7 +55,7 @@ public class SettingsBreadcrumbPanel extends javax.swing.JPanel {
         ((Graphics2D)graphics).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         super.paintComponent(graphics);
         graphics.setColor(new Color(0x00, 0x99, 0xCC));
-        graphics.fillRoundRect(0, 0, getWidth(), getHeight() + 10, 20, 20);
+        graphics.fillRoundRect(10, 10, getWidth() - 20, getHeight(), 20, 20);
     }
 
 }

@@ -5,14 +5,29 @@
 
 package com.elega9t.elixir.gui.entity;
 
-import com.elega9t.commons.entity.GuiEntityNode;
+import com.elega9t.commons.entity.LazyLoadGuiEntityNode;
+import com.elega9t.elixir.DatabaseEntity;
 
 import javax.swing.*;
 
-public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends GuiEntityNode<T> {
+public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends LazyLoadGuiEntityNode<T> {
 
     public DatabaseGuiEntity(String name, Icon icon) {
         super(name, icon);
+    }
+
+    @Override
+    public boolean isLeaf() {
+        return false;
+    }
+
+    protected <R extends DatabaseEntity> void loadChildren(R entity) {
+        int childCount = entity.getChildCount();
+        DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
+        for(int index=0; index<childCount; index++) {
+            DatabaseEntity en = (DatabaseEntity) entity.getChildAt(index);
+            addChild((T) en.visit(factory));
+        }
     }
 
 }

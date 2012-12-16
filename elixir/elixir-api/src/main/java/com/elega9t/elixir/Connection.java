@@ -6,7 +6,6 @@
 package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.DefaultLoadableEntityNode;
-import com.elega9t.commons.entity.EntityLoadException;
 
 import java.sql.*;
 import java.util.Map;
