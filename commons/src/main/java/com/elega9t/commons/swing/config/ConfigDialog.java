@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.swing.config;
 
-import com.elega9t.commons.entity.tree.impl.GuiEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.swing.SwingUtilities;
 import java.awt.CardLayout;
 
@@ -17,14 +17,14 @@ public class ConfigDialog extends javax.swing.JDialog {
     private final String helpButtonLabel;
     private final ConfigPanel[] configPanels;
     
-    private GuiEntityTreeNode<GuiEntityTreeNode> configTreeRootNode;
+    private DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> configTreeRootNode;
 
     /**
      * Creates new form ConfigDialog
      */
     public ConfigDialog(java.awt.Frame parent, boolean modal, String title, String applyButtonLabel, String cancelButtonLabel, String helpButtonLabel, ConfigPanel... configPanels) {
         super(parent, modal);
-        configTreeRootNode = new GuiEntityTreeNode("Config");
+        configTreeRootNode = new DefaultGuiEntityTreeNode("Config");
         this.title = title;
         this.applyButtonLabel = applyButtonLabel;
         this.cancelButtonLabel = cancelButtonLabel;
@@ -127,7 +127,7 @@ public class ConfigDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void configTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_configTreeValueChanged
-        GuiEntityTreeNode selectedNode = (GuiEntityTreeNode) configTree.getLastSelectedPathComponent();
+        DefaultGuiEntityTreeNode selectedNode = (DefaultGuiEntityTreeNode) configTree.getLastSelectedPathComponent();
         CardLayout cardLayout = (CardLayout) configPanel.getLayout();
         cardLayout.show(configPanel, selectedNode.getName());
         updateBreadcrumb();
@@ -158,17 +158,17 @@ public class ConfigDialog extends javax.swing.JDialog {
         SwingUtilities.escapeToDispose(this);
         for(ConfigPanel cfgPanel: configPanels) {
             String[] parentCategories = cfgPanel.getParentCategory();
-            GuiEntityTreeNode<GuiEntityTreeNode> currentNode = configTreeRootNode;
+            DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> currentNode = configTreeRootNode;
             for(String parentCategory: parentCategories) {
                 for(int index=0; index<currentNode.getChildCount(); index++) {
-                    GuiEntityTreeNode<GuiEntityTreeNode> node = currentNode.getChildAt(index);
+                    DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> node = currentNode.getChildAt(index);
                     if(node.getName().equals(parentCategory)) {
                         currentNode = node;
                         break;
                     }
                 }
                 if(!currentNode.getName().equals(parentCategory)) {
-                    GuiEntityTreeNode<GuiEntityTreeNode> node = new GuiEntityTreeNode<GuiEntityTreeNode>(parentCategory);
+                    DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> node = new DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode>(parentCategory);
                     currentNode.addChild(node);
                     currentNode = node;
                 }

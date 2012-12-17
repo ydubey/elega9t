@@ -3,7 +3,7 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.entity.impl;
+package com.elega9t.commons.entity.tree.impl;
 
 import com.elega9t.commons.entity.GuiEntity;
 
@@ -12,20 +12,20 @@ import javax.swing.tree.TreeNode;
 import java.util.Collections;
 import java.util.Enumeration;
 
-public class LazyLoadGuiEntityNode<T extends LazyLoadGuiEntityNode> extends DefaultLazyLoadEntityTreeNode<T> implements GuiEntity, TreeNode {
+public class DefaultGuiEntityTreeNode<T extends DefaultGuiEntityTreeNode> extends DefaultEntityTreeNode<T> implements GuiEntity, TreeNode {
 
     private Icon icon;
     private String tooltip;
 
-    public LazyLoadGuiEntityNode(String name) {
+    public DefaultGuiEntityTreeNode(String name) {
         this(name, null);
     }
 
-    public LazyLoadGuiEntityNode(String name, Icon icon) {
+    public DefaultGuiEntityTreeNode(String name, Icon icon) {
         this(name, icon, null);
     }
 
-    public LazyLoadGuiEntityNode(String name, Icon icon, String tooltip) {
+    public DefaultGuiEntityTreeNode(String name, Icon icon, String tooltip) {
         super(name);
         this.icon = icon;
         this.tooltip = tooltip;

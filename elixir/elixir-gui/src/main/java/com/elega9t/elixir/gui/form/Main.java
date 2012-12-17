@@ -6,7 +6,7 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.commons.entity.tree.impl.GuiEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;
@@ -29,7 +29,7 @@ import javax.swing.tree.TreeNode;
 
 public class Main extends javax.swing.JFrame {
 
-    private GuiEntityTreeNode savedConnections = new GuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
+    private DefaultGuiEntityTreeNode savedConnections = new DefaultGuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
     
     /**
      * Creates new form Main
