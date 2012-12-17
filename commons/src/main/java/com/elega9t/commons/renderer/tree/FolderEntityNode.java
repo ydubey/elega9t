@@ -6,12 +6,12 @@
 package com.elega9t.commons.renderer.tree;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.commons.entity.tree.impl.DefaultLoadableEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FolderEntityNode extends DefaultLoadableEntityTreeNode<FolderEntityNode> {
+public class FolderEntityNode extends DefaultLazyLoadEntityTreeNode<FolderEntityNode> {
 
     private File file;
 

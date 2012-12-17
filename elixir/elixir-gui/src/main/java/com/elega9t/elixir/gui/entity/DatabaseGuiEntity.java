@@ -5,12 +5,13 @@
 
 package com.elega9t.elixir.gui.entity;
 
+import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLoadableGuiEntityTreeNode;
 import com.elega9t.elixir.DatabaseEntity;
 
 import javax.swing.*;
 
-public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends DefaultLoadableGuiEntityTreeNode<T> {
+public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends DefaultLazyLoadGuiEntityTreeNode<T> {
 
     public DatabaseGuiEntity(String name, Icon icon) {
         super(name, icon);
