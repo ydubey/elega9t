@@ -12,7 +12,7 @@ import javax.swing.tree.TreeNode;
 import java.util.Collections;
 import java.util.Enumeration;
 
-public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntityTreeNode> extends DefaultLazyLoadEntityTreeNode<T> implements GuiEntity, TreeNode {
+public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntityTreeNode> extends DefaultLoadableEntityTreeNode<T> implements GuiEntity, TreeNode {
 
     private Icon icon;
     private String tooltip;
