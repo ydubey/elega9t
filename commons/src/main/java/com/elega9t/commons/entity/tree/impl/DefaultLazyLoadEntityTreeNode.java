@@ -15,7 +15,6 @@ public class DefaultLazyLoadEntityTreeNode<T extends EntityTreeNode & LoadableEn
 
     public DefaultLazyLoadEntityTreeNode(String name) {
         super(name);
-        load();
     }
 
     public void load() {

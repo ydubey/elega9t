@@ -12,20 +12,20 @@ import javax.swing.tree.TreeNode;
 import java.util.Collections;
 import java.util.Enumeration;
 
-public class LazyLoadGuiEntityTreeNode<T extends LazyLoadGuiEntityTreeNode> extends DefaultLazyLoadEntityTreeNode<T> implements GuiEntity, TreeNode {
+public class DefaultLazyLoadGuiEntityTreeNode<T extends DefaultLazyLoadGuiEntityTreeNode> extends DefaultLazyLoadEntityTreeNode<T> implements GuiEntity, TreeNode {
 
     private Icon icon;
     private String tooltip;
 
-    public LazyLoadGuiEntityTreeNode(String name) {
+    public DefaultLazyLoadGuiEntityTreeNode(String name) {
         this(name, null);
     }
 
-    public LazyLoadGuiEntityTreeNode(String name, Icon icon) {
+    public DefaultLazyLoadGuiEntityTreeNode(String name, Icon icon) {
         this(name, icon, null);
     }
 
-    public LazyLoadGuiEntityTreeNode(String name, Icon icon, String tooltip) {
+    public DefaultLazyLoadGuiEntityTreeNode(String name, Icon icon, String tooltip) {
         super(name);
         this.icon = icon;
         this.tooltip = tooltip;
