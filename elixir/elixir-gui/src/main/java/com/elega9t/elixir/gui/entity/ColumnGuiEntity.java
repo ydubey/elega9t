@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.gui.entity;
 
-import com.elega9t.commons.entity.EntityLoadException;
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Column;
 
 public class ColumnGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {

@@ -3,7 +3,7 @@ package com.elega9t.commons.shell.intrprtr;
 import com.elega9t.commons.args.Argument;
 import com.elega9t.commons.args.ArgumentParser;
 import com.elega9t.commons.cp.ClassFilter;
-import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.impl.DefaultEntity;
 import com.elega9t.commons.shell.EnvironmentProperty;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.transform.TransformFactory;

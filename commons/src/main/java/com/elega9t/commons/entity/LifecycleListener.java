@@ -5,6 +5,9 @@
 
 package com.elega9t.commons.entity;
 
+import com.elega9t.commons.entity.impl.DefaultRunnableUniqueEntity;
+import com.elega9t.commons.entity.impl.RunnableEntityException;
+
 public interface LifecycleListener {
 
     void lifecycleEventOccurred(RunnableUniqueEntity.STATUS event, DefaultRunnableUniqueEntity defaultRunnableUniqueEntity) throws RunnableEntityException;

@@ -5,6 +5,8 @@
 
 package com.elega9t.commons.entity;
 
+import com.elega9t.commons.entity.impl.RunnableEntityException;
+
 public interface RunnableUniqueEntity extends UniqueEntity {
 
     public static enum STATUS {

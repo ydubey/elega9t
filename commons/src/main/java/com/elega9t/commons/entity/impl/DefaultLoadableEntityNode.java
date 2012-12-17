@@ -3,7 +3,9 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.entity;
+package com.elega9t.commons.entity.impl;
+
+import com.elega9t.commons.entity.LoadableEntityNode;
 
 public class DefaultLoadableEntityNode<T extends LoadableEntityNode> extends DefaultEntityNode<T> implements LoadableEntityNode<T> {
 

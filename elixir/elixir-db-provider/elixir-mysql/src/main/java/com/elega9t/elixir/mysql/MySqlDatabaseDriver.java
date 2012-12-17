@@ -5,8 +5,8 @@
 
 package com.elega9t.elixir.mysql;
 
-import com.elega9t.commons.entity.DefaultLoadableEntity;
-import com.elega9t.commons.entity.EntityLoadException;
+import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.TableTypes;

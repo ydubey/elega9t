@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.DefaultLazyLoadEntityNode;
+import com.elega9t.commons.entity.impl.DefaultLazyLoadEntityNode;
 
 public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityNode<T> {
 

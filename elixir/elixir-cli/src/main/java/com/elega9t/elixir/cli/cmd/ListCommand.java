@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.cli.cmd;
 
-import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.impl.DefaultEntity;
 import com.elega9t.commons.renderer.table.ColumnDataModel;
 import com.elega9t.commons.renderer.table.TableToStringRenderer;
 import com.elega9t.commons.renderer.table.ObjectCollectionDataModel;

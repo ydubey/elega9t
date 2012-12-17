@@ -1,6 +1,6 @@
 package com.elega9t.commons.shell;
 
-import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.impl.DefaultEntity;
 import com.elega9t.commons.renderer.table.Border;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;

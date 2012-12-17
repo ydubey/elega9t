@@ -7,8 +7,8 @@ package com.elega9t.carbon;
 
 import com.elega9t.carbon.api.Server;
 import com.elega9t.carbon.api.Service;
-import com.elega9t.commons.entity.DefaultRunnableUniqueEntity;
-import com.elega9t.commons.entity.RunnableEntityException;
+import com.elega9t.commons.entity.impl.DefaultRunnableUniqueEntity;
+import com.elega9t.commons.entity.impl.RunnableEntityException;
 
 import java.util.ArrayList;
 import java.util.List;

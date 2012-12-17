@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.gui.entity;
 
-import com.elega9t.commons.entity.LazyLoadGuiEntityNode;
+import com.elega9t.commons.entity.impl.LazyLoadGuiEntityNode;
 import com.elega9t.elixir.DatabaseEntity;
 
 import javax.swing.*;

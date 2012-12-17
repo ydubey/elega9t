@@ -5,8 +5,8 @@
 
 package com.elega9t.commons.shell.intrprtr.cmd;
 
-import com.elega9t.commons.entity.DefaultEntity;
-import com.elega9t.commons.entity.EntityLoadException;
+import com.elega9t.commons.entity.impl.DefaultEntity;
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.renderer.tree.TreeToStringRenderer;
 import com.elega9t.commons.renderer.tree.FolderEntityNode;
 import com.elega9t.commons.shell.EnvironmentProperty;

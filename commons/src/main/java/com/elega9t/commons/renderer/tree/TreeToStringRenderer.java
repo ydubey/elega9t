@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.renderer.tree;
 
-import com.elega9t.commons.entity.EntityLoadException;
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.entity.EntityNode;
 import com.elega9t.commons.renderer.Renderer;
 import com.elega9t.commons.renderer.table.Border;

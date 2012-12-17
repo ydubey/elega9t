@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.EntityLoadException;
+import com.elega9t.commons.entity.impl.EntityLoadException;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;

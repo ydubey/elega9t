@@ -5,6 +5,8 @@
 
 package com.elega9t.commons.entity;
 
+import com.elega9t.commons.entity.impl.EntityLoadException;
+
 import java.io.IOException;
 
 public interface LoadableEntity extends Entity {

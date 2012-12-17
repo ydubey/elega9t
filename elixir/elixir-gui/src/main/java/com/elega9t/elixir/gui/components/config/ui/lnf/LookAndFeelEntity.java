@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.gui.components.config.ui.lnf;
 
-import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.impl.DefaultEntity;
 
 import javax.swing.*;
 

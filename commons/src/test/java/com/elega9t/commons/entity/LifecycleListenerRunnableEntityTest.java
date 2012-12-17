@@ -5,6 +5,8 @@
 
 package com.elega9t.commons.entity;
 
+import com.elega9t.commons.entity.impl.LifecycleListenerRunnableEntity;
+import com.elega9t.commons.entity.impl.RunnableEntityException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

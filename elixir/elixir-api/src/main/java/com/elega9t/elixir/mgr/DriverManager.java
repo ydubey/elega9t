@@ -8,7 +8,7 @@ package com.elega9t.elixir.mgr;
 import com.elega9t.commons.cp.ClassFilter;
 import com.elega9t.commons.cp.ClassPathResource;
 import com.elega9t.commons.cp.ClassPathUtilities;
-import com.elega9t.commons.entity.DefaultLoadableEntity;
+import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.elixir.Driver;
 
 import java.io.File;

@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.cli.cmd;
 
-import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.impl.DefaultEntity;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.RequiredContextElement;

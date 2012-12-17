@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.gui.config;
 
-import com.elega9t.commons.entity.DefaultEntity;
+import com.elega9t.commons.entity.impl.DefaultEntity;
 
 public class ConnectionDetails extends DefaultEntity {
 
