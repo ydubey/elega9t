@@ -5,9 +5,9 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.impl.DefaultLazyLoadEntityNode;
+import com.elega9t.commons.entity.impl.DefaultLazyLoadEntityTreeNode;
 
-public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityNode<T> {
+public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLazyLoadEntityTreeNode<T> {
 
     private final Connection connection;
 

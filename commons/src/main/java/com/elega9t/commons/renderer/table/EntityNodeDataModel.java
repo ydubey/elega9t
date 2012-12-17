@@ -5,14 +5,15 @@
 
 package com.elega9t.commons.renderer.table;
 
-import com.elega9t.commons.entity.EntityNode;
+import com.elega9t.commons.entity.EntityTreeNode;
+import com.elega9t.commons.entity.EntityTreeNode;
 
-public class EntityNodeDataModel<T extends EntityNode> implements DataModel<T> {
+public class EntityNodeDataModel<T extends EntityTreeNode> implements DataModel<T> {
 
-    private EntityNode<T> entityNode;
+    private EntityTreeNode<T> entityNode;
     private ColumnDataModel<T>[] columnDataModels;
 
-    public EntityNodeDataModel(EntityNode<T> entityNode, ColumnDataModel<T>... columnDataModels) {
+    public EntityNodeDataModel(EntityTreeNode<T> entityNode, ColumnDataModel<T>... columnDataModels) {
         this.entityNode = entityNode;
         this.columnDataModels = columnDataModels;
     }

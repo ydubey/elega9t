@@ -5,8 +5,9 @@
 
 package com.elega9t.commons.renderer.tree;
 
+import com.elega9t.commons.entity.EntityTreeNode;
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.commons.entity.EntityNode;
+import com.elega9t.commons.entity.EntityTreeNode;
 import com.elega9t.commons.renderer.Renderer;
 import com.elega9t.commons.renderer.table.Border;
 
@@ -16,7 +17,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreeToStringRenderer implements Renderer<EntityNode> {
+public class TreeToStringRenderer implements Renderer<EntityTreeNode> {
 
     private final Border border;
 
@@ -25,7 +26,7 @@ public class TreeToStringRenderer implements Renderer<EntityNode> {
     }
 
     @Override
-    public String render(EntityNode data) {
+    public String render(EntityTreeNode data) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(byteArrayOutputStream);
         render(data, out);
@@ -33,11 +34,11 @@ public class TreeToStringRenderer implements Renderer<EntityNode> {
     }
 
     @Override
-    public void render(EntityNode data, PrintStream out) {
+    public void render(EntityTreeNode data, PrintStream out) {
         render(data, out, 0, false, new ArrayList<Integer>());
     }
 
-    protected void render(EntityNode data, PrintStream out, int level, boolean isLast, List<Integer> parentLevelsNotTerminated) {
+    protected void render(EntityTreeNode data, PrintStream out, int level, boolean isLast, List<Integer> parentLevelsNotTerminated) {
         for(int index=0; index<level; index++) {
             final char space = border.getSpace();
             out.print(space);

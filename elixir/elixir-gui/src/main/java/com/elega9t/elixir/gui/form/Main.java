@@ -6,7 +6,7 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.commons.entity.impl.GuiEntityNode;
+import com.elega9t.commons.entity.impl.GuiEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;
@@ -23,14 +23,13 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
 
 public class Main extends javax.swing.JFrame {
 
-    private GuiEntityNode savedConnections = new GuiEntityNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
+    private GuiEntityTreeNode savedConnections = new GuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
     
     /**
      * Creates new form Main

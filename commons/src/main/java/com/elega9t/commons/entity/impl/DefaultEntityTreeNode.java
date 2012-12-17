@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.entity.impl;
 
-import com.elega9t.commons.entity.EntityNode;
+import com.elega9t.commons.entity.EntityTreeNode;
 import com.elega9t.commons.util.SortedList;
 
 import javax.swing.tree.TreeNode;
@@ -13,17 +13,17 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 
-public class DefaultEntityNode<T extends EntityNode> extends DefaultEntity implements EntityNode<T> {
+public class DefaultEntityTreeNode<T extends EntityTreeNode> extends DefaultEntity implements EntityTreeNode<T> {
 
     protected List<T> children;
     private T parent;
     private boolean allowsChildren;
 
-    public DefaultEntityNode(String name) {
+    public DefaultEntityTreeNode(String name) {
         this(name, null);
     }
 
-    public DefaultEntityNode(String name, T parent) {
+    public DefaultEntityTreeNode(String name, T parent) {
         super(name);
         this.parent = parent;
         this.children = new SortedList<T>();

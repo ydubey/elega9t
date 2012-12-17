@@ -12,20 +12,20 @@ import javax.swing.tree.TreeNode;
 import java.util.Collections;
 import java.util.Enumeration;
 
-public class GuiEntityNode<T extends GuiEntityNode> extends DefaultEntityNode<T> implements GuiEntity, TreeNode {
+public class GuiEntityTreeNode<T extends GuiEntityTreeNode> extends DefaultEntityTreeNode<T> implements GuiEntity, TreeNode {
 
     private Icon icon;
     private String tooltip;
 
-    public GuiEntityNode(String name) {
+    public GuiEntityTreeNode(String name) {
         this(name, null);
     }
 
-    public GuiEntityNode(String name, Icon icon) {
+    public GuiEntityTreeNode(String name, Icon icon) {
         this(name, icon, null);
     }
 
-    public GuiEntityNode(String name, Icon icon, String tooltip) {
+    public GuiEntityTreeNode(String name, Icon icon, String tooltip) {
         super(name);
         this.icon = icon;
         this.tooltip = tooltip;

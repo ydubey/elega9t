@@ -5,13 +5,13 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.impl.DefaultLoadableEntityNode;
+import com.elega9t.commons.entity.impl.DefaultLoadableEntityTreeNode;
 
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 
-public class Connection extends DefaultLoadableEntityNode<DatabaseEntity> implements java.sql.Connection {
+public class Connection extends DefaultLoadableEntityTreeNode<DatabaseEntity> implements java.sql.Connection {
 
     private final java.sql.Connection connection;
     private Schemas schemas;

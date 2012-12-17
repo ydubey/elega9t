@@ -5,14 +5,14 @@
 
 package com.elega9t.commons.entity.impl;
 
-import com.elega9t.commons.entity.EntityNode;
+import com.elega9t.commons.entity.EntityTreeNode;
 import com.elega9t.commons.entity.LoadableEntity;
 
-public class DefaultLoadableEntityNode<T extends EntityNode & LoadableEntity> extends DefaultEntityNode<T> implements EntityNode<T>, LoadableEntity {
+public class DefaultLoadableEntityTreeNode<T extends EntityTreeNode & LoadableEntity> extends DefaultEntityTreeNode<T> implements EntityTreeNode<T>, LoadableEntity {
 
     private boolean loaded;
 
-    public DefaultLoadableEntityNode(String name) {
+    public DefaultLoadableEntityTreeNode(String name) {
         super(name);
     }
 

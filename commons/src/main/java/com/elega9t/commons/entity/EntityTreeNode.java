@@ -7,7 +7,7 @@ package com.elega9t.commons.entity;
 
 import javax.swing.tree.TreeNode;
 
-public interface EntityNode<T extends EntityNode> extends Entity, TreeNode {
+public interface EntityTreeNode<T extends EntityTreeNode> extends Entity, TreeNode {
 
     T getChildAt(int index);
 
