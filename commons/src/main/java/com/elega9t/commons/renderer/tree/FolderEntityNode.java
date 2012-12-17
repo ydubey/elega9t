@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.renderer.tree;
 
-import com.elega9t.commons.entity.impl.DefaultLazyLoadEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.entity.impl.EntityLoadException;
 
 import java.io.File;

@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir;
 
-import com.elega9t.commons.entity.impl.DefaultLoadableEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.DefaultLoadableEntityTreeNode;
 
 import java.sql.*;
 import java.util.Map;

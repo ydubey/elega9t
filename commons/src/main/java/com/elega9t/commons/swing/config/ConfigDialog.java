@@ -5,7 +5,7 @@
 
 package com.elega9t.commons.swing.config;
 
-import com.elega9t.commons.entity.impl.GuiEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.GuiEntityTreeNode;
 import com.elega9t.commons.swing.SwingUtilities;
 import java.awt.CardLayout;
 

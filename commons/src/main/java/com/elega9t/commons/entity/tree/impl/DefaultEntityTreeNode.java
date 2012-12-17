@@ -3,9 +3,10 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.commons.entity.impl;
+package com.elega9t.commons.entity.tree.impl;
 
-import com.elega9t.commons.entity.EntityTreeNode;
+import com.elega9t.commons.entity.impl.DefaultEntity;
+import com.elega9t.commons.entity.tree.EntityTreeNode;
 import com.elega9t.commons.util.SortedList;
 
 import javax.swing.tree.TreeNode;

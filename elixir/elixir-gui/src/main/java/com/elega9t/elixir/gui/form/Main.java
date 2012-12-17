@@ -6,7 +6,7 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.commons.entity.impl.GuiEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.GuiEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.SwingUtilities;

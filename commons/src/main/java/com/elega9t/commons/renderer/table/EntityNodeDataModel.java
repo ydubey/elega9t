@@ -5,8 +5,8 @@
 
 package com.elega9t.commons.renderer.table;
 
-import com.elega9t.commons.entity.EntityTreeNode;
-import com.elega9t.commons.entity.EntityTreeNode;
+import com.elega9t.commons.entity.tree.EntityTreeNode;
+import com.elega9t.commons.entity.tree.EntityTreeNode;
 
 public class EntityNodeDataModel<T extends EntityTreeNode> implements DataModel<T> {
 
