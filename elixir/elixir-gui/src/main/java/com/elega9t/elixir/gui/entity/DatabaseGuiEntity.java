@@ -26,8 +26,8 @@ public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends DefaultLazyL
         int childCount = entity.getChildCount();
         DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
         for(int index=0; index<childCount; index++) {
-            DatabaseEntity en = (DatabaseEntity) entity.getChildAt(index);
-            addChild((T) en.visit(factory));
+            DatabaseEntity child = (DatabaseEntity) entity.getChildAt(index);
+            addChild((T) child.visit(factory));
         }
         loaded = true;
     }
