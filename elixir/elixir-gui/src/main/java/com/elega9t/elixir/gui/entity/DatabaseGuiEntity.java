@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.gui.entity;
 
+import com.elega9t.commons.entity.tree.EntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLoadableGuiEntityTreeNode;
 import com.elega9t.elixir.DatabaseEntity;
@@ -22,12 +23,14 @@ public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends DefaultLazyL
         return false;
     }
 
-    protected <R extends DatabaseEntity> void load(R entity) {
+    protected <R extends EntityTreeNode> void load(R entity) {
         int childCount = entity.getChildCount();
         DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
         for(int index=0; index<childCount; index++) {
             DatabaseEntity child = (DatabaseEntity) entity.getChildAt(index);
-            addChild((T) child.visit(factory));
+            T node = (T) child.visit(factory);
+            node.setParent(this);
+            addChild(node);
         }
         loaded = true;
     }
