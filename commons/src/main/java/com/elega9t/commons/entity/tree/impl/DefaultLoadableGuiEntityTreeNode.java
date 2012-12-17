@@ -6,6 +6,7 @@
 package com.elega9t.commons.entity.tree.impl;
 
 import com.elega9t.commons.entity.GuiEntity;
+import com.elega9t.commons.entity.tree.EntityTreeNode;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -16,10 +17,10 @@ public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntity
     private String tooltip;
 
     public DefaultLoadableGuiEntityTreeNode(String name) {
-        this(name, (T) null);
+        this(name, (EntityTreeNode) null);
     }
 
-    public DefaultLoadableGuiEntityTreeNode(String name, T parent) {
+    public DefaultLoadableGuiEntityTreeNode(String name, EntityTreeNode parent) {
         this(name, parent, null);
     }
 
@@ -27,7 +28,7 @@ public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntity
         this(name, null, icon);
     }
 
-    public DefaultLoadableGuiEntityTreeNode(String name, T parent, Icon icon) {
+    public DefaultLoadableGuiEntityTreeNode(String name, EntityTreeNode parent, Icon icon) {
         this(name, parent, icon, null);
     }
 
@@ -35,7 +36,7 @@ public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntity
         this(name, null, icon, tooltip);
     }
 
-    public DefaultLoadableGuiEntityTreeNode(String name, T parent, Icon icon, String tooltip) {
+    public DefaultLoadableGuiEntityTreeNode(String name, EntityTreeNode parent, Icon icon, String tooltip) {
         super(name, parent);
         this.icon = icon;
         this.tooltip = tooltip;

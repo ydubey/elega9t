@@ -20,7 +20,7 @@ public class DefaultLazyLoadGuiEntityTreeNode<T extends GuiEntity & LoadableEnti
         this(name, (T) null);
     }
 
-    public DefaultLazyLoadGuiEntityTreeNode(String name, T parent) {
+    public DefaultLazyLoadGuiEntityTreeNode(String name, EntityTreeNode parent) {
         this(name, parent, null);
     }
 
@@ -28,7 +28,7 @@ public class DefaultLazyLoadGuiEntityTreeNode<T extends GuiEntity & LoadableEnti
         this(name, icon, null);
     }
 
-    public DefaultLazyLoadGuiEntityTreeNode(String name, T parent, Icon icon) {
+    public DefaultLazyLoadGuiEntityTreeNode(String name, EntityTreeNode parent, Icon icon) {
         this(name, parent, icon, null);
     }
 
@@ -36,7 +36,7 @@ public class DefaultLazyLoadGuiEntityTreeNode<T extends GuiEntity & LoadableEnti
         this(name, null, icon, tooltip);
     }
 
-    public DefaultLazyLoadGuiEntityTreeNode(String name, T parent, Icon icon, String tooltip) {
+    public DefaultLazyLoadGuiEntityTreeNode(String name, EntityTreeNode parent, Icon icon, String tooltip) {
         super(name, parent);
         this.icon = icon;
         this.tooltip = tooltip;

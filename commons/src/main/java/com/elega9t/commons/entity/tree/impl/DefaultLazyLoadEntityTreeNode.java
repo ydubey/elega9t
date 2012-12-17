@@ -18,7 +18,7 @@ public class DefaultLazyLoadEntityTreeNode<T extends LoadableEntity & EntityTree
         super(name);
     }
 
-    public DefaultLazyLoadEntityTreeNode(String name, T parent) {
+    public DefaultLazyLoadEntityTreeNode(String name, EntityTreeNode parent) {
         super(name, parent);
     }
 

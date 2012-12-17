@@ -17,14 +17,14 @@ import java.util.List;
 public class DefaultEntityTreeNode<T extends EntityTreeNode> extends DefaultEntity implements EntityTreeNode<T> {
 
     protected List<T> children;
-    private T parent;
+    private EntityTreeNode parent;
     private boolean allowsChildren;
 
     public DefaultEntityTreeNode(String name) {
         this(name, null);
     }
 
-    public DefaultEntityTreeNode(String name, T parent) {
+    public DefaultEntityTreeNode(String name, EntityTreeNode parent) {
         super(name);
         this.parent = parent;
         this.children = new SortedList<T>();
