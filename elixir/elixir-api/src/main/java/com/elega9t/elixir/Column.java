@@ -38,7 +38,6 @@ public class Column extends DatabaseEntity<Columns> {
 
     @Override
     public void load() {
-        clear();
     }
 
     @Override

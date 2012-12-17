@@ -18,9 +18,8 @@ public class ColumnGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
-        loadChildren(column);
+    public void load() throws EntityLoadException {
+        load(column);
     }
 
 }

@@ -19,9 +19,9 @@ public class Table extends DatabaseEntity<Columns> {
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
+    public void load() throws EntityLoadException {
         addChild(new Columns(catalogueName, schemaName, getName(), getConnection()));
+        loaded = true;
     }
 
     @Override

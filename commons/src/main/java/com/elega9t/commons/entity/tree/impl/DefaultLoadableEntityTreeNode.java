@@ -11,19 +11,13 @@ import com.elega9t.commons.entity.LoadableEntity;
 
 public class DefaultLoadableEntityTreeNode<T extends EntityTreeNode & LoadableEntity> extends DefaultEntityTreeNode<T> implements EntityTreeNode<T>, LoadableEntity {
 
-    private boolean loaded;
+    protected boolean loaded;
 
     public DefaultLoadableEntityTreeNode(String name) {
         super(name);
     }
 
     public void load() throws EntityLoadException {
-        final int childCount = getChildCount();
-        for(int index=0; index < childCount; index++) {
-            final T child = getChildAt(index);
-            child.load();
-        }
-        loaded = true;
     }
 
     @Override
@@ -32,7 +26,7 @@ public class DefaultLoadableEntityTreeNode<T extends EntityTreeNode & LoadableEn
     }
 
     @Override
-    public void reset() {
+    public void clear() {
         super.clear();
         loaded = false;
     }

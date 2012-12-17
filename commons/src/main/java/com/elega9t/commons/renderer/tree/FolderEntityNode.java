@@ -5,13 +5,13 @@
 
 package com.elega9t.commons.renderer.tree;
 
-import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.entity.impl.EntityLoadException;
+import com.elega9t.commons.entity.tree.impl.DefaultLoadableEntityTreeNode;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FolderEntityNode extends DefaultLazyLoadEntityTreeNode<FolderEntityNode> {
+public class FolderEntityNode extends DefaultLoadableEntityTreeNode<FolderEntityNode> {
 
     private File file;
 
@@ -29,8 +29,7 @@ public class FolderEntityNode extends DefaultLazyLoadEntityTreeNode<FolderEntity
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
+    public void load() throws EntityLoadException {
         if(file.isDirectory()) {
             final File[] files = file.listFiles();
             if(files != null) {
@@ -43,6 +42,7 @@ public class FolderEntityNode extends DefaultLazyLoadEntityTreeNode<FolderEntity
                 }
             }
         }
+        loaded = true;
     }
 
 }

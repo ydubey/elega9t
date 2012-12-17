@@ -227,7 +227,7 @@ public class Main extends javax.swing.JFrame {
         SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
             @Override
             public boolean evaluate(TreeNode value) {
-                return !(value instanceof ConnectionGuiEntity) || ((ConnectionGuiEntity)value).isChildrenLoaded();
+                return !(value instanceof ConnectionGuiEntity) || ((ConnectionGuiEntity)value).isLoaded();
             }
         });
     }//GEN-LAST:event_expandAllButtonActionPerformed
@@ -238,10 +238,10 @@ public class Main extends javax.swing.JFrame {
 
     private void connectionsTreeTreeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_connectionsTreeTreeWillExpand
         Object component = evt.getPath().getLastPathComponent();
-        if(component instanceof ConnectionGuiEntity && !((ConnectionGuiEntity)component).isChildrenLoaded()) {
+        if(component instanceof ConnectionGuiEntity && !((ConnectionGuiEntity)component).isLoaded()) {
             ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
             try {
-                connection.loadChildren();
+                connection.load();
                 editorTabbedPane.addTab(connection.getName(), connection.getIcon(), new EditorPanel());
             } catch (EntityLoadException e) {
                 errorOccured(e);

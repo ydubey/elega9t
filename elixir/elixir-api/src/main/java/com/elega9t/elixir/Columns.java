@@ -25,8 +25,7 @@ public class Columns extends DatabaseEntity<Column> {
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
+    public void load() throws EntityLoadException {
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getColumns(catalogueName, schemaName, tableName, null);
@@ -45,6 +44,8 @@ public class Columns extends DatabaseEntity<Column> {
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);
+        } finally {
+            loaded = true;
         }
     }
 

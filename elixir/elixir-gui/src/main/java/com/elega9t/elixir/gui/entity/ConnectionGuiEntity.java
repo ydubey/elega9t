@@ -29,8 +29,7 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
         return connectionDetails;
     }
 
-    public void loadChildren() throws EntityLoadException {
-        super.loadChildren();
+    public void load() throws EntityLoadException {
         Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
         try {
             connection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
@@ -42,6 +41,8 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);
+        } finally {
+            loaded = true;
         }
     }
 

@@ -15,6 +15,6 @@ public interface LoadableEntity extends Entity {
 
     boolean isLoaded();
 
-    void reset();
+    void clear();
 
 }

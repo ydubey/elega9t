@@ -27,7 +27,7 @@ public class DefaultLoadableEntity extends DefaultEntity implements LoadableEnti
     }
 
     @Override
-    public void reset() {
+    public void clear() {
         loaded = false;
     }
 

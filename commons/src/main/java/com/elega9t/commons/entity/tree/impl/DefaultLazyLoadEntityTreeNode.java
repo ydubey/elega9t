@@ -11,25 +11,15 @@ import com.elega9t.commons.entity.LoadableEntity;
 
 public class DefaultLazyLoadEntityTreeNode<T extends EntityTreeNode & LoadableEntity> extends DefaultLoadableEntityTreeNode<T> {
 
-    private boolean childrenLoaded = false;
-
     public DefaultLazyLoadEntityTreeNode(String name) {
         super(name);
     }
 
-    public void load() {
-    }
-
-    protected void loadChildren() throws EntityLoadException {
-        clear();
-        childrenLoaded = true;
-    }
-
     @Override
     public int getChildCount() {
-        if(!childrenLoaded) {
+        if(!loaded) {
             try {
-                loadChildren();
+                load();
             } catch (EntityLoadException e) {
                 throw new IllegalStateException(e);
             }
@@ -39,9 +29,9 @@ public class DefaultLazyLoadEntityTreeNode<T extends EntityTreeNode & LoadableEn
 
     @Override
     public T getChildAt(int index) {
-        if(!childrenLoaded) {
+        if(!loaded) {
             try {
-                loadChildren();
+                load();
             } catch (EntityLoadException e) {
                 throw new IllegalStateException(e);
             }
@@ -51,9 +41,9 @@ public class DefaultLazyLoadEntityTreeNode<T extends EntityTreeNode & LoadableEn
 
     @Override
     public void addChild(T node) {
-        if(!childrenLoaded) {
+        if(!loaded) {
             try {
-                loadChildren();
+                load();
             } catch (EntityLoadException e) {
                 throw new IllegalStateException(e);
             }
@@ -63,24 +53,14 @@ public class DefaultLazyLoadEntityTreeNode<T extends EntityTreeNode & LoadableEn
 
     @Override
     public boolean removeChild(T node) {
-        if(!childrenLoaded) {
+        if(!loaded) {
             try {
-                loadChildren();
+                load();
             } catch (EntityLoadException e) {
                 throw new IllegalStateException(e);
             }
         }
         return super.removeChild(node);
-    }
-
-    @Override
-    public void clear() {
-        super.clear();
-        childrenLoaded = false;
-    }
-
-    public boolean isChildrenLoaded() {
-        return childrenLoaded;
     }
 
 }

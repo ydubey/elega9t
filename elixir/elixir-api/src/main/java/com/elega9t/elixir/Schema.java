@@ -21,8 +21,7 @@ public class Schema extends DatabaseEntity<TableType> {
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
+    public void load() throws EntityLoadException {
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getTableTypes();
@@ -31,6 +30,8 @@ public class Schema extends DatabaseEntity<TableType> {
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);
+        } finally {
+            loaded = true;
         }
     }
 

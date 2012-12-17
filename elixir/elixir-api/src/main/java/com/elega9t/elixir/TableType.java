@@ -23,8 +23,7 @@ public class TableType extends DatabaseEntity<Table> {
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
+    public void load() throws EntityLoadException {
         try {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getTables(catalogueName, schemaName, null, new String[] { getName() });
@@ -33,6 +32,8 @@ public class TableType extends DatabaseEntity<Table> {
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);
+        } finally {
+            loaded = true;
         }
     }
 

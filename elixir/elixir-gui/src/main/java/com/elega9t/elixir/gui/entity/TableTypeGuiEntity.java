@@ -18,9 +18,8 @@ public class TableTypeGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
     }
 
     @Override
-    protected void loadChildren() throws EntityLoadException {
-        super.loadChildren();
-        loadChildren(tableType);
+    public void load() throws EntityLoadException {
+        load(tableType);
     }
 
 }
