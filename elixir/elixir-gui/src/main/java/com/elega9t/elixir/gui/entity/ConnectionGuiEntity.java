@@ -33,8 +33,6 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Co
             super.load();
         } catch (SQLException e) {
             throw new EntityLoadException(e);
-        } finally {
-            loaded = true;
         }
     }
 

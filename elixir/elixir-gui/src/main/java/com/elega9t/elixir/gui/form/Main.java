@@ -5,10 +5,11 @@
 
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
+import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
+import com.elega9t.commons.swing.LongTask;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.swing.config.ConfigDialog;
 import com.elega9t.commons.util.Predicate;
@@ -18,19 +19,20 @@ import com.elega9t.elixir.gui.components.config.ui.lnf.LookAndFeelConfigPanel;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+
+import javax.swing.*;
+import javax.swing.tree.TreeNode;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.util.List;
-import javax.swing.*;
-import javax.swing.tree.TreeNode;
 
 public class Main extends javax.swing.JFrame {
 
     private DefaultGuiEntityTreeNode savedConnections = new DefaultGuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
-    
+
     /**
      * Creates new form Main
      */
@@ -55,11 +57,11 @@ public class Main extends javax.swing.JFrame {
         bodySplitPane = new javax.swing.JSplitPane();
         rightBasePanel = new javax.swing.JPanel();
         editorTabbedPane = new TextBackgroundSplitPane(
-            new BackgroundText(ResourceStrings.main.getString("title"), 100, 30).bold(),
-            new BackgroundText(ResourceStrings.main.getString("website"), 130, 20),
-            new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
-            new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
-            new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
+                new BackgroundText(ResourceStrings.main.getString("title"), 100, 30).bold(),
+                new BackgroundText(ResourceStrings.main.getString("website"), 130, 20),
+                new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
+                new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
+                new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
         );
         leftBasePanel = new javax.swing.JPanel();
         leftPanelTabbedPane = new javax.swing.JTabbedPane();
@@ -237,13 +239,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_collapseAllButtonActionPerformed
 
     private void connectionsTreeTreeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {//GEN-FIRST:event_connectionsTreeTreeWillExpand
-        Object component = evt.getPath().getLastPathComponent();
-        if(component instanceof ConnectionGuiEntity && !((ConnectionGuiEntity)component).isLoaded()) {
-            ConnectionGuiEntity connection = (ConnectionGuiEntity) component;
+        final Object component = evt.getPath().getLastPathComponent();
+        if(component instanceof DefaultLazyLoadEntityTreeNode && !((DefaultLazyLoadEntityTreeNode)component).isLoaded()) {
             try {
-                connection.load();
-                editorTabbedPane.addTab(connection.getName(), connection.getIcon(), new EditorPanel());
-            } catch (EntityLoadException e) {
+                new LongTask() {
+                    @Override
+                    protected void executeTask() throws Exception {
+                        DefaultLazyLoadEntityTreeNode lazyLoadEntityTreeNode = (DefaultLazyLoadEntityTreeNode) component;
+                        lazyLoadEntityTreeNode.load();
+                        if(component instanceof ConnectionGuiEntity) {
+                            editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), new EditorPanel());
+                        }
+                    }
+                }.execute(this);
+            } catch (Exception e) {
                 errorOccured(e);
             }
         }
@@ -251,21 +260,21 @@ public class Main extends javax.swing.JFrame {
 
     private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
         new ConfigDialog(
-                this, 
+                this,
                 true,
                 ResourceStrings.dialog.settings.getString("title"),
-                ResourceStrings.buttons.getString("apply"), 
-                ResourceStrings.buttons.getString("cancel"), 
+                ResourceStrings.buttons.getString("apply"),
+                ResourceStrings.buttons.getString("cancel"),
                 ResourceStrings.buttons.getString("help"),
                 new LookAndFeelConfigPanel()
-                ).setVisible(true);
+        ).setVisible(true);
     }//GEN-LAST:event_settingsMenuItemActionPerformed
 
     private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
         try {
             evt.acceptDrop(DnDConstants.ACTION_COPY);
             List<File> droppedFiles = (List<File>)
-                evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
+                    evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
             for (File file : droppedFiles) {
                 editorTabbedPane.addTab(file.getName(), new EditorPanel());
             }
