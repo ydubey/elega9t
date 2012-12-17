@@ -12,7 +12,7 @@ import javax.swing.tree.TreeNode;
 import java.util.Collections;
 import java.util.Enumeration;
 
-public class DefaultGuiEntityTreeNode<T extends DefaultGuiEntityTreeNode> extends DefaultEntityTreeNode<T> implements GuiEntity, TreeNode {
+public class DefaultGuiEntityTreeNode<T extends DefaultGuiEntityTreeNode> extends DefaultEntityTreeNode<T> implements GuiEntity {
 
     private Icon icon;
     private String tooltip;
@@ -49,31 +49,6 @@ public class DefaultGuiEntityTreeNode<T extends DefaultGuiEntityTreeNode> extend
     @Override
     public String getTooltip() {
         return tooltip;
-    }
-
-    @Override
-    public TreeNode getParent() {
-        return null;
-    }
-
-    @Override
-    public int getIndex(TreeNode node) {
-        return children.indexOf(node);
-    }
-
-    @Override
-    public boolean getAllowsChildren() {
-        return true;
-    }
-
-    @Override
-    public boolean isLeaf() {
-        return children.isEmpty();
-    }
-
-    @Override
-    public Enumeration children() {
-        return Collections.enumeration(children);
     }
 
 }
