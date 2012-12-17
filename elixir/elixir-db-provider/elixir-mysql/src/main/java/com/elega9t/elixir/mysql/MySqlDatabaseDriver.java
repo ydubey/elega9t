@@ -73,7 +73,7 @@ public class MySqlDatabaseDriver extends DefaultLoadableEntity implements Driver
             for(int index=0; index< tableTypesCount; index++) {
                 connection.addChild(tableTypes.getChildAt(index));
             }
-            connection.loadAll();
+            connection.load();
         } catch (EntityLoadException e) {
             throw new SQLException(e);
         }

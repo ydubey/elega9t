@@ -11,6 +11,10 @@ import java.io.IOException;
 
 public interface LoadableEntity extends Entity {
 
-    void load() throws EntityLoadException, ClassNotFoundException, IOException;
+    void load() throws EntityLoadException;
+
+    boolean isLoaded();
+
+    void reset();
 
 }

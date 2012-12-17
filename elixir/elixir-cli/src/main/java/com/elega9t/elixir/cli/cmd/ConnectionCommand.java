@@ -66,7 +66,7 @@ public class ConnectionCommand extends DefaultEntity implements Command {
                 out.println(connection.getAutoCommit());
                 break;
             case 5:
-                connection.loadAll();
+                connection.load();
                 TreeToStringRenderer treeRenderer = new TreeToStringRenderer(shell.getBorder());
                 out.println(treeRenderer.render(connection));
                 break;

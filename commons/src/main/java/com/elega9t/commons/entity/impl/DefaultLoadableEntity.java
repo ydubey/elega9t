@@ -11,12 +11,24 @@ import java.io.IOException;
 
 public class DefaultLoadableEntity extends DefaultEntity implements LoadableEntity {
 
+    protected boolean loaded;
+
     public DefaultLoadableEntity(String name) {
         super(name);
     }
 
     @Override
-    public void load() throws EntityLoadException, ClassNotFoundException, IOException {
+    public void load() throws EntityLoadException{
+    }
+
+    @Override
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    @Override
+    public void reset() {
+        loaded = false;
     }
 
 }

@@ -5,9 +5,9 @@
 
 package com.elega9t.commons.entity;
 
-public interface EntityNode<T extends EntityNode> extends Entity {
+import javax.swing.tree.TreeNode;
 
-    int getChildCount();
+public interface EntityNode<T extends EntityNode> extends Entity, TreeNode {
 
     T getChildAt(int index);
 

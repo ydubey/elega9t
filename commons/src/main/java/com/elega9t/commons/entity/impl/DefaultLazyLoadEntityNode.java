@@ -5,9 +5,10 @@
 
 package com.elega9t.commons.entity.impl;
 
-import com.elega9t.commons.entity.LoadableEntityNode;
+import com.elega9t.commons.entity.EntityNode;
+import com.elega9t.commons.entity.LoadableEntity;
 
-public class DefaultLazyLoadEntityNode<T extends LoadableEntityNode> extends DefaultLoadableEntityNode<T> {
+public class DefaultLazyLoadEntityNode<T extends EntityNode & LoadableEntity> extends DefaultLoadableEntityNode<T> {
 
     private boolean childrenLoaded = false;
 

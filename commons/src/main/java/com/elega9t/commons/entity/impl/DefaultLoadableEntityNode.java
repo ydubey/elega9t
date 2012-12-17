@@ -5,29 +5,35 @@
 
 package com.elega9t.commons.entity.impl;
 
-import com.elega9t.commons.entity.LoadableEntityNode;
+import com.elega9t.commons.entity.EntityNode;
+import com.elega9t.commons.entity.LoadableEntity;
 
-public class DefaultLoadableEntityNode<T extends LoadableEntityNode> extends DefaultEntityNode<T> implements LoadableEntityNode<T> {
+public class DefaultLoadableEntityNode<T extends EntityNode & LoadableEntity> extends DefaultEntityNode<T> implements EntityNode<T>, LoadableEntity {
+
+    private boolean loaded;
 
     public DefaultLoadableEntityNode(String name) {
         super(name);
     }
 
-    @Override
-    public final void loadAll() throws EntityLoadException {
-        load();
-        loadChildren();
-    }
-
     public void load() throws EntityLoadException {
-    }
-
-    protected void loadChildren() throws EntityLoadException {
         final int childCount = getChildCount();
         for(int index=0; index < childCount; index++) {
             final T child = getChildAt(index);
-            child.loadAll();
+            child.load();
         }
+        loaded = true;
+    }
+
+    @Override
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    @Override
+    public void reset() {
+        super.clear();
+        loaded = false;
     }
 
 }
