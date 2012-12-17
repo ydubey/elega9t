@@ -9,8 +9,6 @@ import com.elega9t.commons.entity.GuiEntity;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
-import java.util.Collections;
-import java.util.Enumeration;
 
 public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntityTreeNode> extends DefaultLoadableEntityTreeNode<T> implements GuiEntity, TreeNode {
 
@@ -61,31 +59,6 @@ public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntity
     @Override
     public String getTooltip() {
         return tooltip;
-    }
-
-    @Override
-    public TreeNode getParent() {
-        return null;
-    }
-
-    @Override
-    public int getIndex(TreeNode node) {
-        return children.indexOf(node);
-    }
-
-    @Override
-    public boolean getAllowsChildren() {
-        return true;
-    }
-
-    @Override
-    public boolean isLeaf() {
-        return children.isEmpty();
-    }
-
-    @Override
-    public Enumeration children() {
-        return Collections.enumeration(children);
     }
 
 }

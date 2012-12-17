@@ -49,7 +49,7 @@ public class DefaultLazyLoadGuiEntityTreeNode<T extends GuiEntity & LoadableEnti
 
     @Override
     public Icon getIcon() {
-        return icon;  //To change body of implemented methods use File | Settings | File Templates.
+        return icon;
     }
 
     @Override

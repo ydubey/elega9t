@@ -8,9 +8,6 @@ package com.elega9t.commons.entity.tree.impl;
 import com.elega9t.commons.entity.GuiEntity;
 
 import javax.swing.*;
-import javax.swing.tree.TreeNode;
-import java.util.Collections;
-import java.util.Enumeration;
 
 public class DefaultGuiEntityTreeNode<T extends DefaultGuiEntityTreeNode> extends DefaultEntityTreeNode<T> implements GuiEntity {
 
