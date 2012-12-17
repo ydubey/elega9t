@@ -17,6 +17,10 @@ public class DefaultLoadableEntityTreeNode<T extends EntityTreeNode & LoadableEn
         super(name);
     }
 
+    public DefaultLoadableEntityTreeNode(String name, T parent) {
+        super(name, parent);
+    }
+
     public void load() throws EntityLoadException {
     }
 

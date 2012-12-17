@@ -18,15 +18,27 @@ public class DefaultLoadableGuiEntityTreeNode<T extends DefaultLoadableGuiEntity
     private String tooltip;
 
     public DefaultLoadableGuiEntityTreeNode(String name) {
-        this(name, null);
+        this(name, (T) null);
+    }
+
+    public DefaultLoadableGuiEntityTreeNode(String name, T parent) {
+        this(name, parent, null);
     }
 
     public DefaultLoadableGuiEntityTreeNode(String name, Icon icon) {
-        this(name, icon, null);
+        this(name, null, icon);
+    }
+
+    public DefaultLoadableGuiEntityTreeNode(String name, T parent, Icon icon) {
+        this(name, parent, icon, null);
     }
 
     public DefaultLoadableGuiEntityTreeNode(String name, Icon icon, String tooltip) {
-        super(name);
+        this(name, null, icon, tooltip);
+    }
+
+    public DefaultLoadableGuiEntityTreeNode(String name, T parent, Icon icon, String tooltip) {
+        super(name, parent);
         this.icon = icon;
         this.tooltip = tooltip;
     }

@@ -24,7 +24,11 @@ public class FolderEntityNode extends DefaultLazyLoadEntityTreeNode<FolderEntity
     }
 
     public FolderEntityNode(File file) throws IOException, EntityLoadException {
-        super(file.getCanonicalFile().getName());
+        this(file, null);
+    }
+
+    public FolderEntityNode(File file, FolderEntityNode parent) throws IOException, EntityLoadException {
+        super(file.getCanonicalFile().getName(), parent);
         this.file = file;
     }
 
@@ -35,7 +39,7 @@ public class FolderEntityNode extends DefaultLazyLoadEntityTreeNode<FolderEntity
             if(files != null) {
                 for (File child : files) {
                     try {
-                        addChild(new FolderEntityNode(child));
+                        addChild(new FolderEntityNode(child, this));
                     } catch (IOException e) {
                         throw new EntityLoadException(e);
                     }

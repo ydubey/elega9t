@@ -18,6 +18,10 @@ public class DefaultLazyLoadEntityTreeNode<T extends LoadableEntity & EntityTree
         super(name);
     }
 
+    public DefaultLazyLoadEntityTreeNode(String name, T parent) {
+        super(name, parent);
+    }
+
     @Override
     public int getChildCount() {
         if(!loaded) {
