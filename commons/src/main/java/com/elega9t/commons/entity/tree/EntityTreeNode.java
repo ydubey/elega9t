@@ -19,4 +19,6 @@ public interface EntityTreeNode<T extends EntityTreeNode> extends Entity, TreeNo
 
     void clear();
 
+    void setParent(EntityTreeNode parent);
+
 }

@@ -42,6 +42,11 @@ public class DefaultEntityTreeNode<T extends EntityTreeNode> extends DefaultEnti
     }
 
     @Override
+    public void setParent(EntityTreeNode parent) {
+        this.parent = parent;
+    }
+
+    @Override
     public int getIndex(TreeNode node) {
         return children.indexOf(node);
     }
