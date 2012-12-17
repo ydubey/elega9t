@@ -20,6 +20,11 @@ public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLa
         return connection;
     }
 
+    @Override
+    public T getChildAt(int index) {
+        return super.getChildAt(index);
+    }
+
     public abstract <R> R visit(DatabaseEntityVisitor<R> visitor);
 
 }

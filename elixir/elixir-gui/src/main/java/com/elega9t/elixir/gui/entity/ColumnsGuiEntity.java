@@ -5,21 +5,13 @@
 
 package com.elega9t.elixir.gui.entity;
 
-import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Columns;
 
-public class ColumnsGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
-
-    private final Columns columns;
+public class ColumnsGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Columns> {
 
     public ColumnsGuiEntity(Columns columns) {
         super(columns.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/table_columns.png")));
-        this.columns = columns;
-    }
-
-    @Override
-    public void load() throws EntityLoadException {
-        load(columns);
+        this.databaseEntity = columns;
     }
 
 }

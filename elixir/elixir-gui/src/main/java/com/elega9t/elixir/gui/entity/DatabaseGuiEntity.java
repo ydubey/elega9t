@@ -5,14 +5,16 @@
 
 package com.elega9t.elixir.gui.entity;
 
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.entity.tree.EntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadGuiEntityTreeNode;
-import com.elega9t.commons.entity.tree.impl.DefaultLoadableGuiEntityTreeNode;
 import com.elega9t.elixir.DatabaseEntity;
 
 import javax.swing.*;
 
-public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends DefaultLazyLoadGuiEntityTreeNode<T> {
+public class DatabaseGuiEntity<T extends DatabaseGuiEntity, R extends EntityTreeNode> extends DefaultLazyLoadGuiEntityTreeNode<T> {
+
+    protected R databaseEntity;
 
     public DatabaseGuiEntity(String name, Icon icon) {
         super(name, icon);
@@ -23,11 +25,11 @@ public class DatabaseGuiEntity<T extends DatabaseGuiEntity> extends DefaultLazyL
         return false;
     }
 
-    protected <R extends EntityTreeNode> void load(R entity) {
-        int childCount = entity.getChildCount();
+    public void load() throws EntityLoadException{
+        int childCount = databaseEntity.getChildCount();
         DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
         for(int index=0; index<childCount; index++) {
-            DatabaseEntity child = (DatabaseEntity) entity.getChildAt(index);
+            DatabaseEntity child = (DatabaseEntity) databaseEntity.getChildAt(index);
             T node = (T) child.visit(factory);
             node.setParent(this);
             addChild(node);

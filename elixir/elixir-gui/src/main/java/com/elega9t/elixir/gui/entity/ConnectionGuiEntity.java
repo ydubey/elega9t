@@ -7,18 +7,15 @@ package com.elega9t.elixir.gui.entity;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Connection;
-import com.elega9t.elixir.DatabaseEntity;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.mgr.DriverManager;
 
 import java.sql.SQLException;
 
-public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
+public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Connection> {
 
     private final ConnectionDetails connectionDetails;
-
-    private Connection connection;
 
     public ConnectionGuiEntity(ConnectionDetails connectionDetails) {
         super(connectionDetails.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database.png")));
@@ -32,8 +29,8 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
     public void load() throws EntityLoadException {
         Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
         try {
-            connection = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
-            load(connection);
+            this.databaseEntity = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
+            super.load();
         } catch (SQLException e) {
             throw new EntityLoadException(e);
         } finally {

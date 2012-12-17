@@ -5,21 +5,13 @@
 
 package com.elega9t.elixir.gui.entity;
 
-import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.TableType;
 
-public class TableTypeGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity> {
-
-    private final TableType tableType;
+public class TableTypeGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, TableType> {
 
     public TableTypeGuiEntity(TableType tableType) {
         super(tableType.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database_tables.png")));
-        this.tableType = tableType;
-    }
-
-    @Override
-    public void load() throws EntityLoadException {
-        load(tableType);
+        this.databaseEntity = tableType;
     }
 
 }
