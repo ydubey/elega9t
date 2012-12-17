@@ -16,10 +16,10 @@ public class TableType extends DatabaseEntity<Table> {
     private String catalogueName;
     private String schemaName;
 
-    public TableType(String catalogueName, String schemaName, String name, Connection connection) throws EntityLoadException {
-        super(name, connection);
+    public TableType(String catalogueName, Schema schema, String name, Connection connection) throws EntityLoadException {
+        super(name, schema, connection);
         this.catalogueName = catalogueName;
-        this.schemaName = schemaName;
+        this.schemaName = schema.getName();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class TableType extends DatabaseEntity<Table> {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getTables(catalogueName, schemaName, null, new String[] { getName() });
             while (resultSet.next()) {
-                addChild(new Table(catalogueName, schemaName, resultSet.getString("TABLE_NAME"), getConnection()));
+                addChild(new Table(catalogueName, schemaName, this, resultSet.getString("TABLE_NAME"), getConnection()));
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);

@@ -14,12 +14,16 @@ import java.sql.SQLException;
 public class TableTypes extends DatabaseEntity<TableType> {
 
     private final String catalogueName;
-    private final String schemaName;
+    private final Schema schema;
 
     public TableTypes(String catalogueName, String schemaName, Connection connection) throws EntityLoadException {
-        super("TABLES", connection);
+        this(catalogueName, new Schema(catalogueName, null, schemaName, connection), connection);
+    }
+
+    public TableTypes(String catalogueName, Schema schema, Connection connection) throws EntityLoadException {
+        super("TABLES", schema, connection);
         this.catalogueName = catalogueName;
-        this.schemaName = schemaName;
+        this.schema = schema;
     }
 
     @Override
@@ -28,7 +32,7 @@ public class TableTypes extends DatabaseEntity<TableType> {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getTableTypes();
             while (resultSet.next()) {
-                addChild(new TableType(catalogueName, schemaName, resultSet.getString("TABLE_TYPE"), getConnection()));
+                addChild(new TableType(catalogueName, schema, resultSet.getString("TABLE_TYPE"), getConnection()));
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);

@@ -17,11 +17,11 @@ public class Columns extends DatabaseEntity<Column> {
     private final String schemaName;
     private final String tableName;
 
-    public Columns(String catalogueName, String schemaName, String tableName, Connection connection) throws EntityLoadException {
-        super("COLUMNS", connection);
+    public Columns(String catalogueName, String schemaName, Table table, Connection connection) throws EntityLoadException {
+        super("COLUMNS", table, connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;
-        this.tableName = tableName;
+        this.tableName = table.getName();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Columns extends DatabaseEntity<Column> {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getColumns(catalogueName, schemaName, tableName, null);
             while (resultSet.next()) {
-                addChild(new Column(catalogueName, schemaName, tableName,
+                addChild(new Column(catalogueName, schemaName, tableName, this,
                         resultSet.getString("COLUMN_NAME"),
                         resultSet.getInt("DATA_TYPE"),
                         resultSet.getString("TYPE_NAME"),

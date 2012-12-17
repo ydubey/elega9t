@@ -11,8 +11,8 @@ public abstract class DatabaseEntity<T extends DatabaseEntity> extends DefaultLa
 
     private final Connection connection;
 
-    public DatabaseEntity(String name, Connection connection) {
-        super(name);
+    public DatabaseEntity(String name, DatabaseEntity parent, Connection connection) {
+        super(name, parent);
         this.connection = connection;
     }
 

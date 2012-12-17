@@ -15,8 +15,8 @@ public class Schema extends DatabaseEntity<TableType> {
 
     private String catalogueName;
 
-    public Schema(String catalogueName, String name, Connection connection) throws EntityLoadException {
-        super(name, connection);
+    public Schema(String catalogueName, Schemas parent, String name, Connection connection) throws EntityLoadException {
+        super(name, parent, connection);
         this.catalogueName = catalogueName;
     }
 
@@ -26,7 +26,7 @@ public class Schema extends DatabaseEntity<TableType> {
             final DatabaseMetaData metaData = getConnection().getMetaData();
             final ResultSet resultSet = metaData.getTableTypes();
             while (resultSet.next()) {
-                addChild(new TableType(catalogueName, getName(), resultSet.getString("TABLE_TYPE"), getConnection()));
+                addChild(new TableType(catalogueName, this, resultSet.getString("TABLE_TYPE"), getConnection()));
             }
         } catch (SQLException e) {
             throw new EntityLoadException(e);
