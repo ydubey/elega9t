@@ -12,7 +12,7 @@ public class IndexGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Index> 
 
     public IndexGuiEntity(Index index) {
         super(index.getName(), IconsManager.getInstance().database().getIndexIcon());
-        this.databaseEntity = index;
+        this.entity = index;
         loaded = true;
     }
 

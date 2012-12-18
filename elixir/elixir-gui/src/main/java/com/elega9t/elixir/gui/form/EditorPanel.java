@@ -1,10 +1,12 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
+import com.elega9t.commons.swing.ResultSetTableModel;
+import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
-
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 public class EditorPanel extends javax.swing.JPanel {
     /**
@@ -61,6 +63,11 @@ public class EditorPanel extends javax.swing.JPanel {
         executeQueryButton.setFocusable(false);
         executeQueryButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         executeQueryButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        executeQueryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                executeQueryButtonActionPerformed(evt);
+            }
+        });
         queryPanelToolBar.add(executeQueryButton);
 
         topPanelToolbarPanel.add(queryPanelToolBar, java.awt.BorderLayout.LINE_START);
@@ -86,7 +93,7 @@ public class EditorPanel extends javax.swing.JPanel {
 
         resultTablePanel.setLayout(new java.awt.BorderLayout());
 
-        resultTable.setModel(new DefaultTableModel());
+        resultTable.setModel(new ResultSetTableModel());
         resultTableScrollPane.setViewportView(resultTable);
 
         resultTablePanel.add(resultTableScrollPane, java.awt.BorderLayout.CENTER);
@@ -109,6 +116,24 @@ public class EditorPanel extends javax.swing.JPanel {
 
         add(editorSplitPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void executeQueryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executeQueryButtonActionPerformed
+        final ConnectionGuiEntity connectionGuiEntity = (ConnectionGuiEntity) currentDatabaseComboBox.getSelectedItem();
+        final Connection connection = connectionGuiEntity.getEntity();
+        try {
+            final PreparedStatement preparedStatement = connection.prepareStatement(queryEditorPane.getText());
+            final boolean isResultSet = preparedStatement.execute();
+            if(isResultSet) {
+                final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
+                model.setResultSet(preparedStatement.getResultSet());
+            } else {
+                System.out.println("Update");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_executeQueryButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JComboBox currentDatabaseComboBox;

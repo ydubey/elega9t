@@ -12,7 +12,7 @@ public class TableGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Table> 
 
     public TableGuiEntity(Table table) {
         super(table.getName(), IconsManager.getInstance().database().getTableIcon());
-        this.databaseEntity = table;
+        this.entity = table;
     }
 
 }

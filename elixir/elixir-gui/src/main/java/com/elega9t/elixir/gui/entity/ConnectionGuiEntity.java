@@ -39,7 +39,7 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Co
     public void load() throws EntityLoadException {
         Driver driver = DriverManager.getInstance().getDriver(connectionDetails.getDriver());
         try {
-            this.databaseEntity = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
+            this.entity = driver.createConnection(connectionDetails.getUser(), connectionDetails.getPassword());
             super.load();
         } catch (SQLException e) {
             throw new EntityLoadException(e);

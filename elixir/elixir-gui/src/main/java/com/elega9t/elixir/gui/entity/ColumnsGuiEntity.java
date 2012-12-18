@@ -12,7 +12,7 @@ public class ColumnsGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Colum
 
     public ColumnsGuiEntity(Columns columns) {
         super(columns.getName(), IconsManager.getInstance().database().getTableColumnsIcon());
-        this.databaseEntity = columns;
+        this.entity = columns;
     }
 
 }

@@ -14,10 +14,14 @@ import javax.swing.*;
 
 public class DatabaseGuiEntity<T extends DatabaseGuiEntity, R extends EntityTreeNode> extends DefaultLazyLoadGuiEntityTreeNode<T> {
 
-    protected R databaseEntity;
+    protected R entity;
 
     public DatabaseGuiEntity(String name, Icon icon) {
         super(name, icon);
+    }
+
+    public R getEntity() {
+        return entity;
     }
 
     @Override
@@ -27,10 +31,10 @@ public class DatabaseGuiEntity<T extends DatabaseGuiEntity, R extends EntityTree
 
     public void load() throws EntityLoadException{
         if(!loaded) {
-            int childCount = databaseEntity.getChildCount();
+            int childCount = entity.getChildCount();
             DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
             for(int index=0; index<childCount; index++) {
-                DatabaseEntity child = (DatabaseEntity) databaseEntity.getChildAt(index);
+                DatabaseEntity child = (DatabaseEntity) entity.getChildAt(index);
                 T node = (T) child.visit(factory);
                 node.setParent(this);
                 addChild(node);
