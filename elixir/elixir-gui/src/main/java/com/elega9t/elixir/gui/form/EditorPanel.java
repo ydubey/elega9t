@@ -2,16 +2,18 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.ResultSetTableModel;
-import com.elega9t.commons.swing.TableColumnAdjuster;
 import com.elega9t.elixir.Connection;
+import com.elega9t.elixir.gui.entity.ColumnGuiEntity;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-public class EditorPanel extends javax.swing.JPanel {
+public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
     /**
      * Creates new form EditorPanel
      */
@@ -169,4 +171,20 @@ public class EditorPanel extends javax.swing.JPanel {
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel topPanelToolbarPanel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void connectionAdded(ColumnGuiEntity connection) {
+        currentDatabaseComboBox.addItem(connection);
+    }
+
+    @Override
+    public void connectionRemoved(ColumnGuiEntity connection) {
+        currentDatabaseComboBox.removeItem(connection);
+    }
+
+    @Override
+    public void connectionStateChanged(ColumnGuiEntity connection) {
+        currentDatabaseComboBox.updateUI();
+    }
+
 }

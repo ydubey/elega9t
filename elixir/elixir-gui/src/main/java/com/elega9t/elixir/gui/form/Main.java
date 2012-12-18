@@ -5,11 +5,9 @@
 
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.commons.entity.impl.DefaultGuiEntity;
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
-import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.LongTask;
 import com.elega9t.commons.swing.SwingUtilities;
@@ -22,7 +20,7 @@ import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.entity.DatabaseGuiEntity;
-import com.elega9t.elixir.gui.mgr.IconsManager;
+import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -31,11 +29,13 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends javax.swing.JFrame {
 
     private DefaultGuiEntityTreeNode savedConnections = new DefaultGuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
+    private List<DatabaseConnectionEventListener> databaseConnectionEventListeners = new ArrayList<DatabaseConnectionEventListener>();
 
     /**
      * Creates new form Main
@@ -233,7 +233,7 @@ public class Main extends javax.swing.JFrame {
         SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
             @Override
             public boolean evaluate(TreeNode value) {
-                return value == savedConnections || ((DatabaseGuiEntity)value).isLoaded();
+                return value == savedConnections || ((DatabaseGuiEntity) value).isLoaded();
             }
         });
     }//GEN-LAST:event_expandAllButtonActionPerformed
@@ -252,7 +252,10 @@ public class Main extends javax.swing.JFrame {
                         DefaultLazyLoadEntityTreeNode lazyLoadEntityTreeNode = (DefaultLazyLoadEntityTreeNode) component;
                         lazyLoadEntityTreeNode.load();
                         if(component instanceof ConnectionGuiEntity) {
-                            editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), new EditorPanel(getConnectionNodes()));
+                            final EditorPanel editorPanel = new EditorPanel(getConnectionNodes());
+                            editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), editorPanel);
+                            addDatabaseConnectionEventListener(editorPanel);
+                            fireDatabaseConnectionStateChanged((ConnectionGuiEntity) component);
                         }
                     }
                 }.execute(this);
@@ -311,6 +314,20 @@ public class Main extends javax.swing.JFrame {
             }
         });
         return nodes.toArray(new ConnectionGuiEntity[nodes.size()]);
+    }
+
+    public void addDatabaseConnectionEventListener(DatabaseConnectionEventListener listener) {
+        databaseConnectionEventListeners.add(listener);
+    }
+
+    public void removeDatabaseConnectionEventListener(DatabaseConnectionEventListener listener) {
+        databaseConnectionEventListeners.remove(listener);
+    }
+
+    private void fireDatabaseConnectionStateChanged(ConnectionGuiEntity connection) {
+        for (DatabaseConnectionEventListener databaseConnectionEventListener : databaseConnectionEventListeners) {
+            databaseConnectionEventListener.connectionStateChanged(connection);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
