@@ -26,15 +26,17 @@ public class DatabaseGuiEntity<T extends DatabaseGuiEntity, R extends EntityTree
     }
 
     public void load() throws EntityLoadException{
-        int childCount = databaseEntity.getChildCount();
-        DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
-        for(int index=0; index<childCount; index++) {
-            DatabaseEntity child = (DatabaseEntity) databaseEntity.getChildAt(index);
-            T node = (T) child.visit(factory);
-            node.setParent(this);
-            addChild(node);
+        if(!loaded) {
+            int childCount = databaseEntity.getChildCount();
+            DatabaseGuiEntityFactory factory = new DatabaseGuiEntityFactory();
+            for(int index=0; index<childCount; index++) {
+                DatabaseEntity child = (DatabaseEntity) databaseEntity.getChildAt(index);
+                T node = (T) child.visit(factory);
+                node.setParent(this);
+                addChild(node);
+            }
+            loaded = true;
         }
-        loaded = true;
     }
 
 }

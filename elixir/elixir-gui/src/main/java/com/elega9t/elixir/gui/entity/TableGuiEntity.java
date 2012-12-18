@@ -6,11 +6,12 @@
 package com.elega9t.elixir.gui.entity;
 
 import com.elega9t.elixir.Table;
+import com.elega9t.elixir.gui.mgr.IconsManager;
 
 public class TableGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Table> {
 
     public TableGuiEntity(Table table) {
-        super(table.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/table.png")));
+        super(table.getName(), IconsManager.getInstance().database().getTableIcon());
         this.databaseEntity = table;
     }
 

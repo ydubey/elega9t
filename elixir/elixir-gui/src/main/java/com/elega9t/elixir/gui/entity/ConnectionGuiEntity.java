@@ -9,17 +9,27 @@ import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
+import com.elega9t.elixir.gui.mgr.IconsManager;
 import com.elega9t.elixir.mgr.DriverManager;
 
+import javax.swing.*;
 import java.sql.SQLException;
 
 public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Connection> {
 
     private final ConnectionDetails connectionDetails;
 
+    private static Icon connectedDatabaseIcon = IconsManager.getInstance().database().getConnectedDatabaseIcon();
+    private static Icon databaseIcon = IconsManager.getInstance().database().getDatabaseIcon();
+
     public ConnectionGuiEntity(ConnectionDetails connectionDetails) {
-        super(connectionDetails.getName(), new javax.swing.ImageIcon(ConnectionGuiEntity.class.getResource("/com/elega9t/elixir/gui/icons/database.png")));
+        super(connectionDetails.getName(), null);
         this.connectionDetails = connectionDetails;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return isLoaded() ? connectedDatabaseIcon : databaseIcon;
     }
 
     public ConnectionDetails getConnectionDetails() {

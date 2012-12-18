@@ -21,4 +21,8 @@ public interface DatabaseEntityVisitor<T> {
 
     T visit(TableTypes tableTypes);
 
+    T visit(Indexes indexes);
+
+    T visit(Index index);
+
 }

@@ -7,22 +7,26 @@ package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
 
-public class Table extends DatabaseEntity<DatabaseEntity> {
+public class Index extends DatabaseEntity<Columns> {
 
     private final String catalogueName;
     private final String schemaName;
+    private final String tableName;
 
-    public Table(String catalogueName, String schemaName, TableType parent, String name, Connection connection) throws EntityLoadException {
-        super(name, parent, connection);
+    public Index(String catalogueName, String schemaName, String tableName, Indexes indexes, String name, Connection connection) throws EntityLoadException {
+        super(name, indexes, connection);
         this.catalogueName = catalogueName;
         this.schemaName = schemaName;
+        this.tableName = tableName;
     }
 
     @Override
-    public void load() throws EntityLoadException {
-        addChild(new Columns(catalogueName, schemaName, this, getConnection()));
-        addChild(new Indexes(catalogueName, schemaName, this, getConnection()));
-        loaded = true;
+    public void load() {
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
     @Override

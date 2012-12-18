@@ -5,14 +5,14 @@
 
 package com.elega9t.elixir.gui.entity;
 
-import com.elega9t.elixir.Column;
+import com.elega9t.elixir.Index;
 import com.elega9t.elixir.gui.mgr.IconsManager;
 
-public class ColumnGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Column> {
+public class IndexGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Index> {
 
-    public ColumnGuiEntity(Column column) {
-        super(column.getName(), IconsManager.getInstance().database().getColumnIcon());
-        this.databaseEntity = column;
+    public IndexGuiEntity(Index index) {
+        super(index.getName(), IconsManager.getInstance().database().getIndexIcon());
+        this.databaseEntity = index;
         loaded = true;
     }
 

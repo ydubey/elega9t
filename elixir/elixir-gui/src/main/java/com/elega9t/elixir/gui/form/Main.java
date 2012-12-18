@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.gui.form;
 
+import com.elega9t.commons.entity.impl.DefaultGuiEntity;
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
@@ -21,6 +22,7 @@ import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.entity.DatabaseGuiEntity;
+import com.elega9t.elixir.gui.mgr.IconsManager;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -34,6 +36,7 @@ import java.util.List;
 public class Main extends javax.swing.JFrame {
 
     private DefaultGuiEntityTreeNode savedConnections = new DefaultGuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
+    private DefaultGuiEntity noDatabaseSelected = new DefaultGuiEntity("Connect To A Database", IconsManager.getInstance().system().getInfoIcon());
 
     /**
      * Creates new form Main
@@ -53,7 +56,6 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         topPanel = new javax.swing.JPanel();
-        currentDatabaseComboBox = new javax.swing.JComboBox();
         toolBar = new javax.swing.JToolBar();
         connectToDatabaseToolBarButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
@@ -89,10 +91,6 @@ public class Main extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
 
         topPanel.setLayout(new java.awt.BorderLayout());
-
-        currentDatabaseComboBox.setModel(new DefaultComboBoxModel());
-        currentDatabaseComboBox.setRenderer(new GuiEntityListCellRenderer());
-        topPanel.add(currentDatabaseComboBox, java.awt.BorderLayout.LINE_END);
 
         toolBar.setRollover(true);
 
@@ -168,10 +166,10 @@ public class Main extends javax.swing.JFrame {
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
         connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
+            }
             public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 connectionsTreeTreeWillExpand(evt);
-            }
-            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         connectionsTreeScrollPane.setViewportView(connectionsTree);
@@ -314,7 +312,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane connectionsTreeScrollPane;
     private javax.swing.JToolBar connectionsTreeToolBar;
     private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
-    private javax.swing.JComboBox currentDatabaseComboBox;
     private javax.swing.JMenu editMenu;
     private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JButton expandAllButton;

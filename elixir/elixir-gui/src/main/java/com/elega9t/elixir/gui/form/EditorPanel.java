@@ -1,5 +1,7 @@
 package com.elega9t.elixir.gui.form;
 
+import com.elega9t.commons.swing.GuiEntityListCellRenderer;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class EditorPanel extends javax.swing.JPanel {
@@ -25,6 +27,8 @@ public class EditorPanel extends javax.swing.JPanel {
         topPanelToolbarPanel = new javax.swing.JPanel();
         queryPanelToolBar = new javax.swing.JToolBar();
         executeQueryButton = new javax.swing.JButton();
+        currentDatabaseToolBar = new javax.swing.JToolBar();
+        currentDatabaseComboBox = new javax.swing.JComboBox();
         queryEditorScrollPane = new javax.swing.JScrollPane();
         queryEditorPane = new javax.swing.JEditorPane();
         bottomPanel = new javax.swing.JPanel();
@@ -43,7 +47,7 @@ public class EditorPanel extends javax.swing.JPanel {
 
         topPanel.setLayout(new java.awt.BorderLayout());
 
-        topPanelToolbarPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        topPanelToolbarPanel.setLayout(new java.awt.BorderLayout());
 
         queryPanelToolBar.setFloatable(false);
         queryPanelToolBar.setRollover(true);
@@ -55,7 +59,16 @@ public class EditorPanel extends javax.swing.JPanel {
         executeQueryButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         queryPanelToolBar.add(executeQueryButton);
 
-        topPanelToolbarPanel.add(queryPanelToolBar);
+        topPanelToolbarPanel.add(queryPanelToolBar, java.awt.BorderLayout.LINE_START);
+
+        currentDatabaseToolBar.setFloatable(false);
+        currentDatabaseToolBar.setRollover(true);
+
+        currentDatabaseComboBox.setModel(new DefaultComboBoxModel());
+        currentDatabaseComboBox.setRenderer(new GuiEntityListCellRenderer());
+        currentDatabaseToolBar.add(currentDatabaseComboBox);
+
+        topPanelToolbarPanel.add(currentDatabaseToolBar, java.awt.BorderLayout.LINE_END);
 
         topPanel.add(topPanelToolbarPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -94,6 +107,8 @@ public class EditorPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
+    private javax.swing.JComboBox currentDatabaseComboBox;
+    private javax.swing.JToolBar currentDatabaseToolBar;
     private javax.swing.JSplitPane editorSplitPane;
     private javax.swing.JButton executeQueryButton;
     private javax.swing.JPanel messagesPanel;

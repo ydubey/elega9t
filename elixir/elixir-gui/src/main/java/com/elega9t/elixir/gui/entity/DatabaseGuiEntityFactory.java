@@ -44,4 +44,14 @@ public class DatabaseGuiEntityFactory implements DatabaseEntityVisitor<DatabaseG
         return new DatabaseGuiEntity(tableTypes.getName(), null);
     }
 
+    @Override
+    public DatabaseGuiEntity visit(Indexes indexes) {
+        return new IndexesGuiEntity(indexes);
+    }
+
+    @Override
+    public DatabaseGuiEntity visit(Index index) {
+        return new IndexGuiEntity(index);
+    }
+
 }
