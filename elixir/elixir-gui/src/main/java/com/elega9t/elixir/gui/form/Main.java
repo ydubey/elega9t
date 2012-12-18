@@ -8,6 +8,7 @@ package com.elega9t.elixir.gui.form;
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
+import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.LongTask;
 import com.elega9t.commons.swing.SwingUtilities;
@@ -19,6 +20,7 @@ import com.elega9t.elixir.gui.components.config.ui.lnf.LookAndFeelConfigPanel;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+import com.elega9t.elixir.gui.entity.DatabaseGuiEntity;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -51,17 +53,18 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         topPanel = new javax.swing.JPanel();
+        currentDatabaseComboBox = new javax.swing.JComboBox();
         toolBar = new javax.swing.JToolBar();
         connectToDatabaseToolBarButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         bodySplitPane = new javax.swing.JSplitPane();
         rightBasePanel = new javax.swing.JPanel();
         editorTabbedPane = new TextBackgroundSplitPane(
-                new BackgroundText(ResourceStrings.main.getString("title"), 100, 30).bold(),
-                new BackgroundText(ResourceStrings.main.getString("website"), 130, 20),
-                new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
-                new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
-                new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
+            new BackgroundText(ResourceStrings.main.getString("title"), 100, 30).bold(),
+            new BackgroundText(ResourceStrings.main.getString("website"), 130, 20),
+            new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
+            new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
+            new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
         );
         leftBasePanel = new javax.swing.JPanel();
         leftPanelTabbedPane = new javax.swing.JTabbedPane();
@@ -86,6 +89,10 @@ public class Main extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
 
         topPanel.setLayout(new java.awt.BorderLayout());
+
+        currentDatabaseComboBox.setModel(new DefaultComboBoxModel());
+        currentDatabaseComboBox.setRenderer(new GuiEntityListCellRenderer());
+        topPanel.add(currentDatabaseComboBox, java.awt.BorderLayout.LINE_END);
 
         toolBar.setRollover(true);
 
@@ -229,7 +236,7 @@ public class Main extends javax.swing.JFrame {
         SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
             @Override
             public boolean evaluate(TreeNode value) {
-                return !(value instanceof ConnectionGuiEntity) || ((ConnectionGuiEntity)value).isLoaded();
+                return value == savedConnections || ((DatabaseGuiEntity)value).isLoaded();
             }
         });
     }//GEN-LAST:event_expandAllButtonActionPerformed
@@ -307,6 +314,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane connectionsTreeScrollPane;
     private javax.swing.JToolBar connectionsTreeToolBar;
     private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
+    private javax.swing.JComboBox currentDatabaseComboBox;
     private javax.swing.JMenu editMenu;
     private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JButton expandAllButton;
