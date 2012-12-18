@@ -2,11 +2,14 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.ResultSetTableModel;
+import com.elega9t.commons.swing.TableColumnAdjuster;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 public class EditorPanel extends javax.swing.JPanel {
     /**
@@ -41,7 +44,13 @@ public class EditorPanel extends javax.swing.JPanel {
         resultsTabbedPane = new javax.swing.JTabbedPane();
         resultTablePanel = new javax.swing.JPanel();
         resultTableScrollPane = new javax.swing.JScrollPane();
-        resultTable = new javax.swing.JTable();
+        resultTable = new JTable() {
+
+            public boolean getScrollableTracksViewportWidth() {
+                return getPreferredSize().width < getParent().getWidth();
+            }
+
+        };
         messagesPanel = new javax.swing.JPanel();
         messagesScrollPane = new javax.swing.JScrollPane();
         messagesTextArea = new javax.swing.JTextArea();
@@ -126,14 +135,21 @@ public class EditorPanel extends javax.swing.JPanel {
             if(isResultSet) {
                 final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
                 model.setResultSet(preparedStatement.getResultSet());
+                setMessage(model.getRowCount() + " row(s) selected.");
+                resultsTabbedPane.setSelectedComponent(resultTablePanel);
             } else {
-                System.out.println("Update");
+                setMessage(preparedStatement.getUpdateCount() + " row(s) updated.");
+                resultsTabbedPane.setSelectedComponent(messagesPanel);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_executeQueryButtonActionPerformed
 
+    private void setMessage(String message) {
+        messagesTextArea.setText(message);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JComboBox currentDatabaseComboBox;
