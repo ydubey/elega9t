@@ -14,6 +14,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Enumeration;
 
 public class SwingUtilities {
@@ -99,6 +101,20 @@ public class SwingUtilities {
         if(predicate.evaluate(node)) {
             tree.collapsePath(new TreePath(node));
         }
+    }
+
+    public static java.util.List<TreeNode> filterNodes(TreeNode node, Predicate<TreeNode> predicate, Predicate<TreeNode> childPredicate) {
+        java.util.List<TreeNode> nodes = new ArrayList<TreeNode>();
+        if(predicate.evaluate(node)) {
+            nodes.add(node);
+        }
+        if(childPredicate.evaluate(node) && node.getChildCount() > 0) {
+            for (Enumeration e = node.children(); e.hasMoreElements();) {
+                TreeNode n = (TreeNode) e.nextElement();
+                nodes.addAll(filterNodes(n, predicate, childPredicate));
+            }
+        }
+        return nodes;
     }
 
 }

@@ -1,16 +1,20 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
-import javax.swing.DefaultComboBoxModel;
+import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class EditorPanel extends javax.swing.JPanel {
-
     /**
      * Creates new form EditorPanel
      */
-    public EditorPanel() {
+    public EditorPanel(ConnectionGuiEntity... connections) {
         initComponents();
+        for (ConnectionGuiEntity connection : connections) {
+            ((DefaultComboBoxModel)currentDatabaseComboBox.getModel()).addElement(connection);
+        }
     }
 
     /**

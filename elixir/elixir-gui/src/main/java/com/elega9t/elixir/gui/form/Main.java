@@ -36,7 +36,6 @@ import java.util.List;
 public class Main extends javax.swing.JFrame {
 
     private DefaultGuiEntityTreeNode savedConnections = new DefaultGuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
-    private DefaultGuiEntity noDatabaseSelected = new DefaultGuiEntity("Connect To A Database", IconsManager.getInstance().system().getInfoIcon());
 
     /**
      * Creates new form Main
@@ -253,7 +252,7 @@ public class Main extends javax.swing.JFrame {
                         DefaultLazyLoadEntityTreeNode lazyLoadEntityTreeNode = (DefaultLazyLoadEntityTreeNode) component;
                         lazyLoadEntityTreeNode.load();
                         if(component instanceof ConnectionGuiEntity) {
-                            editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), new EditorPanel());
+                            editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), new EditorPanel(getConnectionNodes()));
                         }
                     }
                 }.execute(this);
@@ -297,6 +296,21 @@ public class Main extends javax.swing.JFrame {
 
     private void errorOccured(Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private ConnectionGuiEntity[] getConnectionNodes() {
+        final List<TreeNode> nodes = SwingUtilities.filterNodes(savedConnections, new Predicate<TreeNode>() {
+            @Override
+            public boolean evaluate(TreeNode value) {
+                return value instanceof ConnectionGuiEntity;
+            }
+        }, new Predicate<TreeNode>() {
+            @Override
+            public boolean evaluate(TreeNode value) {
+                return !(value instanceof ConnectionGuiEntity);
+            }
+        });
+        return nodes.toArray(new ConnectionGuiEntity[nodes.size()]);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
