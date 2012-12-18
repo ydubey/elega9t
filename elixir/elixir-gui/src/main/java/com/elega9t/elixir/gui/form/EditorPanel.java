@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import javax.swing.text.BadLocationException;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
-    
+
+    //http://boplicity.nl/confluence/display/Java/Xml+syntax+highlighting+in+Swing+JTextPane
+
     private final Main main;
     /**
      * Creates new form EditorPanel
@@ -40,12 +42,12 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         executeQueryButton = new javax.swing.JButton();
         currentDatabaseToolBar = new javax.swing.JToolBar();
         currentDatabaseComboBox = new javax.swing.JComboBox();
-        queryEditorScrollPane = new javax.swing.JScrollPane();
-        queryEditorPane = new javax.swing.JEditorPane();
         topPanelFooterPanel = new javax.swing.JPanel();
         lineNumberToolBar = new javax.swing.JToolBar();
         lineNumberLabel = new javax.swing.JLabel();
         separator1 = new javax.swing.JToolBar.Separator();
+        queryEditorScrollPane = new javax.swing.JScrollPane();
+        queryEditorTextPane = new javax.swing.JTextPane();
         bottomPanel = new javax.swing.JPanel();
         resultsTabbedPane = new javax.swing.JTabbedPane();
         resultTablePanel = new javax.swing.JPanel();
@@ -98,15 +100,6 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
 
         topPanel.add(topPanelToolbarPanel, java.awt.BorderLayout.PAGE_START);
 
-        queryEditorPane.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                queryEditorPaneCaretUpdate(evt);
-            }
-        });
-        queryEditorScrollPane.setViewportView(queryEditorPane);
-
-        topPanel.add(queryEditorScrollPane, java.awt.BorderLayout.CENTER);
-
         topPanelFooterPanel.setLayout(new java.awt.BorderLayout());
 
         lineNumberToolBar.setFloatable(false);
@@ -119,6 +112,15 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         topPanelFooterPanel.add(lineNumberToolBar, java.awt.BorderLayout.CENTER);
 
         topPanel.add(topPanelFooterPanel, java.awt.BorderLayout.PAGE_END);
+
+        queryEditorTextPane.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                queryEditorTextPaneCaretUpdate(evt);
+            }
+        });
+        queryEditorScrollPane.setViewportView(queryEditorTextPane);
+
+        topPanel.add(queryEditorScrollPane, java.awt.BorderLayout.CENTER);
 
         editorSplitPane.setTopComponent(topPanel);
 
@@ -154,7 +156,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         final ConnectionGuiEntity connectionGuiEntity = (ConnectionGuiEntity) currentDatabaseComboBox.getSelectedItem();
         final Connection connection = connectionGuiEntity.getEntity();
         try {
-            final PreparedStatement preparedStatement = connection.prepareStatement(queryEditorPane.getText());
+            final PreparedStatement preparedStatement = connection.prepareStatement(queryEditorTextPane.getText());
             final boolean isResultSet = preparedStatement.execute();
             if(isResultSet) {
                 final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
@@ -170,13 +172,13 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         }
     }//GEN-LAST:event_executeQueryButtonActionPerformed
 
-    private void queryEditorPaneCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_queryEditorPaneCaretUpdate
+    private void queryEditorTextPaneCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_queryEditorTextPaneCaretUpdate
         try {
-            lineNumberLabel.setText(SwingUtilities.getRow(evt.getDot(), queryEditorPane) + ":" + SwingUtilities.getColumn(evt.getDot(), queryEditorPane));
+            lineNumberLabel.setText(SwingUtilities.getRow(evt.getDot(), queryEditorTextPane) + ":" + SwingUtilities.getColumn(evt.getDot(), queryEditorTextPane));
         } catch (BadLocationException e) {
             main.errorOccured(e);
         }
-    }//GEN-LAST:event_queryEditorPaneCaretUpdate
+    }//GEN-LAST:event_queryEditorTextPaneCaretUpdate
 
     private void setMessage(String message) {
         messagesTextArea.setText(message);
@@ -193,8 +195,8 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JPanel messagesPanel;
     private javax.swing.JScrollPane messagesScrollPane;
     private javax.swing.JTextArea messagesTextArea;
-    private javax.swing.JEditorPane queryEditorPane;
     private javax.swing.JScrollPane queryEditorScrollPane;
+    private javax.swing.JTextPane queryEditorTextPane;
     private javax.swing.JToolBar queryPanelToolBar;
     private javax.swing.JTable resultTable;
     private javax.swing.JPanel resultTablePanel;
