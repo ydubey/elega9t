@@ -45,6 +45,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         topPanelFooterPanel = new javax.swing.JPanel();
         lineNumberToolBar = new javax.swing.JToolBar();
         lineNumberLabel = new javax.swing.JLabel();
+        separator1 = new javax.swing.JToolBar.Separator();
         bottomPanel = new javax.swing.JPanel();
         resultsTabbedPane = new javax.swing.JTabbedPane();
         resultTablePanel = new javax.swing.JPanel();
@@ -111,10 +112,11 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         lineNumberToolBar.setFloatable(false);
         lineNumberToolBar.setRollover(true);
 
-        lineNumberLabel.setText("0:0");
+        lineNumberLabel.setText("1:1");
         lineNumberToolBar.add(lineNumberLabel);
+        lineNumberToolBar.add(separator1);
 
-        topPanelFooterPanel.add(lineNumberToolBar, java.awt.BorderLayout.LINE_END);
+        topPanelFooterPanel.add(lineNumberToolBar, java.awt.BorderLayout.CENTER);
 
         topPanel.add(topPanelFooterPanel, java.awt.BorderLayout.PAGE_END);
 
@@ -198,6 +200,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JPanel resultTablePanel;
     private javax.swing.JScrollPane resultTableScrollPane;
     private javax.swing.JTabbedPane resultsTabbedPane;
+    private javax.swing.JToolBar.Separator separator1;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel topPanelFooterPanel;
     private javax.swing.JPanel topPanelToolbarPanel;

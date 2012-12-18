@@ -142,7 +142,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="After"/>
+                      <BorderConstraints direction="Center"/>
                     </Constraint>
                   </Constraints>
 
@@ -150,8 +150,10 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="lineNumberLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="0:0"/>
+                        <Property name="text" type="java.lang.String" value="1:1"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JToolBar$Separator" name="separator1">
                     </Component>
                   </SubComponents>
                 </Container>
