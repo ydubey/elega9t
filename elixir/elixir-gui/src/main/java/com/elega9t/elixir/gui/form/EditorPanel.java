@@ -2,23 +2,26 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.ResultSetTableModel;
+import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.swing.*;
+import javax.swing.text.BadLocationException;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
+    
+    private final Main main;
     /**
      * Creates new form EditorPanel
      */
-    public EditorPanel(ConnectionGuiEntity... connections) {
+    public EditorPanel(Main main, ConnectionGuiEntity... connections) {
         initComponents();
         for (ConnectionGuiEntity connection : connections) {
-            ((DefaultComboBoxModel)currentDatabaseComboBox.getModel()).addElement(connection);
+            ((javax.swing.DefaultComboBoxModel)currentDatabaseComboBox.getModel()).addElement(connection);
         }
+        this.main = main;
     }
 
     /**
@@ -39,11 +42,14 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         currentDatabaseComboBox = new javax.swing.JComboBox();
         queryEditorScrollPane = new javax.swing.JScrollPane();
         queryEditorPane = new javax.swing.JEditorPane();
+        topPanelFooterPanel = new javax.swing.JPanel();
+        lineNumberToolBar = new javax.swing.JToolBar();
+        lineNumberLabel = new javax.swing.JLabel();
         bottomPanel = new javax.swing.JPanel();
         resultsTabbedPane = new javax.swing.JTabbedPane();
         resultTablePanel = new javax.swing.JPanel();
         resultTableScrollPane = new javax.swing.JScrollPane();
-        resultTable = new JTable() {
+        resultTable = new javax.swing.JTable() {
 
             public boolean getScrollableTracksViewportWidth() {
                 return getPreferredSize().width < getParent().getWidth();
@@ -83,7 +89,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         currentDatabaseToolBar.setFloatable(false);
         currentDatabaseToolBar.setRollover(true);
 
-        currentDatabaseComboBox.setModel(new DefaultComboBoxModel());
+        currentDatabaseComboBox.setModel(new javax.swing.DefaultComboBoxModel());
         currentDatabaseComboBox.setRenderer(new GuiEntityListCellRenderer());
         currentDatabaseToolBar.add(currentDatabaseComboBox);
 
@@ -91,9 +97,26 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
 
         topPanel.add(topPanelToolbarPanel, java.awt.BorderLayout.PAGE_START);
 
+        queryEditorPane.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                queryEditorPaneCaretUpdate(evt);
+            }
+        });
         queryEditorScrollPane.setViewportView(queryEditorPane);
 
         topPanel.add(queryEditorScrollPane, java.awt.BorderLayout.CENTER);
+
+        topPanelFooterPanel.setLayout(new java.awt.BorderLayout());
+
+        lineNumberToolBar.setFloatable(false);
+        lineNumberToolBar.setRollover(true);
+
+        lineNumberLabel.setText("0:0");
+        lineNumberToolBar.add(lineNumberLabel);
+
+        topPanelFooterPanel.add(lineNumberToolBar, java.awt.BorderLayout.LINE_END);
+
+        topPanel.add(topPanelFooterPanel, java.awt.BorderLayout.PAGE_END);
 
         editorSplitPane.setTopComponent(topPanel);
 
@@ -141,9 +164,17 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
                 resultsTabbedPane.setSelectedComponent(messagesPanel);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            main.errorOccured(e);
         }
     }//GEN-LAST:event_executeQueryButtonActionPerformed
+
+    private void queryEditorPaneCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_queryEditorPaneCaretUpdate
+        try {
+            lineNumberLabel.setText(SwingUtilities.getRow(evt.getDot(), queryEditorPane) + ":" + SwingUtilities.getColumn(evt.getDot(), queryEditorPane));
+        } catch (BadLocationException e) {
+            main.errorOccured(e);
+        }
+    }//GEN-LAST:event_queryEditorPaneCaretUpdate
 
     private void setMessage(String message) {
         messagesTextArea.setText(message);
@@ -155,6 +186,8 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JToolBar currentDatabaseToolBar;
     private javax.swing.JSplitPane editorSplitPane;
     private javax.swing.JButton executeQueryButton;
+    private javax.swing.JLabel lineNumberLabel;
+    private javax.swing.JToolBar lineNumberToolBar;
     private javax.swing.JPanel messagesPanel;
     private javax.swing.JScrollPane messagesScrollPane;
     private javax.swing.JTextArea messagesTextArea;
@@ -166,6 +199,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JScrollPane resultTableScrollPane;
     private javax.swing.JTabbedPane resultsTabbedPane;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JPanel topPanelFooterPanel;
     private javax.swing.JPanel topPanelToolbarPanel;
     // End of variables declaration//GEN-END:variables
 

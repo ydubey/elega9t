@@ -96,7 +96,7 @@
                     <Component class="javax.swing.JComboBox" name="currentDatabaseComboBox">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new DefaultComboBoxModel()" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
                         </Property>
                         <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new GuiEntityListCellRenderer()" type="code"/>
@@ -120,7 +120,41 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Component class="javax.swing.JEditorPane" name="queryEditorPane">
+                  <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="queryEditorPaneCaretUpdate"/>
+                  </Events>
                 </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="topPanelFooterPanel">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="Last"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JToolBar" name="lineNumberToolBar">
+                  <Properties>
+                    <Property name="floatable" type="boolean" value="false"/>
+                    <Property name="rollover" type="boolean" value="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="After"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lineNumberLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0:0"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -173,7 +207,7 @@
                             </Property>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JTable() {&#xa;&#xa;    public boolean getScrollableTracksViewportWidth() {&#xa;        return getPreferredSize().width &lt; getParent().getWidth();&#xa;    }&#xa;&#xa;}"/>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable() {&#xa;&#xa;    public boolean getScrollableTracksViewportWidth() {&#xa;        return getPreferredSize().width &lt; getParent().getWidth();&#xa;    }&#xa;&#xa;}"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>

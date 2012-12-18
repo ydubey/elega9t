@@ -252,7 +252,7 @@ public class Main extends javax.swing.JFrame {
                         DefaultLazyLoadEntityTreeNode lazyLoadEntityTreeNode = (DefaultLazyLoadEntityTreeNode) component;
                         lazyLoadEntityTreeNode.load();
                         if(component instanceof ConnectionGuiEntity) {
-                            final EditorPanel editorPanel = new EditorPanel(getConnectionNodes());
+                            final EditorPanel editorPanel = new EditorPanel(Main.this, getConnectionNodes());
                             editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), editorPanel);
                             addDatabaseConnectionEventListener(editorPanel);
                             fireDatabaseConnectionStateChanged((ConnectionGuiEntity) component);
@@ -283,7 +283,7 @@ public class Main extends javax.swing.JFrame {
             List<File> droppedFiles = (List<File>)
                     evt.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
             for (File file : droppedFiles) {
-                editorTabbedPane.addTab(file.getName(), new EditorPanel());
+                editorTabbedPane.addTab(file.getName(), new EditorPanel(this, getConnectionNodes()));
             }
         } catch (Exception ex) {
             errorOccured(ex);
@@ -297,7 +297,7 @@ public class Main extends javax.swing.JFrame {
         expandAllButtonActionPerformed(null);
     }
 
-    private void errorOccured(Exception e) {
+    public void errorOccured(Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 

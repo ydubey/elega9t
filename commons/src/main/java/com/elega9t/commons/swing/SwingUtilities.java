@@ -8,6 +8,9 @@ package com.elega9t.commons.swing;
 import com.elega9t.commons.util.Predicate;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.JTextComponent;
+import javax.swing.text.Utilities;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.*;
@@ -114,6 +117,20 @@ public class SwingUtilities {
             }
         }
         return nodes;
+    }
+
+    public static int getRow(int pos, JTextComponent editor) throws BadLocationException {
+        int rn = (pos==0) ? 1 : 0;
+        int offs=pos;
+        while( offs>0) {
+            offs= Utilities.getRowStart(editor, offs) - 1;
+            rn++;
+        }
+        return rn;
+    }
+
+    public static int getColumn(int pos, JTextComponent editor) throws BadLocationException {
+        return pos - Utilities.getRowStart(editor, pos) + 1;
     }
 
 }
