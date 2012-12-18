@@ -8,6 +8,7 @@ package com.elega9t.commons.swing;
 import com.elega9t.commons.entity.GuiEntity;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class GuiEntityListCellRenderer extends JLabel implements ListCellRenderer {
@@ -16,6 +17,7 @@ public class GuiEntityListCellRenderer extends JLabel implements ListCellRendere
         setOpaque(true);
         setHorizontalAlignment(LEFT);
         setVerticalAlignment(CENTER);
+        setBorder(new EmptyBorder(5, 5, 5, 5));
     }
 
     @Override
