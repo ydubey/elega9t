@@ -3,6 +3,7 @@ package com.elega9t.elixir.gui.form;
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.ResultSetTableModel;
 import com.elega9t.commons.swing.SwingUtilities;
+import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
@@ -47,7 +48,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         lineNumberLabel = new javax.swing.JLabel();
         separator1 = new javax.swing.JToolBar.Separator();
         queryEditorScrollPane = new javax.swing.JScrollPane();
-        queryEditorTextPane = new javax.swing.JTextPane();
+        queryEditorTextPane = new SqlTextPane();
         bottomPanel = new javax.swing.JPanel();
         resultsTabbedPane = new javax.swing.JTabbedPane();
         resultTablePanel = new javax.swing.JPanel();
