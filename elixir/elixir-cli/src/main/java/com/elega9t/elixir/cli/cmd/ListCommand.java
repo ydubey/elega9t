@@ -7,12 +7,11 @@ package com.elega9t.elixir.cli.cmd;
 
 import com.elega9t.commons.entity.impl.DefaultEntity;
 import com.elega9t.commons.renderer.table.ColumnDataModel;
-import com.elega9t.commons.renderer.table.TableToStringRenderer;
 import com.elega9t.commons.renderer.table.ObjectCollectionDataModel;
+import com.elega9t.commons.renderer.table.TableToStringRenderer;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
-import com.elega9t.commons.shell.intrprtr.RequiredContextElement;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.mgr.DriverManager;
 
@@ -20,8 +19,6 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.elega9t.commons.util.StringUtilities.join;
 
 public class ListCommand extends DefaultEntity implements Command {
 
@@ -53,13 +50,7 @@ public class ListCommand extends DefaultEntity implements Command {
                         new ColumnDataModel<Driver>("Driver Available") {
                             @Override
                             public String value(Driver driver) {
-                                return driver.isAvailable() ? "YES" : "NO";
-                            }
-                        },
-                        new ColumnDataModel<Driver>("Supported Versions") {
-                            @Override
-                            public String value(Driver driver) {
-                                return join(driver.supportedVersions());
+                                return driver.isLoaded() ? "YES" : "NO";
                             }
                         },
                         new ColumnDataModel<Driver>("Website") {

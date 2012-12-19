@@ -5,86 +5,49 @@
 
 package com.elega9t.elixir.mgr;
 
-import com.elega9t.commons.cp.ClassFilter;
-import com.elega9t.commons.cp.ClassPathResource;
-import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Driver;
+import com.elega9t.elixir.binding.driverdef.DriverDefinition;
 import com.elega9t.elixir.binding.driverdef.DriverDefinitions;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DriverManager extends DefaultLoadableEntity {
 
     private static DriverManager mgr = new DriverManager();
 
-    private Map<String, Driver> drivers = new HashMap<String, Driver>();
+    private Map<String, DriverDefinition> drivers = new HashMap<String, DriverDefinition>();
 
     public DriverManager() {
         super("DriverManager");
     }
 
     @Override
-    public void load() {
+    public void load() throws EntityLoadException {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(DriverDefinitions.class.getPackage().getName());
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             final DriverDefinitions driverDefinitions = (DriverDefinitions) unmarshaller.unmarshal(getClass().getResourceAsStream("/driver-definitions.xml"));
-            System.out.println(driverDefinitions);
+            for (DriverDefinition driverDefinition : driverDefinitions.getDriverDefinition()) {
+                drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
+            }
         } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        List<ClassPathResource> classPathResources = ClassPathUtilities.getClassPathResources();
-        for (ClassPathResource classPathResource : classPathResources) {
-            List<Class> classes = null;
-            try {
-                classes = classPathResource.listClasses(new FilenameFilter() {
-                                                                        @Override
-                                                                        public boolean accept(File dir, String name) {
-                                                                            return name.endsWith("DatabaseDriver.class");
-                                                                        }
-                                                                    }, new ClassFilter() {
-                                                                        @Override
-                                                                        public boolean accept(Class aClass) {
-                                                                            return !aClass.isInterface();
-                                                                        }
-                                                                    }
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            for (Class clazz : classes) {
-                Object o = null;
-                try {
-                    o = clazz.newInstance();
-                    if(o instanceof Driver) {
-                        Driver driver = (Driver) o;
-                        driver.load();
-                        drivers.put(driver.getName().toLowerCase(), driver);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            throw new EntityLoadException(e);
         }
     }
 
     public Driver getDriver(String name) {
-        return drivers.get(name);
+        final DriverDefinition driverDefinition = drivers.get(name.toLowerCase());
+        return new Driver(driverDefinition);
     }
 
-    public Collection<Driver> drivers() {
+    public Collection<DriverDefinition> drivers() {
         return drivers.values();
     }
 

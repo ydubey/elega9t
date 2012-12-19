@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.cli;
 
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
@@ -16,7 +17,11 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, IllegalAccessException, InstantiationException {
-        DriverManager.getInstance().load();
+        try {
+            DriverManager.getInstance().load();
+        } catch (EntityLoadException e) {
+            e.printStackTrace();
+        }
         final Interpreter elx = new Interpreter("elx", ExitCommand.class.getPackage(), ConnectCommand.class.getPackage());
         Shell shell = new Shell(elx);
         shell.execute();

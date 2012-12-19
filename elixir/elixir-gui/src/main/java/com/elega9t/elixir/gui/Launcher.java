@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.gui;
 
+import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.swing.NodeIcon;
 import com.elega9t.elixir.gui.form.Main;
 import com.elega9t.elixir.mgr.DriverManager;
@@ -22,7 +23,11 @@ public class Launcher {
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", ResourceStrings.main.getString("doc.name"));
         UIManager.put("Tree.collapsedIcon", new IconUIResource(new NodeIcon(NodeIcon.TYPE.COLLAPSED)));
         UIManager.put("Tree.expandedIcon",  new IconUIResource(new NodeIcon(NodeIcon.TYPE.EXPANDED)));
-        DriverManager.getInstance().load();
+        try {
+            DriverManager.getInstance().load();
+        } catch (EntityLoadException e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
