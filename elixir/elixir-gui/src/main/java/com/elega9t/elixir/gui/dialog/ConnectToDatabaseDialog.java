@@ -39,12 +39,14 @@ public class ConnectToDatabaseDialog extends javax.swing.JDialog {
         testConnectionButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
+        bodyPanel = new javax.swing.JPanel();
+        connectionDetailsPanel = new javax.swing.JPanel();
+        connectionDetailsTabbedPane = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(ResourceStrings.dialog.connectToDatabase.getString("title"));
-        setSize(new java.awt.Dimension(800, 500));
 
-        buttonsPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         buttonsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10));
 
         connectButton.setText(ResourceStrings.buttons.getString("connect"));
@@ -65,6 +67,15 @@ public class ConnectToDatabaseDialog extends javax.swing.JDialog {
         buttonsPanel.add(helpButton);
 
         getContentPane().add(buttonsPanel, java.awt.BorderLayout.PAGE_END);
+
+        bodyPanel.setLayout(new java.awt.BorderLayout());
+
+        connectionDetailsPanel.setLayout(new java.awt.BorderLayout());
+        connectionDetailsPanel.add(connectionDetailsTabbedPane, java.awt.BorderLayout.CENTER);
+
+        bodyPanel.add(connectionDetailsPanel, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -72,9 +83,12 @@ public class ConnectToDatabaseDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton connectButton;
+    private javax.swing.JPanel connectionDetailsPanel;
+    private javax.swing.JTabbedPane connectionDetailsTabbedPane;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton testConnectionButton;
     // End of variables declaration//GEN-END:variables
