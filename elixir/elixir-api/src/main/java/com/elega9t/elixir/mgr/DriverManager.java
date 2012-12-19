@@ -10,7 +10,13 @@ import com.elega9t.commons.cp.ClassPathResource;
 import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.elixir.Driver;
+import com.elega9t.elixir.binding.driverdef.DriverDefinitions;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Collection;
@@ -30,6 +36,15 @@ public class DriverManager extends DefaultLoadableEntity {
 
     @Override
     public void load() {
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(DriverDefinitions.class.getPackage().getName());
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            final DriverDefinitions driverDefinitions = (DriverDefinitions) unmarshaller.unmarshal(getClass().getResourceAsStream("/driver-definitions.xml"));
+            System.out.println(driverDefinitions);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
         List<ClassPathResource> classPathResources = ClassPathUtilities.getClassPathResources();
         for (ClassPathResource classPathResource : classPathResources) {
             List<Class> classes = null;

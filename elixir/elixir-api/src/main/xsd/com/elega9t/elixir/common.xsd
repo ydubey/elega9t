@@ -11,7 +11,7 @@
     <xsd:complexType name="driver-definition">
         <xsd:sequence>
             <xsd:element name="database" type="xsd:string"/>
-            <xsd:element name="website" type="xsd:string"/>
+            <xsd:element name="website" type="xsd:anyURI"/>
             <xsd:element name="jdbc-url" type="xsd:string"/>
             <xsd:element name="driver-vendors" type="elixirCommonTypes:driver-vendors"/>
         </xsd:sequence>
@@ -19,21 +19,21 @@
 
     <xsd:complexType name="driver-vendors">
         <xsd:sequence>
-            <xsd:element name="driver-vendor" type="elixirCommonTypes:driver-vendor" minOccurs="1" maxOccurs="unbounded" />
+            <xsd:element name="driver-vendor" type="elixirCommonTypes:driver-vendor" maxOccurs="unbounded" />
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="driver-vendor">
         <xsd:sequence>
             <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="website" type="xsd:string"/>
+            <xsd:element name="website" type="xsd:anyURI"/>
             <xsd:element name="driver" type="elixirCommonTypes:database-driver"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="database-driver">
         <xsd:sequence>
-            <xsd:element name="class" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="class" type="xsd:string" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 

@@ -3,26 +3,27 @@
   ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
   ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
   -->
-<driver-definitions>
-    <driver-definition>
-        <database>MySQL</database>
-        <website>http://www.mysql.com</website>
-        <jdbc-url>jdbc:mysql://[host]:[port]/[db]</jdbc-url>
-        <driver-vendors>
-            <driver-vendor>
-                <name>MySQL</name>
-                <website>http://www.mysql.com</website>
-                <driver>
-                    <class>com.mysql.jdbc.Driver</class>
-                </driver>
-            </driver-vendor>
-            <driver-vendor>
-                <name>MM-MySQL</name>
-                <website>http://www.mysql.com</website>
-                <driver>
-                    <class>org.gjt.mm.mysql.Driver</class>
-                </driver>
-            </driver-vendor>
-        </driver-vendors>
-    </driver-definition>
-</driver-definitions>
+<drvDef:driver-definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns:drvDef="http://www.elega9t.com/elixir/driverDefinitions">
+    <drvDef:driver-definition xmlns:comn="http://www.elega9t.com/elixir/common">
+        <comn:database>MySQL</comn:database>
+        <comn:website>http://www.mysql.com</comn:website>
+        <comn:jdbc-url>jdbc:mysql://[host]:[port]/[db]</comn:jdbc-url>
+        <comn:driver-vendors>
+            <comn:driver-vendor>
+                <comn:name>MySQL</comn:name>
+                <comn:website>http://www.mysql.com</comn:website>
+                <comn:driver>
+                    <comn:class>com.mysql.jdbc.Driver</comn:class>
+                </comn:driver>
+            </comn:driver-vendor>
+            <comn:driver-vendor>
+                <comn:name>MM-MySQL</comn:name>
+                <comn:website>http://www.mysql.com</comn:website>
+                <comn:driver>
+                    <comn:class>org.gjt.mm.mysql.Driver</comn:class>
+                </comn:driver>
+            </comn:driver-vendor>
+        </comn:driver-vendors>
+    </drvDef:driver-definition>
+</drvDef:driver-definitions>

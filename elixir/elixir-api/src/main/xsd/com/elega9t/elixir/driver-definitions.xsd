@@ -10,10 +10,12 @@
 
     <xsd:import namespace="http://www.elega9t.com/elixir/common" schemaLocation="common.xsd"/>
 
-    <xsd:complexType name="driver-definitions">
-        <xsd:sequence>
-            <xsd:element name="driver-definition" type="elixirCommonTypes:driver-definition"/>
-        </xsd:sequence>
-    </xsd:complexType>
+    <xsd:element name="driver-definitions">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="driver-definition" type="elixirCommonTypes:driver-definition" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 
 </xsd:schema>
