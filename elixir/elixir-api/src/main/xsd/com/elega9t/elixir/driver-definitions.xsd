@@ -8,7 +8,7 @@
             targetNamespace="http://www.elega9t.com/elixir/driverDefinitions"
             elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
 
-    <xsd:import namespace="http://www.elega9t.com/elixir/common" schemaLocation="./common.xsd"/>
+    <xsd:import namespace="http://www.elega9t.com/elixir/common" schemaLocation="common.xsd"/>
 
     <xsd:complexType name="driver-definitions">
         <xsd:sequence>
