@@ -156,6 +156,9 @@
                   <Events>
                     <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="queryEditorTextPaneCaretUpdate"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new SqlTextPane()"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
