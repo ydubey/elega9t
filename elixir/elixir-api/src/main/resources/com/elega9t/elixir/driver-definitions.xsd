@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:elixirCommonTypes="http://www.elega9t.com/elixir/common"
+            targetNamespace="http://www.elega9t.com/elixir/driverDefinitions"
+            elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+    <xsd:import namespace="http://www.elega9t.com/elixir/common" schemaLocation="./common.xsd"/>
+
+    <xsd:complexType name="driver-definitions">
+        <xsd:sequence>
+            <xsd:element name="driver-definition" type="elixirCommonTypes:driver-definition"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

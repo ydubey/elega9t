@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  -->
+<driver-definitions>
+    <driver-definition>
+        <database>MySQL</database>
+        <website>http://www.mysql.com</website>
+        <jdbc-url>jdbc:mysql://[host]:[port]/[db]</jdbc-url>
+        <driver-vendors>
+            <driver-vendor>
+                <name>MySQL</name>
+                <website>http://www.mysql.com</website>
+                <driver>
+                    <class>com.mysql.jdbc.Driver</class>
+                </driver>
+            </driver-vendor>
+            <driver-vendor>
+                <name>MM-MySQL</name>
+                <website>http://www.mysql.com</website>
+                <driver>
+                    <class>org.gjt.mm.mysql.Driver</class>
+                </driver>
+            </driver-vendor>
+        </driver-vendors>
+    </driver-definition>
+</driver-definitions>

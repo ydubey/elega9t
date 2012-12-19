@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
+  -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:elixirCommonTypes="http://www.elega9t.com/elixir/common"
+            targetNamespace="http://www.elega9t.com/elixir/common"
+            elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+    <xsd:complexType name="driver-definition">
+        <xsd:sequence>
+            <xsd:element name="database" type="xsd:string"/>
+            <xsd:element name="website" type="xsd:string"/>
+            <xsd:element name="jdbc-url" type="xsd:string"/>
+            <xsd:element name="driver-vendors" type="elixirCommonTypes:driver-vendors"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="driver-vendors">
+        <xsd:sequence>
+            <xsd:element name="driver-vendor" type="elixirCommonTypes:driver-vendor" minOccurs="1" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="driver-vendor">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="website" type="xsd:string"/>
+            <xsd:element name="driver" type="elixirCommonTypes:database-driver"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="database-driver">
+        <xsd:sequence>
+            <xsd:element name="class" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
