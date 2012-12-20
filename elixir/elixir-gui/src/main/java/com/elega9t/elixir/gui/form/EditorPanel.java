@@ -8,13 +8,15 @@ import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
+
+import javax.swing.text.BadLocationException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.swing.text.BadLocationException;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
 
     //http://boplicity.nl/confluence/display/Java/Xml+syntax+highlighting+in+Swing+JTextPane
+    // http://tips4java.wordpress.com/2008/11/18/row-number-table/
 
     private final Main main;
     /**
