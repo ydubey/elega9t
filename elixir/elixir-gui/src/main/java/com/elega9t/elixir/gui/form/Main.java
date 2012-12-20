@@ -79,6 +79,7 @@ public class Main extends javax.swing.JFrame {
         connectionsTree = new javax.swing.JTree(savedConnections);
         bottomPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
+        eventLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         connectToDatabaseFileMenuItem = new javax.swing.JMenuItem();
@@ -185,11 +186,17 @@ public class Main extends javax.swing.JFrame {
 
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
-        bottomPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        bottomPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bottomPanel.setLayout(new java.awt.BorderLayout());
 
         statusLabel.setText(ResourceStrings.main.getString("title"));
         bottomPanel.add(statusLabel, java.awt.BorderLayout.CENTER);
+
+        eventLabel.setFont(SwingUtilities.subscriptFont(eventLabel.getFont()));
+        eventLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/error.png"))); // NOI18N
+        eventLabel.setText("1");
+        eventLabel.setIconTextGap(0);
+        bottomPanel.add(eventLabel, java.awt.BorderLayout.LINE_END);
 
         getContentPane().add(bottomPanel, java.awt.BorderLayout.PAGE_END);
 
@@ -345,6 +352,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
     private javax.swing.JMenu editMenu;
     private javax.swing.JTabbedPane editorTabbedPane;
+    private javax.swing.JLabel eventLabel;
     private javax.swing.JButton expandAllButton;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JPanel leftBasePanel;

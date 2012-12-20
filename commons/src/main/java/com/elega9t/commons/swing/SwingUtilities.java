@@ -17,8 +17,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.font.TextAttribute;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SwingUtilities {
 
@@ -131,6 +134,18 @@ public class SwingUtilities {
 
     public static int getColumn(int pos, JTextComponent editor) throws BadLocationException {
         return pos - Utilities.getRowStart(editor, pos) + 1;
+    }
+
+    public static Font superscriptFont(Font baseFont) {
+        Map<TextAttribute, Object> attributes = new HashMap<TextAttribute, Object>(baseFont.getAttributes());
+        attributes.put(TextAttribute.SUPERSCRIPT, TextAttribute.SUPERSCRIPT_SUPER);
+        return baseFont.deriveFont(attributes);
+    }
+
+    public static Font subscriptFont(Font baseFont) {
+        Map<TextAttribute, Object> attributes = new HashMap<TextAttribute, Object>(baseFont.getAttributes());
+        attributes.put(TextAttribute.SUPERSCRIPT, TextAttribute.SUPERSCRIPT_SUB);
+        return baseFont.deriveFont(attributes);
     }
 
 }
