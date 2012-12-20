@@ -148,4 +148,8 @@ public class SwingUtilities {
         return baseFont.deriveFont(attributes);
     }
 
+    public static Font boldFont(Font baseFont) {
+        return baseFont.deriveFont(Font.BOLD);
+    }
+
 }

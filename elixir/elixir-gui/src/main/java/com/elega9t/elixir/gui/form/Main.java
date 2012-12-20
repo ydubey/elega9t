@@ -8,6 +8,7 @@ package com.elega9t.elixir.gui.form;
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
 import com.elega9t.commons.swing.BackgroundText;
+import com.elega9t.commons.swing.EtchedBorderOnMouseOverListener;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.LongTask;
 import com.elega9t.commons.swing.SwingUtilities;
@@ -193,9 +194,13 @@ public class Main extends javax.swing.JFrame {
         bottomPanel.add(statusLabel, java.awt.BorderLayout.CENTER);
 
         eventLabel.setFont(SwingUtilities.subscriptFont(eventLabel.getFont()));
-        eventLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/error.png"))); // NOI18N
-        eventLabel.setText("1");
+        eventLabel.setForeground(new java.awt.Color(250, 5, 5));
+        eventLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/bubble.png"))); // NOI18N
+        eventLabel.setText("0");
+        eventLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
+        eventLabel.setEnabled(false);
         eventLabel.setIconTextGap(0);
+        eventLabel.addMouseListener(new EtchedBorderOnMouseOverListener(eventLabel));
         bottomPanel.add(eventLabel, java.awt.BorderLayout.LINE_END);
 
         getContentPane().add(bottomPanel, java.awt.BorderLayout.PAGE_END);

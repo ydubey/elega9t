@@ -53,13 +53,13 @@ public class LookAndFeelConfigPanel extends ConfigPanel {
 
     @Override
     public void initConfig() {
-        final String currentLookAndFeel = UIManager.getLookAndFeel().getName();
+        final String currentLookAndFeel = UIManager.getLookAndFeel().getClass().getName();
         final UIManager.LookAndFeelInfo[] installedLookAndFeels = UIManager.getInstalledLookAndFeels();
         final DefaultComboBoxModel model = (DefaultComboBoxModel) lookAndFeelComboBox.getModel();
         for (UIManager.LookAndFeelInfo installedLookAndFeel : installedLookAndFeels) {
             final LookAndFeelEntity lookAndFeelEntity = new LookAndFeelEntity(installedLookAndFeel);
             model.addElement(lookAndFeelEntity);
-            if(currentLookAndFeel.equals(installedLookAndFeel.getName())) {
+            if(currentLookAndFeel.equals(installedLookAndFeel.getClassName())) {
                 model.setSelectedItem(lookAndFeelEntity);
             }
         }
