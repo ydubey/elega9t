@@ -9,6 +9,7 @@ import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.swing.NodeIcon;
 import com.elega9t.elixir.gui.form.Main;
 import com.elega9t.elixir.mgr.DriverManager;
+import com.elega9t.elixir.mgr.evnt.EventManager;
 
 import javax.swing.*;
 import javax.swing.plaf.IconUIResource;
@@ -26,7 +27,7 @@ public class Launcher {
         try {
             DriverManager.getInstance().load();
         } catch (EntityLoadException e) {
-            e.printStackTrace();
+            EventManager.getInstance().error(e);
         }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -7,10 +7,7 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.entity.tree.impl.DefaultLazyLoadEntityTreeNode;
-import com.elega9t.commons.swing.BackgroundText;
-import com.elega9t.commons.swing.EtchedBorderOnMouseOverListener;
-import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
-import com.elega9t.commons.swing.LongTask;
+import com.elega9t.commons.swing.*;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.swing.config.ConfigDialog;
 import com.elega9t.commons.util.Predicate;
@@ -22,6 +19,7 @@ import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.entity.DatabaseGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
+import com.elega9t.elixir.mgr.evnt.EventManager;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -167,10 +165,10 @@ public class Main extends javax.swing.JFrame {
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
         connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 connectionsTreeTreeWillExpand(evt);
+            }
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         connectionsTreeScrollPane.setViewportView(connectionsTree);
@@ -196,7 +194,7 @@ public class Main extends javax.swing.JFrame {
         eventLabel.setFont(SwingUtilities.subscriptFont(eventLabel.getFont()));
         eventLabel.setForeground(new java.awt.Color(250, 5, 5));
         eventLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/bubble.png"))); // NOI18N
-        eventLabel.setText("0");
+        eventLabel.setText(String.valueOf(EventManager.getInstance().getEventCount()));
         eventLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
         eventLabel.setEnabled(false);
         eventLabel.setIconTextGap(0);
