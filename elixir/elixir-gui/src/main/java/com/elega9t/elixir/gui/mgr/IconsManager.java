@@ -74,11 +74,11 @@ public class IconsManager {
     public class SqlResultTable {
 
         public ImageIcon getSaveIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table_save.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/sqlresult/table_save.png"));
         }
 
         public ImageIcon getDeleteRowsIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/table_delete_row.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/sqlresult/table_delete_row.png"));
         }
 
     }
