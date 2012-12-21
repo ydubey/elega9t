@@ -1,8 +1,9 @@
 package com.elega9t.elixir.gui.form;
 
+import com.elega9t.commons.swing.CheckBoxTableRowHeader;
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.ResultSetTableModel;
-import com.elega9t.commons.swing.RowNumberTable;
+import com.elega9t.commons.swing.RowNumberTableRowHeader;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.elixir.Connection;
@@ -134,7 +135,8 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
 
         resultTable.setModel(new ResultSetTableModel());
         resultTable.setRowHeight(20);
-        javax.swing.JTable rowTable = new RowNumberTable(resultTable);
+        //javax.swing.JTable rowTable = new RowNumberTableRowHeader(resultTable);
+        javax.swing.JTable rowTable = new CheckBoxTableRowHeader(resultTable);
         resultTableScrollPane.setRowHeaderView(rowTable);
         resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
         resultTableScrollPane.setViewportView(resultTable);

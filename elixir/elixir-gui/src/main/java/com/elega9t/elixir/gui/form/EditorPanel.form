@@ -214,7 +214,7 @@
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable() {&#xa;&#xa;    public boolean getScrollableTracksViewportWidth() {&#xa;        return getPreferredSize().width &lt; getParent().getWidth();&#xa;    }&#xa;&#xa;}"/>
-                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="javax.swing.JTable rowTable = new RowNumberTable(resultTable);&#xa;resultTableScrollPane.setRowHeaderView(rowTable);&#xa;resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//javax.swing.JTable rowTable = new RowNumberTableRowHeader(resultTable);&#xa;javax.swing.JTable rowTable = new CheckBoxTableRowHeader(resultTable);&#xa;resultTableScrollPane.setRowHeaderView(rowTable);&#xa;resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>
