@@ -16,13 +16,12 @@ import java.util.Map;
 public class ExpandShorthandAction extends TextAction {
 
     private final Action defaultTabAction;
+    private final ShorthandFactory shorthandFactory;
 
-    private final Map<String, String> shorthandMap;
-
-    public ExpandShorthandAction(Action defaultTabAction, Map<String, String> shorthandMap) {
+    public ExpandShorthandAction(Action defaultTabAction, ShorthandFactory shorthandFactory) {
         super("ExpandShorthand");
         this.defaultTabAction = defaultTabAction;
-        this.shorthandMap = shorthandMap;
+        this.shorthandFactory = shorthandFactory;
     }
 
     @Override
@@ -43,9 +42,9 @@ public class ExpandShorthandAction extends TextAction {
                 }
             }
             String shorthand = document.getText(startPos, caretPosition - startPos);
-            if(shorthand.length() > 0 && shorthandMap.containsKey(shorthand)) {
+            if(shorthand.length() > 0 && shorthandFactory.isShorthand(shorthand)) {
                 document.remove(startPos, caretPosition - startPos);
-                document.insertString(startPos, shorthandMap.get(shorthand), null);
+                document.insertString(startPos, shorthandFactory.getReplacement(shorthand), null);
             } else {
                 defaultTabAction.actionPerformed(e);
             }
@@ -58,10 +57,18 @@ public class ExpandShorthandAction extends TextAction {
         return character == ' ' || character == '\t' || character == '\n' || character == '\r';
     }
 
-    public static void install(JTextComponent textComponent, Map<String, String> shorthandMap) {
+    public static void install(JTextComponent textComponent, ShorthandFactory shorthandFactory) {
         final Object tab = textComponent.getInputMap().get(KeyStroke.getKeyStroke("TAB"));
         final Action defaultTabAction = textComponent.getActionMap().get(tab);
-        textComponent.getActionMap().put(tab, new ExpandShorthandAction(defaultTabAction, shorthandMap));
+        textComponent.getActionMap().put(tab, new ExpandShorthandAction(defaultTabAction, shorthandFactory));
+    }
+
+    public static interface ShorthandFactory {
+
+        boolean isShorthand(String key);
+
+        String getReplacement(String key);
+
     }
 
 }

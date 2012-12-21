@@ -40,7 +40,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         resultTableScrollPane.setRowHeaderView(rowTable);
         resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
         rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-        ExpandShorthandAction.install(queryEditorTextPane, ShorthandManager.getInstance().getShorthands());
+        ExpandShorthandAction.install(queryEditorTextPane, ShorthandManager.getInstance());
     }
 
     /**

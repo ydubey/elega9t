@@ -5,10 +5,12 @@
 
 package com.elega9t.elixir.gui.mgr;
 
+import com.elega9t.commons.swing.ExpandShorthandAction;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShorthandManager {
+public class ShorthandManager implements ExpandShorthandAction.ShorthandFactory {
 
     private Map<String, String> shorthands = new HashMap<String, String>();
 
@@ -28,6 +30,16 @@ public class ShorthandManager {
 
     public Map<String, String> getShorthands() {
         return shorthands;
+    }
+
+    @Override
+    public boolean isShorthand(String key) {
+        return shorthands.containsKey(key);
+    }
+
+    @Override
+    public String getReplacement(String key) {
+        return shorthands.get(key);
     }
 
 }
