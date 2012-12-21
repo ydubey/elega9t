@@ -11,7 +11,7 @@ import com.elega9t.elixir.gui.mgr.IconsManager;
 public class ColumnsGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Columns> {
 
     public ColumnsGuiEntity(Columns columns) {
-        super(columns.getName(), IconsManager.getInstance().database().getTableColumnsIcon());
+        super(columns.getName(), IconsManager.getInstance().database.getTableColumnsIcon());
         this.entity = columns;
     }
 

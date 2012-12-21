@@ -8,13 +8,12 @@ package com.elega9t.commons.swing;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.table.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class CheckBoxTableRowHeader extends JTable implements ChangeListener, PropertyChangeListener {
 
@@ -26,12 +25,12 @@ public class CheckBoxTableRowHeader extends JTable implements ChangeListener, Pr
 
         setFocusable(false);
         setAutoCreateColumnsFromModel(false);
-        setModel(main.getModel());
+        setModel(new CheckBoxTableRowHeaderModel(main.getModel()));
         setSelectionModel(main.getSelectionModel());
 
         TableColumn column = new TableColumn();
         column.setHeaderValue(" ");
-        column.setCellRenderer(new RowNumberRenderer());
+        column.setCellRenderer(new CheckBoxRowNumberRenderer());
         column.setCellEditor(new DefaultCellEditor(new JCheckBox()));
         addColumn(column);
         getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -50,18 +49,8 @@ public class CheckBoxTableRowHeader extends JTable implements ChangeListener, Pr
     }
 
     @Override
-    public int getRowCount() {
-        return main.getRowCount();
-    }
-
-    @Override
     public int getRowHeight(int row) {
         return main.getRowHeight(row);
-    }
-
-    @Override
-    public Object getValueAt(int row, int column) {
-        return false;
     }
 
     @Override
@@ -80,11 +69,11 @@ public class CheckBoxTableRowHeader extends JTable implements ChangeListener, Pr
             setSelectionModel(main.getSelectionModel());
         }
         if ("model".equals(e.getPropertyName())) {
-            setModel(main.getModel());
+            setModel(new CheckBoxTableRowHeaderModel(main.getModel()));
         }
     }
 
-    private static class RowNumberRenderer extends JCheckBox implements TableCellRenderer {
+    private static class CheckBoxRowNumberRenderer extends JCheckBox implements TableCellRenderer {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             if (table != null) {
@@ -103,6 +92,46 @@ public class CheckBoxTableRowHeader extends JTable implements ChangeListener, Pr
             setBorder(UIManager.getBorder("TableHeader.cellBorder"));
             setHorizontalAlignment(CENTER);
             return this;
+        }
+
+    }
+
+    public static class CheckBoxTableRowHeaderModel extends AbstractTableModel {
+
+        private TableModel mainTableModel;
+        private Set<Integer> selectedRows = new LinkedHashSet<Integer>();
+
+        private CheckBoxTableRowHeaderModel(TableModel mainTableModel) {
+            this.mainTableModel = mainTableModel;
+        }
+
+        @Override
+        public int getRowCount() {
+            return mainTableModel.getRowCount();
+        }
+
+        @Override
+        public int getColumnCount() {
+            return 1;
+        }
+
+        @Override
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            return selectedRows.contains(rowIndex);
+        }
+
+        @Override
+        public void setValueAt(Object value, int rowIndex, int columnIndex) {
+            boolean booleanValue = Boolean.valueOf(String.valueOf(value));
+            if(booleanValue) {
+                selectedRows.add(rowIndex);
+            } else {
+                selectedRows.remove(rowIndex);
+            }
+        }
+
+        public Set<Integer> getSelectedRows() {
+            return selectedRows;
         }
 
     }

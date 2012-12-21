@@ -11,7 +11,7 @@ import com.elega9t.elixir.gui.mgr.IconsManager;
 public class TableGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Table> {
 
     public TableGuiEntity(Table table) {
-        super(table.getName(), IconsManager.getInstance().database().getTableIcon());
+        super(table.getName(), IconsManager.getInstance().database.getTableIcon());
         this.entity = table;
     }
 

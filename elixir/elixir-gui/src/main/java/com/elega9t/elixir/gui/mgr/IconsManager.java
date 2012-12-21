@@ -11,22 +11,22 @@ public class IconsManager {
 
     public static IconsManager INSTANCE = new IconsManager();
 
+    public final System system = new System();
+    public final Database database = new Database();
+    public final SqlResultTable sqlResultTable = new SqlResultTable();
+
     public static IconsManager getInstance() {
         return INSTANCE;
-    }
-
-    public System system() {
-        return new System();
-    }
-
-    public Database database() {
-        return new Database();
     }
 
     public class System {
 
         public Icon getInfoIcon() {
             return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/info.png"));
+        }
+
+        public Icon getEventManagerIcon() {
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/bubble.png"));
         }
 
     }
@@ -63,6 +63,18 @@ public class IconsManager {
 
         public Icon getIndexIcon() {
             return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/index.png"));
+        }
+
+    }
+
+    public class SqlResultTable {
+
+        public Icon getSaveIcon() {
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table_save.png"));
+        }
+
+        public Icon getDeleteRowsIcon() {
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table_delete_row.png"));
         }
 
     }

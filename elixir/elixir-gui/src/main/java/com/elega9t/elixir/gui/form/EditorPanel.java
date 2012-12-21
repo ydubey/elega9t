@@ -1,25 +1,26 @@
 package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.CheckBoxTableRowHeader;
+import com.elega9t.commons.swing.CheckBoxTableRowHeader.CheckBoxTableRowHeaderModel;
 import com.elega9t.commons.swing.GuiEntityListCellRenderer;
 import com.elega9t.commons.swing.ResultSetTableModel;
-import com.elega9t.commons.swing.RowNumberTableRowHeader;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
-
-import javax.swing.text.BadLocationException;
+import com.elega9t.elixir.gui.mgr.IconsManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.text.BadLocationException;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
 
-    //http://boplicity.nl/confluence/display/Java/Xml+syntax+highlighting+in+Swing+JTextPane
+    // http://boplicity.nl/confluence/display/Java/Xml+syntax+highlighting+in+Swing+JTextPane
     // http://tips4java.wordpress.com/2008/11/18/row-number-table/
 
     private final Main main;
+    private final javax.swing.JTable rowTable;
     /**
      * Creates new form EditorPanel
      */
@@ -29,6 +30,10 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
             ((javax.swing.DefaultComboBoxModel)currentDatabaseComboBox.getModel()).addElement(connection);
         }
         this.main = main;
+        this.rowTable = new CheckBoxTableRowHeader(resultTable);
+        resultTableScrollPane.setRowHeaderView(rowTable);
+        resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
+        rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }
 
     /**
@@ -64,6 +69,9 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
             }
 
         };
+        resultToolBar = new javax.swing.JToolBar();
+        saveButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         messagesPanel = new javax.swing.JPanel();
         messagesScrollPane = new javax.swing.JScrollPane();
         messagesTextArea = new javax.swing.JTextArea();
@@ -135,13 +143,37 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
 
         resultTable.setModel(new ResultSetTableModel());
         resultTable.setRowHeight(20);
-        //javax.swing.JTable rowTable = new RowNumberTableRowHeader(resultTable);
-        javax.swing.JTable rowTable = new CheckBoxTableRowHeader(resultTable);
-        resultTableScrollPane.setRowHeaderView(rowTable);
-        resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
+        resultTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
         resultTableScrollPane.setViewportView(resultTable);
 
         resultTablePanel.add(resultTableScrollPane, java.awt.BorderLayout.CENTER);
+
+        resultToolBar.setFloatable(false);
+        resultToolBar.setRollover(true);
+
+        saveButton.setIcon(IconsManager.getInstance().sqlResultTable.getSaveIcon());
+        saveButton.setFocusable(false);
+        saveButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        saveButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        resultToolBar.add(saveButton);
+
+        deleteButton.setIcon(IconsManager.getInstance().sqlResultTable.getDeleteRowsIcon());
+        deleteButton.setFocusable(false);
+        deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        deleteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        resultToolBar.add(deleteButton);
+
+        resultTablePanel.add(resultToolBar, java.awt.BorderLayout.PAGE_START);
 
         resultsTabbedPane.addTab("Results", resultTablePanel);
 
@@ -190,6 +222,15 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         }
     }//GEN-LAST:event_queryEditorTextPaneCaretUpdate
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        final CheckBoxTableRowHeaderModel rowTableModel = (CheckBoxTableRowHeaderModel) rowTable.getModel();
+        System.out.println(rowTableModel.getSelectedRows());
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     private void setMessage(String message) {
         messagesTextArea.setText(message);
     }
@@ -198,6 +239,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JComboBox currentDatabaseComboBox;
     private javax.swing.JToolBar currentDatabaseToolBar;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JSplitPane editorSplitPane;
     private javax.swing.JButton executeQueryButton;
     private javax.swing.JLabel lineNumberLabel;
@@ -211,7 +253,9 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JTable resultTable;
     private javax.swing.JPanel resultTablePanel;
     private javax.swing.JScrollPane resultTableScrollPane;
+    private javax.swing.JToolBar resultToolBar;
     private javax.swing.JTabbedPane resultsTabbedPane;
+    private javax.swing.JButton saveButton;
     private javax.swing.JToolBar.Separator separator1;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel topPanelFooterPanel;

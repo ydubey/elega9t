@@ -11,7 +11,7 @@ import com.elega9t.elixir.gui.mgr.IconsManager;
 public class IndexGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Index> {
 
     public IndexGuiEntity(Index index) {
-        super(index.getName(), IconsManager.getInstance().database().getIndexIcon());
+        super(index.getName(), IconsManager.getInstance().database.getIndexIcon());
         this.entity = index;
         loaded = true;
     }

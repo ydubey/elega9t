@@ -19,8 +19,8 @@ public class ConnectionGuiEntity extends DatabaseGuiEntity<DatabaseGuiEntity, Co
 
     private final ConnectionDetails connectionDetails;
 
-    private static Icon connectedDatabaseIcon = IconsManager.getInstance().database().getConnectedDatabaseIcon();
-    private static Icon databaseIcon = IconsManager.getInstance().database().getDatabaseIcon();
+    private static Icon connectedDatabaseIcon = IconsManager.getInstance().database.getConnectedDatabaseIcon();
+    private static Icon databaseIcon = IconsManager.getInstance().database.getDatabaseIcon();
 
     public ConnectionGuiEntity(ConnectionDetails connectionDetails) {
         super(connectionDetails.getName(), null);
