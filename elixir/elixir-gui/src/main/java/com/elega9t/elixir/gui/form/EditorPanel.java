@@ -1,18 +1,24 @@
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.commons.swing.CheckBoxTableRowHeader;
+import com.elega9t.commons.swing.*;
 import com.elega9t.commons.swing.CheckBoxTableRowHeader.CheckBoxTableRowHeaderModel;
-import com.elega9t.commons.swing.GuiEntityListCellRenderer;
-import com.elega9t.commons.swing.ResultSetTableModel;
 import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
 import com.elega9t.elixir.gui.mgr.IconsManager;
+import com.elega9t.elixir.gui.mgr.ShorthandManager;
+
+import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.*;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.JTextComponent;
+import javax.swing.text.TextAction;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
 
@@ -34,6 +40,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         resultTableScrollPane.setRowHeaderView(rowTable);
         resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
         rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+        ExpandShorthandAction.install(queryEditorTextPane, ShorthandManager.getInstance().getShorthands());
     }
 
     /**

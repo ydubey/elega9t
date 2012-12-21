@@ -15,6 +15,9 @@ public class IconsManager {
     public final Database database = new Database();
     public final SqlResultTable sqlResultTable = new SqlResultTable();
 
+    private IconsManager() {
+    }
+
     public static IconsManager getInstance() {
         return INSTANCE;
     }
