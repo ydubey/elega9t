@@ -89,6 +89,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(ResourceStrings.main.getString("title"));
         setExtendedState(MAXIMIZED_BOTH);
+        setIconImage(IconsManager.getInstance().system.getIcon().getImage());
 
         topPanel.setLayout(new java.awt.BorderLayout());
 
