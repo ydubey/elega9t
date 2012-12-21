@@ -273,6 +273,7 @@ public class Main extends javax.swing.JFrame {
                 }.execute(this);
             } catch (Exception e) {
                 errorOccured(e);
+                e.printStackTrace();
             }
         }
     }//GEN-LAST:event_connectionsTreeTreeWillExpand

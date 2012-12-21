@@ -11,17 +11,16 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
 import java.awt.event.ActionEvent;
-import java.util.Map;
 
-public class ExpandShorthandAction extends TextAction {
+public class ExpandShorthandAction extends TextAction implements KeymapListener {
 
-    private final Action defaultTabAction;
-    private final ShorthandFactory shorthandFactory;
+    private Action defaultTabAction;
+    private ShorthandFactory shorthandFactory;
+    private Object currentInputKey;
+    private JTextComponent textComponent;
 
-    public ExpandShorthandAction(Action defaultTabAction, ShorthandFactory shorthandFactory) {
+    public ExpandShorthandAction() {
         super("ExpandShorthand");
-        this.defaultTabAction = defaultTabAction;
-        this.shorthandFactory = shorthandFactory;
     }
 
     @Override
@@ -57,10 +56,19 @@ public class ExpandShorthandAction extends TextAction {
         return character == ' ' || character == '\t' || character == '\n' || character == '\r';
     }
 
-    public static void install(JTextComponent textComponent, ShorthandFactory shorthandFactory) {
-        final Object tab = textComponent.getInputMap().get(KeyStroke.getKeyStroke("TAB"));
-        final Action defaultTabAction = textComponent.getActionMap().get(tab);
-        textComponent.getActionMap().put(tab, new ExpandShorthandAction(defaultTabAction, shorthandFactory));
+    public void install(JTextComponent textComponent, KeyStroke keyStroke, ShorthandFactory shorthandFactory) {
+        this.textComponent = textComponent;
+        this.currentInputKey = textComponent.getInputMap().get(keyStroke);
+        this.defaultTabAction = textComponent.getActionMap().get(currentInputKey);
+        this.shorthandFactory = shorthandFactory;
+        textComponent.getActionMap().put(currentInputKey, this);
+    }
+
+    @Override
+    public void updateActionKey(KeyStroke keyStroke) {
+        textComponent.getActionMap().remove(currentInputKey);
+        this.currentInputKey = textComponent.getInputMap().get(keyStroke);
+        textComponent.getActionMap().put(currentInputKey, this);
     }
 
     public static interface ShorthandFactory {

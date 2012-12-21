@@ -2,23 +2,19 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.*;
 import com.elega9t.commons.swing.CheckBoxTableRowHeader.CheckBoxTableRowHeaderModel;
-import com.elega9t.commons.swing.SwingUtilities;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
+import com.elega9t.elixir.gui.form.actions.ExecuteQueryAction;
+import com.elega9t.elixir.gui.mgr.ElixirKeymapKey;
 import com.elega9t.elixir.gui.mgr.IconsManager;
+import com.elega9t.elixir.gui.mgr.KeymapManager;
 import com.elega9t.elixir.gui.mgr.ShorthandManager;
 
-import java.awt.event.ActionEvent;
+import javax.swing.text.BadLocationException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.*;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.TextAction;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
 
@@ -27,6 +23,12 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
 
     private final Main main;
     private final javax.swing.JTable rowTable;
+    
+    private final ExpandShorthandAction expandShorthandAction = new ExpandShorthandAction();
+    private KeymapListenerTextAction executeQueryAction;
+
+    private KeymapManager keymapManager = KeymapManager.getInstance();
+
     /**
      * Creates new form EditorPanel
      */
@@ -40,7 +42,16 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         resultTableScrollPane.setRowHeaderView(rowTable);
         resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
         rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-        ExpandShorthandAction.install(queryEditorTextPane, ShorthandManager.getInstance());
+
+        installActions();
+    }
+
+    private void installActions() {
+        expandShorthandAction.install(queryEditorTextPane, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXPAND_SHORTHAND), ShorthandManager.getInstance());
+        keymapManager.addKeymapListener(ElixirKeymapKey.EXPAND_SHORTHAND, expandShorthandAction);
+
+        executeQueryAction = new ExecuteQueryAction(main, currentDatabaseComboBox, queryEditorTextPane, resultTable, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXECUTE_QUERY));
+        keymapManager.addKeymapListener(ElixirKeymapKey.EXECUTE_QUERY, executeQueryAction);
     }
 
     /**
