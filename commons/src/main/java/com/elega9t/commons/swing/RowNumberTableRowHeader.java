@@ -40,7 +40,6 @@ public class RowNumberTableRowHeader extends JTable implements ChangeListener, P
     public void addNotify() {
         super.addNotify();
         Component c = getParent();
-        //  Keep scrolling of the row table in sync with the main table.
         if (c instanceof JViewport) {
             JViewport viewport = (JViewport) c;
             viewport.addChangeListener(this);

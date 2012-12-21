@@ -14,6 +14,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class CheckBoxTableRowHeader extends JTable implements ChangeListener, PropertyChangeListener {
 
@@ -41,7 +42,6 @@ public class CheckBoxTableRowHeader extends JTable implements ChangeListener, Pr
     public void addNotify() {
         super.addNotify();
         Component c = getParent();
-        //  Keep scrolling of the row table in sync with the main table.
         if (c instanceof JViewport) {
             JViewport viewport = (JViewport) c;
             viewport.addChangeListener(this);
@@ -99,7 +99,7 @@ public class CheckBoxTableRowHeader extends JTable implements ChangeListener, Pr
     public static class CheckBoxTableRowHeaderModel extends AbstractTableModel {
 
         private TableModel mainTableModel;
-        private Set<Integer> selectedRows = new LinkedHashSet<Integer>();
+        private Set<Integer> selectedRows = new TreeSet<Integer>();
 
         private CheckBoxTableRowHeaderModel(TableModel mainTableModel) {
             this.mainTableModel = mainTableModel;
