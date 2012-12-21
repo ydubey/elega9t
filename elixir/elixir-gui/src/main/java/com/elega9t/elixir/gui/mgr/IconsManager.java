@@ -22,15 +22,15 @@ public class IconsManager {
     public class System {
 
         public ImageIcon getIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/icon.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/system/icon.png"));
         }
 
         public ImageIcon getInfoIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/info.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/system/info.png"));
         }
 
         public ImageIcon getEventManagerIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/bubble.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/system/bubble.png"));
         }
 
     }
@@ -38,35 +38,35 @@ public class IconsManager {
     public class Database {
 
         public ImageIcon getDatabaseIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/database.png"));
         }
 
         public ImageIcon getConnectedDatabaseIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database_connected.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/database_connected.png"));
         }
 
         public ImageIcon getDatabaseTablesIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database_tables.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/database_tables.png"));
         }
 
         public ImageIcon getTableIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/table.png"));
         }
 
         public ImageIcon getTableColumnsIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table_columns.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/table_columns.png"));
         }
 
         public ImageIcon getColumnIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/column.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/column.png"));
         }
 
         public ImageIcon getTableIndexesIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table_indexes.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/table_indexes.png"));
         }
 
         public ImageIcon getIndexIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/index.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/index.png"));
         }
 
     }
@@ -78,7 +78,7 @@ public class IconsManager {
         }
 
         public ImageIcon getDeleteRowsIcon() {
-            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/table_delete_row.png"));
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/database/table_delete_row.png"));
         }
 
     }
