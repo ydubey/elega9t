@@ -13,6 +13,7 @@ import com.elega9t.commons.swing.config.ConfigDialog;
 import com.elega9t.commons.util.Predicate;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
+import com.elega9t.elixir.gui.components.config.keymap.KeymapConfigPanel;
 import com.elega9t.elixir.gui.components.config.ui.lnf.LookAndFeelConfigPanel;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
@@ -286,7 +287,8 @@ public class Main extends javax.swing.JFrame {
                 ResourceStrings.buttons.getString("apply"),
                 ResourceStrings.buttons.getString("cancel"),
                 ResourceStrings.buttons.getString("help"),
-                new LookAndFeelConfigPanel()
+                new LookAndFeelConfigPanel(),
+                new KeymapConfigPanel()
         ).setVisible(true);
     }//GEN-LAST:event_settingsMenuItemActionPerformed
 

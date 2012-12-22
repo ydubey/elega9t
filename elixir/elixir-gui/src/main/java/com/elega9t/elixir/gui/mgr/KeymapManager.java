@@ -54,6 +54,10 @@ public class KeymapManager {
             }
         }
 
+        public Map<ElixirKeymapKey, KeyStroke> keymaps() {
+            return actions;
+        }
+
     }
 
 }
