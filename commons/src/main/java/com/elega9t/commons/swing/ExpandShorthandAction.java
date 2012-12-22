@@ -9,18 +9,15 @@ import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.TextAction;
 import java.awt.event.ActionEvent;
 
-public class ExpandShorthandAction extends TextAction implements KeymapListener {
+public class ExpandShorthandAction extends KeymapListenerTextAction {
 
-    private Action defaultTabAction;
-    private ShorthandFactory shorthandFactory;
-    private Object currentInputKey;
-    private JTextComponent textComponent;
+    private final ShorthandFactory shorthandFactory;
 
-    public ExpandShorthandAction() {
-        super("ExpandShorthand");
+    public ExpandShorthandAction(JTextComponent textComponent, KeyStroke keyStroke, ShorthandFactory shorthandFactory) {
+        super("ExpandShorthand", textComponent, keyStroke);
+        this.shorthandFactory = shorthandFactory;
     }
 
     @Override
@@ -45,7 +42,7 @@ public class ExpandShorthandAction extends TextAction implements KeymapListener 
                 document.remove(startPos, caretPosition - startPos);
                 document.insertString(startPos, shorthandFactory.getReplacement(shorthand), null);
             } else {
-                defaultTabAction.actionPerformed(e);
+                defaultAction.actionPerformed(e);
             }
         } catch (BadLocationException e1) {
             e1.printStackTrace();
@@ -54,21 +51,6 @@ public class ExpandShorthandAction extends TextAction implements KeymapListener 
 
     private boolean isSpaceChar(char character) {
         return character == ' ' || character == '\t' || character == '\n' || character == '\r';
-    }
-
-    public void install(JTextComponent textComponent, KeyStroke keyStroke, ShorthandFactory shorthandFactory) {
-        this.textComponent = textComponent;
-        this.currentInputKey = textComponent.getInputMap().get(keyStroke);
-        this.defaultTabAction = textComponent.getActionMap().get(currentInputKey);
-        this.shorthandFactory = shorthandFactory;
-        textComponent.getActionMap().put(currentInputKey, this);
-    }
-
-    @Override
-    public void updateActionKey(KeyStroke keyStroke) {
-        textComponent.getActionMap().remove(currentInputKey);
-        this.currentInputKey = textComponent.getInputMap().get(keyStroke);
-        textComponent.getActionMap().put(currentInputKey, this);
     }
 
     public static interface ShorthandFactory {

@@ -24,7 +24,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private final Main main;
     private final javax.swing.JTable rowTable;
     
-    private final ExpandShorthandAction expandShorthandAction = new ExpandShorthandAction();
+    private ExpandShorthandAction expandShorthandAction;
     private KeymapListenerTextAction executeQueryAction;
 
     private KeymapManager keymapManager = KeymapManager.getInstance();
@@ -47,7 +47,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     }
 
     private void installActions() {
-        expandShorthandAction.install(queryEditorTextPane, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXPAND_SHORTHAND), ShorthandManager.getInstance());
+        expandShorthandAction = new ExpandShorthandAction(queryEditorTextPane, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXPAND_SHORTHAND), ShorthandManager.getInstance());
         keymapManager.addKeymapListener(ElixirKeymapKey.EXPAND_SHORTHAND, expandShorthandAction);
 
         executeQueryAction = new ExecuteQueryAction(main, currentDatabaseComboBox, queryEditorTextPane, resultTable, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXECUTE_QUERY));
