@@ -9,7 +9,7 @@ import com.elega9t.commons.swing.BackgroundText;
 import java.awt.*;
 import javax.swing.JTabbedPane;
 
-import static com.elega9t.commons.swing.SwingUtilities.paintBackgroundText;
+import static com.elega9t.commons.swing.util.SwingUtilities.paintBackgroundText;
 
 public class TextBackgroundSplitPane extends JTabbedPane {
     

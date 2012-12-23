@@ -46,6 +46,7 @@ public class KeymapManager {
         }
 
         public void updateKeyStroke(ElixirKeymapKey keymapKey, KeyStroke keyStroke) {
+            this.actions.put(keymapKey, keyStroke);
             List<KeymapListener> keymapListenersForKey = keymapListeners.get(keymapKey);
             if(keymapListenersForKey != null) {
                 for (KeymapListener keymapListener : keymapListenersForKey) {

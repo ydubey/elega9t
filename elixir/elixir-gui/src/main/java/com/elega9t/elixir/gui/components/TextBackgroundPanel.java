@@ -9,7 +9,7 @@ import com.elega9t.commons.swing.BackgroundText;
 
 import java.awt.Graphics;
 
-import static com.elega9t.commons.swing.SwingUtilities.paintBackgroundText;
+import static com.elega9t.commons.swing.util.SwingUtilities.paintBackgroundText;
 
 public class TextBackgroundPanel extends javax.swing.JPanel {
     

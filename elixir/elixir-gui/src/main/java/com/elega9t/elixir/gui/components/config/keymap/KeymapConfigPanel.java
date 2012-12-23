@@ -1,11 +1,16 @@
 package com.elega9t.elixir.gui.components.config.keymap;
 
 import com.elega9t.commons.swing.config.ConfigPanel;
+import com.elega9t.commons.swing.util.SwingUtilities;
+import com.elega9t.elixir.gui.components.config.keymap.EditKeyStrokeDialog.KeyStrokeInfo;
 import com.elega9t.elixir.gui.mgr.ElixirKeymapKey;
 import com.elega9t.elixir.gui.mgr.KeymapManager;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.util.Map;
 
 public class KeymapConfigPanel extends ConfigPanel {
@@ -30,10 +35,20 @@ public class KeymapConfigPanel extends ConfigPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        keymapPopupMenu = new javax.swing.JPopupMenu();
+        editKeyStrokeMenuItem = new javax.swing.JMenuItem();
         detailsPanel = new javax.swing.JPanel();
         keymapPanel = new javax.swing.JPanel();
         keymapTreeScrollPane = new javax.swing.JScrollPane();
         keymapTree = new javax.swing.JTree(keymapTreeRootNode);
+
+        editKeyStrokeMenuItem.setText("Edit KeyStroke");
+        editKeyStrokeMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editKeyStrokeMenuItemActionPerformed(evt);
+            }
+        });
+        keymapPopupMenu.add(editKeyStrokeMenuItem);
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setLayout(new java.awt.BorderLayout());
@@ -54,15 +69,46 @@ public class KeymapConfigPanel extends ConfigPanel {
         keymapPanel.setLayout(new java.awt.BorderLayout());
 
         keymapTree.setRootVisible(false);
+        keymapTree.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                keymapTreeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                keymapTreeMouseReleased(evt);
+            }
+        });
         keymapTreeScrollPane.setViewportView(keymapTree);
 
         keymapPanel.add(keymapTreeScrollPane, java.awt.BorderLayout.CENTER);
 
         add(keymapPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void keymapTreeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keymapTreeMouseReleased
+        maybeShowPopup(evt);
+    }//GEN-LAST:event_keymapTreeMouseReleased
+
+    private void keymapTreeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keymapTreeMousePressed
+        maybeShowPopup(evt);
+    }//GEN-LAST:event_keymapTreeMousePressed
+
+    private void editKeyStrokeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editKeyStrokeMenuItemActionPerformed
+        final DefaultMutableTreeNode lastSelectedPathComponent = (DefaultMutableTreeNode) keymapTree.getLastSelectedPathComponent();
+        if(lastSelectedPathComponent.getUserObject() instanceof KeymapEntity) {
+            KeymapEntity keymapEntity = (KeymapEntity) lastSelectedPathComponent.getUserObject();
+            final KeyStrokeInfo keyStrokeInfo = EditKeyStrokeDialog.showDialog(dialog, new KeyStrokeInfo(keymapEntity.getKeyStroke(), null));
+            if(keyStrokeInfo != null) {
+                keymapEntity.updateActionKey(keyStrokeInfo.getKeyStroke());
+            }
+            keymapTree.updateUI();
+        }
+    }//GEN-LAST:event_editKeyStrokeMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel detailsPanel;
+    private javax.swing.JMenuItem editKeyStrokeMenuItem;
     private javax.swing.JPanel keymapPanel;
+    private javax.swing.JPopupMenu keymapPopupMenu;
     private javax.swing.JTree keymapTree;
     private javax.swing.JScrollPane keymapTreeScrollPane;
     // End of variables declaration//GEN-END:variables
@@ -72,11 +118,39 @@ public class KeymapConfigPanel extends ConfigPanel {
         keymapTreeRootNode.removeAllChildren();
         final DefaultMutableTreeNode editor = new DefaultMutableTreeNode("Editor");
         keymapTreeRootNode.add(editor);
-        final Map<ElixirKeymapKey,KeyStroke> keymaps = keymapManager.editor.keymaps();
+        final Map<ElixirKeymapKey,javax.swing.KeyStroke> keymaps = keymapManager.editor.keymaps();
         for (ElixirKeymapKey elixirKeymapKey : keymaps.keySet()) {
-            editor.add(new DefaultMutableTreeNode(elixirKeymapKey.getDisplay()));
+            editor.add(new DefaultMutableTreeNode(new KeymapEntity(elixirKeymapKey, keymaps.get(elixirKeymapKey))));
         }
         keymapTree.updateUI();
+        SwingUtilities.expandAll(keymapTree, keymapTreeRootNode);
     }
-    
+
+    private void maybeShowPopup(java.awt.event.MouseEvent e) {
+        if (e.isPopupTrigger()) {
+            final JPopupMenu popupMenu = getPopupMenu(e);
+            if(popupMenu != null) {
+                popupMenu.show(e.getComponent(), e.getX(), e.getY());
+            }
+        }
+    }
+
+    private javax.swing.JPopupMenu getPopupMenu(MouseEvent e) {
+        final DefaultMutableTreeNode lastSelectedPathComponent = (DefaultMutableTreeNode) keymapTree.getLastSelectedPathComponent();
+        if(lastSelectedPathComponent.getUserObject() instanceof KeymapEntity) {
+            return keymapPopupMenu;
+        }
+        return null;
+    }
+
+    @Override
+    public void applyConfigChange(Container container, ActionEvent evt) {
+        final KeymapManager keymapManager = KeymapManager.getInstance();
+        final DefaultMutableTreeNode lastSelectedPathComponent = (DefaultMutableTreeNode) keymapTree.getLastSelectedPathComponent();
+        if(lastSelectedPathComponent.getUserObject() instanceof KeymapEntity) {
+            KeymapEntity keymapEntity = (KeymapEntity) lastSelectedPathComponent.getUserObject();
+            keymapManager.editor.updateKeyStroke(keymapEntity.getKeymapKey(), keymapEntity.getKeyStroke());
+        }
+    }
+
 }

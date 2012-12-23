@@ -6,7 +6,7 @@
 package com.elega9t.commons.swing.config;
 
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
-import com.elega9t.commons.swing.SwingUtilities;
+import com.elega9t.commons.swing.util.SwingUtilities;
 import java.awt.CardLayout;
 
 public class ConfigDialog extends javax.swing.JDialog {
@@ -30,6 +30,9 @@ public class ConfigDialog extends javax.swing.JDialog {
         this.cancelButtonLabel = cancelButtonLabel;
         this.helpButtonLabel = helpButtonLabel;
         this.configPanels = configPanels;
+        for (ConfigPanel panel : configPanels) {
+            panel.setDialog(this);
+        }
         initComponents();
         initConfigDialog();
         setLocationRelativeTo(parent);

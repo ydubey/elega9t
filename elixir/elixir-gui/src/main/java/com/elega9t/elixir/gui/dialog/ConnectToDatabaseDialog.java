@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.gui.dialog;
 
-import com.elega9t.commons.swing.SwingUtilities;
+import com.elega9t.commons.swing.util.SwingUtilities;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.form.Main;
 

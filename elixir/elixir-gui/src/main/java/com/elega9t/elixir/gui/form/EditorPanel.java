@@ -2,7 +2,9 @@ package com.elega9t.elixir.gui.form;
 
 import com.elega9t.commons.swing.*;
 import com.elega9t.commons.swing.CheckBoxTableRowHeader.CheckBoxTableRowHeaderModel;
+import com.elega9t.commons.swing.components.WideJComboBox;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
+import com.elega9t.commons.swing.util.SwingUtilities;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
@@ -69,7 +71,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         queryPanelToolBar = new javax.swing.JToolBar();
         executeQueryButton = new javax.swing.JButton();
         currentDatabaseToolBar = new javax.swing.JToolBar();
-        currentDatabaseComboBox = new javax.swing.JComboBox();
+        currentDatabaseComboBox = new WideJComboBox();
         topPanelFooterPanel = new javax.swing.JPanel();
         lineNumberToolBar = new javax.swing.JToolBar();
         lineNumberLabel = new javax.swing.JLabel();

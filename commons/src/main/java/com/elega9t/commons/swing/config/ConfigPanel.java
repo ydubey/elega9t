@@ -7,6 +7,7 @@ package com.elega9t.commons.swing.config;
 
 public class ConfigPanel extends javax.swing.JPanel {
 
+    protected ConfigDialog dialog;
     private final String[] parentCategory;
 
     /**
@@ -15,6 +16,10 @@ public class ConfigPanel extends javax.swing.JPanel {
     public ConfigPanel(String... parentCategory) {
         this.parentCategory = parentCategory;
         initComponents();
+    }
+
+    public void setDialog(ConfigDialog dialog) {
+        this.dialog = dialog;
     }
 
     public String[] getParentCategory() {

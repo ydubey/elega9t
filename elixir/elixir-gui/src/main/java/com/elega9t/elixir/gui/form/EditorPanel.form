@@ -102,6 +102,9 @@
                           <Connection code="new GuiEntityListCellRenderer()" type="code"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WideJComboBox()"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
