@@ -53,17 +53,7 @@ public class KeymapConfigPanel extends ConfigPanel {
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setLayout(new java.awt.BorderLayout());
 
-        org.jdesktop.layout.GroupLayout detailsPanelLayout = new org.jdesktop.layout.GroupLayout(detailsPanel);
-        detailsPanel.setLayout(detailsPanelLayout);
-        detailsPanelLayout.setHorizontalGroup(
-            detailsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 396, Short.MAX_VALUE)
-        );
-        detailsPanelLayout.setVerticalGroup(
-            detailsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 100, Short.MAX_VALUE)
-        );
-
+        detailsPanel.setLayout(new java.awt.BorderLayout());
         add(detailsPanel, java.awt.BorderLayout.PAGE_START);
 
         keymapPanel.setLayout(new java.awt.BorderLayout());
