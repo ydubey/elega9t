@@ -85,6 +85,7 @@ public class EditKeyStrokeDialog extends javax.swing.JDialog {
         secondKeyStrokePanel.setLayout(new java.awt.BorderLayout());
 
         secondKeyStrokeTextField.setText(keyStrokeInfo.secondKeyStroke != null ? keyStrokeInfo.secondKeyStroke.toString() : "");
+        secondKeyStrokeTextField.setEnabled(keyStrokeInfo.secondKeyStroke != null);
         secondKeyStrokePanel.add(secondKeyStrokeTextField, java.awt.BorderLayout.CENTER);
 
         bodyPanel.add(secondKeyStrokePanel);

@@ -14,6 +14,7 @@ public class IconsManager {
     public final System system = new System();
     public final Database database = new Database();
     public final SqlResultTable sqlResultTable = new SqlResultTable();
+    public final Config config = new Config();
 
     private IconsManager() {
     }
@@ -82,6 +83,20 @@ public class IconsManager {
 
         public ImageIcon getDeleteRowsIcon() {
             return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/sqlresult/table_delete_row.png"));
+        }
+
+    }
+
+    public class Config {
+
+        public final Keymap keymap = new Keymap();
+
+        public class Keymap {
+
+            public ImageIcon getKeyStrokeIcon() {
+                return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/config/keyboard.png"));
+            }
+
         }
 
     }

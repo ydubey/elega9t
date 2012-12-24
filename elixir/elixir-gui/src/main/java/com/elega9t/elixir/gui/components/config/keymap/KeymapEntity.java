@@ -5,19 +5,20 @@
 
 package com.elega9t.elixir.gui.components.config.keymap;
 
-import com.elega9t.commons.entity.impl.DefaultEntity;
+import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.swing.KeymapListener;
 import com.elega9t.elixir.gui.mgr.ElixirKeymapKey;
+import com.elega9t.elixir.gui.mgr.IconsManager;
 
 import javax.swing.*;
 
-public class KeymapEntity extends DefaultEntity implements KeymapListener {
+public class KeymapEntity extends DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> implements KeymapListener {
 
     private final ElixirKeymapKey keymapKey;
     private KeyStroke keyStroke;
 
     public KeymapEntity(ElixirKeymapKey keymapKey, KeyStroke keyStroke) {
-        super(keymapKey.getDisplay());
+        super(keymapKey.getDisplay(), IconsManager.getInstance().config.keymap.getKeyStrokeIcon());
         this.keymapKey = keymapKey;
         this.keyStroke = keyStroke;
     }
