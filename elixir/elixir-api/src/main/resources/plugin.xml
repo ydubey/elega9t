@@ -9,6 +9,7 @@
         <plugin:keymap name="Default">
             <plugin:keymap-group name="EDITOR_ACTIONS">
                 <plugin:keymap-action name="Expand Shorthand" id="ExpandShorthandAction" keyboardShortcut="pressed TAB" secondKeyboardShortcut="" actionClass="com.elega9t.elixir.gui.form.actions.ExpandSqlShorthandAction"/>
+                <plugin:keymap-action name="Execure Query" id="ExecuteQuery" keyboardShortcut="ctrl pressed ENTER" secondKeyboardShortcut="" actionClass="com.elega9t.elixir.gui.form.actions.ExecuteQueryAction"/>
             </plugin:keymap-group>
         </plugin:keymap>
     </plugin:keymaps>
