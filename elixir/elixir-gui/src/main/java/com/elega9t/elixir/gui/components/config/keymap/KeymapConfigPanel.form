@@ -73,6 +73,9 @@
           <SubComponents>
             <Component class="javax.swing.JTree" name="keymapTree">
               <Properties>
+                <Property name="cellRenderer" type="javax.swing.tree.TreeCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new GuiEntityNodeTreeCellRenderer()" type="code"/>
+                </Property>
                 <Property name="rootVisible" type="boolean" value="false"/>
               </Properties>
               <Events>
