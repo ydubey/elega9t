@@ -5,6 +5,13 @@
   -->
 <plugin:plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:plugin="http://www.elega9t.com/elixir/plugin">
+    <plugin:keymaps>
+        <plugin:keymap name="Default">
+            <plugin:keymap-group name="Editor Actions">
+                <plugin:keymap-action name="Expand Shorthand" keyboardShortcut="" secondKeyboardShortcut=""/>
+            </plugin:keymap-group>
+        </plugin:keymap>
+    </plugin:keymap>
     <plugin:driver-definitions>
         <plugin:driver-definition>
             <plugin:database>MySQL</plugin:database>
