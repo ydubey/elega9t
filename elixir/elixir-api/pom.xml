@@ -49,9 +49,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <schemaFiles>com/elega9t/elixir/driver-definitions.xsd</schemaFiles>
-                    <packageName>com.elega9t.elixir.binding.driverdef</packageName>
-                    <staleFile>${project.build.directory}/jaxb2/.driverDefinitionsXjcStaleFlag</staleFile>
+                    <schemaFiles>com/elega9t/elixir/plugin.xsd</schemaFiles>
+                    <packageName>com.elega9t.elixir.binding.plugin</packageName>
+                    <staleFile>${project.build.directory}/jaxb2/.pluginXjcStaleFlag</staleFile>
                 </configuration>
             </plugin>
         </plugins>
