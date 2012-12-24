@@ -8,8 +8,9 @@ package com.elega9t.elixir.mgr;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Driver;
-import com.elega9t.elixir.binding.driverdef.DriverDefinition;
-import com.elega9t.elixir.binding.driverdef.DriverDefinitions;
+import com.elega9t.elixir.binding.plugin.DriverDefinition;
+import com.elega9t.elixir.binding.plugin.DriverDefinitions;
+import com.elega9t.elixir.binding.plugin.Plugin;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -31,10 +32,10 @@ public class DriverManager extends DefaultLoadableEntity {
     @Override
     public void load() throws EntityLoadException {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(DriverDefinitions.class.getPackage().getName());
+            JAXBContext jaxbContext = JAXBContext.newInstance(Plugin.class.getPackage().getName());
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            final DriverDefinitions driverDefinitions = (DriverDefinitions) unmarshaller.unmarshal(getClass().getResourceAsStream("/driver-definitions.xml"));
-            for (DriverDefinition driverDefinition : driverDefinitions.getDriverDefinition()) {
+            final Plugin plugin = (Plugin) unmarshaller.unmarshal(getClass().getResourceAsStream("/plugin.xml"));
+            for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDriverDefinition()) {
                 drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
             }
         } catch (JAXBException e) {

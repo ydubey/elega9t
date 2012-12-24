@@ -7,8 +7,8 @@ package com.elega9t.elixir;
 
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.elixir.binding.driverdef.DriverDefinition;
-import com.elega9t.elixir.binding.driverdef.DriverVendor;
+import com.elega9t.elixir.binding.plugin.DriverDefinition;
+import com.elega9t.elixir.binding.plugin.DriverVendor;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
