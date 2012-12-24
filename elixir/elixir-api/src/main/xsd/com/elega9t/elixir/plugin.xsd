@@ -18,8 +18,14 @@
         <xsd:sequence>
             <xsd:element name="keymap-group" type="plugin:keymap-group" maxOccurs="unbounded"/>
         </xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="name" type="plugin:keymap-group-name"/>
     </xsd:complexType>
+
+    <xsd:simpleType name="keymap-group-name">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="EDITOR_ACTIONS"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 
     <xsd:complexType name="keymap-group">
         <xsd:sequence>
@@ -74,6 +80,7 @@
     <xsd:element name="plugin">
         <xsd:complexType>
             <xsd:sequence>
+                <xsd:element name="keymaps" type="plugin:keymaps"/>
                 <xsd:element name="driver-definitions" type="plugin:driver-definitions"/>
             </xsd:sequence>
         </xsd:complexType>

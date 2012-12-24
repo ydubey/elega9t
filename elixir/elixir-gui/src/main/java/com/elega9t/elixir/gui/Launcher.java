@@ -8,7 +8,9 @@ package com.elega9t.elixir.gui;
 import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.swing.NodeIcon;
 import com.elega9t.elixir.gui.form.Main;
+import com.elega9t.elixir.gui.mgr.KeymapManager;
 import com.elega9t.elixir.mgr.DriverManager;
+import com.elega9t.elixir.mgr.PluginManager;
 import com.elega9t.elixir.mgr.evnt.EventManager;
 
 import javax.swing.*;
@@ -24,8 +26,10 @@ public class Launcher {
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", ResourceStrings.main.getString("doc.name"));
         UIManager.put("Tree.collapsedIcon", new IconUIResource(new NodeIcon(NodeIcon.TYPE.COLLAPSED)));
         UIManager.put("Tree.expandedIcon",  new IconUIResource(new NodeIcon(NodeIcon.TYPE.EXPANDED)));
+        PluginManager.getInstance().addPluginProcessor(DriverManager.getInstance());
+        PluginManager.getInstance().addPluginProcessor(KeymapManager.getInstance());
         try {
-            DriverManager.getInstance().load();
+            PluginManager.getInstance().load();
         } catch (EntityLoadException e) {
             EventManager.getInstance().error(e);
         }

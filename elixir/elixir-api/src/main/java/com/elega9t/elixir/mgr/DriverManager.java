@@ -5,6 +5,7 @@
 
 package com.elega9t.elixir.mgr;
 
+import com.elega9t.commons.entity.impl.DefaultEntity;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Driver;
@@ -19,7 +20,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DriverManager extends DefaultLoadableEntity {
+public class DriverManager extends DefaultEntity implements PluginProcessor {
 
     private static DriverManager mgr = new DriverManager();
 
@@ -29,17 +30,9 @@ public class DriverManager extends DefaultLoadableEntity {
         super("DriverManager");
     }
 
-    @Override
-    public void load() throws EntityLoadException {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Plugin.class.getPackage().getName());
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            final Plugin plugin = (Plugin) unmarshaller.unmarshal(getClass().getResourceAsStream("/plugin.xml"));
-            for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDriverDefinition()) {
-                drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
-            }
-        } catch (JAXBException e) {
-            throw new EntityLoadException(e);
+    public void process(Plugin plugin) {
+        for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDriverDefinition()) {
+            drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
         }
     }
 

@@ -11,14 +11,16 @@ import com.elega9t.commons.shell.intrprtr.Interpreter;
 import com.elega9t.commons.shell.intrprtr.cmd.ExitCommand;
 import com.elega9t.elixir.cli.cmd.ConnectCommand;
 import com.elega9t.elixir.mgr.DriverManager;
+import com.elega9t.elixir.mgr.PluginManager;
 
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, IllegalAccessException, InstantiationException {
+        PluginManager.getInstance().addPluginProcessor(DriverManager.getInstance());
         try {
-            DriverManager.getInstance().load();
+            PluginManager.getInstance().load();
         } catch (EntityLoadException e) {
             e.printStackTrace();
         }

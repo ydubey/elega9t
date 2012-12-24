@@ -7,7 +7,7 @@
              xmlns:plugin="http://www.elega9t.com/elixir/plugin">
     <plugin:keymaps>
         <plugin:keymap name="Default">
-            <plugin:keymap-group name="Editor Actions">
+            <plugin:keymap-group name="EDITOR_ACTIONS">
                 <plugin:keymap-action name="Expand Shorthand" keyboardShortcut="" secondKeyboardShortcut=""/>
             </plugin:keymap-group>
         </plugin:keymap>

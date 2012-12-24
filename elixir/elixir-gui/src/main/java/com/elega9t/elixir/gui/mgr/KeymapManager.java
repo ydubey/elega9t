@@ -6,13 +6,16 @@
 package com.elega9t.elixir.gui.mgr;
 
 import com.elega9t.commons.swing.KeymapListener;
+import com.elega9t.elixir.binding.plugin.Keymap;
+import com.elega9t.elixir.binding.plugin.Plugin;
+import com.elega9t.elixir.mgr.PluginProcessor;
 
 import javax.swing.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.*;
 
-public class KeymapManager {
+public class KeymapManager implements PluginProcessor {
 
     private static final KeymapManager INSTANCE = new KeymapManager();
 
@@ -30,6 +33,11 @@ public class KeymapManager {
             keymapListeners.put(keymapKey, keymapListenersForKey);
         }
         keymapListenersForKey.add(keymapListener);
+    }
+
+    @Override
+    public void process(Plugin plugin) {
+        final List<Keymap> keymap = plugin.getKeymaps().getKeymap();
     }
 
     public class EditorActions {
