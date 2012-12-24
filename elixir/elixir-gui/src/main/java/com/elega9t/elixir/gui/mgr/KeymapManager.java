@@ -24,6 +24,9 @@ public class KeymapManager implements PluginProcessor {
     private Map<String, List<KeymapListener>> keymapListeners = new HashMap<String, List<KeymapListener>>();
     private Map<String, Map<String, Map<String, KeymapKeystrokeAction>>> keymaps = new TreeMap<String, Map<String, Map<String, KeymapKeystrokeAction>>>();
 
+    private KeymapManager() {
+    }
+
     public static KeymapManager getInstance() {
         return INSTANCE;
     }
