@@ -5,12 +5,9 @@ import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.config.ConfigPanel;
 import com.elega9t.commons.swing.util.SwingUtilities;
 import com.elega9t.elixir.gui.components.config.keymap.EditKeyStrokeDialog.KeyStrokeInfo;
-import com.elega9t.elixir.gui.mgr.ElixirKeymapKey;
 import com.elega9t.elixir.gui.mgr.KeymapManager;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.Map;
 
@@ -90,7 +87,9 @@ public class KeymapConfigPanel extends ConfigPanel {
             KeymapEntity keymapEntity = (KeymapEntity) lastSelectedPathComponent;
             final KeyStrokeInfo keyStrokeInfo = EditKeyStrokeDialog.showDialog(dialog, new KeyStrokeInfo(keymapEntity.getKeyStroke(), null));
             if(keyStrokeInfo != null) {
-                keymapEntity.updateActionKey(keyStrokeInfo.getKeyStroke());
+                keymapEntity.update(keyStrokeInfo.getKeyStroke());
+                final KeymapManager keymapManager = KeymapManager.getInstance();
+                keymapManager.updateKeyStroke("Default", keymapEntity.getParent().toString(), keymapEntity.getId(), keymapEntity.getKeyStroke());
             }
             keymapTree.updateUI();
         }
@@ -108,11 +107,14 @@ public class KeymapConfigPanel extends ConfigPanel {
     private void initKeymapTree() {
         final KeymapManager keymapManager = KeymapManager.getInstance();
         keymapTreeRootNode.clear();
-        final DefaultGuiEntityTreeNode editor = new DefaultGuiEntityTreeNode("Editor");
-        keymapTreeRootNode.addChild(editor);
-        final Map<ElixirKeymapKey,javax.swing.KeyStroke> keymaps = keymapManager.editor.keymaps();
-        for (ElixirKeymapKey elixirKeymapKey : keymaps.keySet()) {
-            editor.addChild(new KeymapEntity(elixirKeymapKey, keymaps.get(elixirKeymapKey)));
+        final Map<String, Map<String, KeymapManager.KeymapKeystrokeAction>> keymaps = keymapManager.keymaps();
+        for (String keymapGroup : keymaps.keySet()) {
+            final DefaultGuiEntityTreeNode keymapGroupNode = new DefaultGuiEntityTreeNode(keymapGroup);
+            keymapTreeRootNode.addChild(keymapGroupNode);
+            final Map<String, KeymapManager.KeymapKeystrokeAction> keyStrokeMap = keymaps.get(keymapGroup);
+            for (String name : keyStrokeMap.keySet()) {
+                keymapGroupNode.addChild(new KeymapEntity(keyStrokeMap.get(name)));
+            }
         }
         keymapTree.updateUI();
         SwingUtilities.expandAll(keymapTree, keymapTreeRootNode);
@@ -133,16 +135,6 @@ public class KeymapConfigPanel extends ConfigPanel {
             return keymapPopupMenu;
         }
         return null;
-    }
-
-    @Override
-    public void applyConfigChange(Container container, ActionEvent evt) {
-        final KeymapManager keymapManager = KeymapManager.getInstance();
-        final DefaultGuiEntityTreeNode lastSelectedPathComponent = (DefaultGuiEntityTreeNode) keymapTree.getLastSelectedPathComponent();
-        if(lastSelectedPathComponent instanceof KeymapEntity) {
-            KeymapEntity keymapEntity = (KeymapEntity) lastSelectedPathComponent;
-            keymapManager.editor.updateKeyStroke(keymapEntity.getKeymapKey(), keymapEntity.getKeyStroke());
-        }
     }
 
 }

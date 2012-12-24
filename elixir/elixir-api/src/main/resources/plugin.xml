@@ -8,10 +8,10 @@
     <plugin:keymaps>
         <plugin:keymap name="Default">
             <plugin:keymap-group name="EDITOR_ACTIONS">
-                <plugin:keymap-action name="Expand Shorthand" keyboardShortcut="" secondKeyboardShortcut=""/>
+                <plugin:keymap-action name="Expand Shorthand" id="ExpandShorthandAction" keyboardShortcut="pressed TAB" secondKeyboardShortcut="" actionClass="com.elega9t.elixir.gui.form.actions.ExpandSqlShorthandAction"/>
             </plugin:keymap-group>
         </plugin:keymap>
-    </plugin:keymap>
+    </plugin:keymaps>
     <plugin:driver-definitions>
         <plugin:driver-definition>
             <plugin:database>MySQL</plugin:database>

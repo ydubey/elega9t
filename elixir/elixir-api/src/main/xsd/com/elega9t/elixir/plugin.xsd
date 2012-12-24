@@ -18,7 +18,7 @@
         <xsd:sequence>
             <xsd:element name="keymap-group" type="plugin:keymap-group" maxOccurs="unbounded"/>
         </xsd:sequence>
-        <xsd:attribute name="name" type="plugin:keymap-group-name"/>
+        <xsd:attribute name="name" type="xsd:string"/>
     </xsd:complexType>
 
     <xsd:simpleType name="keymap-group-name">
@@ -31,15 +31,17 @@
         <xsd:sequence>
             <xsd:element name="keymap-action" type="plugin:keymap-action" maxOccurs="unbounded"/>
         </xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="name" type="plugin:keymap-group-name"/>
     </xsd:complexType>
 
     <xsd:complexType name="keymap-action">
         <xsd:sequence>
         </xsd:sequence>
         <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="id" type="xsd:string"/>
         <xsd:attribute name="keyboardShortcut" type="xsd:string"/>
         <xsd:attribute name="secondKeyboardShortcut" type="xsd:string"/>
+        <xsd:attribute name="actionClass" type="xsd:string"/>
     </xsd:complexType>
 
     <xsd:complexType name="driver-definitions">

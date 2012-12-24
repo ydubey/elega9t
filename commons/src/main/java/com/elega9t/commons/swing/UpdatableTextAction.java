@@ -9,9 +9,7 @@ import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
 
-public abstract class KeymapListenerTextAction extends TextAction implements KeymapListener {
-
-    private static final String ELEGA9T_ACTION_PREFIX = "Elega9tAction.";
+public abstract class UpdatableTextAction extends TextAction implements KeymapListener {
 
     protected final Action defaultAction;
     protected final Object defaultActionKey;
@@ -19,8 +17,8 @@ public abstract class KeymapListenerTextAction extends TextAction implements Key
 
     protected KeyStroke currentActionKeyStroke;
 
-    public KeymapListenerTextAction(String name, JTextComponent textComponent, KeyStroke keyStroke) {
-        super(ELEGA9T_ACTION_PREFIX + name);
+    public UpdatableTextAction(String name, JTextComponent textComponent, KeyStroke keyStroke) {
+        super(name);
         this.textComponent = textComponent;
         this.currentActionKeyStroke = keyStroke;
 
@@ -35,7 +33,7 @@ public abstract class KeymapListenerTextAction extends TextAction implements Key
     }
 
     @Override
-    public void updateActionKey(KeyStroke keyStroke) {
+    public void update(KeyStroke keyStroke) {
         textComponent.getInputMap().remove(currentActionKeyStroke);
         currentActionKeyStroke = keyStroke;
         textComponent.getInputMap().put(keyStroke, getValue(NAME));

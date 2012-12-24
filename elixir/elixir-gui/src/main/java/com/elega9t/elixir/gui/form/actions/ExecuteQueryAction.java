@@ -5,7 +5,7 @@
 
 package com.elega9t.elixir.gui.form.actions;
 
-import com.elega9t.commons.swing.KeymapListenerTextAction;
+import com.elega9t.commons.swing.UpdatableTextAction;
 import com.elega9t.commons.swing.ResultSetTableModel;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ExecuteQueryAction extends KeymapListenerTextAction {
+public class ExecuteQueryAction extends UpdatableTextAction {
 
     private final Main main;
     private final JComboBox currentDatabaseComboBox;

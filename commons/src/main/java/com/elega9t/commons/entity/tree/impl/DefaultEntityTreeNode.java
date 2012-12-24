@@ -74,6 +74,7 @@ public class DefaultEntityTreeNode<T extends EntityTreeNode> extends DefaultEnti
     @Override
     public void addChild(T node) {
         children.add(node);
+        node.setParent(this);
     }
 
     @Override

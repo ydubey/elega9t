@@ -11,12 +11,12 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import java.awt.event.ActionEvent;
 
-public class ExpandShorthandAction extends KeymapListenerTextAction {
+public class ExpandShorthandAction extends UpdatableTextAction {
 
     private final ShorthandFactory shorthandFactory;
 
-    public ExpandShorthandAction(JTextComponent textComponent, KeyStroke keyStroke, ShorthandFactory shorthandFactory) {
-        super("ExpandShorthand", textComponent, keyStroke);
+    public ExpandShorthandAction(String name, JTextComponent textComponent, KeyStroke keyStroke, ShorthandFactory shorthandFactory) {
+        super(name, textComponent, keyStroke);
         this.shorthandFactory = shorthandFactory;
     }
 

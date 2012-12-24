@@ -5,26 +5,23 @@
 
 package com.elega9t.elixir.gui.components.config.keymap;
 
+import com.elega9t.commons.entity.UniqueEntity;
 import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.swing.KeymapListener;
-import com.elega9t.elixir.gui.mgr.ElixirKeymapKey;
 import com.elega9t.elixir.gui.mgr.IconsManager;
+import com.elega9t.elixir.gui.mgr.KeymapManager;
 
 import javax.swing.*;
 
-public class KeymapEntity extends DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> implements KeymapListener {
+public class KeymapEntity extends DefaultGuiEntityTreeNode<DefaultGuiEntityTreeNode> implements KeymapListener, UniqueEntity {
 
-    private final ElixirKeymapKey keymapKey;
+    private final String id;
     private KeyStroke keyStroke;
 
-    public KeymapEntity(ElixirKeymapKey keymapKey, KeyStroke keyStroke) {
-        super(keymapKey.getDisplay(), IconsManager.getInstance().config.keymap.getKeyStrokeIcon());
-        this.keymapKey = keymapKey;
-        this.keyStroke = keyStroke;
-    }
-
-    public ElixirKeymapKey getKeymapKey() {
-        return keymapKey;
+    public KeymapEntity(KeymapManager.KeymapKeystrokeAction keymapKeystrokeAction) {
+        super(keymapKeystrokeAction.getName(), IconsManager.getInstance().config.keymap.getKeyStrokeIcon());
+        this.id = keymapKeystrokeAction.getId();
+        this.keyStroke = keymapKeystrokeAction.getKeyStroke();
     }
 
     public KeyStroke getKeyStroke() {
@@ -32,7 +29,17 @@ public class KeymapEntity extends DefaultGuiEntityTreeNode<DefaultGuiEntityTreeN
     }
 
     @Override
-    public void updateActionKey(KeyStroke keyStroke) {
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String getUniqueName() {
+        return id;
+    }
+
+    @Override
+    public void update(KeyStroke keyStroke) {
         this.keyStroke = keyStroke;
     }
 

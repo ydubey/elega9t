@@ -26,10 +26,11 @@ public class Launcher {
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", ResourceStrings.main.getString("doc.name"));
         UIManager.put("Tree.collapsedIcon", new IconUIResource(new NodeIcon(NodeIcon.TYPE.COLLAPSED)));
         UIManager.put("Tree.expandedIcon",  new IconUIResource(new NodeIcon(NodeIcon.TYPE.EXPANDED)));
-        PluginManager.getInstance().addPluginProcessor(DriverManager.getInstance());
-        PluginManager.getInstance().addPluginProcessor(KeymapManager.getInstance());
+        final PluginManager pluginManager = PluginManager.getInstance();
+        pluginManager.addPluginProcessor(DriverManager.getInstance());
+        pluginManager.addPluginProcessor(KeymapManager.getInstance());
         try {
-            PluginManager.getInstance().load();
+            pluginManager.load();
         } catch (EntityLoadException e) {
             EventManager.getInstance().error(e);
         }

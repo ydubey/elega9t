@@ -8,11 +8,8 @@ import com.elega9t.commons.swing.util.SwingUtilities;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
-import com.elega9t.elixir.gui.form.actions.ExecuteQueryAction;
-import com.elega9t.elixir.gui.mgr.ElixirKeymapKey;
 import com.elega9t.elixir.gui.mgr.IconsManager;
 import com.elega9t.elixir.gui.mgr.KeymapManager;
-import com.elega9t.elixir.gui.mgr.ShorthandManager;
 
 import javax.swing.text.BadLocationException;
 import java.sql.PreparedStatement;
@@ -27,7 +24,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private final javax.swing.JTable rowTable;
     
     private ExpandShorthandAction expandShorthandAction;
-    private KeymapListenerTextAction executeQueryAction;
+    private UpdatableTextAction executeQueryAction;
 
     private KeymapManager keymapManager = KeymapManager.getInstance();
 
@@ -45,15 +42,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
         rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 
-        installActions();
-    }
-
-    private void installActions() {
-        expandShorthandAction = new ExpandShorthandAction(queryEditorTextPane, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXPAND_SHORTHAND), ShorthandManager.getInstance());
-        keymapManager.addKeymapListener(ElixirKeymapKey.EXPAND_SHORTHAND, expandShorthandAction);
-
-        executeQueryAction = new ExecuteQueryAction(main, currentDatabaseComboBox, queryEditorTextPane, resultTable, keymapManager.editor.getKeyStroke(ElixirKeymapKey.EXECUTE_QUERY));
-        keymapManager.addKeymapListener(ElixirKeymapKey.EXECUTE_QUERY, executeQueryAction);
+        keymapManager.installEditorActions(queryEditorTextPane);
     }
 
     /**

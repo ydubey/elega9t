@@ -9,6 +9,6 @@ import javax.swing.*;
 
 public interface KeymapListener {
 
-    void updateActionKey(KeyStroke keyStroke);
+    void update(KeyStroke keyStroke);
 
 }

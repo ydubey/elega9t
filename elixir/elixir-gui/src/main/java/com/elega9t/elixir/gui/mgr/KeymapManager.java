@@ -5,66 +5,119 @@
 
 package com.elega9t.elixir.gui.mgr;
 
+import com.elega9t.commons.entity.impl.DefaultUniqueEntity;
 import com.elega9t.commons.swing.KeymapListener;
-import com.elega9t.elixir.binding.plugin.Keymap;
-import com.elega9t.elixir.binding.plugin.Plugin;
+import com.elega9t.commons.swing.UpdatableTextAction;
+import com.elega9t.elixir.binding.plugin.*;
 import com.elega9t.elixir.mgr.PluginProcessor;
 
 import javax.swing.*;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import javax.swing.text.JTextComponent;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class KeymapManager implements PluginProcessor {
 
     private static final KeymapManager INSTANCE = new KeymapManager();
 
-    public final EditorActions editor = new EditorActions();
-    private Map<ElixirKeymapKey, List<KeymapListener>> keymapListeners = new HashMap<ElixirKeymapKey, List<KeymapListener>>();
+    private Map<String, List<KeymapListener>> keymapListeners = new HashMap<String, List<KeymapListener>>();
+    private Map<String, Map<String, Map<String, KeymapKeystrokeAction>>> keymaps = new TreeMap<String, Map<String, Map<String, KeymapKeystrokeAction>>>();
 
     public static KeymapManager getInstance() {
         return INSTANCE;
     }
 
-    public synchronized void addKeymapListener(ElixirKeymapKey keymapKey, KeymapListener keymapListener) {
-        List<KeymapListener> keymapListenersForKey = keymapListeners.get(keymapKey);
+    public synchronized void addKeymapListener(String keymapGroupName, String actionName, KeymapListener keymapListener) {
+        final String key = keymapGroupName + "." + actionName;
+        List<KeymapListener> keymapListenersForKey = keymapListeners.get(key);
         if(keymapListenersForKey == null) {
             keymapListenersForKey = new ArrayList<KeymapListener>();
-            keymapListeners.put(keymapKey, keymapListenersForKey);
+            keymapListeners.put(key, keymapListenersForKey);
         }
         keymapListenersForKey.add(keymapListener);
     }
 
     @Override
     public void process(Plugin plugin) {
-        final List<Keymap> keymap = plugin.getKeymaps().getKeymap();
+        addAll(plugin.getKeymaps().getKeymap());
     }
 
-    public class EditorActions {
-
-        private Map<ElixirKeymapKey, KeyStroke> actions = new LinkedHashMap<ElixirKeymapKey, KeyStroke>();
-
-        private EditorActions() {
-            this.actions.put(ElixirKeymapKey.EXPAND_SHORTHAND, KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0));
-            this.actions.put(ElixirKeymapKey.EXECUTE_QUERY, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.CTRL_MASK));
+    private void addAll(List<Keymap> keymaps) {
+        for (Keymap keymap : keymaps) {
+            add(keymap);
         }
+    }
 
-        public KeyStroke getKeyStroke(ElixirKeymapKey key) {
-            return actions.get(key);
+    private void add(Keymap keymap) {
+        Map<String, Map<String, KeymapKeystrokeAction>> storedKeymap = this.keymaps.get(keymap.getName());
+        if(storedKeymap == null) {
+            storedKeymap = new TreeMap<String, Map<String, KeymapKeystrokeAction>>();
+            this.keymaps.put(keymap.getName(), storedKeymap);
         }
-
-        public void updateKeyStroke(ElixirKeymapKey keymapKey, KeyStroke keyStroke) {
-            this.actions.put(keymapKey, keyStroke);
-            List<KeymapListener> keymapListenersForKey = keymapListeners.get(keymapKey);
-            if(keymapListenersForKey != null) {
-                for (KeymapListener keymapListener : keymapListenersForKey) {
-                    keymapListener.updateActionKey(keyStroke);
+        for (KeymapGroup keymapGroup : keymap.getKeymapGroup()) {
+            Map<String, KeymapKeystrokeAction> storedKeyStrokes = storedKeymap.get(keymapGroup.getName().value());
+            if(storedKeyStrokes == null) {
+                storedKeyStrokes = new TreeMap<String, KeymapKeystrokeAction>();
+                storedKeymap.put(keymapGroup.getName().value(), storedKeyStrokes);
+            }
+            for (KeymapAction keymapAction : keymapGroup.getKeymapAction()) {
+                try {
+                    storedKeyStrokes.put(keymapAction.getId(), new KeymapKeystrokeAction(keymapAction));
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
         }
+    }
 
-        public Map<ElixirKeymapKey, KeyStroke> keymaps() {
-            return actions;
+    public void updateKeyStroke(String keymapName, String keymapGroupName, String actionName, KeyStroke keyStroke) {
+        final KeymapKeystrokeAction keymapKeystrokeAction = this.keymaps.get(keymapName).get(keymapGroupName).get(actionName);
+        keymapKeystrokeAction.setKeyStroke(keyStroke);
+        final String key = keymapGroupName + "." + actionName;
+        List<KeymapListener> keymapListenersForKey = keymapListeners.get(key);
+        if(keymapListenersForKey != null) {
+            for (KeymapListener keymapListener : keymapListenersForKey) {
+                keymapListener.update(keyStroke);
+            }
+        }
+    }
+
+    public void installEditorActions(JTextComponent textComponent) {
+        final Map<String, KeymapKeystrokeAction> stringKeyStrokeMap = keymaps.get("Default").get("EDITOR_ACTIONS");
+        for (String name : stringKeyStrokeMap.keySet()) {
+            final KeymapKeystrokeAction keymapKeystrokeAction = stringKeyStrokeMap.get(name);
+            try {
+                final Constructor<UpdatableTextAction> constructor = keymapKeystrokeAction.actionClass.getConstructor(String.class, JTextComponent.class, KeyStroke.class);
+                final UpdatableTextAction updatableTextAction = constructor.newInstance(keymapKeystrokeAction.getId(), textComponent, keymapKeystrokeAction.getKeyStroke());
+                addKeymapListener("EDITOR_ACTIONS", keymapKeystrokeAction.getId(), updatableTextAction);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public Map<String, Map<String, KeymapKeystrokeAction>> keymaps() {
+        return keymaps.get("Default");
+    }
+
+    public class KeymapKeystrokeAction extends DefaultUniqueEntity {
+
+        private KeyStroke keyStroke;
+        private final Class<UpdatableTextAction> actionClass;
+
+        public KeymapKeystrokeAction(KeymapAction keymapAction) throws ClassNotFoundException {
+            super(keymapAction.getId(), keymapAction.getName());
+            this.keyStroke = KeyStroke.getKeyStroke(keymapAction.getKeyboardShortcut());
+            actionClass = (Class<UpdatableTextAction>) Class.forName(keymapAction.getActionClass());
+        }
+
+        public void setKeyStroke(KeyStroke keyStroke) {
+            this.keyStroke = keyStroke;
+        }
+
+        public KeyStroke getKeyStroke() {
+            return keyStroke;
         }
 
     }
