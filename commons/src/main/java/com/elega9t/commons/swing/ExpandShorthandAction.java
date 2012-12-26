@@ -11,7 +11,7 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import java.awt.event.ActionEvent;
 
-public class ExpandShorthandAction extends UpdatableTextAction {
+public class ExpandShorthandAction extends UpdatableAction {
 
     private final ShorthandFactory shorthandFactory;
 
@@ -22,7 +22,7 @@ public class ExpandShorthandAction extends UpdatableTextAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final JTextComponent textComponent = getTextComponent(e);
+        final JTextComponent textComponent = (JTextComponent) e.getSource();
         final int caretPosition = textComponent.getCaretPosition();
         try {
             final Document document = textComponent.getDocument();

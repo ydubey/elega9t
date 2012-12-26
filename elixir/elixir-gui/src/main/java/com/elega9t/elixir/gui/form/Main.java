@@ -171,10 +171,10 @@ public class Main extends javax.swing.JFrame {
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
         connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 connectionsTreeTreeWillExpand(evt);
+            }
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         connectionsTreeScrollPane.setViewportView(connectionsTree);
@@ -362,7 +362,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JToolBar connectionsTreeToolBar;
     private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JTabbedPane editorTabbedPane;
+    javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JLabel eventLabel;
     private javax.swing.JButton expandAllButton;
     private javax.swing.JMenu fileMenu;

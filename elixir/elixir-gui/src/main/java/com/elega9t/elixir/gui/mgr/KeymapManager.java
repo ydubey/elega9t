@@ -7,14 +7,13 @@ package com.elega9t.elixir.gui.mgr;
 
 import com.elega9t.commons.entity.impl.DefaultUniqueEntity;
 import com.elega9t.commons.swing.KeymapListener;
-import com.elega9t.commons.swing.UpdatableTextAction;
+import com.elega9t.commons.swing.UpdatableAction;
 import com.elega9t.elixir.binding.plugin.*;
 import com.elega9t.elixir.mgr.PluginProcessor;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class KeymapManager implements PluginProcessor {
@@ -91,9 +90,9 @@ public class KeymapManager implements PluginProcessor {
         for (String name : stringKeyStrokeMap.keySet()) {
             final KeymapKeystrokeAction keymapKeystrokeAction = stringKeyStrokeMap.get(name);
             try {
-                final Constructor<UpdatableTextAction> constructor = keymapKeystrokeAction.actionClass.getConstructor(String.class, JTextComponent.class, KeyStroke.class);
-                final UpdatableTextAction updatableTextAction = constructor.newInstance(keymapKeystrokeAction.getId(), textComponent, keymapKeystrokeAction.getKeyStroke());
-                addKeymapListener("EDITOR_ACTIONS", keymapKeystrokeAction.getId(), updatableTextAction);
+                final Constructor<UpdatableAction> constructor = keymapKeystrokeAction.actionClass.getConstructor(String.class, JTextComponent.class, KeyStroke.class);
+                final UpdatableAction updatableAction = constructor.newInstance(keymapKeystrokeAction.getId(), textComponent, keymapKeystrokeAction.getKeyStroke());
+                addKeymapListener("EDITOR_ACTIONS", keymapKeystrokeAction.getId(), updatableAction);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -107,12 +106,12 @@ public class KeymapManager implements PluginProcessor {
     public class KeymapKeystrokeAction extends DefaultUniqueEntity {
 
         private KeyStroke keyStroke;
-        private final Class<UpdatableTextAction> actionClass;
+        private final Class<UpdatableAction> actionClass;
 
         public KeymapKeystrokeAction(KeymapAction keymapAction) throws ClassNotFoundException {
             super(keymapAction.getId(), keymapAction.getName());
             this.keyStroke = KeyStroke.getKeyStroke(keymapAction.getKeyboardShortcut());
-            actionClass = (Class<UpdatableTextAction>) Class.forName(keymapAction.getActionClass());
+            actionClass = (Class<UpdatableAction>) Class.forName(keymapAction.getActionClass());
         }
 
         public void setKeyStroke(KeyStroke keyStroke) {

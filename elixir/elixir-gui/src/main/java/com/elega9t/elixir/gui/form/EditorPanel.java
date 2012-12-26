@@ -24,7 +24,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private final javax.swing.JTable rowTable;
     
     private ExpandShorthandAction expandShorthandAction;
-    private UpdatableTextAction executeQueryAction;
+    private UpdatableAction executeQueryAction;
 
     private KeymapManager keymapManager = KeymapManager.getInstance();
 
@@ -246,7 +246,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
-    private javax.swing.JComboBox currentDatabaseComboBox;
+    javax.swing.JComboBox currentDatabaseComboBox;
     private javax.swing.JToolBar currentDatabaseToolBar;
     private javax.swing.JButton deleteButton;
     private javax.swing.JSplitPane editorSplitPane;
@@ -259,7 +259,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     private javax.swing.JScrollPane queryEditorScrollPane;
     private javax.swing.JTextPane queryEditorTextPane;
     private javax.swing.JToolBar queryPanelToolBar;
-    private javax.swing.JTable resultTable;
+    javax.swing.JTable resultTable;
     private javax.swing.JPanel resultTablePanel;
     private javax.swing.JScrollPane resultTableScrollPane;
     private javax.swing.JToolBar resultToolBar;

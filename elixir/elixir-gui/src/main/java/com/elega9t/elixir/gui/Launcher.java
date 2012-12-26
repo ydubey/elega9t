@@ -7,6 +7,7 @@ package com.elega9t.elixir.gui;
 
 import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.commons.swing.NodeIcon;
+import com.elega9t.elixir.gui.form.Context;
 import com.elega9t.elixir.gui.form.Main;
 import com.elega9t.elixir.gui.mgr.KeymapManager;
 import com.elega9t.elixir.mgr.DriverManager;
@@ -38,7 +39,7 @@ public class Launcher {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Main main = new Main();
+                Main main = Context.getInstance().getMain();
                 main.setVisible(true);
                 main.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 try {

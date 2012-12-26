@@ -104,6 +104,7 @@
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WideJComboBox()"/>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>
@@ -218,6 +219,7 @@
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable() {&#xa;&#xa;    public boolean getScrollableTracksViewportWidth() {&#xa;        return getPreferredSize().width &lt; getParent().getWidth();&#xa;    }&#xa;&#xa;}"/>
                             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="resultTable.putClientProperty(&quot;terminateEditOnFocusLost&quot;, Boolean.TRUE);&#xa;"/>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>

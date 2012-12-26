@@ -151,6 +151,7 @@
                 <Container class="javax.swing.JTabbedPane" name="editorTabbedPane">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextBackgroundSplitPane(&#xa;    new BackgroundText(ResourceStrings.main.getString(&quot;title&quot;), 100, 30).bold(), &#xa;    new BackgroundText(ResourceStrings.main.getString(&quot;website&quot;), 130, 20), &#xa;    new BackgroundText(&quot;No tabs are open&quot;, 220, 20).underlined().bold(),&#xa;    new BackgroundText(&quot;\u2023 Open Recent files with \u2318E&quot;, 255, 17),&#xa;    new BackgroundText(&quot;\u2023 Drag&apos;n&apos;Drop file(s) here from Finder&quot;, 280, 17).alighWithPrevious()&#xa;)"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                     <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="editorTabbedPane.setDropTarget(new DropTarget() {&#xa;    public synchronized void drop(DropTargetDropEvent evt) {&#xa;        editorTabbedPaneDropEvent(evt);&#xa;    }&#xa;});"/>
                   </AuxValues>
                   <Constraints>
