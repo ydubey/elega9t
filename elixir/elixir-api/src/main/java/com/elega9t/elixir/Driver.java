@@ -50,7 +50,7 @@ public class Driver extends DefaultLoadableEntity {
     }
 
     public Connection createConnection(String userName, String password) throws SQLException {
-        String _url = driverDefinition.getJdbcUrl();
+        String _url = driverDefinition.getDriverVendors().getDriverVendor().get(0).getJdbcUrl();
         _url = _url.replace("[host]", "localhost");
         _url = _url.replace("[port]", "3306");
         _url = _url.replace("[db]", "mysql");

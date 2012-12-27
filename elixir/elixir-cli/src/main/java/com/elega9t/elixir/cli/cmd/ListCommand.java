@@ -13,6 +13,7 @@ import com.elega9t.commons.shell.Shell;
 import com.elega9t.commons.shell.intrprtr.Command;
 import com.elega9t.commons.shell.intrprtr.Parameter;
 import com.elega9t.elixir.Driver;
+import com.elega9t.elixir.binding.plugin.DriverDefinition;
 import com.elega9t.elixir.mgr.DriverManager;
 
 import java.io.BufferedReader;
@@ -41,22 +42,22 @@ public class ListCommand extends DefaultEntity implements Command {
             case 1:
                 TableToStringRenderer renderer = new TableToStringRenderer(shell.getBorder());
                 out.println(renderer.render(new ObjectCollectionDataModel(DriverManager.getInstance().drivers(),
-                        new ColumnDataModel<Driver>("Database Name") {
+                        new ColumnDataModel<DriverDefinition>("Database Name") {
                             @Override
-                            public String value(Driver driver) {
-                                return driver.getName();
+                            public String value(DriverDefinition driver) {
+                                return driver.getDatabase();
                             }
                         },
-                        new ColumnDataModel<Driver>("Driver Available") {
+                        new ColumnDataModel<DriverDefinition>("Vendors") {
                             @Override
-                            public String value(Driver driver) {
-                                return driver.isLoaded() ? "YES" : "NO";
+                            public String value(DriverDefinition driver) {
+                                return "blah";
                             }
                         },
-                        new ColumnDataModel<Driver>("Website") {
+                        new ColumnDataModel<DriverDefinition>("Website") {
                             @Override
-                            public String value(Driver driver) {
-                                return driver.databaseWebsite();
+                            public String value(DriverDefinition driver) {
+                                return driver.getWebsite();
                             }
                         }
                 )));

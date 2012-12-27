@@ -54,7 +54,6 @@
         <xsd:sequence>
             <xsd:element name="database" type="xsd:string"/>
             <xsd:element name="website" type="xsd:anyURI"/>
-            <xsd:element name="jdbc-url" type="xsd:string"/>
             <xsd:element name="driver-vendors" type="plugin:driver-vendors"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -69,8 +68,21 @@
         <xsd:sequence>
             <xsd:element name="name" type="xsd:string"/>
             <xsd:element name="website" type="xsd:anyURI"/>
+            <xsd:element name="jdbc-url" type="xsd:string"/>
+            <xsd:element name="jdbc-url-defaults" type="plugin:jdbc-url-defaults" minOccurs="0"/>
             <xsd:element name="driver" type="plugin:database-driver"/>
         </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="jdbc-url-defaults">
+        <xsd:sequence>
+            <xsd:element name="default" type="plugin:jdbc-url-default"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="jdbc-url-default">
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
     </xsd:complexType>
 
     <xsd:complexType name="database-driver">

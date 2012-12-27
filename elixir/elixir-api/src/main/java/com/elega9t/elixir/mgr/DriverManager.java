@@ -16,15 +16,13 @@ import com.elega9t.elixir.binding.plugin.Plugin;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class DriverManager extends DefaultEntity implements PluginProcessor {
 
     private static DriverManager mgr = new DriverManager();
 
-    private Map<String, DriverDefinition> drivers = new HashMap<String, DriverDefinition>();
+    private Map<String, DriverDefinition> drivers = new TreeMap<String, DriverDefinition>();
 
     public DriverManager() {
         super("DriverManager");
