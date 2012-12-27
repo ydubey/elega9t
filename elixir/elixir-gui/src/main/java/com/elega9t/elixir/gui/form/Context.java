@@ -1,8 +1,10 @@
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.commons.swing.ResultSetTableModel;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Context {
 
@@ -23,9 +25,14 @@ public class Context {
         return ((ConnectionGuiEntity)editorPanel.currentDatabaseComboBox.getSelectedItem()).getEntity();
     }
 
-    public ResultSetTableModel getResultTableModel() {
+    public void setResultSet(ResultSet resultSet) throws SQLException {
         EditorPanel editorPanel = (EditorPanel) main.editorTabbedPane.getSelectedComponent();
-        return (ResultSetTableModel) editorPanel.resultTable.getModel();
+        editorPanel.setResultSet(resultSet);
+    }
+
+    public void setResultMessage(String message) {
+        EditorPanel editorPanel = (EditorPanel) main.editorTabbedPane.getSelectedComponent();
+        editorPanel.setMessage(message);
     }
 
 }

@@ -27,7 +27,9 @@ import com.elega9t.elixir.gui.mgr.IconsManager;
 import com.elega9t.elixir.mgr.evnt.EventManager;
 
 import javax.swing.*;
+import javax.swing.tree.ExpandVetoException;
 import javax.swing.tree.TreeNode;
+import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
@@ -278,6 +280,7 @@ public class Main extends javax.swing.JFrame {
             } catch (Exception e) {
                 errorOccured(e);
                 e.printStackTrace();
+                throw new ExpandVetoException(evt);
             }
         }
     }//GEN-LAST:event_connectionsTreeTreeWillExpand

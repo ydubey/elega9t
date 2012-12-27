@@ -5,7 +5,6 @@
 
 package com.elega9t.elixir.gui.form.actions;
 
-import com.elega9t.commons.swing.ResultSetTableModel;
 import com.elega9t.commons.swing.UpdatableAction;
 import com.elega9t.elixir.Connection;
 import com.elega9t.elixir.gui.form.Context;
@@ -32,13 +31,9 @@ public class ExecuteQueryAction extends UpdatableAction {
             final PreparedStatement preparedStatement = connection.prepareStatement(queryEditorTextPane.getText());
             final boolean isResultSet = preparedStatement.execute();
             if(isResultSet) {
-                final ResultSetTableModel model = Context.getInstance().getResultTableModel();
-                model.setResultSet(preparedStatement.getResultSet());
-                //setMessage(model.getRowCount() + " row(s) selected.");
-                //resultsTabbedPane.setSelectedComponent(resultTablePanel);
+                Context.getInstance().setResultSet(preparedStatement.getResultSet());
             } else {
-                //setMessage(preparedStatement.getUpdateCount() + " row(s) updated.");
-                //resultsTabbedPane.setSelectedComponent(messagesPanel);
+                Context.getInstance().setResultMessage(preparedStatement.getUpdateCount() + " row(s) updated.");
             }
         } catch (SQLException e) {
             Context.getInstance().getMain().errorOccured(e);

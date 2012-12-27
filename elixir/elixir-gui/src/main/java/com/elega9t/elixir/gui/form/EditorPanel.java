@@ -13,6 +13,7 @@ import com.elega9t.elixir.gui.mgr.KeymapManager;
 
 import javax.swing.text.BadLocationException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {
@@ -240,8 +241,9 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void setMessage(String message) {
+    public void setMessage(String message) {
         messagesTextArea.setText(message);
+        resultsTabbedPane.setSelectedComponent(messagesPanel);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -284,6 +286,13 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     @Override
     public void connectionStateChanged(ConnectionGuiEntity connection) {
         currentDatabaseComboBox.updateUI();
+    }
+
+    public void setResultSet(ResultSet resultSet) throws SQLException {
+        final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
+        model.setResultSet(resultSet);
+        setMessage(model.getRowCount() + " row(s) selected.");
+        resultsTabbedPane.setSelectedComponent(resultTablePanel);
     }
 
 }
