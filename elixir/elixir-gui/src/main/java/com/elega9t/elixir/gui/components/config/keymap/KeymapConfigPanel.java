@@ -8,10 +8,10 @@ import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.config.keymap.EditKeyStrokeDialog.KeyStrokeInfo;
 import com.elega9t.elixir.gui.mgr.IconsManager;
 import com.elega9t.elixir.gui.mgr.KeymapManager;
-
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.util.Map;
+import java.util.Set;
+import javax.swing.*;
 
 public class KeymapConfigPanel extends ConfigPanel {
 
@@ -23,6 +23,7 @@ public class KeymapConfigPanel extends ConfigPanel {
     public KeymapConfigPanel() {
         super("Keymap");
         initComponents();
+        initKeymap();
         initKeymapTree();
     }
 
@@ -38,6 +39,8 @@ public class KeymapConfigPanel extends ConfigPanel {
         keymapPopupMenu = new javax.swing.JPopupMenu();
         editKeyStrokeMenuItem = new javax.swing.JMenuItem();
         detailsPanel = new javax.swing.JPanel();
+        keymapsLabel = new javax.swing.JLabel();
+        keymapComboBox = new javax.swing.JComboBox();
         keymapPanel = new javax.swing.JPanel();
         keymapTreeScrollPane = new javax.swing.JScrollPane();
         keymapTree = new javax.swing.JTree(keymapTreeRootNode);
@@ -53,7 +56,19 @@ public class KeymapConfigPanel extends ConfigPanel {
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setLayout(new java.awt.BorderLayout());
 
-        detailsPanel.setLayout(new java.awt.BorderLayout());
+        detailsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
+
+        keymapsLabel.setText("Keymaps:");
+        detailsPanel.add(keymapsLabel);
+
+        keymapComboBox.setModel(new DefaultComboBoxModel());
+        keymapComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keymapComboBoxActionPerformed(evt);
+            }
+        });
+        detailsPanel.add(keymapComboBox);
+
         add(detailsPanel, java.awt.BorderLayout.PAGE_START);
 
         keymapPanel.setLayout(new java.awt.BorderLayout());
@@ -91,25 +106,41 @@ public class KeymapConfigPanel extends ConfigPanel {
             if(keyStrokeInfo != null) {
                 keymapEntity.update(keyStrokeInfo.getKeyStroke());
                 final KeymapManager keymapManager = KeymapManager.getInstance();
-                keymapManager.updateKeyStroke("Default", keymapEntity.getParent().toString(), keymapEntity.getId(), keymapEntity.getKeyStroke());
+                keymapManager.updateKeyStroke(keymapComboBox.getSelectedItem().toString(), keymapEntity.getParent().toString(), keymapEntity.getId(), keymapEntity.getKeyStroke());
             }
             keymapTree.updateUI();
         }
     }//GEN-LAST:event_editKeyStrokeMenuItemActionPerformed
 
+    private void keymapComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keymapComboBoxActionPerformed
+        initKeymapTree();
+    }//GEN-LAST:event_keymapComboBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel detailsPanel;
     private javax.swing.JMenuItem editKeyStrokeMenuItem;
+    private javax.swing.JComboBox keymapComboBox;
     private javax.swing.JPanel keymapPanel;
     private javax.swing.JPopupMenu keymapPopupMenu;
     private javax.swing.JTree keymapTree;
     private javax.swing.JScrollPane keymapTreeScrollPane;
+    private javax.swing.JLabel keymapsLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void initKeymap() {
+        final KeymapManager keymapManager = KeymapManager.getInstance();
+        final Set<String> keymaps = keymapManager.keymaps();
+        final DefaultComboBoxModel model = (DefaultComboBoxModel) keymapComboBox.getModel();
+        model.removeAllElements();
+        for (String keymap : keymaps) {
+            model.addElement(keymap);
+        }
+    }
 
     private void initKeymapTree() {
         final KeymapManager keymapManager = KeymapManager.getInstance();
         keymapTreeRootNode.clear();
-        final Map<String, Map<String, KeymapManager.KeymapKeystrokeAction>> keymaps = keymapManager.keymaps();
+        final Map<String, Map<String, KeymapManager.KeymapKeystrokeAction>> keymaps = keymapManager.keymaps(keymapComboBox.getSelectedItem().toString());
         for (String keymapGroup : keymaps.keySet()) {
             final DefaultGuiEntityTreeNode keymapGroupNode = new DefaultGuiEntityTreeNode(ResourceStrings.dialog.settings.getString("keymap." + keymapGroup), IconsManager.getInstance().config.keymap.getKeyStrokeGroupIcon());
             keymapTreeRootNode.addChild(keymapGroupNode);

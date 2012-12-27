@@ -99,8 +99,12 @@ public class KeymapManager implements PluginProcessor {
         }
     }
 
-    public Map<String, Map<String, KeymapKeystrokeAction>> keymaps() {
-        return keymaps.get("Default");
+    public Set<String> keymaps() {
+        return keymaps.keySet();
+    }
+
+    public Map<String, Map<String, KeymapKeystrokeAction>> keymaps(String name) {
+        return keymaps.get(name);
     }
 
     public class KeymapKeystrokeAction extends DefaultUniqueEntity {
