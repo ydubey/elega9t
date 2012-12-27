@@ -97,6 +97,10 @@ public class IconsManager {
                 return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/config/keyboard.png"));
             }
 
+            public ImageIcon getKeyStrokeGroupIcon() {
+                return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/config/folder.png"));
+            }
+
         }
 
     }

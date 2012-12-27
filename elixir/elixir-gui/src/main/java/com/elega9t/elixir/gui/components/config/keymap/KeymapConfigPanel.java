@@ -4,7 +4,9 @@ import com.elega9t.commons.entity.tree.impl.DefaultGuiEntityTreeNode;
 import com.elega9t.commons.swing.GuiEntityNodeTreeCellRenderer;
 import com.elega9t.commons.swing.config.ConfigPanel;
 import com.elega9t.commons.swing.util.SwingUtilities;
+import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.config.keymap.EditKeyStrokeDialog.KeyStrokeInfo;
+import com.elega9t.elixir.gui.mgr.IconsManager;
 import com.elega9t.elixir.gui.mgr.KeymapManager;
 
 import javax.swing.*;
@@ -109,7 +111,7 @@ public class KeymapConfigPanel extends ConfigPanel {
         keymapTreeRootNode.clear();
         final Map<String, Map<String, KeymapManager.KeymapKeystrokeAction>> keymaps = keymapManager.keymaps();
         for (String keymapGroup : keymaps.keySet()) {
-            final DefaultGuiEntityTreeNode keymapGroupNode = new DefaultGuiEntityTreeNode(keymapGroup);
+            final DefaultGuiEntityTreeNode keymapGroupNode = new DefaultGuiEntityTreeNode(ResourceStrings.dialog.settings.getString("keymap." + keymapGroup), IconsManager.getInstance().config.keymap.getKeyStrokeGroupIcon());
             keymapTreeRootNode.addChild(keymapGroupNode);
             final Map<String, KeymapManager.KeymapKeystrokeAction> keyStrokeMap = keymaps.get(keymapGroup);
             for (String name : keyStrokeMap.keySet()) {
