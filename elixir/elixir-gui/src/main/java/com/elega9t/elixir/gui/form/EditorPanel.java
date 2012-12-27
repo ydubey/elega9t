@@ -205,23 +205,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     }// </editor-fold>//GEN-END:initComponents
 
     private void executeQueryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executeQueryButtonActionPerformed
-        final ConnectionGuiEntity connectionGuiEntity = (ConnectionGuiEntity) currentDatabaseComboBox.getSelectedItem();
-        final Connection connection = connectionGuiEntity.getEntity();
-        try {
-            final PreparedStatement preparedStatement = connection.prepareStatement(queryEditorTextPane.getText());
-            final boolean isResultSet = preparedStatement.execute();
-            if(isResultSet) {
-                final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
-                model.setResultSet(preparedStatement.getResultSet());
-                setMessage(model.getRowCount() + " row(s) selected.");
-                resultsTabbedPane.setSelectedComponent(resultTablePanel);
-            } else {
-                setMessage(preparedStatement.getUpdateCount() + " row(s) updated.");
-                resultsTabbedPane.setSelectedComponent(messagesPanel);
-            }
-        } catch (SQLException e) {
-            main.errorOccured(e);
-        }
+        execute(queryEditorTextPane.getText());
     }//GEN-LAST:event_executeQueryButtonActionPerformed
 
     private void queryEditorTextPaneCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_queryEditorTextPaneCaretUpdate
@@ -288,11 +272,25 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
         currentDatabaseComboBox.updateUI();
     }
 
-    public void setResultSet(ResultSet resultSet) throws SQLException {
-        final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
-        model.setResultSet(resultSet);
-        setMessage(model.getRowCount() + " row(s) selected.");
-        resultsTabbedPane.setSelectedComponent(resultTablePanel);
+    public void execute(String query) {
+        final ConnectionGuiEntity connectionGuiEntity = (ConnectionGuiEntity) currentDatabaseComboBox.getSelectedItem();
+        final Connection connection = connectionGuiEntity.getEntity();
+        try {
+            final PreparedStatement preparedStatement = connection.prepareStatement(query);
+            final boolean isResultSet = preparedStatement.execute();
+            if(isResultSet) {
+                final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
+                model.setResultSet(preparedStatement.getResultSet());
+                rowTable.updateUI();
+                setMessage(model.getRowCount() + " row(s) selected.");
+                resultsTabbedPane.setSelectedComponent(resultTablePanel);
+            } else {
+                setMessage(preparedStatement.getUpdateCount() + " row(s) updated.");
+                resultsTabbedPane.setSelectedComponent(messagesPanel);
+            }
+        } catch (SQLException e) {
+            main.errorOccured(e);
+        }
     }
 
 }

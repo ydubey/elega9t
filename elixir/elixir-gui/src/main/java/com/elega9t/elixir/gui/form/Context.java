@@ -20,19 +20,9 @@ public class Context {
         return main;
     }
 
-    public Connection getConnection() {
+    public void execute(String query) {
         EditorPanel editorPanel = (EditorPanel) main.editorTabbedPane.getSelectedComponent();
-        return ((ConnectionGuiEntity)editorPanel.currentDatabaseComboBox.getSelectedItem()).getEntity();
-    }
-
-    public void setResultSet(ResultSet resultSet) throws SQLException {
-        EditorPanel editorPanel = (EditorPanel) main.editorTabbedPane.getSelectedComponent();
-        editorPanel.setResultSet(resultSet);
-    }
-
-    public void setResultMessage(String message) {
-        EditorPanel editorPanel = (EditorPanel) main.editorTabbedPane.getSelectedComponent();
-        editorPanel.setMessage(message);
+        editorPanel.execute(query);
     }
 
 }
