@@ -383,7 +383,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JToolBar connectionsTreeToolBar;
     private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
     private javax.swing.JMenu editMenu;
-    javax.swing.JTabbedPane editorTabbedPane;
+    private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JLabel eventLabel;
     private javax.swing.JButton expandAllButton;
     private javax.swing.JMenu fileMenu;

@@ -6,6 +6,7 @@ import com.elega9t.commons.swing.components.WideJComboBox;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.commons.swing.util.SwingUtilities;
 import com.elega9t.elixir.Connection;
+import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
 import com.elega9t.elixir.gui.mgr.IconsManager;
@@ -281,10 +282,10 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
             if(isResultSet) {
                 final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
                 model.setResultSet(preparedStatement.getResultSet());
-                setMessage(model.getRowCount() + " row(s) selected.");
+                setMessage(model.getRowCount() + " " + ResourceStrings.editor.getString("result.rows.selected"));
                 resultsTabbedPane.setSelectedComponent(resultTablePanel);
             } else {
-                setMessage(preparedStatement.getUpdateCount() + " row(s) updated.");
+                setMessage(preparedStatement.getUpdateCount() + " " + ResourceStrings.editor.getString("result.rows.updated"));
                 resultsTabbedPane.setSelectedComponent(messagesPanel);
             }
         } catch (SQLException e) {
