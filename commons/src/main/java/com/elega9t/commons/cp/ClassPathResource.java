@@ -7,6 +7,7 @@ package com.elega9t.commons.cp;
 
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public interface ClassPathResource {
@@ -14,5 +15,7 @@ public interface ClassPathResource {
     List<Class> listClasses(ClassFilter filter) throws IOException, ClassNotFoundException;
 
     List<Class> listClasses(FilenameFilter classNameFilter, ClassFilter filter) throws IOException, ClassNotFoundException;
+
+    List<InputStream> list(final FilenameFilter fileNameFilter) throws IOException;
 
 }

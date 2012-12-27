@@ -8,6 +8,7 @@ package com.elega9t.commons.cp;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public abstract class AbstractClassPathResource implements ClassPathResource {

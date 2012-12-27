@@ -119,7 +119,7 @@ public class ReflectionUtilities {
                 int separatorIndex = url.getFile().indexOf("!");
                 File file = new File(url.getFile().substring(5, separatorIndex));
                 final String root = url.getFile().substring(separatorIndex + 2);
-                List<String> entriesList = JarUtilities.list(file, new FilenameFilter() {
+                List<String> entriesList = JarUtilities.listEntries(file, new FilenameFilter() {
                     @Override
                     public boolean accept(File dir, String name) {
                         return name.startsWith(root) && name.substring(root.length() + 1).indexOf('/') == -1;

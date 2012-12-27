@@ -5,10 +5,7 @@
 
 package com.elega9t.commons.cp;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FilenameFilter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +25,24 @@ public class FolderClassPathResource extends AbstractClassPathResource {
                 return file.isDirectory() || (file.getName().endsWith(".class") && classNameFilter.accept(file.getParentFile(), file.getName()));
             }
         }, filter);
+    }
+
+    @Override
+    public List<InputStream> list(FilenameFilter filenameFilter) throws IOException {
+        return list(folder, filenameFilter);
+    }
+
+    private List<InputStream> list(File root, FilenameFilter filenameFilter) throws IOException {
+        List<InputStream> inputStreams = new ArrayList<InputStream>();
+        File[] files = root.listFiles();
+        for (File file : files) {
+            if(file.isDirectory()) {
+                inputStreams.addAll(list(file, filenameFilter));
+            } else if(filenameFilter.accept(file.getParentFile(), file.getName())) {
+                inputStreams.add(new FileInputStream(file));
+            }
+        }
+        return inputStreams;
     }
 
     private List<Class> listClasses(File parent, File folder, FileFilter classNameFilter, ClassFilter filter) throws ClassNotFoundException {
@@ -51,6 +66,11 @@ public class FolderClassPathResource extends AbstractClassPathResource {
             }
         }
         return classes;
+    }
+
+    @Override
+    public String toString() {
+        return folder.getAbsolutePath();
     }
 
 }

@@ -42,10 +42,10 @@ public class ClassPathUtilities {
     public static void main(String[] args) throws IOException {
         List<String> classPathElements = getClassPathElements();
         System.out.println(classPathElements);
-        System.out.println(JarUtilities.list(new File(classPathElements.get(0)), new FilenameFilter() {
+        System.out.println(JarUtilities.listEntries(new File(classPathElements.get(0)), new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                return name.endsWith("DatabaseDriver.class");
+                return name.endsWith("Filter.class");
             }
         }));
     }

@@ -10,6 +10,7 @@ import com.elega9t.commons.util.JarUtilities;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class FileClassPathResource extends AbstractClassPathResource {
 
     @Override
     public List<Class> listClasses(final FilenameFilter classNameFilter, ClassFilter filter) throws IOException, ClassNotFoundException {
-        List<String> classFiles = JarUtilities.list(file, new FilenameFilter() {
+        List<String> classFiles = JarUtilities.listEntries(file, new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.endsWith(".class") && classNameFilter.accept(dir, name);
@@ -39,6 +40,16 @@ public class FileClassPathResource extends AbstractClassPathResource {
             }
         }
         return classes;
+    }
+
+    @Override
+    public List<InputStream> list(final FilenameFilter fileNameFilter) throws IOException {
+        return JarUtilities.list(file, fileNameFilter);
+    }
+
+    @Override
+    public String toString() {
+        return file.getAbsolutePath();
     }
 
 }

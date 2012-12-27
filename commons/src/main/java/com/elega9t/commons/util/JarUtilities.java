@@ -52,17 +52,38 @@ public class JarUtilities {
         }
     }
 
-    public static List<String> list(File file, FilenameFilter filter) throws IOException {
-        JarFile jarFile = new JarFile(file);
-        List<String> list = new ArrayList<String>();
-        Enumeration<JarEntry> entries = jarFile.entries();
-        while(entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();
-            if(filter.accept(file, entry.getName())) {
-                list.add(entry.getName());
+    public static List<String> listEntries(File file, FilenameFilter filter) throws IOException {
+        try {
+            JarFile jarFile = new JarFile(file);
+            List<String> list = new ArrayList<String>();
+            Enumeration<JarEntry> entries = jarFile.entries();
+            while(entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if(filter.accept(file, entry.getName())) {
+                    list.add(entry.getName());
+                }
             }
+            return list;
+        } catch(IOException e) {
+            throw new IOException(file.getAbsolutePath(), e);
         }
-        return list;
+    }
+
+    public static List<InputStream> list(File file, FilenameFilter filter) throws IOException {
+        try {
+            JarFile jarFile = new JarFile(file);
+            List<InputStream> list = new ArrayList<InputStream>();
+            Enumeration<JarEntry> entries = jarFile.entries();
+            while(entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if(filter.accept(file, entry.getName())) {
+                    list.add(jarFile.getInputStream(entry));
+                }
+            }
+            return list;
+        } catch(IOException e) {
+            throw new IOException(file.getAbsolutePath(), e);
+        }
     }
 
 }
