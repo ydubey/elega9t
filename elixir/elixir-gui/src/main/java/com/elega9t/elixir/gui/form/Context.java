@@ -1,11 +1,5 @@
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.elixir.Connection;
-import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class Context {
 
     private static final Context INSTANCE = new Context();
@@ -21,7 +15,7 @@ public class Context {
     }
 
     public void execute(String query) {
-        EditorPanel editorPanel = (EditorPanel) main.editorTabbedPane.getSelectedComponent();
+        EditorPanel editorPanel = main.currentEditorPanel();
         editorPanel.execute(query);
     }
 

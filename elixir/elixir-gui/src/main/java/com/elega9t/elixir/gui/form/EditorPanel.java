@@ -22,7 +22,7 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     // http://tips4java.wordpress.com/2008/11/18/row-number-table/
 
     private final Main main;
-    private final javax.swing.JTable rowTable;
+    //private final javax.swing.JTable rowTable;
     
     private ExpandShorthandAction expandShorthandAction;
     private UpdatableAction executeQueryAction;
@@ -38,10 +38,10 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
             ((javax.swing.DefaultComboBoxModel)currentDatabaseComboBox.getModel()).addElement(connection);
         }
         this.main = main;
-        this.rowTable = new CheckBoxTableRowHeader(resultTable);
-        resultTableScrollPane.setRowHeaderView(rowTable);
-        resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
-        rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+        //this.rowTable = new CheckBoxTableRowHeader(resultTable);
+        //resultTableScrollPane.setRowHeaderView(rowTable);
+        //resultTableScrollPane.setCorner(javax.swing.JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
+        //rowTable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 
         keymapManager.installEditorActions(queryEditorTextPane);
     }
@@ -217,8 +217,8 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
     }//GEN-LAST:event_queryEditorTextPaneCaretUpdate
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        final CheckBoxTableRowHeaderModel rowTableModel = (CheckBoxTableRowHeaderModel) rowTable.getModel();
-        System.out.println(rowTableModel.getSelectedRows());
+        //final CheckBoxTableRowHeaderModel rowTableModel = (CheckBoxTableRowHeaderModel) rowTable.getModel();
+        //System.out.println(rowTableModel.getSelectedRows());
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -281,7 +281,6 @@ public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectio
             if(isResultSet) {
                 final ResultSetTableModel model = (ResultSetTableModel) resultTable.getModel();
                 model.setResultSet(preparedStatement.getResultSet());
-                rowTable.updateUI();
                 setMessage(model.getRowCount() + " row(s) selected.");
                 resultsTabbedPane.setSelectedComponent(resultTablePanel);
             } else {

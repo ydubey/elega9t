@@ -22,6 +22,7 @@ import com.elega9t.elixir.gui.config.ConnectionDetails;
 import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.entity.DatabaseGuiEntity;
+import com.elega9t.elixir.gui.entity.TableGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
 import com.elega9t.elixir.gui.mgr.IconsManager;
 import com.elega9t.elixir.mgr.evnt.EventManager;
@@ -173,10 +174,15 @@ public class Main extends javax.swing.JFrame {
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
         connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
+            }
             public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 connectionsTreeTreeWillExpand(evt);
             }
-            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
+        });
+        connectionsTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                connectionsTreeValueChanged(evt);
             }
         });
         connectionsTreeScrollPane.setViewportView(connectionsTree);
@@ -297,6 +303,18 @@ public class Main extends javax.swing.JFrame {
                 new KeymapConfigPanel()
         ).setVisible(true);
     }//GEN-LAST:event_settingsMenuItemActionPerformed
+
+    private void connectionsTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_connectionsTreeValueChanged
+        final Object node = connectionsTree.getLastSelectedPathComponent();
+        if(node instanceof TableGuiEntity) {
+            final String name = ((TableGuiEntity) node).getName();
+            currentEditorPanel().execute("select * from " + name);
+        }
+    }//GEN-LAST:event_connectionsTreeValueChanged
+
+    public EditorPanel currentEditorPanel() {
+        return (EditorPanel) editorTabbedPane.getSelectedComponent();
+    }
 
     private void editorTabbedPaneDropEvent(DropTargetDropEvent evt) {
         try {
