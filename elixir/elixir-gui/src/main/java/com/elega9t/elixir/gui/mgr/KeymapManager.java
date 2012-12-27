@@ -42,7 +42,9 @@ public class KeymapManager implements PluginProcessor {
 
     @Override
     public void process(Plugin plugin) {
-        addAll(plugin.getKeymaps().getKeymap());
+        if(plugin.getKeymaps() != null) {
+            addAll(plugin.getKeymaps().getKeymap());
+        }
     }
 
     private void addAll(List<Keymap> keymaps) {

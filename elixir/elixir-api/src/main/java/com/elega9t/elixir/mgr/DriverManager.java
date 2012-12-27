@@ -31,8 +31,10 @@ public class DriverManager extends DefaultEntity implements PluginProcessor {
     }
 
     public void process(Plugin plugin) {
-        for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDriverDefinition()) {
-            drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
+        if(plugin.getDriverDefinitions() != null) {
+            for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDriverDefinition()) {
+                drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
+            }
         }
     }
 
