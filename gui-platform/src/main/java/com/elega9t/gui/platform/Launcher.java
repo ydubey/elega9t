@@ -5,10 +5,7 @@
 
 package com.elega9t.gui.platform;
 
-import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.gui.platform.mgr.PluginManager;
-
-import javax.swing.*;
+import com.elega9t.gui.platform.splsh.SplashScreen;
 
 public class Launcher {
 
@@ -16,32 +13,11 @@ public class Launcher {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        final Context context = Context.getInstance();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
+        final Context context = Context.getInstance();
+        SplashScreen splashScreen = new SplashScreen(new javax.swing.ImageIcon(Launcher.class.getResource("/com/elega9t/platform/images/splashscr.png")).getImage(), 230);
+        splashScreen.setVisible(true);
         //System.setProperty("com.apple.mrj.application.apple.menu.about.name", context.getApplicationName());
-        final PluginManager pluginManager = PluginManager.getInstance();
-        pluginManager.addPluginProcessor(context.getMain());
-        try {
-            pluginManager.load();
-        } catch (EntityLoadException e) {
-            e.printStackTrace();
-            //EventManager.getInstance().error(e);
-        }
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Main main = context.getMain();
-                main.setVisible(true);
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    SwingUtilities.updateComponentTreeUI(main);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
 }

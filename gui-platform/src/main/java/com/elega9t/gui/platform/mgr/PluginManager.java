@@ -16,7 +16,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,7 @@ public class PluginManager extends DefaultLoadableEntity {
     private static PluginManager INSTANCE = new PluginManager();
 
     private List<PluginProcessor> pluginProcessors = new ArrayList<PluginProcessor>();
+    private List<PluginLoadEventListener> pluginLoadListeners = new ArrayList<PluginLoadEventListener>();
 
     protected PluginManager() {
         super("Plugin Manager");
@@ -36,9 +36,10 @@ public class PluginManager extends DefaultLoadableEntity {
     }
 
     @Override
-    public void load() throws EntityLoadException {
+    public void load() {
         final List<ClassPathResource> classPathResources = ClassPathUtilities.getClassPathResources();
-        for (ClassPathResource classPathResource : classPathResources) {
+        for (int index = 0; index < classPathResources.size(); index++) {
+            ClassPathResource classPathResource = classPathResources.get(index);
             try {
                 final List<InputStream> inputStreams = classPathResource.list(new FilenameFilter() {
                     @Override
@@ -47,17 +48,26 @@ public class PluginManager extends DefaultLoadableEntity {
                     }
                 });
                 for (InputStream inputStream : inputStreams) {
-                    JAXBContext jaxbContext = JAXBContext.newInstance(Plugin.class.getPackage().getName());
-                    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-                    final Plugin plugin = (Plugin) unmarshaller.unmarshal(inputStream);
-                    processPlugin(plugin);
+                    load(inputStream);
                 }
-            } catch (JAXBException e) {
-                throw new EntityLoadException(e);
-            } catch(IOException e) {
-                throw new EntityLoadException(e);
+                firePluginLoadEvent(classPathResources.size(), index + 1);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
+    }
+
+    private void firePluginLoadEvent(int size, int index) {
+        for (PluginLoadEventListener pluginLoadListener : pluginLoadListeners) {
+            pluginLoadListener.pluginLoading(size, index);
+        }
+    }
+
+    private void load(InputStream inputStream) throws JAXBException, EntityLoadException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Plugin.class.getPackage().getName());
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        final Plugin plugin = (Plugin) unmarshaller.unmarshal(inputStream);
+        processPlugin(plugin);
     }
 
     protected void processPlugin(Plugin plugin) throws EntityLoadException {
@@ -68,6 +78,10 @@ public class PluginManager extends DefaultLoadableEntity {
 
     public void addPluginProcessor(PluginProcessor pluginProcessor) {
         pluginProcessors.add(pluginProcessor);
+    }
+
+    public void addPluginLoadEventListener(PluginLoadEventListener pluginLoadEventListener) {
+        pluginLoadListeners.add(pluginLoadEventListener);
     }
 
 }
