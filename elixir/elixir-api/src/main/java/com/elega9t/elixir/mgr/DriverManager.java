@@ -6,17 +6,13 @@
 package com.elega9t.elixir.mgr;
 
 import com.elega9t.commons.entity.impl.DefaultEntity;
-import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
-import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.elixir.Driver;
 import com.elega9t.elixir.binding.plugin.DriverDefinition;
-import com.elega9t.elixir.binding.plugin.DriverDefinitions;
 import com.elega9t.elixir.binding.plugin.Plugin;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.util.*;
+import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class DriverManager extends DefaultEntity implements PluginProcessor {
 
@@ -30,7 +26,7 @@ public class DriverManager extends DefaultEntity implements PluginProcessor {
 
     public void process(Plugin plugin) {
         if(plugin.getDriverDefinitions() != null) {
-            for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDriverDefinition()) {
+            for (DriverDefinition driverDefinition : plugin.getDriverDefinitions().getDefinition()) {
                 drivers.put(driverDefinition.getDatabase().toLowerCase(), driverDefinition);
             }
         }

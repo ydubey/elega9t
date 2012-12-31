@@ -6,11 +6,11 @@
 <plugin:plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:plugin="http://www.elega9t.com/elixir/plugin">
     <plugin:driver-definitions>
-        <plugin:driver-definition>
+        <plugin:definition>
             <plugin:database>Derby</plugin:database>
             <plugin:website>http://db.apache.org/derby</plugin:website>
-            <plugin:driver-vendors>
-                <plugin:driver-vendor>
+            <plugin:vendors>
+                <plugin:vendor>
                     <plugin:name>Derby</plugin:name>
                     <plugin:website>http://db.apache.org/derby</plugin:website>
                     <plugin:jdbc-url>jdbc:derby:net://[host]:[port]/[db]</plugin:jdbc-url>
@@ -20,42 +20,42 @@
                     <plugin:driver>
                         <plugin:class>org.apache.derby.jdbc.ClientDriver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-            </plugin:driver-vendors>
-        </plugin:driver-definition>
-        <plugin:driver-definition>
+                </plugin:vendor>
+            </plugin:vendors>
+        </plugin:definition>
+        <plugin:definition>
             <plugin:database>HSQLDB</plugin:database>
             <plugin:website>http://hsqldb.sourceforge.net</plugin:website>
-            <plugin:driver-vendors>
-                <plugin:driver-vendor>
+            <plugin:vendors>
+                <plugin:vendor>
                     <plugin:name>HSQLDB</plugin:name>
                     <plugin:website>http://hsqldb.sourceforge.net</plugin:website>
                     <plugin:jdbc-url>jdbc:hsqldb:hsql://[host]:[port]/[service]</plugin:jdbc-url>
                     <plugin:driver>
                         <plugin:class>org.hsqldb.jdbcDriver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-            </plugin:driver-vendors>
-        </plugin:driver-definition>
-        <plugin:driver-definition>
+                </plugin:vendor>
+            </plugin:vendors>
+        </plugin:definition>
+        <plugin:definition>
             <plugin:database>Informix</plugin:database>
             <plugin:website>http://www.ibm.com</plugin:website>
-            <plugin:driver-vendors>
-                <plugin:driver-vendor>
+            <plugin:vendors>
+                <plugin:vendor>
                     <plugin:name>Informix</plugin:name>
                     <plugin:website>http://www.ibm.com</plugin:website>
                     <plugin:jdbc-url>jdbc:informix-sqli://[host]:[port]/[database]:informixserver=[dbserver]</plugin:jdbc-url>
                     <plugin:driver>
                         <plugin:class>com.informix.jdbc.IfxDriver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-            </plugin:driver-vendors>
-        </plugin:driver-definition>
-        <plugin:driver-definition>
+                </plugin:vendor>
+            </plugin:vendors>
+        </plugin:definition>
+        <plugin:definition>
             <plugin:database>MySQL</plugin:database>
             <plugin:website>http://www.mysql.com</plugin:website>
-            <plugin:driver-vendors>
-                <plugin:driver-vendor>
+            <plugin:vendors>
+                <plugin:vendor>
                     <plugin:name>MySQL</plugin:name>
                     <plugin:website>http://www.mysql.com</plugin:website>
                     <plugin:jdbc-url>jdbc:mysql://[host]:[port]/[db]</plugin:jdbc-url>
@@ -65,8 +65,8 @@
                     <plugin:driver>
                         <plugin:class>com.mysql.jdbc.Driver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-                <plugin:driver-vendor>
+                </plugin:vendor>
+                <plugin:vendor>
                     <plugin:name>MM-MySQL</plugin:name>
                     <plugin:website>http://www.mysql.com</plugin:website>
                     <plugin:jdbc-url>jdbc:mysql://[host]:[port]/[db]</plugin:jdbc-url>
@@ -76,14 +76,14 @@
                     <plugin:driver>
                         <plugin:class>org.gjt.mm.mysql.Driver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-            </plugin:driver-vendors>
-        </plugin:driver-definition>
-        <plugin:driver-definition>
+                </plugin:vendor>
+            </plugin:vendors>
+        </plugin:definition>
+        <plugin:definition>
             <plugin:database>Oracle</plugin:database>
             <plugin:website>http://www.oracle.com</plugin:website>
-            <plugin:driver-vendors>
-                <plugin:driver-vendor>
+            <plugin:vendors>
+                <plugin:vendor>
                     <plugin:name>Oracle</plugin:name>
                     <plugin:website>http://www.oracle.com</plugin:website>
                     <plugin:jdbc-url>jdbc:oracle:thin://[host]:[port]/[service]</plugin:jdbc-url>
@@ -93,14 +93,14 @@
                     <plugin:driver>
                         <plugin:class>oracle.jdbc.OracleDriver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-            </plugin:driver-vendors>
-        </plugin:driver-definition>
-        <plugin:driver-definition>
+                </plugin:vendor>
+            </plugin:vendors>
+        </plugin:definition>
+        <plugin:definition>
             <plugin:database>PostgreSQL</plugin:database>
             <plugin:website>http://www.postgresql.org</plugin:website>
-            <plugin:driver-vendors>
-                <plugin:driver-vendor>
+            <plugin:vendors>
+                <plugin:vendor>
                     <plugin:name>Oracle</plugin:name>
                     <plugin:website>http://www.oracle.com</plugin:website>
                     <plugin:jdbc-url>jdbc:postgresql://[host]:[port]/[db]</plugin:jdbc-url>
@@ -110,8 +110,8 @@
                     <plugin:driver>
                         <plugin:class>org.postgresql.Driver</plugin:class>
                     </plugin:driver>
-                </plugin:driver-vendor>
-            </plugin:driver-vendors>
-        </plugin:driver-definition>
+                </plugin:vendor>
+            </plugin:vendors>
+        </plugin:definition>
     </plugin:driver-definitions>
 </plugin:plugin>

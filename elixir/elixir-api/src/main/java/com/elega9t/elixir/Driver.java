@@ -29,7 +29,7 @@ public class Driver extends DefaultLoadableEntity {
     @Override
     public void load() throws EntityLoadException {
         if(!loaded) {
-            for (DriverVendor driverVendor : driverDefinition.getDriverVendors().getDriverVendor()) {
+            for (DriverVendor driverVendor : driverDefinition.getVendors().getVendor()) {
                 try {
                     for (String clazz : driverVendor.getDriver().getClazz()) {
                         Class.forName(clazz);
@@ -50,7 +50,7 @@ public class Driver extends DefaultLoadableEntity {
     }
 
     public Connection createConnection(String userName, String password) throws SQLException {
-        String _url = driverDefinition.getDriverVendors().getDriverVendor().get(0).getJdbcUrl();
+        String _url = driverDefinition.getVendors().getVendor().get(0).getJdbcUrl();
         _url = _url.replace("[host]", "localhost");
         _url = _url.replace("[port]", "3306");
         _url = _url.replace("[db]", "mysql");

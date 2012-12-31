@@ -16,7 +16,7 @@
 
     <xsd:complexType name="keymap">
         <xsd:sequence>
-            <xsd:element name="keymap-group" type="plugin:keymap-group" maxOccurs="unbounded"/>
+            <xsd:element name="group" type="plugin:keymap-group" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="name" type="xsd:string"/>
     </xsd:complexType>
@@ -29,7 +29,7 @@
 
     <xsd:complexType name="keymap-group">
         <xsd:sequence>
-            <xsd:element name="keymap-action" type="plugin:keymap-action" maxOccurs="unbounded"/>
+            <xsd:element name="action" type="plugin:keymap-action" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="name" type="plugin:keymap-group-name"/>
     </xsd:complexType>
@@ -46,7 +46,7 @@
 
     <xsd:complexType name="driver-definitions">
         <xsd:sequence>
-            <xsd:element name="driver-definition" type="plugin:driver-definition" maxOccurs="unbounded"/>
+            <xsd:element name="definition" type="plugin:driver-definition" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -54,13 +54,13 @@
         <xsd:sequence>
             <xsd:element name="database" type="xsd:string"/>
             <xsd:element name="website" type="xsd:anyURI"/>
-            <xsd:element name="driver-vendors" type="plugin:driver-vendors"/>
+            <xsd:element name="vendors" type="plugin:driver-vendors"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="driver-vendors">
         <xsd:sequence>
-            <xsd:element name="driver-vendor" type="plugin:driver-vendor" maxOccurs="unbounded"/>
+            <xsd:element name="vendor" type="plugin:driver-vendor" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 

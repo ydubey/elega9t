@@ -59,13 +59,13 @@ public class KeymapManager implements PluginProcessor {
             storedKeymap = new TreeMap<String, Map<String, KeymapKeystrokeAction>>();
             this.keymaps.put(keymap.getName(), storedKeymap);
         }
-        for (KeymapGroup keymapGroup : keymap.getKeymapGroup()) {
+        for (KeymapGroup keymapGroup : keymap.getGroup()) {
             Map<String, KeymapKeystrokeAction> storedKeyStrokes = storedKeymap.get(keymapGroup.getName().value());
             if(storedKeyStrokes == null) {
                 storedKeyStrokes = new TreeMap<String, KeymapKeystrokeAction>();
                 storedKeymap.put(keymapGroup.getName().value(), storedKeyStrokes);
             }
-            for (KeymapAction keymapAction : keymapGroup.getKeymapAction()) {
+            for (KeymapAction keymapAction : keymapGroup.getAction()) {
                 try {
                     storedKeyStrokes.put(keymapAction.getId(), new KeymapKeystrokeAction(keymapAction));
                 } catch (ClassNotFoundException e) {
