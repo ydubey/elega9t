@@ -30,6 +30,7 @@ public class Launcher {
         final PluginManager pluginManager = PluginManager.getInstance();
         pluginManager.addPluginProcessor(DriverManager.getInstance());
         pluginManager.addPluginProcessor(KeymapManager.getInstance());
+        pluginManager.addPluginProcessor(Context.getInstance().getMain());
         try {
             pluginManager.load();
         } catch (EntityLoadException e) {

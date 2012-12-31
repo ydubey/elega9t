@@ -91,11 +91,43 @@
         </xsd:sequence>
     </xsd:complexType>
 
+    <xsd:complexType name="actions">
+        <xsd:sequence>
+            <xsd:element name="groups" type="plugin:action-group" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="action-group">
+        <xsd:sequence>
+            <xsd:element name="add-to-group" type="plugin:add-to-group"/>
+            <xsd:element name="action" type="plugin:action" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="description" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="add-to-group">
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="group-id" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="action">
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="class" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="description" type="xsd:string"/>
+    </xsd:complexType>
+
     <xsd:element name="plugin">
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element name="keymaps" type="plugin:keymaps" minOccurs="0"/>
                 <xsd:element name="driver-definitions" type="plugin:driver-definitions" minOccurs="0"/>
+                <xsd:element name="actions" type="plugin:actions" minOccurs="0"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

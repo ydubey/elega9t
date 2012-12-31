@@ -14,17 +14,20 @@ import com.elega9t.commons.swing.LongTask;
 import com.elega9t.commons.swing.config.ConfigDialog;
 import com.elega9t.commons.swing.util.SwingUtilities;
 import com.elega9t.commons.util.Predicate;
+import com.elega9t.elixir.binding.plugin.Action;
+import com.elega9t.elixir.binding.plugin.ActionGroup;
+import com.elega9t.elixir.binding.plugin.Plugin;
 import com.elega9t.elixir.gui.ResourceStrings;
 import com.elega9t.elixir.gui.components.TextBackgroundSplitPane;
 import com.elega9t.elixir.gui.components.config.keymap.KeymapConfigPanel;
 import com.elega9t.elixir.gui.components.config.ui.lnf.LookAndFeelConfigPanel;
 import com.elega9t.elixir.gui.config.ConnectionDetails;
-import com.elega9t.elixir.gui.dialog.ConnectToDatabaseDialog;
 import com.elega9t.elixir.gui.entity.ConnectionGuiEntity;
 import com.elega9t.elixir.gui.entity.DatabaseGuiEntity;
 import com.elega9t.elixir.gui.entity.TableGuiEntity;
 import com.elega9t.elixir.gui.evnt.DatabaseConnectionEventListener;
 import com.elega9t.elixir.gui.mgr.IconsManager;
+import com.elega9t.elixir.mgr.PluginProcessor;
 import com.elega9t.elixir.mgr.evnt.EventManager;
 
 import javax.swing.*;
@@ -40,7 +43,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame implements PluginProcessor {
 
     private DefaultGuiEntityTreeNode savedConnections = new DefaultGuiEntityTreeNode(ResourceStrings.main.getString("saved.connections"), new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/saved_database_connections.png")), ResourceStrings.main.getString("saved.connections.tooltip"));
     private List<DatabaseConnectionEventListener> databaseConnectionEventListeners = new ArrayList<DatabaseConnectionEventListener>();
@@ -64,7 +67,6 @@ public class Main extends javax.swing.JFrame {
 
         topPanel = new javax.swing.JPanel();
         toolBar = new javax.swing.JToolBar();
-        connectToDatabaseToolBarButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         bodySplitPane = new javax.swing.JSplitPane();
         rightBasePanel = new javax.swing.JPanel();
@@ -89,10 +91,6 @@ public class Main extends javax.swing.JFrame {
         statusLabel = new javax.swing.JLabel();
         eventLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        connectToDatabaseFileMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        settingsMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(ResourceStrings.main.getString("title"));
@@ -102,18 +100,6 @@ public class Main extends javax.swing.JFrame {
         topPanel.setLayout(new java.awt.BorderLayout());
 
         toolBar.setRollover(true);
-
-        connectToDatabaseToolBarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/connect_to_database.png"))); // NOI18N
-        connectToDatabaseToolBarButton.setFocusable(false);
-        connectToDatabaseToolBarButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        connectToDatabaseToolBarButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        connectToDatabaseToolBarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                connectToDatabaseToolBarButtonActionPerformed(evt);
-            }
-        });
-        toolBar.add(connectToDatabaseToolBarButton);
-
         topPanel.add(toolBar, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(topPanel, java.awt.BorderLayout.PAGE_START);
@@ -217,42 +203,8 @@ public class Main extends javax.swing.JFrame {
         bottomPanel.add(eventLabel, java.awt.BorderLayout.LINE_END);
 
         getContentPane().add(bottomPanel, java.awt.BorderLayout.PAGE_END);
-
-        fileMenu.setText(ResourceStrings.menu.getString("main.file.menu"));
-
-        connectToDatabaseFileMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/elixir/gui/icons/connect_to_database.png"))); // NOI18N
-        connectToDatabaseFileMenuItem.setText(ResourceStrings.menu.getString("file.menu.connectToDatabase"));
-        connectToDatabaseFileMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                connectToDatabaseFileMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(connectToDatabaseFileMenuItem);
-
-        menuBar.add(fileMenu);
-
-        editMenu.setText(ResourceStrings.menu.getString("main.edit.menu"));
-
-        settingsMenuItem.setText(ResourceStrings.menu.getString("edit.menu.settings"));
-        settingsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingsMenuItemActionPerformed(evt);
-            }
-        });
-        editMenu.add(settingsMenuItem);
-
-        menuBar.add(editMenu);
-
         setJMenuBar(menuBar);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void connectToDatabaseToolBarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectToDatabaseToolBarButtonActionPerformed
-        connectToDatabaseFileMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_connectToDatabaseToolBarButtonActionPerformed
-
-    private void connectToDatabaseFileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectToDatabaseFileMenuItemActionPerformed
-        new ConnectToDatabaseDialog(this, true).openDialog();
-    }//GEN-LAST:event_connectToDatabaseFileMenuItemActionPerformed
 
     private void expandAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expandAllButtonActionPerformed
         SwingUtilities.expandAll(connectionsTree, savedConnections, new Predicate<TreeNode>() {
@@ -308,7 +260,7 @@ public class Main extends javax.swing.JFrame {
         //btnClose.addActionListener(myCloseActionHandler);
     }
 
-    private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
+    private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
         new ConfigDialog(
                 this,
                 true,
@@ -316,10 +268,10 @@ public class Main extends javax.swing.JFrame {
                 ResourceStrings.buttons.getString("apply"),
                 ResourceStrings.buttons.getString("cancel"),
                 ResourceStrings.buttons.getString("help"),
-                new LookAndFeelConfigPanel(),
-                new KeymapConfigPanel()
+                new KeymapConfigPanel(),
+                new LookAndFeelConfigPanel()
         ).setVisible(true);
-    }//GEN-LAST:event_settingsMenuItemActionPerformed
+    }
 
     private void connectionsTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_connectionsTreeValueChanged
         final Object node = connectionsTree.getLastSelectedPathComponent();
@@ -391,26 +343,47 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSplitPane bodySplitPane;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton collapseAllButton;
-    private javax.swing.JMenuItem connectToDatabaseFileMenuItem;
-    private javax.swing.JButton connectToDatabaseToolBarButton;
     private javax.swing.JPanel connectionTreeToolBarPanel;
     private javax.swing.JTree connectionsTree;
     private javax.swing.JPanel connectionsTreeBasePanel;
     private javax.swing.JScrollPane connectionsTreeScrollPane;
     private javax.swing.JToolBar connectionsTreeToolBar;
     private javax.swing.JToolBar.Separator connectionsTreeToolBarSeparator1;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JLabel eventLabel;
     private javax.swing.JButton expandAllButton;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JPanel leftBasePanel;
     private javax.swing.JTabbedPane leftPanelTabbedPane;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel rightBasePanel;
-    private javax.swing.JMenuItem settingsMenuItem;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void process(Plugin plugin) {
+        if(plugin.getActions() != null) {
+            for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
+                JMenu menuGroup = new JMenu(actionGroup.getName());
+                menuGroup.setToolTipText(actionGroup.getDescription());
+                if(actionGroup.getAddToGroup().getGroupId().equals("MainMenu")) {
+                    menuBar.add(menuGroup);
+                }
+                for (Action action : actionGroup.getAction()) {
+                    try {
+                        javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
+                        JMenuItem actionItem = new JMenuItem();
+                        actionItem.setAction(actionInstance);
+                        actionItem.setText(action.getName());
+                        actionItem.setToolTipText(action.getDescription());
+                        menuGroup.add(actionItem);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
 }

@@ -14,4 +14,12 @@
             </plugin:group>
         </plugin:keymap>
     </plugin:keymaps>
+
+    <plugin:actions>
+        <plugin:groups id="MainMenu.FileMenu" name="File" description="File menu">
+            <plugin:add-to-group group-id="MainMenu"/>
+            <plugin:action id="ConnectToDatabase" name="Connect To Database" description="Connect To Database" class="com.elega9t.elixir.gui.actions.menu.file.ConnectToDatabaseAction"/>
+        </plugin:groups>
+    </plugin:actions>
+
 </plugin:plugin>
