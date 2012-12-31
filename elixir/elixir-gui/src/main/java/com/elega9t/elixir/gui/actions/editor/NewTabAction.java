@@ -12,15 +12,15 @@ import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.event.ActionEvent;
 
-public class ExecuteQueryAction extends UpdatableAction {
+public class NewTabAction extends UpdatableAction {
 
-    public ExecuteQueryAction(String name, JTextComponent textComponent, KeyStroke keyStroke) {
+    public NewTabAction(String name, JTextComponent textComponent, KeyStroke keyStroke) {
         super(name, textComponent, keyStroke);
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        Context.getInstance().execute(((JTextComponent)component).getText());
+        Context.getInstance().getMain().addTab("Untitled");
     }
 
 }

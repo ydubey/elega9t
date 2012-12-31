@@ -30,11 +30,12 @@ import com.elega9t.elixir.mgr.evnt.EventManager;
 import javax.swing.*;
 import javax.swing.tree.ExpandVetoException;
 import javax.swing.tree.TreeNode;
-import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -174,10 +175,10 @@ public class Main extends javax.swing.JFrame {
         connectionsTree.setCellRenderer(new GuiEntityNodeTreeCellRenderer());
         connectionsTree.setRowHeight(20);
         connectionsTree.addTreeWillExpandListener(new javax.swing.event.TreeWillExpandListener() {
-            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
-            }
             public void treeWillExpand(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
                 connectionsTreeTreeWillExpand(evt);
+            }
+            public void treeWillCollapse(javax.swing.event.TreeExpansionEvent evt)throws javax.swing.tree.ExpandVetoException {
             }
         });
         connectionsTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -276,9 +277,7 @@ public class Main extends javax.swing.JFrame {
                         DefaultLazyLoadEntityTreeNode lazyLoadEntityTreeNode = (DefaultLazyLoadEntityTreeNode) component;
                         lazyLoadEntityTreeNode.load();
                         if(component instanceof ConnectionGuiEntity) {
-                            final EditorPanel editorPanel = new EditorPanel(Main.this, getConnectionNodes());
-                            editorTabbedPane.addTab(lazyLoadEntityTreeNode.getName(), ((ConnectionGuiEntity)lazyLoadEntityTreeNode).getIcon(), editorPanel);
-                            addDatabaseConnectionEventListener(editorPanel);
+                            addTab(lazyLoadEntityTreeNode.getName());
                             fireDatabaseConnectionStateChanged((ConnectionGuiEntity) component);
                         }
                     }
@@ -290,6 +289,24 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_connectionsTreeTreeWillExpand
+
+    public void addTab(String name) {
+        final EditorPanel editorPanel = new EditorPanel(this, getConnectionNodes());
+        editorTabbedPane.addTab(name, IconsManager.getInstance().sqlResultTable.getEditIcon(), editorPanel);
+        addDatabaseConnectionEventListener(editorPanel);
+        int index = editorTabbedPane.indexOfComponent(editorPanel);
+        CloseTabPanel closeTabPanel = new CloseTabPanel();
+        closeTabPanel.setTitle(name);
+        closeTabPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                editorTabbedPane.remove(editorPanel);
+            }
+        });
+        editorTabbedPane.setTabComponentAt(index, closeTabPanel);
+
+        //btnClose.addActionListener(myCloseActionHandler);
+    }
 
     private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
         new ConfigDialog(

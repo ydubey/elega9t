@@ -37,6 +37,10 @@ public class IconsManager {
             return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/system/bubble.png"));
         }
 
+        public ImageIcon getCloseIcon() {
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/system/close.png"));
+        }
+
     }
 
     public class Database {
@@ -83,6 +87,10 @@ public class IconsManager {
 
         public ImageIcon getDeleteRowsIcon() {
             return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/sqlresult/table_delete_row.png"));
+        }
+
+        public ImageIcon getEditIcon() {
+            return new javax.swing.ImageIcon(IconsManager.class.getResource("/com/elega9t/elixir/gui/icons/edit.png"));
         }
 
     }
