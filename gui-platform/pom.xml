@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>elega9t</artifactId>
+        <groupId>com.elega9t</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../elega9t/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>gui-platform</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.elega9t</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.swinglabs</groupId>
+            <artifactId>swing-layout</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaFiles>com/elega9t/platform/plugin.xsd</schemaFiles>
+                    <packageName>com.elega9t.platform.binding.plugin</packageName>
+                    <staleFile>${project.build.directory}/jaxb2/.pluginXjcStaleFlag</staleFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

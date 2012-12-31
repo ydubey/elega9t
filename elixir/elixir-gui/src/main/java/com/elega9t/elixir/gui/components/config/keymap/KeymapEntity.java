@@ -45,6 +45,7 @@ public class KeymapEntity extends DefaultGuiEntityTreeNode<DefaultGuiEntityTreeN
 
     @Override
     public String toString() {
+        //return getName() + " - " + KeyEvent.getKeyText(keyStroke.getKeyCode());
         return getName() + " - " + keyStroke;
     }
 

@@ -44,10 +44,11 @@
         <module>../test-utilities</module>
         <module>../jmeter-jms-skip-jndi</module>
         <module>../cloudfoundry-cli</module>
-        <module>../intellij-idea-plugins</module>
         <module>../commons</module>
+        <module>../gui-platform</module>
         <module>../carbon</module>
         <module>../elixir</module>
+        <module>../intellij-idea-plugins</module>
     </modules>
 
     <properties>
