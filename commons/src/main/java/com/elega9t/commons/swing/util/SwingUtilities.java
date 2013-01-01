@@ -153,4 +153,11 @@ public class SwingUtilities {
         return baseFont.deriveFont(Font.BOLD);
     }
 
+    public static boolean isMouseOver(Component component) {
+        return MouseInfo.getPointerInfo().getLocation().x >= component.getLocationOnScreen().x
+                && MouseInfo.getPointerInfo().getLocation().x <= component.getLocationOnScreen().x + component.getWidth()
+                && MouseInfo.getPointerInfo().getLocation().y >= component.getLocationOnScreen().y
+                && MouseInfo.getPointerInfo().getLocation().y <= component.getLocationOnScreen().y + component.getHeight();
+    }
+
 }

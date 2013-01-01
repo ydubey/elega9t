@@ -19,7 +19,7 @@ public class GuiEntityNodeTreeCellRenderer extends DefaultTreeCellRenderer {
         if(value instanceof GuiEntity) {
             GuiEntity guiEntity = (GuiEntity) value;
             setIcon(guiEntity.getIcon());
-            setToolTipText(guiEntity.getTooltip());
+            setToolTipText(guiEntity.getToolTipText());
         }
         return component;
     }

@@ -13,8 +13,8 @@ public interface GuiEntity extends Entity {
 
     Icon getIcon();
 
-    void setTooltip(String tooltip);
+    void setToolTipText(String toolTipText);
 
-    String getTooltip();
+    String getToolTipText();
 
 }

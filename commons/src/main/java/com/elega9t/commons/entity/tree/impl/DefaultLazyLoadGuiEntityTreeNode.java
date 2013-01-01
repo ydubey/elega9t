@@ -53,12 +53,12 @@ public class DefaultLazyLoadGuiEntityTreeNode<T extends GuiEntity & LoadableEnti
     }
 
     @Override
-    public void setTooltip(String tooltip) {
+    public void setToolTipText(String tooltip) {
         this.tooltip = tooltip;
     }
 
     @Override
-    public String getTooltip() {
+    public String getToolTipText() {
         return tooltip;
     }
 

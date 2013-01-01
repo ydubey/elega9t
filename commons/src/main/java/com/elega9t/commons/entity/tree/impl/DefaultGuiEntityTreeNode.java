@@ -52,12 +52,12 @@ public class DefaultGuiEntityTreeNode<T extends DefaultGuiEntityTreeNode> extend
     }
 
     @Override
-    public void setTooltip(String tooltip) {
+    public void setToolTipText(String tooltip) {
         this.tooltip = tooltip;
     }
 
     @Override
-    public String getTooltip() {
+    public String getToolTipText() {
         return tooltip;
     }
 
