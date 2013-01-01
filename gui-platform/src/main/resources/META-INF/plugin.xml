@@ -5,7 +5,6 @@
   -->
 <plugin:plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:plugin="http://www.elega9t.com/platform/plugin">
-<!--
 
     <plugin:actions>
         <plugin:groups id="MainMenu.FileMenu" name="File" description="File menu">
@@ -13,6 +12,5 @@
             <plugin:action id="ExitApplication" name="Exit" description="Exit" class="com.elega9t.gui.platform.actions.menu.file.ExitAction"/>
         </plugin:groups>
     </plugin:actions>
--->
 
 </plugin:plugin>

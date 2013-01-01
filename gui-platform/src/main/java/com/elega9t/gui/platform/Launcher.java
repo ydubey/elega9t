@@ -17,7 +17,7 @@ public class Launcher {
         final Context context = Context.getInstance();
         SplashScreen splashScreen = new SplashScreen(new javax.swing.ImageIcon(Launcher.class.getResource("/com/elega9t/platform/images/splashscr.png")).getImage(), 230);
         splashScreen.setVisible(true);
-        //System.setProperty("com.apple.mrj.application.apple.menu.about.name", context.getApplicationName());
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", context.getApplicationName());
     }
 
 }

@@ -6,6 +6,7 @@
 package com.elega9t.gui.platform;
 
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
+import com.elega9t.gui.platform.dock.DockPanel;
 import com.elega9t.gui.platform.mgr.PluginProcessor;
 import com.elega9t.platform.binding.plugin.Action;
 import com.elega9t.platform.binding.plugin.ActionGroup;
@@ -33,6 +34,8 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        toolBarBasePanel = new javax.swing.JPanel();
+        dockPanel = new DockPanel();
         mainMenu = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -44,6 +47,10 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
                 formWindowClosing(evt);
             }
         });
+
+        toolBarBasePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
+        getContentPane().add(toolBarBasePanel, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(dockPanel, java.awt.BorderLayout.CENTER);
         setJMenuBar(mainMenu);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -52,7 +59,9 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel dockPanel;
     private javax.swing.JMenuBar mainMenu;
+    private javax.swing.JPanel toolBarBasePanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
