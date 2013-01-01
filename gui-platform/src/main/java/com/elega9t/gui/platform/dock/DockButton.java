@@ -13,19 +13,13 @@ import java.awt.geom.Rectangle2D;
 
 public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseListener {
 
-    public static enum Location {
-        LEFT,
-        RIGHT,
-        BOTTOM
-    }
-
     private static final Border EMPTY_BORDER = javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0);
     private static final Border  LINE_BORDER = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
     private static final Border BEVEL_BORDER = javax.swing.BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
     private boolean state;
     private Icon icon;
-    private Location location;
+    private DockLocation location;
     private String text;
     private int inset = 3;
 
@@ -34,21 +28,21 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     /**
      * Creates new form DockButton
      */
-    public DockButton(Location location) {
+    public DockButton(DockLocation location) {
         this(location, null);
     }
 
     /**
      * Creates new form DockButton
      */
-    public DockButton(Location location, String text) {
+    public DockButton(DockLocation location, String text) {
         this(location, text, null);
     }
 
     /**
      * Creates new form DockButton
      */
-    public DockButton(Location location, String text, Icon icon) {
+    public DockButton(DockLocation location, String text, Icon icon) {
         this.location = location;
         this.text = text;
         this.icon = icon;
@@ -159,16 +153,16 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
         graphics = getGraphics();
         if(text != null) {
             Graphics2D graphics2d = (Graphics2D) graphics;
-            if(location != Location.BOTTOM) {
+            if(location != DockLocation.BOTTOM) {
                 AffineTransform at = new AffineTransform();
                 double angle = Math.PI / 2.0;
-                if(location == Location.LEFT) {
+                if(location == DockLocation.LEFT) {
                     angle *= -1;
                 }
                 at.setToRotation(angle, getWidth() / 2.0, getHeight() / 2.0);
                 graphics2d.setTransform(at);
             }
-            graphics2d.drawString(text, inset + (location == Location.LEFT ? 1 : 0), getWidth() - inset - 2);
+            graphics2d.drawString(text, inset + (location == DockLocation.LEFT ? 1 : 0), getWidth() - inset - 2);
         }
     }
 

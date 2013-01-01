@@ -5,7 +5,7 @@
 
 package com.elega9t.gui.platform.dock;
 
-import com.elega9t.gui.platform.dock.DockButton.Location;
+import java.awt.*;
 
 /**
  *
@@ -30,9 +30,7 @@ public class DockPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         leftDockPanel = new javax.swing.JPanel();
-        jPanel1 = new DockButton(Location.LEFT, "Hi");
         rightDockPanel = new javax.swing.JPanel();
-        jPanel2 = new DockButton(Location.RIGHT, "Hi");
         bottomDockPanel = new javax.swing.JPanel();
         bodyPanel = new javax.swing.JPanel();
         leftBodyPanel = new javax.swing.JPanel();
@@ -44,14 +42,10 @@ public class DockPanel extends javax.swing.JPanel {
 
         leftDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
         leftDockPanel.setLayout(new javax.swing.BoxLayout(leftDockPanel, javax.swing.BoxLayout.PAGE_AXIS));
-        leftDockPanel.add(jPanel1);
-
         add(leftDockPanel, java.awt.BorderLayout.LINE_START);
 
         rightDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
         rightDockPanel.setLayout(new javax.swing.BoxLayout(rightDockPanel, javax.swing.BoxLayout.PAGE_AXIS));
-        rightDockPanel.add(jPanel2);
-
         add(rightDockPanel, java.awt.BorderLayout.LINE_END);
 
         bottomDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
@@ -72,16 +66,24 @@ public class DockPanel extends javax.swing.JPanel {
 
         add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void addDock(DockLocation location, String name, javax.swing.Icon icon, Component component) {
+        DockButton button = new DockButton(location, name, icon);
+        switch (location) {
+            case LEFT:
+                break;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel bottomBodyPanel;
     private javax.swing.JPanel bottomDockPanel;
     private javax.swing.JPanel centerBodyPanel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel leftBodyPanel;
     private javax.swing.JPanel leftDockPanel;
     private javax.swing.JPanel rightBodyPanel;
     private javax.swing.JPanel rightDockPanel;
     // End of variables declaration//GEN-END:variables
+
 }
