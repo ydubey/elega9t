@@ -20,13 +20,14 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     }
 
     private static final Border EMPTY_BORDER = javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0);
-    private static final Border  LINE_BORDER  = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
+    private static final Border  LINE_BORDER = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
     private static final Border BEVEL_BORDER = javax.swing.BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
     private boolean state;
     private Icon icon;
     private Location location;
     private String text;
+    private int inset = 3;
 
     private boolean mouseOver;
 
@@ -34,7 +35,7 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
      * Creates new form DockButton
      */
     public DockButton(Location location) {
-        this(location,  null);
+        this(location, null);
     }
 
     /**
@@ -52,6 +53,7 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
         this.text = text;
         this.icon = icon;
         initComponents();
+        setFont(new Font(getFont().getFontName(), Font.PLAIN, getFont().getSize() - 2));
         addMouseListener(this);
     }
 
@@ -77,10 +79,13 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
             Rectangle2D bounds = graphics.getFontMetrics().getStringBounds(text, graphics);
             int height = (int) bounds.getHeight();
             int width = (int) bounds.getWidth();
-            return new Dimension(height + 3, width + 3);
+            int twiceInset = inset * 2;
+            return new Dimension(height + twiceInset, width + twiceInset);
         }
-        return new Dimension(50, 50);
+        return new Dimension(0, 0);
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,6 +96,7 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setBorder(EMPTY_BORDER);
         setLayout(null);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -99,7 +105,7 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     @Override
     public void mouseClicked(MouseEvent me) {
         state = !state;
-        updateUI();
+        repaint();
     }
 
     @Override
@@ -113,13 +119,13 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     @Override
     public void mouseEntered(MouseEvent me) {
         mouseOver = true;
-        updateUI();
+        repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
         mouseOver = false;
-        updateUI();
+        repaint();
     }
 
     @Override
@@ -150,18 +156,19 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
 
     @Override
     protected void paintChildren(Graphics graphics) {
+        graphics = getGraphics();
         if(text != null) {
             Graphics2D graphics2d = (Graphics2D) graphics;
             if(location != Location.BOTTOM) {
                 AffineTransform at = new AffineTransform();
+                double angle = Math.PI / 2.0;
                 if(location == Location.LEFT) {
-                    at.setToRotation(-Math.PI / 2.0, getWidth() / 2.0, getHeight() / 2.0);
-                } else {
-                    at.setToRotation(Math.PI / 2.0, getWidth() / 2.0, getHeight() / 2.0);
+                    angle *= -1;
                 }
+                at.setToRotation(angle, getWidth() / 2.0, getHeight() / 2.0);
                 graphics2d.setTransform(at);
             }
-            graphics2d.drawString(text, 2, getHeight() - 2);
+            graphics2d.drawString(text, inset + (location == Location.LEFT ? 1 : 0), getWidth() - inset - 2);
         }
     }
 

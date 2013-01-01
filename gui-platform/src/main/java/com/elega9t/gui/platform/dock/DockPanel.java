@@ -34,8 +34,11 @@ public class DockPanel extends javax.swing.JPanel {
         rightDockPanel = new javax.swing.JPanel();
         jPanel2 = new DockButton(Location.RIGHT, "Hi");
         bottomDockPanel = new javax.swing.JPanel();
-        jPanel3 = new DockButton(Location.BOTTOM, "Hi");
         bodyPanel = new javax.swing.JPanel();
+        leftBodyPanel = new javax.swing.JPanel();
+        rightBodyPanel = new javax.swing.JPanel();
+        bottomBodyPanel = new javax.swing.JPanel();
+        centerBodyPanel = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -53,20 +56,32 @@ public class DockPanel extends javax.swing.JPanel {
 
         bottomDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
         bottomDockPanel.setLayout(new javax.swing.BoxLayout(bottomDockPanel, javax.swing.BoxLayout.LINE_AXIS));
-        bottomDockPanel.add(jPanel3);
-
         add(bottomDockPanel, java.awt.BorderLayout.PAGE_END);
 
-        bodyPanel.setLayout(new java.awt.BorderLayout(5, 5));
+        bodyPanel.setLayout(new java.awt.BorderLayout());
+
+        leftBodyPanel.setLayout(null);
+        bodyPanel.add(leftBodyPanel, java.awt.BorderLayout.LINE_START);
+
+        rightBodyPanel.setLayout(null);
+        bodyPanel.add(rightBodyPanel, java.awt.BorderLayout.LINE_END);
+
+        bottomBodyPanel.setLayout(null);
+        bodyPanel.add(bottomBodyPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(centerBodyPanel, java.awt.BorderLayout.CENTER);
+
         add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JPanel bottomBodyPanel;
     private javax.swing.JPanel bottomDockPanel;
+    private javax.swing.JPanel centerBodyPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel leftBodyPanel;
     private javax.swing.JPanel leftDockPanel;
+    private javax.swing.JPanel rightBodyPanel;
     private javax.swing.JPanel rightDockPanel;
     // End of variables declaration//GEN-END:variables
 }
