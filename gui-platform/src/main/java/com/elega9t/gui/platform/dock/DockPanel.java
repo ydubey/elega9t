@@ -29,9 +29,9 @@ public class DockPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        leftDockPanel = new javax.swing.JPanel();
-        rightDockPanel = new javax.swing.JPanel();
-        bottomDockPanel = new javax.swing.JPanel();
+        leftDockPanel = new DockRegionPanel(DockLocation.LEFT);
+        rightDockPanel = new DockRegionPanel(DockLocation.RIGHT);
+        bottomDockPanel = new DockRegionPanel(DockLocation.BOTTOM);
         bodyPanel = new javax.swing.JPanel();
         leftBodyPanel = new javax.swing.JPanel();
         rightBodyPanel = new javax.swing.JPanel();
@@ -69,8 +69,11 @@ public class DockPanel extends javax.swing.JPanel {
 
     public void addDock(DockLocation location, String name, javax.swing.Icon icon, Component component) {
         DockButton button = new DockButton(location, name, icon);
+        DockablePanel dockablePanel = new DockablePanel();
+        dockablePanel.add(component, BorderLayout.CENTER);
         switch (location) {
             case LEFT:
+                leftDockPanel.add(button);
                 break;
         }
     }

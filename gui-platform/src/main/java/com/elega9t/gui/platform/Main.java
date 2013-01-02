@@ -6,11 +6,14 @@
 package com.elega9t.gui.platform;
 
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
+import com.elega9t.gui.platform.dock.DockLocation;
 import com.elega9t.gui.platform.dock.DockPanel;
 import com.elega9t.gui.platform.mgr.PluginProcessor;
 import com.elega9t.platform.binding.plugin.Action;
 import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.Plugin;
+
+import javax.swing.*;
 
 public class Main extends javax.swing.JFrame implements PluginProcessor {
 
@@ -23,6 +26,7 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
      */
     public Main() {
         initComponents();
+        ((DockPanel)dockPanel).addDock(DockLocation.LEFT, "Connections", null, new JPanel());
     }
 
     /**

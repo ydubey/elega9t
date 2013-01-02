@@ -99,7 +99,11 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     @Override
     public void mouseClicked(MouseEvent me) {
         state = !state;
-        repaint();
+        if(state) {
+            setBorder(BEVEL_BORDER);
+        } else {
+            setBorder(LINE_BORDER);
+        }
     }
 
     @Override
@@ -112,30 +116,16 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
 
     @Override
     public void mouseEntered(MouseEvent me) {
-        mouseOver = true;
-        repaint();
+        if(!state) {
+            setBorder(LINE_BORDER);
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-        mouseOver = false;
-        repaint();
-    }
-
-    @Override
-    protected void paintBorder(Graphics graphics) {
-        Border border;
-        if(state) {
-            border = BEVEL_BORDER;
-        } else {
-            if(mouseOver) {
-                border = LINE_BORDER;
-            } else {
-                border = EMPTY_BORDER;
-            }
+        if(!state) {
+            setBorder(EMPTY_BORDER);
         }
-        setBorder(border);
-        super.paintBorder(graphics);
     }
 
     @Override
