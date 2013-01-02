@@ -26,8 +26,31 @@ public class DockablePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        toolsPanel = new javax.swing.JPanel();
+        dockToolBar = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+
+        setBorder(javax.swing.BorderFactory.createLineBorder(getBackground().darker()));
         setLayout(new java.awt.BorderLayout());
+
+        toolsPanel.setLayout(new java.awt.BorderLayout());
+
+        dockToolBar.setFloatable(false);
+        dockToolBar.setRollover(true);
+
+        jButton1.setText("jButton1");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        dockToolBar.add(jButton1);
+
+        toolsPanel.add(dockToolBar, java.awt.BorderLayout.LINE_END);
+
+        add(toolsPanel, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToolBar dockToolBar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel toolsPanel;
     // End of variables declaration//GEN-END:variables
 }

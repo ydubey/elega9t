@@ -4,8 +4,11 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class DockButton extends javax.swing.JPanel implements MouseListener {
 
@@ -13,9 +16,11 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
     private static final Border  LINE_BORDER = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
     private static final Border BEVEL_BORDER = javax.swing.BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
-    private boolean state;
+    private boolean selected;
     private DockLocation location;
     private int inset = 5;
+
+    private java.util.List<ActionListener> actionListeners = new ArrayList<ActionListener>();
 
     private boolean mouseOver;
 
@@ -90,12 +95,27 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        state = !state;
-        if(state) {
+        selected = !selected;
+        if(selected) {
             setBorder(BEVEL_BORDER);
         } else {
             setBorder(LINE_BORDER);
         }
+        fireActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "selection"));
+    }
+
+    public void fireActionPerformed(ActionEvent event) {
+        for (ActionListener actionListener : actionListeners) {
+            actionListener.actionPerformed(event);
+        }
+    }
+
+    public void addActionListener(ActionListener actionListener) {
+        this.actionListeners.add(actionListener);
+    }
+
+    public boolean removeActionListener(ActionListener actionListener) {
+        return this.actionListeners.remove(actionListener);
     }
 
     @Override
@@ -108,16 +128,20 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent me) {
-        if(!state) {
+        if(!selected) {
             setBorder(LINE_BORDER);
         }
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-        if(!state) {
+        if(!selected) {
             setBorder(EMPTY_BORDER);
         }
+    }
+
+    public boolean isSelected() {
+        return selected;
     }
 
 }

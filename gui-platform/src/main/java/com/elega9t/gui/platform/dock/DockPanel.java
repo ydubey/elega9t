@@ -5,7 +5,13 @@
 
 package com.elega9t.gui.platform.dock;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class DockPanel extends javax.swing.JPanel {
+
+    private final ComponentResizer componentResizer = new ComponentResizer();
 
     /**
      * Creates new form DockPanel
@@ -48,32 +54,46 @@ public class DockPanel extends javax.swing.JPanel {
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
-        leftBodyPanel.setLayout(null);
+        leftBodyPanel.setLayout(new javax.swing.BoxLayout(leftBodyPanel, javax.swing.BoxLayout.PAGE_AXIS));
         bodyPanel.add(leftBodyPanel, java.awt.BorderLayout.LINE_START);
 
-        rightBodyPanel.setLayout(null);
+        rightBodyPanel.setLayout(new javax.swing.BoxLayout(rightBodyPanel, javax.swing.BoxLayout.PAGE_AXIS));
         bodyPanel.add(rightBodyPanel, java.awt.BorderLayout.LINE_END);
 
-        bottomBodyPanel.setLayout(null);
+        bottomBodyPanel.setLayout(new javax.swing.BoxLayout(bottomBodyPanel, javax.swing.BoxLayout.LINE_AXIS));
         bodyPanel.add(bottomBodyPanel, java.awt.BorderLayout.PAGE_END);
+
+        centerBodyPanel.setLayout(new java.awt.BorderLayout());
         bodyPanel.add(centerBodyPanel, java.awt.BorderLayout.CENTER);
 
         add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addDock(DockLocation location, String name, javax.swing.Icon icon, java.awt.Component component) {
-        DockButton button = new DockButton(location, name, icon);
-        DockablePanel dockablePanel = new DockablePanel();
+    public void addDock(final DockLocation location, String name, javax.swing.Icon icon, java.awt.Component component) {
+        final DockButton button = new DockButton(location, name, icon);
+        final DockablePanel dockablePanel = new DockablePanel();
+        dockablePanel.setVisible(false);
+        dockablePanel.setPreferredSize(new Dimension(300, 100));
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                dockablePanel.setVisible(button.isSelected());
+            }
+        });
+        componentResizer.registerComponent(dockablePanel);
         switch (location) {
             case LEFT:
                 leftDockPanel.add(button);
+                leftBodyPanel.add(dockablePanel);
                 break;
             case RIGHT:
                 rightDockPanel.add(button);
+                rightBodyPanel.add(dockablePanel);
                 break;
             case BOTTOM:
                 bottomDockPanel.add(button);
+                bottomBodyPanel.add(dockablePanel);
                 break;
         }
     }
