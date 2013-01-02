@@ -5,12 +5,6 @@
 
 package com.elega9t.gui.platform.dock;
 
-import java.awt.*;
-
-/**
- *
- * @author yogesh
- */
 public class DockPanel extends javax.swing.JPanel {
 
     /**
@@ -67,13 +61,19 @@ public class DockPanel extends javax.swing.JPanel {
         add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addDock(DockLocation location, String name, javax.swing.Icon icon, Component component) {
+    public void addDock(DockLocation location, String name, javax.swing.Icon icon, java.awt.Component component) {
         DockButton button = new DockButton(location, name, icon);
         DockablePanel dockablePanel = new DockablePanel();
-        dockablePanel.add(component, BorderLayout.CENTER);
+        dockablePanel.add(component, java.awt.BorderLayout.CENTER);
         switch (location) {
             case LEFT:
                 leftDockPanel.add(button);
+                break;
+            case RIGHT:
+                rightDockPanel.add(button);
+                break;
+            case BOTTOM:
+                bottomDockPanel.add(button);
                 break;
         }
     }

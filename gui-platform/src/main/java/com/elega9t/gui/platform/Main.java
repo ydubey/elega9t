@@ -27,6 +27,8 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
     public Main() {
         initComponents();
         ((DockPanel)dockPanel).addDock(DockLocation.LEFT, "Connections", null, new JPanel());
+        ((DockPanel)dockPanel).addDock(DockLocation.RIGHT, "Connections", null, new JPanel());
+        ((DockPanel)dockPanel).addDock(DockLocation.BOTTOM, "Connections", null, new JPanel());
     }
 
     /**

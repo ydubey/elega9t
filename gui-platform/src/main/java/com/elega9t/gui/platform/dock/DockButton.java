@@ -1,27 +1,21 @@
 package com.elega9t.gui.platform.dock;
 
-import com.elega9t.commons.entity.GuiEntity;
-
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 
-public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseListener {
+public class DockButton extends javax.swing.JPanel implements MouseListener {
 
     private static final Border EMPTY_BORDER = javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0);
     private static final Border  LINE_BORDER = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
     private static final Border BEVEL_BORDER = javax.swing.BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
     private boolean state;
-    private Icon icon;
     private DockLocation location;
-    private String text;
-    private int inset = 3;
+    private int inset = 5;
 
     private boolean mouseOver;
 
@@ -44,39 +38,31 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
      */
     public DockButton(DockLocation location, String text, Icon icon) {
         this.location = location;
-        this.text = text;
-        this.icon = icon;
         initComponents();
-        setFont(new Font(getFont().getFontName(), Font.PLAIN, getFont().getSize() - 2));
+        textLabel.setText(text);
+        textLabel.setIcon(icon);
         addMouseListener(this);
     }
 
     @Override
     public Dimension getPreferredSize() {
-        return getSize();
+        return getMaximumSize();
     }
 
     @Override
     public Dimension getMaximumSize() {
-        return getSize();
+        Dimension minimumSize = textLabel.getPreferredSize();
+        return new Dimension(minimumSize.width + 2 + inset, minimumSize.height + 2 + inset);
     }
 
     @Override
     public Dimension getMinimumSize() {
-        return getSize();
+        return getMaximumSize();
     }
 
     @Override
     public Dimension getSize() {
-        if(text != null) {
-            Graphics graphics = getGraphics();
-            Rectangle2D bounds = graphics.getFontMetrics().getStringBounds(text, graphics);
-            int height = (int) bounds.getHeight();
-            int width = (int) bounds.getWidth();
-            int twiceInset = inset * 2;
-            return new Dimension(height + twiceInset, width + twiceInset);
-        }
-        return new Dimension(0, 0);
+        return getMinimumSize();
     }
 
 
@@ -90,10 +76,16 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        textLabel = new RotatedLabel(location);
+
         setBorder(EMPTY_BORDER);
-        setLayout(null);
+        setLayout(new java.awt.BorderLayout());
+
+        textLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(textLabel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel textLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -125,34 +117,6 @@ public class DockButton extends javax.swing.JPanel implements GuiEntity, MouseLi
     public void mouseExited(MouseEvent me) {
         if(!state) {
             setBorder(EMPTY_BORDER);
-        }
-    }
-
-    @Override
-    public void setIcon(Icon icon) {
-        this.icon = icon;
-    }
-
-    @Override
-    public Icon getIcon() {
-        return icon;
-    }
-
-    @Override
-    protected void paintChildren(Graphics graphics) {
-        graphics = getGraphics();
-        if(text != null) {
-            Graphics2D graphics2d = (Graphics2D) graphics;
-            if(location != DockLocation.BOTTOM) {
-                AffineTransform at = new AffineTransform();
-                double angle = Math.PI / 2.0;
-                if(location == DockLocation.LEFT) {
-                    angle *= -1;
-                }
-                at.setToRotation(angle, getWidth() / 2.0, getHeight() / 2.0);
-                graphics2d.setTransform(at);
-            }
-            graphics2d.drawString(text, inset + (location == DockLocation.LEFT ? 1 : 0), getWidth() - inset - 2);
         }
     }
 
