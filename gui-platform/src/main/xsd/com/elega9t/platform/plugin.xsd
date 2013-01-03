@@ -131,6 +131,7 @@
 
     <xsd:complexType name="docks-dock">
         <xsd:sequence>
+            <xsd:element name="icon" type="xsd:string" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="id" type="xsd:string"/>
         <xsd:attribute name="name" type="xsd:string"/>

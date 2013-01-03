@@ -72,7 +72,6 @@ public class DockPanel extends javax.swing.JPanel {
         final DockButton dockButton = new DockButton(location, name, icon);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(false);
-        dockablePanel.setPreferredSize(new Dimension(300, 100));
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
         DockStateAction.install(dockButton, dockablePanel);
         switch (location) {
@@ -80,16 +79,19 @@ public class DockPanel extends javax.swing.JPanel {
             case LEFT_LAST:
                 ((DockButtonHolderPanel)leftDockButtonHolderPanel).add(dockButton, location);
                 leftBodyPanel.add(dockablePanel);
+                dockablePanel.setPreferredSize(new Dimension(300, 100));
                 break;
             case RIGHT_FIRST:
             case RIGHT_LAST:
                 ((DockButtonHolderPanel)rightDockButtonHolderPanel).add(dockButton, location);
                 rightBodyPanel.add(dockablePanel);
+                dockablePanel.setPreferredSize(new Dimension(300, 100));
                 break;
             case BOTTOM_FIRST:
             case BOTTOM_LAST:
                 ((DockButtonHolderPanel)bottomDockButtonHolderPanel).add(dockButton, location);
                 bottomBodyPanel.add(dockablePanel);
+                dockablePanel.setPreferredSize(new Dimension(100, 300));
                 break;
             case CENTER:
                 centerBodyPanel.add(component, java.awt.BorderLayout.CENTER);

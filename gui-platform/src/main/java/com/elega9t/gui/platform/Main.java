@@ -98,7 +98,11 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
             for (DocksDock dock : plugin.getDocks().getDock()) {
                 try {
                     java.awt.Component component = (Component) Class.forName(dock.getComponentClass()).newInstance();
-                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), null, component);
+                    javax.swing.Icon icon = null;
+                    if(dock.getIcon() != null) {
+                        icon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
+                    }
+                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, component);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
