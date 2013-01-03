@@ -29,9 +29,9 @@ public class DockPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        leftDockPanel = new DockButtonHolderPanel();
-        rightDockPanel = new DockButtonHolderPanel();
-        bottomDockPanel = new DockButtonHolderPanel();
+        leftDockButtonHolderPanel = new DockButtonHolderPanel(DockLocation.LEFT_FIRST);
+        rightDockButtonHolderPanel = new DockButtonHolderPanel(DockLocation.RIGHT_FIRST);
+        bottomDockButtonHolderPanel = new DockButtonHolderPanel(DockLocation.BOTTOM_FIRST);
         bodyPanel = new javax.swing.JPanel();
         leftBodyPanel = new DockRegionPanel();
         rightBodyPanel = new DockRegionPanel();
@@ -46,17 +46,17 @@ public class DockPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        leftDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
-        leftDockPanel.setLayout(new javax.swing.BoxLayout(leftDockPanel, javax.swing.BoxLayout.PAGE_AXIS));
-        add(leftDockPanel, java.awt.BorderLayout.LINE_START);
+        leftDockButtonHolderPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
+        leftDockButtonHolderPanel.setLayout(new javax.swing.BoxLayout(leftDockButtonHolderPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        add(leftDockButtonHolderPanel, java.awt.BorderLayout.LINE_START);
 
-        rightDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
-        rightDockPanel.setLayout(new javax.swing.BoxLayout(rightDockPanel, javax.swing.BoxLayout.PAGE_AXIS));
-        add(rightDockPanel, java.awt.BorderLayout.LINE_END);
+        rightDockButtonHolderPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
+        rightDockButtonHolderPanel.setLayout(new javax.swing.BoxLayout(rightDockButtonHolderPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        add(rightDockButtonHolderPanel, java.awt.BorderLayout.LINE_END);
 
-        bottomDockPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
-        bottomDockPanel.setLayout(new javax.swing.BoxLayout(bottomDockPanel, javax.swing.BoxLayout.LINE_AXIS));
-        add(bottomDockPanel, java.awt.BorderLayout.PAGE_END);
+        bottomDockButtonHolderPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 1)));
+        bottomDockButtonHolderPanel.setLayout(new javax.swing.BoxLayout(bottomDockButtonHolderPanel, javax.swing.BoxLayout.LINE_AXIS));
+        add(bottomDockButtonHolderPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
@@ -89,26 +89,26 @@ public class DockPanel extends javax.swing.JPanel {
         switch (location) {
             case LEFT_FIRST:
             case LEFT_LAST:
-                if(leftDockPanel.getComponentCount() > 0) {
-                    leftDockPanel.add(Box.createVerticalStrut(10));
+                if(leftDockButtonHolderPanel.getComponentCount() > 0) {
+                    leftDockButtonHolderPanel.add(Box.createVerticalStrut(10));
                 }
-                leftDockPanel.add(dockButton);
+                ((DockButtonHolderPanel)leftDockButtonHolderPanel).add(dockButton, location);
                 leftBodyPanel.add(dockablePanel);
                 break;
             case RIGHT_FIRST:
             case RIGHT_LAST:
-                if(rightDockPanel.getComponentCount() > 0) {
-                    rightDockPanel.add(Box.createVerticalStrut(10));
+                if(rightDockButtonHolderPanel.getComponentCount() > 0) {
+                    rightDockButtonHolderPanel.add(Box.createVerticalStrut(10));
                 }
-                rightDockPanel.add(dockButton);
+                ((DockButtonHolderPanel)rightDockButtonHolderPanel).add(dockButton, location);
                 rightBodyPanel.add(dockablePanel);
                 break;
             case BOTTOM_FIRST:
             case BOTTOM_LAST:
-                if(bottomDockPanel.getComponentCount() > 0) {
-                    bottomDockPanel.add(Box.createHorizontalStrut(10));
+                if(bottomDockButtonHolderPanel.getComponentCount() > 0) {
+                    bottomDockButtonHolderPanel.add(Box.createHorizontalStrut(10));
                 }
-                bottomDockPanel.add(dockButton);
+                ((DockButtonHolderPanel)bottomDockButtonHolderPanel).add(dockButton, location);
                 bottomBodyPanel.add(dockablePanel);
                 break;
         }
@@ -117,13 +117,13 @@ public class DockPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel bottomBodyPanel;
-    private javax.swing.JPanel bottomDockPanel;
+    private javax.swing.JPanel bottomDockButtonHolderPanel;
     private javax.swing.JPanel centerBodyPanel;
     private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JPanel leftBodyPanel;
-    private javax.swing.JPanel leftDockPanel;
+    private javax.swing.JPanel leftDockButtonHolderPanel;
     private javax.swing.JPanel rightBodyPanel;
-    private javax.swing.JPanel rightDockPanel;
+    private javax.swing.JPanel rightDockButtonHolderPanel;
     // End of variables declaration//GEN-END:variables
 
 }

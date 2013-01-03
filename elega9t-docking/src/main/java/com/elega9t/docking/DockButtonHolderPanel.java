@@ -5,15 +5,33 @@
 
 package com.elega9t.docking;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class DockButtonHolderPanel extends javax.swing.JPanel {
 
+    private final Component glue;
+
     /**
      * Creates new form DockButtonHolderPanel
      */
-    public DockButtonHolderPanel() {
+    public DockButtonHolderPanel(DockLocation dockLocation) {
         initComponents();
+        switch(dockLocation) {
+            case LEFT_FIRST:
+            case LEFT_LAST:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
+                glue = Box.createVerticalGlue();
+                break;
+            case BOTTOM_FIRST:
+            case BOTTOM_LAST:
+                glue = Box.createHorizontalGlue();
+                break;
+            default:
+                glue = null;
+        }
+        add(glue);
     }
 
     /**
@@ -43,7 +61,26 @@ public class DockButtonHolderPanel extends javax.swing.JPanel {
     }
 
     public void add(Component component, DockLocation location) {
-
+        switch (location) {
+            case LEFT_FIRST:
+            case RIGHT_FIRST:
+            case BOTTOM_FIRST:
+                Component[] components = getComponents();
+                removeAll();
+                for (Component existingComponent : components) {
+                    if(existingComponent == glue) {
+                        add(component);
+                    }
+                    add(existingComponent);
+                }
+                break;
+            case LEFT_LAST:
+            case RIGHT_LAST:
+            case BOTTOM_LAST:
+                add(component);
+                break;
+        }
+        validate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
