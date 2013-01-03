@@ -144,4 +144,13 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
         return selected;
     }
 
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+        if(selected) {
+            setBorder(BEVEL_BORDER);
+        } else {
+            setBorder(EMPTY_BORDER);
+        }
+    }
+
 }

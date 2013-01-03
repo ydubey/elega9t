@@ -146,6 +146,20 @@
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JTabbedPane" name="editorTabbedPane">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextBackgroundTabbedPane(&#xa;            new BackgroundText(&quot;Tabs&quot;, 100, 30).bold(),&#xa;            new BackgroundText(&quot;No tabs are open&quot;, 220, 20).underlined().bold(),&#xa;            new BackgroundText(&quot;\u2023 Open Recent files with \u2318E&quot;, 255, 17),&#xa;            new BackgroundText(&quot;\u2023 Drag&apos;n&apos;Drop file(s) here from Finder&quot;, 280, 17).alighWithPrevious()&#xa;        );"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="Center"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

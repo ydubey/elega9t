@@ -38,6 +38,12 @@ public class DockPanel extends javax.swing.JPanel {
         rightBodyPanel = new javax.swing.JPanel();
         bottomBodyPanel = new javax.swing.JPanel();
         centerBodyPanel = new javax.swing.JPanel();
+        editorTabbedPane = new TextBackgroundTabbedPane(
+            new BackgroundText("Tabs", 100, 30).bold(),
+            new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
+            new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
+            new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
+        );
 
         setLayout(new java.awt.BorderLayout());
 
@@ -65,35 +71,31 @@ public class DockPanel extends javax.swing.JPanel {
         bodyPanel.add(bottomBodyPanel, java.awt.BorderLayout.PAGE_END);
 
         centerBodyPanel.setLayout(new java.awt.BorderLayout());
+        centerBodyPanel.add(editorTabbedPane, java.awt.BorderLayout.CENTER);
+
         bodyPanel.add(centerBodyPanel, java.awt.BorderLayout.CENTER);
 
         add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     public void addDock(final DockLocation location, String name, javax.swing.Icon icon, java.awt.Component component) {
-        final DockButton button = new DockButton(location, name, icon);
-        final DockablePanel dockablePanel = new DockablePanel();
+        final DockButton dockButton = new DockButton(location, name, icon);
+        final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(false);
         dockablePanel.setPreferredSize(new Dimension(300, 100));
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                dockablePanel.setVisible(button.isSelected());
-            }
-        });
-        //componentResizer.registerComponent(dockablePanel);
+        new DockStateAction(dockButton, dockablePanel);
         switch (location) {
             case LEFT:
-                leftDockPanel.add(button);
+                leftDockPanel.add(dockButton);
                 leftBodyPanel.add(dockablePanel);
                 break;
             case RIGHT:
-                rightDockPanel.add(button);
+                rightDockPanel.add(dockButton);
                 rightBodyPanel.add(dockablePanel);
                 break;
             case BOTTOM:
-                bottomDockPanel.add(button);
+                bottomDockPanel.add(dockButton);
                 bottomBodyPanel.add(dockablePanel);
                 break;
         }
@@ -104,6 +106,7 @@ public class DockPanel extends javax.swing.JPanel {
     private javax.swing.JPanel bottomBodyPanel;
     private javax.swing.JPanel bottomDockPanel;
     private javax.swing.JPanel centerBodyPanel;
+    private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JPanel leftBodyPanel;
     private javax.swing.JPanel leftDockPanel;
     private javax.swing.JPanel rightBodyPanel;

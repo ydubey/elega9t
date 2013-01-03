@@ -4,17 +4,39 @@
  */
 package com.elega9t.docking;
 
-/**
- *
- * @author yogesh
- */
+import javax.swing.*;
+
 public class DockablePanel extends javax.swing.JPanel {
+
+    private static final ImageIcon DOCK_LEFT = new javax.swing.ImageIcon(DockablePanel.class.getResource("/dock-left.png"));
+    private static final ImageIcon DOCK_RIGHT = new javax.swing.ImageIcon(DockablePanel.class.getResource("/dock-right.png"));
+    private static final ImageIcon DOCK_BOTTOM = new javax.swing.ImageIcon(DockablePanel.class.getResource("/dock-bottom.png"));
+    private final String title;
+
+    private final DockLocation location;
 
     /**
      * Creates new form DockablePanel
      */
-    public DockablePanel() {
+    public DockablePanel(String title, DockLocation location) {
+        this.title = title;
+        this.location = location;
         initComponents();
+        initDock();
+    }
+
+    private void initDock() {
+        switch (location) {
+            case LEFT:
+                dockButton.setIcon(DOCK_LEFT);
+                break;
+            case RIGHT:
+                dockButton.setIcon(DOCK_RIGHT);
+                break;
+            case BOTTOM:
+                dockButton.setIcon(DOCK_BOTTOM);
+                break;
+        }
     }
 
     /**
@@ -28,7 +50,9 @@ public class DockablePanel extends javax.swing.JPanel {
 
         toolsPanel = new javax.swing.JPanel();
         dockToolBar = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        dockButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(getBackground().darker()));
         setLayout(new java.awt.BorderLayout());
@@ -38,19 +62,31 @@ public class DockablePanel extends javax.swing.JPanel {
         dockToolBar.setFloatable(false);
         dockToolBar.setRollover(true);
 
-        jButton1.setText("jButton1");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        dockToolBar.add(jButton1);
+        titleLabel.setForeground(titleLabel.getForeground().brighter());
+        titleLabel.setText(title);
+        dockToolBar.add(titleLabel);
+        dockToolBar.add(filler1);
 
-        toolsPanel.add(dockToolBar, java.awt.BorderLayout.LINE_END);
+        dockButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        dockButton.setFocusable(false);
+        dockButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        dockButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        dockToolBar.add(dockButton);
+
+        toolsPanel.add(dockToolBar, java.awt.BorderLayout.CENTER);
 
         add(toolsPanel, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getDockButton() {
+        return dockButton;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dockButton;
     private javax.swing.JToolBar dockToolBar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel toolsPanel;
     // End of variables declaration//GEN-END:variables
 }
