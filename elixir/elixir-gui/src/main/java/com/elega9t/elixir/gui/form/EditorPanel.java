@@ -1,7 +1,9 @@
 package com.elega9t.elixir.gui.form;
 
-import com.elega9t.commons.swing.*;
-import com.elega9t.commons.swing.CheckBoxTableRowHeader.CheckBoxTableRowHeaderModel;
+import com.elega9t.commons.swing.ExpandShorthandAction;
+import com.elega9t.commons.swing.GuiEntityListCellRenderer;
+import com.elega9t.commons.swing.ResultSetTableModel;
+import com.elega9t.commons.swing.UpdatableAction;
 import com.elega9t.commons.swing.components.WideJComboBox;
 import com.elega9t.commons.swing.syntax.SqlTextPane;
 import com.elega9t.commons.swing.util.SwingUtilities;
@@ -14,7 +16,6 @@ import com.elega9t.elixir.gui.mgr.KeymapManager;
 
 import javax.swing.text.BadLocationException;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EditorPanel extends javax.swing.JPanel implements DatabaseConnectionEventListener {

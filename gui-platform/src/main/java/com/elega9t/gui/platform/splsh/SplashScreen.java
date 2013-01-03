@@ -49,13 +49,13 @@ public class SplashScreen extends javax.swing.JFrame implements PluginLoadEventL
                     @Override
                     public void run() {
                         Main main = Context.getInstance().getMain();
-                        main.setVisible(true);
                         try {
                             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                             SwingUtilities.updateComponentTreeUI(main);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                        main.setVisible(true);
                     }
                 });
                 return null;

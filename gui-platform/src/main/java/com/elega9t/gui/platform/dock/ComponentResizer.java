@@ -168,11 +168,6 @@ public class ComponentResizer extends MouseAdapter
 		this.minimumSize = minimumSize;
 	}
 
-	/**
-	 *  Remove listeners from the specified component
-	 *
-	 *  @param component  the component the listeners are removed from
-	 */
 	public void deregisterComponent(Component... components)
 	{
 		for (Component component : components)
@@ -182,11 +177,6 @@ public class ComponentResizer extends MouseAdapter
 		}
 	}
 
-	/**
-	 *  Add the required listeners to the specified component
-	 *
-	 *  @param component  the component the listeners are added to
-	 */
 	public void registerComponent(Component... components)
 	{
 		for (Component component : components)
@@ -408,8 +398,10 @@ public class ComponentResizer extends MouseAdapter
 			height += drag;
 		}
 
-		source.setBounds(x, y, width, height);
-		source.validate();
+		source.setPreferredSize(new Dimension(width, height));
+        source.validate();
+        source.getParent().doLayout();
+        source.getParent().validate();
 	}
 
 	/*

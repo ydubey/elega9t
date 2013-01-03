@@ -18,6 +18,7 @@ public class DockPanel extends javax.swing.JPanel {
      */
     public DockPanel() {
         initComponents();
+        componentResizer.registerComponent(leftBodyPanel, rightBodyPanel, bottomBodyPanel, centerBodyPanel);
     }
 
     /**
@@ -81,7 +82,7 @@ public class DockPanel extends javax.swing.JPanel {
                 dockablePanel.setVisible(button.isSelected());
             }
         });
-        componentResizer.registerComponent(dockablePanel);
+        //componentResizer.registerComponent(dockablePanel);
         switch (location) {
             case LEFT:
                 leftDockPanel.add(button);
