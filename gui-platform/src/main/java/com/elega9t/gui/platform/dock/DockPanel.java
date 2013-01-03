@@ -18,7 +18,7 @@ public class DockPanel extends javax.swing.JPanel {
      */
     public DockPanel() {
         initComponents();
-        componentResizer.registerComponent(leftBodyPanel, rightBodyPanel, bottomBodyPanel, centerBodyPanel);
+        componentResizer.registerComponent(leftBodyPanel, rightBodyPanel, bottomBodyPanel);
     }
 
     /**

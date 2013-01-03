@@ -56,6 +56,7 @@ public class SplashScreen extends javax.swing.JFrame implements PluginLoadEventL
                             e.printStackTrace();
                         }
                         main.setVisible(true);
+                        main.setExtendedState(MAXIMIZED_BOTH);
                     }
                 });
                 return null;
