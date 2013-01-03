@@ -62,7 +62,8 @@ public class DockablePanel extends javax.swing.JPanel {
 
         toolsPanel.setLayout(new java.awt.BorderLayout());
 
-        dockToolBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        dockToolBar.setBackground(javax.swing.UIManager.getDefaults().getColor("textHighlight"));
+        dockToolBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         dockToolBar.setFloatable(false);
         dockToolBar.setRollover(true);
 
