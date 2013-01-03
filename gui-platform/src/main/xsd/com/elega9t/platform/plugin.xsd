@@ -19,11 +19,11 @@
         <xsd:sequence>
             <xsd:element name="group" type="plugin:keymap-group" maxOccurs="unbounded"/>
         </xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="name" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:simpleType name="keymap-group-name">
-        <xsd:restriction base="xsd:string">
+        <xsd:restriction base="plugin:non-empty-string">
             <xsd:enumeration value="EDITOR_ACTIONS"/>
         </xsd:restriction>
     </xsd:simpleType>
@@ -38,11 +38,11 @@
     <xsd:complexType name="keymap-action">
         <xsd:sequence>
         </xsd:sequence>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="id" type="xsd:string"/>
-        <xsd:attribute name="keyboardShortcut" type="xsd:string"/>
-        <xsd:attribute name="secondKeyboardShortcut" type="xsd:string"/>
-        <xsd:attribute name="actionClass" type="xsd:string"/>
+        <xsd:attribute name="name" type="plugin:non-empty-string"/>
+        <xsd:attribute name="id" type="plugin:non-empty-string"/>
+        <xsd:attribute name="keyboardShortcut" type="plugin:non-empty-string"/>
+        <xsd:attribute name="secondKeyboardShortcut" type="plugin:non-empty-string"/>
+        <xsd:attribute name="actionClass" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:complexType name="driver-definitions">
@@ -53,7 +53,7 @@
 
     <xsd:complexType name="driver-definition">
         <xsd:sequence>
-            <xsd:element name="database" type="xsd:string"/>
+            <xsd:element name="database" type="plugin:non-empty-string"/>
             <xsd:element name="website" type="xsd:anyURI"/>
             <xsd:element name="vendors" type="plugin:driver-vendors"/>
         </xsd:sequence>
@@ -67,9 +67,9 @@
 
     <xsd:complexType name="driver-vendor">
         <xsd:sequence>
-            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="name" type="plugin:non-empty-string"/>
             <xsd:element name="website" type="xsd:anyURI"/>
-            <xsd:element name="jdbc-url" type="xsd:string"/>
+            <xsd:element name="jdbc-url" type="plugin:non-empty-string"/>
             <xsd:element name="jdbc-url-defaults" type="plugin:jdbc-url-defaults" minOccurs="0"/>
             <xsd:element name="driver" type="plugin:database-driver"/>
         </xsd:sequence>
@@ -82,13 +82,13 @@
     </xsd:complexType>
 
     <xsd:complexType name="jdbc-url-default">
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="name" type="plugin:non-empty-string"/>
+        <xsd:attribute name="value" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:complexType name="database-driver">
         <xsd:sequence>
-            <xsd:element name="class" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="class" type="plugin:non-empty-string" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -103,24 +103,24 @@
             <xsd:element name="add-to-group" type="plugin:add-to-group"/>
             <xsd:element name="action" type="plugin:action" maxOccurs="unbounded"/>
         </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:string"/>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="description" type="xsd:string"/>
+        <xsd:attribute name="id" type="plugin:non-empty-string"/>
+        <xsd:attribute name="name" type="plugin:non-empty-string"/>
+        <xsd:attribute name="description" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:complexType name="add-to-group">
         <xsd:sequence>
         </xsd:sequence>
-        <xsd:attribute name="group-id" type="xsd:string"/>
+        <xsd:attribute name="group-id" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:complexType name="action">
         <xsd:sequence>
         </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:string"/>
-        <xsd:attribute name="class" type="xsd:string"/>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="description" type="xsd:string"/>
+        <xsd:attribute name="id" type="plugin:non-empty-string"/>
+        <xsd:attribute name="class" type="plugin:non-empty-string"/>
+        <xsd:attribute name="name" type="plugin:non-empty-string"/>
+        <xsd:attribute name="description" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:complexType name="docks">
@@ -131,16 +131,16 @@
 
     <xsd:complexType name="docks-dock">
         <xsd:sequence>
-            <xsd:element name="icon" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="icon" type="plugin:non-empty-string" minOccurs="0"/>
         </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:string"/>
-        <xsd:attribute name="name" type="xsd:string"/>
-        <xsd:attribute name="componentClass" type="xsd:string"/>
+        <xsd:attribute name="id" type="plugin:non-empty-string"/>
+        <xsd:attribute name="name" type="plugin:non-empty-string"/>
+        <xsd:attribute name="componentClass" type="plugin:non-empty-string"/>
         <xsd:attribute name="location" type="plugin:dock-location"/>
     </xsd:complexType>
 
     <xsd:simpleType name="dock-location">
-        <xsd:restriction base="xsd:string">
+        <xsd:restriction base="plugin:non-empty-string">
             <xsd:enumeration value="LEFT_FIRST"/>
             <xsd:enumeration value="LEFT_LAST"/>
             <xsd:enumeration value="RIGHT_FIRST"/>
@@ -153,15 +153,22 @@
 
     <xsd:complexType name="plugin-info">
         <xsd:sequence>
-            <xsd:element name="id" type="xsd:string"/>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="version" type="xsd:string"/>
-            <xsd:element name="vendor" type="xsd:string"/>
-            <xsd:element name="category" type="xsd:string"/>
-            <xsd:element name="icon" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="id" type="plugin:non-empty-string"/>
+            <xsd:element name="name" type="plugin:non-empty-string"/>
+            <xsd:element name="description" type="plugin:non-empty-string"/>
+            <xsd:element name="version" type="plugin:non-empty-string"/>
+            <xsd:element name="vendor" type="plugin:non-empty-string"/>
+            <xsd:element name="category" type="plugin:non-empty-string"/>
+            <xsd:element name="icon" type="plugin:non-empty-string" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
+
+    <xsd:simpleType name="non-empty-string">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:pattern value="[^\s].*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 
     <xsd:element name="plugin">
         <xsd:complexType>
