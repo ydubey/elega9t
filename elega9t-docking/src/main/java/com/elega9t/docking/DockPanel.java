@@ -5,7 +5,6 @@
 
 package com.elega9t.docking;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class DockPanel extends javax.swing.JPanel {
@@ -79,25 +78,16 @@ public class DockPanel extends javax.swing.JPanel {
         switch (location) {
             case LEFT_FIRST:
             case LEFT_LAST:
-                if(leftDockButtonHolderPanel.getComponentCount() > 0) {
-                    leftDockButtonHolderPanel.add(Box.createVerticalStrut(10));
-                }
                 ((DockButtonHolderPanel)leftDockButtonHolderPanel).add(dockButton, location);
                 leftBodyPanel.add(dockablePanel);
                 break;
             case RIGHT_FIRST:
             case RIGHT_LAST:
-                if(rightDockButtonHolderPanel.getComponentCount() > 0) {
-                    rightDockButtonHolderPanel.add(Box.createVerticalStrut(10));
-                }
                 ((DockButtonHolderPanel)rightDockButtonHolderPanel).add(dockButton, location);
                 rightBodyPanel.add(dockablePanel);
                 break;
             case BOTTOM_FIRST:
             case BOTTOM_LAST:
-                if(bottomDockButtonHolderPanel.getComponentCount() > 0) {
-                    bottomDockButtonHolderPanel.add(Box.createHorizontalStrut(10));
-                }
                 ((DockButtonHolderPanel)bottomDockButtonHolderPanel).add(dockButton, location);
                 bottomBodyPanel.add(dockablePanel);
                 break;

@@ -61,14 +61,18 @@ public class DockButtonHolderPanel extends javax.swing.JPanel {
     }
 
     public void add(Component component, DockLocation location) {
-        switch (location) {
+        switch(location) {
             case LEFT_FIRST:
             case RIGHT_FIRST:
             case BOTTOM_FIRST:
                 Component[] components = getComponents();
                 removeAll();
-                for (Component existingComponent : components) {
-                    if(existingComponent == glue) {
+                for (int index = 0; index < components.length; index++) {
+                    Component existingComponent = components[index];
+                    if (existingComponent == glue) {
+                        if(index > 0) {
+                            addGlue(location);
+                        }
                         add(component);
                     }
                     add(existingComponent);
@@ -77,10 +81,33 @@ public class DockButtonHolderPanel extends javax.swing.JPanel {
             case LEFT_LAST:
             case RIGHT_LAST:
             case BOTTOM_LAST:
+                for (int index = 0; index < getComponentCount(); index++) {
+                    Component existingComponent = getComponent(index);
+                    if (existingComponent == glue) {
+                        if(getComponentCount() - index > 0) {
+                            addGlue(location);
+                        }
+                    }
+                }
                 add(component);
                 break;
         }
         validate();
+    }
+
+    public void addGlue(DockLocation location) {
+        switch(location) {
+            case LEFT_FIRST:
+            case LEFT_LAST:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
+                add(Box.createVerticalStrut(10));
+                break;
+            case BOTTOM_FIRST:
+            case BOTTOM_LAST:
+                add(Box.createHorizontalStrut(10));
+                break;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
