@@ -108,6 +108,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="leftBodyPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DockRegionPanel(DockLocation.LEFT)"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="Before"/>
@@ -119,6 +122,9 @@
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="rightBodyPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DockRegionPanel(DockLocation.RIGHT)"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="After"/>
@@ -130,6 +136,9 @@
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="bottomBodyPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DockRegionPanel(DockLocation.BOTTOM)"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="Last"/>
@@ -148,6 +157,13 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="editorTabbedPane">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextBackgroundTabbedPane(&#xa;            new BackgroundText(&quot;Tabs&quot;, 100, 30).bold(),&#xa;            new BackgroundText(&quot;No tabs are open&quot;, 220, 20).underlined().bold(),&#xa;            new BackgroundText(&quot;\u2023 Open Recent files with \u2318E&quot;, 255, 17),&#xa;            new BackgroundText(&quot;\u2023 Drag&apos;n&apos;Drop file(s) here from Finder&quot;, 280, 17).alighWithPrevious()&#xa;        );"/>
               </AuxValues>

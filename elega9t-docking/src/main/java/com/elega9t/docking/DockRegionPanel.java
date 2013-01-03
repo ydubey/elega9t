@@ -5,10 +5,6 @@
 
 package com.elega9t.docking;
 
-/**
- *
- * @author yogesh
- */
 public class DockRegionPanel extends javax.swing.JPanel {
     
     private final DockLocation location;
@@ -35,7 +31,15 @@ public class DockRegionPanel extends javax.swing.JPanel {
 
     @Override
     public boolean isVisible() {
-        return super.isVisible() && getComponentCount() > 0;
+        return super.isVisible() && anyChildComponentVisible();
+    }
+
+    private boolean anyChildComponentVisible() {
+        boolean childComponentVisible = false;
+        for(int index=0; !childComponentVisible && index<getComponentCount(); index++) {
+            childComponentVisible = getComponent(index).isVisible();
+        }
+        return childComponentVisible;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

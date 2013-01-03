@@ -5,6 +5,7 @@
 
 package com.elega9t.docking;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,9 +35,9 @@ public class DockPanel extends javax.swing.JPanel {
         rightDockPanel = new DockRegionPanel(DockLocation.RIGHT);
         bottomDockPanel = new DockRegionPanel(DockLocation.BOTTOM);
         bodyPanel = new javax.swing.JPanel();
-        leftBodyPanel = new javax.swing.JPanel();
-        rightBodyPanel = new javax.swing.JPanel();
-        bottomBodyPanel = new javax.swing.JPanel();
+        leftBodyPanel = new DockRegionPanel(DockLocation.LEFT);
+        rightBodyPanel = new DockRegionPanel(DockLocation.RIGHT);
+        bottomBodyPanel = new DockRegionPanel(DockLocation.BOTTOM);
         centerBodyPanel = new javax.swing.JPanel();
         editorTabbedPane = new TextBackgroundTabbedPane(
             new BackgroundText("Tabs", 100, 30).bold(),
@@ -71,6 +72,8 @@ public class DockPanel extends javax.swing.JPanel {
         bodyPanel.add(bottomBodyPanel, java.awt.BorderLayout.PAGE_END);
 
         centerBodyPanel.setLayout(new java.awt.BorderLayout());
+
+        editorTabbedPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         centerBodyPanel.add(editorTabbedPane, java.awt.BorderLayout.CENTER);
 
         bodyPanel.add(centerBodyPanel, java.awt.BorderLayout.CENTER);
@@ -84,17 +87,26 @@ public class DockPanel extends javax.swing.JPanel {
         dockablePanel.setVisible(false);
         dockablePanel.setPreferredSize(new Dimension(300, 100));
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
-        new DockStateAction(dockButton, dockablePanel);
+        new DockStateAction(this, dockButton, dockablePanel);
         switch (location) {
             case LEFT:
+                if(leftDockPanel.getComponentCount() > 0) {
+                    leftDockPanel.add(Box.createVerticalStrut(10));
+                }
                 leftDockPanel.add(dockButton);
                 leftBodyPanel.add(dockablePanel);
                 break;
             case RIGHT:
+                if(rightDockPanel.getComponentCount() > 0) {
+                    rightDockPanel.add(Box.createVerticalStrut(10));
+                }
                 rightDockPanel.add(dockButton);
                 rightBodyPanel.add(dockablePanel);
                 break;
             case BOTTOM:
+                if(bottomDockPanel.getComponentCount() > 0) {
+                    bottomDockPanel.add(Box.createHorizontalStrut(10));
+                }
                 bottomDockPanel.add(dockButton);
                 bottomBodyPanel.add(dockablePanel);
                 break;
