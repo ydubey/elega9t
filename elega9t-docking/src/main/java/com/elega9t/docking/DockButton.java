@@ -1,4 +1,4 @@
-package com.elega9t.gui.platform.dock;
+package com.elega9t.docking;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;

@@ -45,6 +45,7 @@
         <module>../jmeter-jms-skip-jndi</module>
         <module>../cloudfoundry-cli</module>
         <module>../commons</module>
+        <module>../elega9t-docking</module>
         <module>../gui-platform</module>
         <module>../carbon</module>
         <module>../elixir</module>

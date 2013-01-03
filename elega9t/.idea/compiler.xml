@@ -31,6 +31,8 @@
       <directory url="file://$PROJECT_DIR$/../elixir/elixir-release/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../gui-platform/target/generated-sources/annotations" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../gui-platform/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elega9t-docking/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/../elega9t-docking/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
@@ -59,6 +61,7 @@
         <module name="carbon-standard" />
         <module name="cloudfoundry-cli" />
         <module name="commons" />
+        <module name="elega9t-docking" />
         <module name="elixir-api" />
         <module name="elixir-cli" />
         <module name="elixir-gui" />
@@ -75,7 +78,9 @@
       <module name="carbon-standard" target="1.6" />
       <module name="cloudfoundry-cli" target="1.6" />
       <module name="commons" target="1.6" />
+      <module name="docking" target="1.6" />
       <module name="elega9t" target="1.6" />
+      <module name="elega9t-docking" target="1.6" />
       <module name="elixir" target="1.6" />
       <module name="elixir-api" target="1.6" />
       <module name="elixir-cli" target="1.6" />

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/../cloudfoundry-cli/cloudfoundry-cli.iml" filepath="$PROJECT_DIR$/../cloudfoundry-cli/cloudfoundry-cli.iml" />
       <module fileurl="file://$PROJECT_DIR$/../commons/commons.iml" filepath="$PROJECT_DIR$/../commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/elega9t.iml" filepath="$PROJECT_DIR$/elega9t.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../elega9t-docking/elega9t-docking.iml" filepath="$PROJECT_DIR$/../elega9t-docking/elega9t-docking.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir/elixir.iml" filepath="$PROJECT_DIR$/../elixir/elixir.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" filepath="$PROJECT_DIR$/../elixir/elixir-api/elixir-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/../elixir/elixir-cli/elixir-cli.iml" filepath="$PROJECT_DIR$/../elixir/elixir-cli/elixir-cli.iml" />

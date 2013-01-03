@@ -5,16 +5,15 @@
 
 package com.elega9t.gui.platform;
 
+import com.elega9t.docking.DockLocation;
+import com.elega9t.docking.DockPanel;
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
-import com.elega9t.gui.platform.dock.DockLocation;
-import com.elega9t.gui.platform.dock.DockPanel;
 import com.elega9t.gui.platform.mgr.PluginProcessor;
 import com.elega9t.platform.binding.plugin.Action;
 import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.DocksDock;
 import com.elega9t.platform.binding.plugin.Plugin;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Main extends javax.swing.JFrame implements PluginProcessor {
