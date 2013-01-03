@@ -123,12 +123,36 @@
         <xsd:attribute name="description" type="xsd:string"/>
     </xsd:complexType>
 
+    <xsd:complexType name="docks">
+        <xsd:sequence>
+            <xsd:element name="dock" type="plugin:docks-dock" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="docks-dock">
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="componentClass" type="xsd:string"/>
+        <xsd:attribute name="location" type="plugin:dock-location"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="dock-location">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="LEFT"/>
+            <xsd:enumeration value="RIGHT"/>
+            <xsd:enumeration value="BOTTOM"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
     <xsd:element name="plugin">
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element name="keymaps" type="plugin:keymaps" minOccurs="0"/>
                 <xsd:element name="driver-definitions" type="plugin:driver-definitions" minOccurs="0"/>
                 <xsd:element name="actions" type="plugin:actions" minOccurs="0"/>
+                <xsd:element name="docks" type="plugin:docks" minOccurs="0"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

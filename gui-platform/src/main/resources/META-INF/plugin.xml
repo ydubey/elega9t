@@ -13,4 +13,8 @@
         </plugin:groups>
     </plugin:actions>
 
+    <plugin:docks>
+        <plugin:dock location="LEFT" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>-->
+    </plugin:docks>
+
 </plugin:plugin>

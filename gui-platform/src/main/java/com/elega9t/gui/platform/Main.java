@@ -11,9 +11,11 @@ import com.elega9t.gui.platform.dock.DockPanel;
 import com.elega9t.gui.platform.mgr.PluginProcessor;
 import com.elega9t.platform.binding.plugin.Action;
 import com.elega9t.platform.binding.plugin.ActionGroup;
+import com.elega9t.platform.binding.plugin.DocksDock;
 import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Main extends javax.swing.JFrame implements PluginProcessor {
 
@@ -26,9 +28,6 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
      */
     public Main() {
         initComponents();
-        ((DockPanel)dockPanel).addDock(DockLocation.LEFT, "Connections", new javax.swing.ImageIcon(Main.class.getResource("/com/elega9t/platform/icons/edit.png")), new JPanel());
-        ((DockPanel)dockPanel).addDock(DockLocation.RIGHT, "Connections", new javax.swing.ImageIcon(Main.class.getResource("/com/elega9t/platform/icons/edit.png")), new JPanel());
-        ((DockPanel)dockPanel).addDock(DockLocation.BOTTOM, "Connections", new javax.swing.ImageIcon(Main.class.getResource("/com/elega9t/platform/icons/edit.png")), new JPanel());
     }
 
     /**
@@ -93,6 +92,16 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                }
+            }
+        }
+        if(plugin.getDocks() != null) {
+            for (DocksDock dock : plugin.getDocks().getDock()) {
+                try {
+                    java.awt.Component component = (Component) Class.forName(dock.getComponentClass()).newInstance();
+                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), null, component);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }
