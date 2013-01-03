@@ -151,9 +151,22 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+    <xsd:complexType name="plugin-info">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="description" type="xsd:string"/>
+            <xsd:element name="version" type="xsd:string"/>
+            <xsd:element name="vendor" type="xsd:string"/>
+            <xsd:element name="category" type="xsd:string"/>
+            <xsd:element name="icon" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:element name="plugin">
         <xsd:complexType>
             <xsd:sequence>
+                <xsd:element name="info" type="plugin:plugin-info"/>
                 <xsd:element name="keymaps" type="plugin:keymaps" minOccurs="0"/>
                 <xsd:element name="driver-definitions" type="plugin:driver-definitions" minOccurs="0"/>
                 <xsd:element name="actions" type="plugin:actions" minOccurs="0"/>

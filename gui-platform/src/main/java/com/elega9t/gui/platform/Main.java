@@ -14,6 +14,7 @@ import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.DocksDock;
 import com.elega9t.platform.binding.plugin.Plugin;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Main extends javax.swing.JFrame implements PluginProcessor {
@@ -27,6 +28,21 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
      */
     public Main() {
         initComponents();
+    }
+
+    @Override
+    public String getTitle() {
+        return CONTEXT.getApplicationName();
+    }
+
+    @Override
+    public Image getIconImage() {
+        ImageIcon applicationIcon = CONTEXT.getApplicationIcon();
+        if(applicationIcon != null) {
+            return applicationIcon.getImage();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -43,7 +59,6 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
         mainMenu = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        setTitle(CONTEXT.getApplicationName());
         setExtendedState(MAXIMIZED_BOTH);
         setIconImage(CONTEXT.getApplicationIcon().getImage());
         addWindowListener(new java.awt.event.WindowAdapter() {

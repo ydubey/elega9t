@@ -15,9 +15,9 @@ public class Launcher {
     public static void main(String args[]) {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         final Context context = Context.getInstance();
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", context.getApplicationName());
         SplashScreen splashScreen = new SplashScreen(new javax.swing.ImageIcon(Launcher.class.getResource("/com/elega9t/platform/images/splashscr.png")).getImage(), 230);
         splashScreen.setVisible(true);
-        System.setProperty("com.apple.mrj.application.apple.menu.about.name", context.getApplicationName());
     }
 
 }

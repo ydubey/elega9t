@@ -6,6 +6,15 @@
 <plugin:plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:plugin="http://www.elega9t.com/platform/plugin">
 
+    <plugin:info>
+        <plugin:id>com.elega9t.gui.platform</plugin:id>
+        <plugin:name>Elega9t GUI Platform</plugin:name>
+        <plugin:description>Platform for building GUI applications</plugin:description>
+        <plugin:version>1.0-SNAPSHOT</plugin:version>
+        <plugin:vendor>elega9t</plugin:vendor>
+        <plugin:category>Platform</plugin:category>
+    </plugin:info>
+
     <plugin:actions>
         <plugin:groups id="MainMenu.FileMenu" name="File" description="File menu">
             <plugin:add-to-group group-id="MainMenu"/>

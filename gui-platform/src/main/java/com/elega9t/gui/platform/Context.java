@@ -8,11 +8,13 @@ package com.elega9t.gui.platform;
 import com.elega9t.commons.swing.NodeIcon;
 import com.elega9t.gui.platform.event.exit.ApplicationClosingEventListener;
 import com.elega9t.gui.platform.event.exit.DefaultApplicationClosingEventListener;
+import com.elega9t.gui.platform.mgr.PluginProcessor;
+import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.swing.*;
 import javax.swing.plaf.IconUIResource;
 
-public final class Context {
+public final class Context implements PluginProcessor {
 
     private static Context INSTANCE;
 
@@ -23,7 +25,7 @@ public final class Context {
     private ApplicationClosingEventListener applicationClosingEventListener;
 
     private Context() {
-        applicationName = "Elega9t Platform v1.0.0";
+        applicationName = "Elega9t GUI Platform v1.0-SNAPSHOT";
         applicationIcon = new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/platform/icons/icon.png"));
         applicationClosingEventListener = new DefaultApplicationClosingEventListener();
         UIManager.put("Tree.collapsedIcon", new IconUIResource(new NodeIcon(NodeIcon.TYPE.COLLAPSED)));
@@ -70,6 +72,17 @@ public final class Context {
 
     public void setApplicationClosingEventListeners(ApplicationClosingEventListener applicationClosingEventListener) {
         this.applicationClosingEventListener = applicationClosingEventListener;
+    }
+
+    @Override
+    public void process(Plugin plugin) {
+        if("Application".equalsIgnoreCase(plugin.getInfo().getCategory())) {
+            applicationName = plugin.getInfo().getName() + " v" + plugin.getInfo().getVersion();
+            String iconPath = plugin.getInfo().getIcon();
+            if(iconPath != null) {
+                applicationIcon = new ImageIcon(iconPath);
+            }
+        }
     }
 
 }

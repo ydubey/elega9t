@@ -42,6 +42,7 @@ public class SplashScreen extends javax.swing.JFrame implements PluginLoadEventL
             protected Void doInBackground() throws Exception {
                 final PluginManager pluginManager = PluginManager.getInstance();
                 pluginManager.addPluginLoadEventListener(SplashScreen.this);
+                pluginManager.addPluginProcessor(Context.getInstance());
                 pluginManager.addPluginProcessor(Context.getInstance().getMain());
                 pluginManager.load();
                 SplashScreen.this.dispose();
