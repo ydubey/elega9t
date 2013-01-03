@@ -7,7 +7,10 @@ package com.elega9t.docking;
 
 
 public enum DockLocation {
-    LEFT,
-    RIGHT,
-    BOTTOM
+    LEFT_FIRST,
+    LEFT_LAST,
+    RIGHT_FIRST,
+    RIGHT_LAST,
+    BOTTOM_FIRST,
+    BOTTOM_LAST
 }

@@ -27,13 +27,16 @@ public class DockablePanel extends javax.swing.JPanel {
 
     private void initDock() {
         switch (location) {
-            case LEFT:
+            case LEFT_FIRST:
+            case LEFT_LAST:
                 dockButton.setIcon(DOCK_LEFT);
                 break;
-            case RIGHT:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
                 dockButton.setIcon(DOCK_RIGHT);
                 break;
-            case BOTTOM:
+            case BOTTOM_FIRST:
+            case BOTTOM_LAST:
                 dockButton.setIcon(DOCK_BOTTOM);
                 break;
         }

@@ -7,8 +7,6 @@ package com.elega9t.docking;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class DockPanel extends javax.swing.JPanel {
 
@@ -31,13 +29,13 @@ public class DockPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        leftDockPanel = new DockRegionPanel(DockLocation.LEFT);
-        rightDockPanel = new DockRegionPanel(DockLocation.RIGHT);
-        bottomDockPanel = new DockRegionPanel(DockLocation.BOTTOM);
+        leftDockPanel = new DockButtonHolderPanel();
+        rightDockPanel = new DockButtonHolderPanel();
+        bottomDockPanel = new DockButtonHolderPanel();
         bodyPanel = new javax.swing.JPanel();
-        leftBodyPanel = new DockRegionPanel(DockLocation.LEFT);
-        rightBodyPanel = new DockRegionPanel(DockLocation.RIGHT);
-        bottomBodyPanel = new DockRegionPanel(DockLocation.BOTTOM);
+        leftBodyPanel = new DockRegionPanel();
+        rightBodyPanel = new DockRegionPanel();
+        bottomBodyPanel = new DockRegionPanel();
         centerBodyPanel = new javax.swing.JPanel();
         editorTabbedPane = new TextBackgroundTabbedPane(
             new BackgroundText("Tabs", 100, 30).bold(),
@@ -89,21 +87,24 @@ public class DockPanel extends javax.swing.JPanel {
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
         DockStateAction.install(dockButton, dockablePanel);
         switch (location) {
-            case LEFT:
+            case LEFT_FIRST:
+            case LEFT_LAST:
                 if(leftDockPanel.getComponentCount() > 0) {
                     leftDockPanel.add(Box.createVerticalStrut(10));
                 }
                 leftDockPanel.add(dockButton);
                 leftBodyPanel.add(dockablePanel);
                 break;
-            case RIGHT:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
                 if(rightDockPanel.getComponentCount() > 0) {
                     rightDockPanel.add(Box.createVerticalStrut(10));
                 }
                 rightDockPanel.add(dockButton);
                 rightBodyPanel.add(dockablePanel);
                 break;
-            case BOTTOM:
+            case BOTTOM_FIRST:
+            case BOTTOM_LAST:
                 if(bottomDockPanel.getComponentCount() > 0) {
                     bottomDockPanel.add(Box.createHorizontalStrut(10));
                 }

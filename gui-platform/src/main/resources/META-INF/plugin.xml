@@ -14,10 +14,10 @@
     </plugin:actions>
 
     <plugin:docks>
-        <plugin:dock location="LEFT" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
-        <plugin:dock location="LEFT" id="Connections 2" name="Connections 2" componentClass="javax.swing.JPanel"/>
-        <plugin:dock location="RIGHT" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
-        <plugin:dock location="BOTTOM" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
+        <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
+        <plugin:dock location="LEFT_LAST" id="Connections 2" name="Connections 2" componentClass="javax.swing.JPanel"/>
+        <plugin:dock location="RIGHT_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
+        <plugin:dock location="BOTTOM_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
     </plugin:docks>
 
 </plugin:plugin>

@@ -140,9 +140,12 @@
 
     <xsd:simpleType name="dock-location">
         <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="LEFT"/>
-            <xsd:enumeration value="RIGHT"/>
-            <xsd:enumeration value="BOTTOM"/>
+            <xsd:enumeration value="LEFT_FIRST"/>
+            <xsd:enumeration value="LEFT_LAST"/>
+            <xsd:enumeration value="RIGHT_FIRST"/>
+            <xsd:enumeration value="RIGHT_LAST"/>
+            <xsd:enumeration value="BOTTOM_FIRST"/>
+            <xsd:enumeration value="BOTTOM_LAST"/>
         </xsd:restriction>
     </xsd:simpleType>
 

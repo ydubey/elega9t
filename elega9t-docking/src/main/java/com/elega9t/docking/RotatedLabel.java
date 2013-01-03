@@ -27,8 +27,10 @@ public class RotatedLabel extends JLabel {
     public Dimension getPreferredSize() {
         Dimension preferredSize = super.getPreferredSize();
         switch (direction) {
-            case RIGHT:
-            case LEFT:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
+            case LEFT_FIRST:
+            case LEFT_LAST:
                 return new Dimension(preferredSize.height, preferredSize.width);
             default:
                 return preferredSize;
@@ -42,8 +44,10 @@ public class RotatedLabel extends JLabel {
         }
         Dimension size = super.getSize();
         switch (direction) {
-            case LEFT:
-            case RIGHT:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
+            case LEFT_FIRST:
+            case LEFT_LAST:
                 return new Dimension(size.height, size.width);
             default:
                 return super.getSize();
@@ -64,17 +68,18 @@ public class RotatedLabel extends JLabel {
     protected void paintComponent(Graphics g) {
         Graphics2D gr = (Graphics2D) g.create();
         switch (direction) {
-            case LEFT:
+            case LEFT_FIRST:
+            case LEFT_LAST:
                 gr.translate(0, getSize().getHeight());
                 gr.transform(AffineTransform.getQuadrantRotateInstance(-1));
                 break;
-            case RIGHT:
+            case RIGHT_FIRST:
+            case RIGHT_LAST:
                 gr.transform(AffineTransform.getQuadrantRotateInstance(1));
                 gr.translate(0, -getSize().getWidth());
                 break;
-            default:
         }
-        needsRotate = direction != DockLocation.BOTTOM;
+        needsRotate = (direction != DockLocation.BOTTOM_FIRST || direction != DockLocation.BOTTOM_LAST);
         super.paintComponent(gr);
         needsRotate = false;
     }

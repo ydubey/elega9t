@@ -5,12 +5,14 @@
 
 package com.elega9t.docking;
 
-public class DockRegionPanel extends javax.swing.JPanel {
+import java.awt.*;
+
+public class DockButtonHolderPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DockRegionPanel
+     * Creates new form DockButtonHolderPanel
      */
-    public DockRegionPanel() {
+    public DockButtonHolderPanel() {
         initComponents();
     }
 
@@ -22,6 +24,7 @@ public class DockRegionPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         setLayout(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -36,15 +39,11 @@ public class DockRegionPanel extends javax.swing.JPanel {
 
     @Override
     public boolean isVisible() {
-        return super.isVisible() && anyChildComponentVisible();
+        return super.isVisible() && getComponentCount() > 0;
     }
 
-    private boolean anyChildComponentVisible() {
-        boolean childComponentVisible = false;
-        for(int index=0; !childComponentVisible && index<getComponentCount(); index++) {
-            childComponentVisible = getComponent(index).isVisible();
-        }
-        return childComponentVisible;
+    public void add(Component component, DockLocation location) {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

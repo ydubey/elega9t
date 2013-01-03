@@ -21,7 +21,8 @@ public class DockStateAction extends AbstractAction {
             dockablePanel.setVisible(false);
             dockButton.setSelected(false);
         } else if(e.getSource() == dockButton) {
-            dockablePanel.setVisible(dockButton.isSelected());
+            boolean selected = dockButton.isSelected();
+            dockablePanel.setVisible(selected);
         }
     }
 
