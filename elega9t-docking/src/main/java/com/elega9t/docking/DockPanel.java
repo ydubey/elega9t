@@ -37,12 +37,6 @@ public class DockPanel extends javax.swing.JPanel {
         rightBodyPanel = new DockRegionPanel();
         bottomBodyPanel = new DockRegionPanel();
         centerBodyPanel = new javax.swing.JPanel();
-        editorTabbedPane = new TextBackgroundTabbedPane(
-            new BackgroundText("Tabs", 100, 30).bold(),
-            new BackgroundText("No tabs are open", 220, 20).underlined().bold(),
-            new BackgroundText("\u2023 Open Recent files with \u2318E", 255, 17),
-            new BackgroundText("\u2023 Drag'n'Drop file(s) here from Finder", 280, 17).alighWithPrevious()
-        );
 
         setLayout(new java.awt.BorderLayout());
 
@@ -70,10 +64,6 @@ public class DockPanel extends javax.swing.JPanel {
         bodyPanel.add(bottomBodyPanel, java.awt.BorderLayout.PAGE_END);
 
         centerBodyPanel.setLayout(new java.awt.BorderLayout());
-
-        editorTabbedPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        centerBodyPanel.add(editorTabbedPane, java.awt.BorderLayout.CENTER);
-
         bodyPanel.add(centerBodyPanel, java.awt.BorderLayout.CENTER);
 
         add(bodyPanel, java.awt.BorderLayout.CENTER);
@@ -111,6 +101,9 @@ public class DockPanel extends javax.swing.JPanel {
                 ((DockButtonHolderPanel)bottomDockButtonHolderPanel).add(dockButton, location);
                 bottomBodyPanel.add(dockablePanel);
                 break;
+            case CENTER:
+                centerBodyPanel.add(component, java.awt.BorderLayout.CENTER);
+                break;
         }
     }
 
@@ -119,7 +112,6 @@ public class DockPanel extends javax.swing.JPanel {
     private javax.swing.JPanel bottomBodyPanel;
     private javax.swing.JPanel bottomDockButtonHolderPanel;
     private javax.swing.JPanel centerBodyPanel;
-    private javax.swing.JTabbedPane editorTabbedPane;
     private javax.swing.JPanel leftBodyPanel;
     private javax.swing.JPanel leftDockButtonHolderPanel;
     private javax.swing.JPanel rightBodyPanel;

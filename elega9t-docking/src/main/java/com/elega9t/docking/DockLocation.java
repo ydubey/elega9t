@@ -12,5 +12,6 @@ public enum DockLocation {
     RIGHT_FIRST,
     RIGHT_LAST,
     BOTTOM_FIRST,
-    BOTTOM_LAST
+    BOTTOM_LAST,
+    CENTER
 }

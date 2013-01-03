@@ -146,6 +146,7 @@
             <xsd:enumeration value="RIGHT_LAST"/>
             <xsd:enumeration value="BOTTOM_FIRST"/>
             <xsd:enumeration value="BOTTOM_LAST"/>
+            <xsd:enumeration value="CENTER"/>
         </xsd:restriction>
     </xsd:simpleType>
 
