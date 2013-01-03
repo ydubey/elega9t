@@ -87,7 +87,7 @@ public class DockPanel extends javax.swing.JPanel {
         dockablePanel.setVisible(false);
         dockablePanel.setPreferredSize(new Dimension(300, 100));
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
-        new DockStateAction(this, dockButton, dockablePanel);
+        DockStateAction.install(dockButton, dockablePanel);
         switch (location) {
             case LEFT:
                 if(leftDockPanel.getComponentCount() > 0) {

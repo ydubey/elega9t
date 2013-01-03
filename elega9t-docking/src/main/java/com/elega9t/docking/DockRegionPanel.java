@@ -25,9 +25,17 @@ public class DockRegionPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         setLayout(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    @Override
+    public java.awt.Dimension getPreferredSize() {
+        if(isVisible()) {
+            return super.getPreferredSize();
+        } else {
+            return new java.awt.Dimension(0, 0);
+        }
+    }
 
     @Override
     public boolean isVisible() {

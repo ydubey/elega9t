@@ -147,7 +147,7 @@ public class ComponentResizer extends MouseAdapter
 		if (direction == 0)	{
 			source.setCursor( sourceCursor );
 		} else {
-			int cursorType = cursors.get( direction );
+			int cursorType = cursors.get(direction);
 			Cursor cursor = Cursor.getPredefinedCursor( cursorType );
 			source.setCursor( cursor );
 		}

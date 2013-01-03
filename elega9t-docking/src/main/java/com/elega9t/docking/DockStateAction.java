@@ -5,12 +5,10 @@ import java.awt.event.ActionEvent;
 
 public class DockStateAction extends AbstractAction {
 
-    private DockPanel dockPanel;
     private final DockButton dockButton;
     private final DockablePanel dockablePanel;
 
-    public DockStateAction(DockPanel dockPanel, DockButton dockButton, DockablePanel dockablePanel) {
-        this.dockPanel = dockPanel;
+    private DockStateAction(DockButton dockButton, DockablePanel dockablePanel) {
         this.dockButton = dockButton;
         this.dockablePanel = dockablePanel;
         dockButton.addActionListener(this);
@@ -25,8 +23,10 @@ public class DockStateAction extends AbstractAction {
         } else if(e.getSource() == dockButton) {
             dockablePanel.setVisible(dockButton.isSelected());
         }
-        dockPanel.validate();
-        dockPanel.updateUI();
+    }
+
+    public static void install(DockButton dockButton, DockablePanel dockablePanel) {
+        new DockStateAction(dockButton, dockablePanel);
     }
 
 }
