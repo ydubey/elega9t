@@ -98,10 +98,14 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
                 try {
                     java.awt.Component component = (Component) Class.forName(dock.getComponentClass()).newInstance();
                     javax.swing.Icon icon = null;
+                    javax.swing.Icon disabledIcon = null;
                     if(dock.getIcon() != null) {
                         icon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
                     }
-                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, component, dock.isVisible());
+                    if(dock.getDisabledIcon() != null) {
+                        disabledIcon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
+                    }
+                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isVisible());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

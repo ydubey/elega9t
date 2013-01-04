@@ -5,6 +5,7 @@
 
 package com.elega9t.docking;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class DockPanel extends javax.swing.JPanel {
@@ -68,13 +69,14 @@ public class DockPanel extends javax.swing.JPanel {
         add(bodyPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addDock(final DockLocation location, String name, javax.swing.Icon icon, java.awt.Component component) {
-        addDock(location, name, icon, component, false);
+    public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component) {
+        addDock(location, name, icon, disabledIcon, component, false);
     }
 
-    public void addDock(final DockLocation location, String name, javax.swing.Icon icon, java.awt.Component component, boolean selected) {
-        final DockButton dockButton = new DockButton(location, name, icon);
+    public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean selected) {
+        final DockButton dockButton = new DockButton(location, name, icon, disabledIcon);
         dockButton.setSelected(selected);
+        dockButton.setEnabled(false);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(selected);
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);

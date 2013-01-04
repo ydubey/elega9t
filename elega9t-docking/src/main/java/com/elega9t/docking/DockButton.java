@@ -38,10 +38,15 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
     }
 
     public DockButton(DockLocation location, String text, Icon icon) {
+        this(location, text, icon, null);
+    }
+
+    public DockButton(DockLocation location, String text, Icon icon, Icon disabledIcon) {
         this.location = location;
         initComponents();
         textLabel.setText(text);
         textLabel.setIcon(icon);
+        textLabel.setDisabledIcon(disabledIcon);
         addMouseListener(this);
     }
 
@@ -147,6 +152,10 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
         } else {
             setBorder(EMPTY_BORDER);
         }
+    }
+
+    public void setEnabled(boolean enabled) {
+        textLabel.setEnabled(enabled);
     }
 
 }
