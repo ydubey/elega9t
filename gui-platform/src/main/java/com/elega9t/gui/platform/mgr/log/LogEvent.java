@@ -5,18 +5,26 @@
 
 package com.elega9t.gui.platform.mgr.log;
 
+import java.util.Date;
+
 public class LogEvent {
 
     private String logType;
+    private Date date;
     private String log;
 
-    public LogEvent(String logType, String log) {
+    public LogEvent(String logType, Date date, String log) {
         this.logType = logType;
+        this.date = date;
         this.log = log;
     }
 
     public String getLogType() {
         return logType;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public String getLog() {

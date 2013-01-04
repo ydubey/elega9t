@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PluginManager extends DefaultLoadableEntity {
@@ -49,11 +50,13 @@ public class PluginManager extends DefaultLoadableEntity {
                         return dir.getName().equals("META-INF") && name.equals("plugin.xml");
                     }
                 });
+                if(inputStreams.size() > 0) {
+                    LogManager.getInstance().fireLogEvent(new LogEvent("PLUGIN", new Date(), classPathResource.toString()));
+                }
                 for (InputStream inputStream : inputStreams) {
                     load(inputStream);
                 }
                 firePluginLoadEvent(classPathResources.size(), index + 1);
-                LogManager.getInstance().fireLogEvent(new LogEvent("PLUGIN", classPathResource.toString()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
