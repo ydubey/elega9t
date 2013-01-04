@@ -29,23 +29,14 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
 
     private boolean mouseOver;
 
-    /**
-     * Creates new form DockButton
-     */
     public DockButton(DockLocation location) {
         this(location, null);
     }
 
-    /**
-     * Creates new form DockButton
-     */
     public DockButton(DockLocation location, String text) {
         this(location, text, null);
     }
 
-    /**
-     * Creates new form DockButton
-     */
     public DockButton(DockLocation location, String text, Icon icon) {
         this.location = location;
         initComponents();

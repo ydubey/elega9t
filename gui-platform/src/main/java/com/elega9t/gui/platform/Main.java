@@ -14,7 +14,6 @@ import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.DocksDock;
 import com.elega9t.platform.binding.plugin.Plugin;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Main extends javax.swing.JFrame implements PluginProcessor {
@@ -102,7 +101,7 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
                     if(dock.getIcon() != null) {
                         icon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
                     }
-                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, component);
+                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, component, dock.isVisible());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

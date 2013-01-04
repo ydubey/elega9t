@@ -18,11 +18,14 @@
     </plugin:info>
 
     <plugin:docks>
-        <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="com.elega9t.elixir.gui.components.ConnectionsPanel">
+        <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="com.elega9t.elixir.gui.components.ConnectionsPanel" visible="true">
             <plugin:icon>/com/elega9t/elixir/gui/icons/database_connections.png</plugin:icon>
         </plugin:dock>
         <plugin:dock location="BOTTOM_FIRST" id="Query History" name="Query History" componentClass="com.elega9t.elixir.gui.components.QueryHistoryPanel">
             <plugin:icon>/com/elega9t/elixir/gui/icons/query_history.png</plugin:icon>
+        </plugin:dock>
+        <plugin:dock location="BOTTOM_LAST" id="Event Log" name="Event Log" componentClass="com.elega9t.elixir.gui.components.LogsManagerPanel">
+            <plugin:icon>/com/elega9t/elixir/gui/icons/event.png</plugin:icon>
         </plugin:dock>
     </plugin:docks>
 
