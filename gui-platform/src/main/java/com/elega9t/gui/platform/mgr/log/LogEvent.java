@@ -3,14 +3,14 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.elixir.gui.mgrs.log;
+package com.elega9t.gui.platform.mgr.log;
 
 public class LogEvent {
 
-    private LogType logType;
+    private String logType;
     private String log;
 
-    public LogType getLogType() {
+    public String getLogType() {
         return logType;
     }
 

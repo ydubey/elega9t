@@ -3,22 +3,27 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.elixir.gui.components;
+package com.elega9t.gui.platform.components;
 
 import com.elega9t.gui.platform.mgr.log.LogEvent;
 import com.elega9t.gui.platform.mgr.log.LogListener;
 import com.elega9t.gui.platform.mgr.log.LogManager;
 
-import javax.swing.table.DefaultTableModel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
-public class QueryHistoryPanel extends javax.swing.JPanel implements LogListener {
+/**
+ *
+ * @author yogesh
+ */
+public class LogsManagerPanel extends javax.swing.JPanel implements LogListener {
 
     /**
-     * Creates new form LogManagerPanel
+     * Creates new form LogsManagerPanel
      */
-    public QueryHistoryPanel() {
+    public LogsManagerPanel() {
         initComponents();
-        LogManager.getInstance().addLogListener("USER_QUERY", this);
+        LogManager.getInstance().addLogListener(LogManager.ALL_LOG_LISTENER, this);
     }
 
     /**
@@ -29,27 +34,29 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements LogListener
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        queryHistoryTableScrollPane = new javax.swing.JScrollPane();
-        queryHistoryTable = new javax.swing.JTable();
+
+        logsManagerScrollPane = new javax.swing.JScrollPane();
+        logsManagerTextPane = new javax.swing.JTextPane();
 
         setLayout(new java.awt.BorderLayout());
 
-        queryHistoryTable.setModel(new javax.swing.table.DefaultTableModel(new Object[] {"Date", "Database Connection", "Query"}, 0));
-        queryHistoryTableScrollPane.setViewportView(queryHistoryTable);
+        logsManagerScrollPane.setViewportView(logsManagerTextPane);
 
-        add(queryHistoryTableScrollPane, java.awt.BorderLayout.CENTER);
+        add(logsManagerScrollPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
     public void log(LogEvent event) {
-        DefaultTableModel model = (DefaultTableModel) queryHistoryTable.getModel();
-        model.addRow(new Object[] { "blah", "blah", event.getLog() });
-        System.out.println("QueryHistory: " + event.getLog());
+        Document document = logsManagerTextPane.getDocument();
+        try {
+            document.insertString(document.getLength(), event.getLog(), null);
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable queryHistoryTable;
-    private javax.swing.JScrollPane queryHistoryTableScrollPane;
+    private javax.swing.JScrollPane logsManagerScrollPane;
+    private javax.swing.JTextPane logsManagerTextPane;
     // End of variables declaration//GEN-END:variables
-
 }

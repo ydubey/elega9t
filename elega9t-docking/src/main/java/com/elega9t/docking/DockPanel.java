@@ -70,11 +70,11 @@ public class DockPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component) {
-        addDock(location, name, icon, disabledIcon, component, false);
+        addDock(location, name, icon, disabledIcon, component, true, false);
     }
 
-    public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean selected) {
-        final DockButton dockButton = new DockButton(location, name, icon, disabledIcon);
+    public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean enabled, boolean selected) {
+        final DockButton dockButton = new DockButton(location, component, name, icon, disabledIcon);
         dockButton.setSelected(selected);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(selected);
@@ -102,6 +102,14 @@ public class DockPanel extends javax.swing.JPanel {
             case CENTER:
                 centerBodyPanel.add(component, java.awt.BorderLayout.CENTER);
                 break;
+        }
+    }
+
+    public void setEnabled(Component component, boolean enabled) {
+        for (Component dockButtonHolderPanelComponent : leftDockButtonHolderPanel.getComponents()) {
+            if(dockButtonHolderPanelComponent instanceof DockButton && ((DockButton) dockButtonHolderPanelComponent).getComponent() == component) {
+                dockButtonHolderPanelComponent.setEnabled(enabled);
+            }
         }
     }
 

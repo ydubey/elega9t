@@ -21,28 +21,31 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
     private static final Border  LINE_BORDER = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
     private static final Border BEVEL_BORDER = javax.swing.BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 
-    private boolean selected;
-    private DockLocation location;
+    private final DockLocation location;
+    private final Component component;
+
     private int inset = 5;
+    private boolean selected;
 
     private java.util.List<ActionListener> actionListeners = new ArrayList<ActionListener>();
 
     private boolean mouseOver;
 
-    public DockButton(DockLocation location) {
-        this(location, null);
+    public DockButton(DockLocation location, Component component) {
+        this(location, component, null);
     }
 
-    public DockButton(DockLocation location, String text) {
-        this(location, text, null);
+    public DockButton(DockLocation location, Component component, String text) {
+        this(location, component, text, null);
     }
 
-    public DockButton(DockLocation location, String text, Icon icon) {
-        this(location, text, icon, null);
+    public DockButton(DockLocation location, Component component, String text, Icon icon) {
+        this(location, component, text, icon, null);
     }
 
-    public DockButton(DockLocation location, String text, Icon icon, Icon disabledIcon) {
+    public DockButton(DockLocation location, Component component, String text, Icon icon, Icon disabledIcon) {
         this.location = location;
+        this.component = component;
         initComponents();
         textLabel.setText(text);
         textLabel.setIcon(icon);
@@ -154,6 +157,11 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
         }
     }
 
+    public Component getComponent() {
+        return component;
+    }
+
+    @Override
     public void setEnabled(boolean enabled) {
         textLabel.setEnabled(enabled);
     }

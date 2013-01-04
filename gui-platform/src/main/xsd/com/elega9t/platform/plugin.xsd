@@ -139,6 +139,7 @@
         <xsd:attribute name="name" type="plugin:non-empty-string"/>
         <xsd:attribute name="componentClass" type="plugin:non-empty-string"/>
         <xsd:attribute name="location" type="plugin:dock-location"/>
+        <xsd:attribute name="enabled" type="xsd:boolean" default="true"/>
         <xsd:attribute name="visible" type="xsd:boolean" default="false"/>
     </xsd:complexType>
 

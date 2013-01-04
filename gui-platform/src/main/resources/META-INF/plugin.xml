@@ -23,4 +23,10 @@
         </plugin:groups>
     </plugin:actions>
 
+    <plugin:docks>
+        <plugin:dock location="BOTTOM_LAST" id="Event Log" name="Event Log" componentClass="com.elega9t.gui.platform.components.LogsManagerPanel">
+            <plugin:icon>/com/elega9t/platform/icons/event.png</plugin:icon>
+        </plugin:dock>
+    </plugin:docks>
+
 </plugin:plugin>

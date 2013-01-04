@@ -24,9 +24,6 @@
         <plugin:dock location="BOTTOM_FIRST" id="Query History" name="Query History" componentClass="com.elega9t.elixir.gui.components.QueryHistoryPanel">
             <plugin:icon>/com/elega9t/elixir/gui/icons/query_history.png</plugin:icon>
         </plugin:dock>
-        <plugin:dock location="BOTTOM_LAST" id="Event Log" name="Event Log" componentClass="com.elega9t.elixir.gui.components.LogsManagerPanel">
-            <plugin:icon>/com/elega9t/elixir/gui/icons/event.png</plugin:icon>
-        </plugin:dock>
     </plugin:docks>
 
 </plugin:plugin>

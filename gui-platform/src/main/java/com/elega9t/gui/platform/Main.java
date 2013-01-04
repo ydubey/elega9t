@@ -105,7 +105,7 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
                     if(dock.getDisabledIcon() != null) {
                         disabledIcon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
                     }
-                    ((DockPanel)dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isVisible());
+                    ((DockPanel) dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isEnabled(), dock.isVisible());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
