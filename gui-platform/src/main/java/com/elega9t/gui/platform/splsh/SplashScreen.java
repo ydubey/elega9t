@@ -7,8 +7,8 @@ package com.elega9t.gui.platform.splsh;
 
 import com.elega9t.gui.platform.Context;
 import com.elega9t.gui.platform.Main;
-import com.elega9t.gui.platform.mgr.PluginLoadEventListener;
-import com.elega9t.gui.platform.mgr.PluginManager;
+import com.elega9t.gui.platform.mgr.plugin.PluginLoadEventListener;
+import com.elega9t.gui.platform.mgr.plugin.PluginManager;
 
 import javax.swing.*;
 import java.awt.*;

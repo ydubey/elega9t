@@ -8,7 +8,7 @@ package com.elega9t.gui.platform;
 import com.elega9t.commons.swing.NodeIcon;
 import com.elega9t.gui.platform.event.exit.ApplicationClosingEventListener;
 import com.elega9t.gui.platform.event.exit.DefaultApplicationClosingEventListener;
-import com.elega9t.gui.platform.mgr.PluginProcessor;
+import com.elega9t.gui.platform.mgr.plugin.PluginProcessor;
 import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.swing.*;

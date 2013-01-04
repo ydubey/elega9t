@@ -3,10 +3,12 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.gui.platform.mgr;
+package com.elega9t.gui.platform.mgr.plugin;
 
-public interface PluginLoadEventListener {
+import com.elega9t.platform.binding.plugin.Plugin;
 
-    void pluginLoading(int totalPluginCount, int processedPluginCount);
+public interface PluginProcessor {
+
+    void process(Plugin plugin);
 
 }
