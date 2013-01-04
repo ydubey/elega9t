@@ -4,6 +4,7 @@
   ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
   ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
   -->
+
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:plugin="http://www.elega9t.com/platform/plugin"
             targetNamespace="http://www.elega9t.com/platform/plugin"

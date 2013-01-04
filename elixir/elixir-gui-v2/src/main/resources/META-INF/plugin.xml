@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
   ~ Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
   ~ ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
@@ -18,6 +19,9 @@
     <plugin:docks>
         <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel">
             <plugin:icon>/com/elega9t/elixir/gui/icons/database_connections.png</plugin:icon>
+        </plugin:dock>
+        <plugin:dock location="BOTTOM_FIRST" id="Query History" name="Query History" componentClass="com.elega9t.elixir.gui.components.QueryHistoryPanel">
+            <plugin:icon>/com/elega9t/elixir/gui/icons/query_history.png</plugin:icon>
         </plugin:dock>
     </plugin:docks>
 
