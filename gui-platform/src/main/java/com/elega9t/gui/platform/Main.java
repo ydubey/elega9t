@@ -30,21 +30,6 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
         initComponents();
     }
 
-    @Override
-    public String getTitle() {
-        return CONTEXT.getApplicationName();
-    }
-
-    @Override
-    public Image getIconImage() {
-        ImageIcon applicationIcon = CONTEXT.getApplicationIcon();
-        if(applicationIcon != null) {
-            return applicationIcon.getImage();
-        } else {
-            return null;
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -82,6 +82,8 @@ public final class Context implements PluginProcessor {
             if(iconPath != null) {
                 applicationIcon = new ImageIcon(iconPath);
             }
+            main.setTitle(applicationName);
+            main.setIconImage(applicationIcon.getImage());
         }
     }
 

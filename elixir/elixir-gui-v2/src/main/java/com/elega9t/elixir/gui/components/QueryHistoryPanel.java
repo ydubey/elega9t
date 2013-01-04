@@ -31,29 +31,15 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements LogListener
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        toolbarPanel = new javax.swing.JPanel();
-        queryHistoryToolBar = new javax.swing.JToolBar();
-        bodyPanel = new javax.swing.JPanel();
         queryHistoryTableScrollPane = new javax.swing.JScrollPane();
         queryHistoryTable = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
-        toolbarPanel.setLayout(new java.awt.BorderLayout());
-
-        queryHistoryToolBar.setRollover(true);
-        toolbarPanel.add(queryHistoryToolBar, java.awt.BorderLayout.CENTER);
-
-        add(toolbarPanel, java.awt.BorderLayout.PAGE_START);
-
-        bodyPanel.setLayout(new java.awt.BorderLayout());
-
         queryHistoryTable.setModel(new javax.swing.table.DefaultTableModel(new Object[] {"Date", "Database Connection", "Query"}, 0));
         queryHistoryTableScrollPane.setViewportView(queryHistoryTable);
 
-        bodyPanel.add(queryHistoryTableScrollPane, java.awt.BorderLayout.CENTER);
-
-        add(bodyPanel, java.awt.BorderLayout.CENTER);
+        add(queryHistoryTableScrollPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
@@ -64,11 +50,8 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements LogListener
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bodyPanel;
     private javax.swing.JTable queryHistoryTable;
     private javax.swing.JScrollPane queryHistoryTableScrollPane;
-    private javax.swing.JToolBar queryHistoryToolBar;
-    private javax.swing.JPanel toolbarPanel;
     // End of variables declaration//GEN-END:variables
 
 }

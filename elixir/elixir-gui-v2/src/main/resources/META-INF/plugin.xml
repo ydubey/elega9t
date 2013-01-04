@@ -14,10 +14,11 @@
         <plugin:version>1.0-SNAPSHOT</plugin:version>
         <plugin:vendor>elega9t</plugin:vendor>
         <plugin:category>Application</plugin:category>
+        <plugin:icon>/com/elega9t/elixir/gui/icons/icon.png</plugin:icon>
     </plugin:info>
 
     <plugin:docks>
-        <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel">
+        <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="com.elega9t.elixir.gui.components.ConnectionsPanel">
             <plugin:icon>/com/elega9t/elixir/gui/icons/database_connections.png</plugin:icon>
         </plugin:dock>
         <plugin:dock location="BOTTOM_FIRST" id="Query History" name="Query History" componentClass="com.elega9t.elixir.gui.components.QueryHistoryPanel">
