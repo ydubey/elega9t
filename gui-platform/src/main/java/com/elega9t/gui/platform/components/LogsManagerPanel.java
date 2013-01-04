@@ -49,6 +49,9 @@ public class LogsManagerPanel extends javax.swing.JPanel implements LogListener 
     public void log(LogEvent event) {
         Document document = logsManagerTextPane.getDocument();
         try {
+            if(document.getLength() > 0) {
+                document.insertString(document.getLength(), "\n", null);
+            }
             document.insertString(document.getLength(), event.getLog(), null);
         } catch (BadLocationException e) {
             e.printStackTrace();

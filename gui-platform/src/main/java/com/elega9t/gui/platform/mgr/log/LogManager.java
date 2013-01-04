@@ -25,7 +25,7 @@ public class LogManager {
         return INSTANCE;
     }
 
-    public void addLogListener(String logType, LogListener listener) {
+    private List<LogListener> getLogListeners(String logType) {
         List<LogListener> listeners = logListeners.get(logType);
         if(listeners == null) {
             synchronized (LogManager.class) {
@@ -36,14 +36,19 @@ public class LogManager {
                 }
             }
         }
+        return listeners;
+    }
+
+    public void addLogListener(String logType, LogListener listener) {
+        List<LogListener> listeners = getLogListeners(logType);
         listeners.add(listener);
     }
 
     public void fireLogEvent(LogEvent event) {
-        for (LogListener logListener : logListeners.get(event.getLogType())) {
+        for (LogListener logListener : getLogListeners(event.getLogType())) {
             logListener.log(event);
         }
-        for (LogListener logListener : logListeners.get(ALL_LOG_LISTENER)) {
+        for (LogListener logListener : getLogListeners(ALL_LOG_LISTENER)) {
             logListener.log(event);
         }
     }

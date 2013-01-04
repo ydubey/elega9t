@@ -10,6 +10,11 @@ public class LogEvent {
     private String logType;
     private String log;
 
+    public LogEvent(String logType, String log) {
+        this.logType = logType;
+        this.log = log;
+    }
+
     public String getLogType() {
         return logType;
     }

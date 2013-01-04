@@ -9,6 +9,8 @@ import com.elega9t.commons.cp.ClassPathResource;
 import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
+import com.elega9t.gui.platform.mgr.log.LogEvent;
+import com.elega9t.gui.platform.mgr.log.LogManager;
 import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.xml.bind.JAXBContext;
@@ -51,6 +53,7 @@ public class PluginManager extends DefaultLoadableEntity {
                     load(inputStream);
                 }
                 firePluginLoadEvent(classPathResources.size(), index + 1);
+                LogManager.getInstance().fireLogEvent(new LogEvent("PLUGIN", classPathResource.toString()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
