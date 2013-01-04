@@ -76,7 +76,6 @@ public class DockPanel extends javax.swing.JPanel {
     public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean selected) {
         final DockButton dockButton = new DockButton(location, name, icon, disabledIcon);
         dockButton.setSelected(selected);
-        dockButton.setEnabled(false);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(selected);
         dockablePanel.add(component, java.awt.BorderLayout.CENTER);
