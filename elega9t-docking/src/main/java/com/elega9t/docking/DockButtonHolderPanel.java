@@ -57,7 +57,7 @@ public class DockButtonHolderPanel extends javax.swing.JPanel {
 
     @Override
     public boolean isVisible() {
-        return super.isVisible() && getComponentCount() > 0;
+        return super.isVisible() && getComponentCount() > 1;
     }
 
     public void add(Component component, DockLocation location) {

@@ -22,14 +22,4 @@
         </plugin:groups>
     </plugin:actions>
 
-    <plugin:docks>
-        <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel">
-            <plugin:icon>/com/elega9t/platform/icons/edit.png</plugin:icon>
-        </plugin:dock>
-        <plugin:dock location="LEFT_LAST" id="Connections 2" name="Connections 2" componentClass="javax.swing.JPanel"/>
-        <plugin:dock location="RIGHT_FIRST" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
-        <plugin:dock location="BOTTOM_LAST" id="Connections" name="Connections" componentClass="javax.swing.JPanel"/>
-        <plugin:dock location="CENTER" id="Editor" name="Editor" componentClass="javax.swing.JTabbedPane"/>
-    </plugin:docks>
-
 </plugin:plugin>
