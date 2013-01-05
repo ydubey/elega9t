@@ -49,14 +49,19 @@ public class LogsManagerPanel extends javax.swing.JPanel implements EventListene
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void log(Event event) {
+    public void pastEvent(Event event) {
+        eventOccured(event);
+    }
+
+    @Override
+    public void eventOccured(Event event) {
         Document document = logsManagerTextPane.getDocument();
         try {
             if(document.getLength() > 0) {
                 document.insertString(document.getLength(), "\n", null);
             }
             document.insertString(document.getLength(), dateFormat.format(event.getDate()) + " ", null);
-            document.insertString(document.getLength(), event.getLog(), null);
+            document.insertString(document.getLength(), event.getEventLog(), null);
         } catch (BadLocationException e) {
             e.printStackTrace();
         }

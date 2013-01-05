@@ -9,26 +9,26 @@ import java.util.Date;
 
 public class Event {
 
-    private String logType;
+    private String eventType;
     private Date date;
-    private String log;
+    private String eventLog;
 
-    public Event(String logType, Date date, String log) {
-        this.logType = logType;
+    public Event(String eventType, Date date, String eventLog) {
+        this.eventType = eventType;
         this.date = date;
-        this.log = log;
+        this.eventLog = eventLog;
     }
 
-    public String getLogType() {
-        return logType;
+    public String getEventType() {
+        return eventType;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public String getLog() {
-        return log;
+    public String getEventLog() {
+        return eventLog;
     }
 
 }

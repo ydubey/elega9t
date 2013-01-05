@@ -50,11 +50,12 @@ public class PluginManager extends DefaultLoadableEntity {
                         return dir.getName().equals("META-INF") && name.equals("plugin.xml");
                     }
                 });
-                if(inputStreams.size() > 0) {
-                    EventManager.getInstance().fireLogEvent(new Event("PLUGIN", new Date(), classPathResource.toString()));
-                }
+                long time = System.currentTimeMillis();
                 for (InputStream inputStream : inputStreams) {
-                    load(inputStream);
+                    Plugin plugin = load(inputStream);
+                    if(inputStreams.size() > 0) {
+                        EventManager.getInstance().fireLogEvent(new Event("PLUGIN", new Date(), plugin.getInfo().getName() + " plugin loaded from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
+                    }
                 }
                 firePluginLoadEvent(classPathResources.size(), index + 1);
             } catch (Exception e) {
@@ -69,11 +70,12 @@ public class PluginManager extends DefaultLoadableEntity {
         }
     }
 
-    private void load(InputStream inputStream) throws JAXBException, EntityLoadException {
+    private Plugin load(InputStream inputStream) throws JAXBException, EntityLoadException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Plugin.class.getPackage().getName());
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         final Plugin plugin = (Plugin) unmarshaller.unmarshal(inputStream);
         processPlugin(plugin);
+        return plugin;
     }
 
     protected void processPlugin(Plugin plugin) throws EntityLoadException {

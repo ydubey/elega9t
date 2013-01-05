@@ -17,6 +17,7 @@ public class EventManager {
     private static final EventManager INSTANCE = new EventManager();
 
     private Map<String, List<EventListener>> logListeners = new HashMap<String, List<EventListener>>();
+    private List<Event> eventLog = new ArrayList<Event>();
 
     private EventManager() {
     }
@@ -39,17 +40,23 @@ public class EventManager {
         return listeners;
     }
 
-    public void addLogListener(String logType, EventListener listener) {
-        List<EventListener> listeners = getLogListeners(logType);
+    public void addLogListener(String eventType, EventListener listener) {
+        List<EventListener> listeners = getLogListeners(eventType);
         listeners.add(listener);
+        for (Event event : eventLog) {
+            if(ALL_LOG_LISTENER.equals(eventType) || event.getEventType().equals(eventType)) {
+                listener.pastEvent(event);
+            }
+        }
     }
 
     public void fireLogEvent(Event event) {
-        for (EventListener eventListener : getLogListeners(event.getLogType())) {
-            eventListener.log(event);
+        eventLog.add(event);
+        for (EventListener eventListener : getLogListeners(event.getEventType())) {
+            eventListener.eventOccured(event);
         }
         for (EventListener eventListener : getLogListeners(ALL_LOG_LISTENER)) {
-            eventListener.log(event);
+            eventListener.eventOccured(event);
         }
     }
 

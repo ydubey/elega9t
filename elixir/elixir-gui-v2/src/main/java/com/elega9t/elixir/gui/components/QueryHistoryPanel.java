@@ -41,10 +41,15 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements EventListen
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void log(Event event) {
+    public void pastEvent(Event event) {
+        eventOccured(event);
+    }
+
+    @Override
+    public void eventOccured(Event event) {
         DefaultTableModel model = (DefaultTableModel) queryHistoryTable.getModel();
-        model.addRow(new Object[] { "blah", "blah", event.getLog() });
-        System.out.println("QueryHistory: " + event.getLog());
+        model.addRow(new Object[] { "blah", "blah", event.getEventLog() });
+        System.out.println("QueryHistory: " + event.getEventLog());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
