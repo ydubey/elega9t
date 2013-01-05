@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class EventManager {
 
-    public static final String ALL_LOG_LISTENER = "**ALL_LOGS**";
+    public static final String ALL_EVENTS = "**ALL_LOGS**";
 
     private static final EventManager INSTANCE = new EventManager();
 
@@ -44,7 +44,7 @@ public class EventManager {
         Queue<EventListener> listeners = getLogListeners(eventType);
         listeners.add(listener);
         for (Event event : eventLog) {
-            if(ALL_LOG_LISTENER.equals(eventType) || event.getEventType().equals(eventType)) {
+            if(ALL_EVENTS.equals(eventType) || event.getEventType().equals(eventType)) {
                 listener.pastEvent(event);
             }
         }
@@ -55,7 +55,7 @@ public class EventManager {
         for (EventListener eventListener : getLogListeners(event.getEventType())) {
             eventListener.eventOccured(event);
         }
-        for (EventListener eventListener : getLogListeners(ALL_LOG_LISTENER)) {
+        for (EventListener eventListener : getLogListeners(ALL_EVENTS)) {
             eventListener.eventOccured(event);
         }
     }

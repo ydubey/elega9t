@@ -26,7 +26,7 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
      */
     public EventManagerPanel() {
         initComponents();
-        EventManager.getInstance().addLogListener(EventManager.ALL_LOG_LISTENER, this);
+        EventManager.getInstance().addLogListener(EventManager.ALL_EVENTS, this);
     }
 
     /**
