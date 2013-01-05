@@ -19,7 +19,6 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +27,6 @@ public class PluginManager extends DefaultLoadableEntity {
     public static final String PLUGIN_LOAD_EVENT_TYPE = "PLUGIN";
 
     private static PluginManager INSTANCE = new PluginManager();
-
-    private List<PluginProcessor> pluginProcessors = new ArrayList<PluginProcessor>();
 
     protected PluginManager() {
         super("Plugin Manager");
@@ -68,18 +65,7 @@ public class PluginManager extends DefaultLoadableEntity {
         JAXBContext jaxbContext = JAXBContext.newInstance(Plugin.class.getPackage().getName());
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         final Plugin plugin = (Plugin) unmarshaller.unmarshal(inputStream);
-        processPlugin(plugin);
         return plugin;
-    }
-
-    protected void processPlugin(Plugin plugin) throws EntityLoadException {
-        for (PluginProcessor pluginProcessor : pluginProcessors) {
-            pluginProcessor.process(plugin);
-        }
-    }
-
-    public void addPluginProcessor(PluginProcessor pluginProcessor) {
-        pluginProcessors.add(pluginProcessor);
     }
 
 }
