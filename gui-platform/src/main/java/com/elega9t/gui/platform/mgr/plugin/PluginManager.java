@@ -9,8 +9,8 @@ import com.elega9t.commons.cp.ClassPathResource;
 import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.gui.platform.mgr.log.LogEvent;
-import com.elega9t.gui.platform.mgr.log.LogManager;
+import com.elega9t.gui.platform.mgr.event.LogEvent;
+import com.elega9t.gui.platform.mgr.event.LogManager;
 import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.xml.bind.JAXBContext;

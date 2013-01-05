@@ -5,9 +5,9 @@
 
 package com.elega9t.elixir.gui.components;
 
-import com.elega9t.gui.platform.mgr.log.LogEvent;
-import com.elega9t.gui.platform.mgr.log.LogListener;
-import com.elega9t.gui.platform.mgr.log.LogManager;
+import com.elega9t.gui.platform.mgr.event.LogEvent;
+import com.elega9t.gui.platform.mgr.event.LogListener;
+import com.elega9t.gui.platform.mgr.event.LogManager;
 
 import javax.swing.table.DefaultTableModel;
 
