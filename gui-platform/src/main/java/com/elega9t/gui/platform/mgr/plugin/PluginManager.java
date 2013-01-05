@@ -30,7 +30,6 @@ public class PluginManager extends DefaultLoadableEntity {
     private static PluginManager INSTANCE = new PluginManager();
 
     private List<PluginProcessor> pluginProcessors = new ArrayList<PluginProcessor>();
-    private List<PluginLoadEventListener> pluginLoadListeners = new ArrayList<PluginLoadEventListener>();
 
     protected PluginManager() {
         super("Plugin Manager");
@@ -59,16 +58,9 @@ public class PluginManager extends DefaultLoadableEntity {
                         EventManager.getInstance().fireLogEvent(new Event(plugin, PLUGIN_LOAD_EVENT_TYPE, new Date(), plugin.getInfo().getName() + " plugin loaded from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
                     }
                 }
-                firePluginLoadEvent(classPathResources.size(), index + 1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    private void firePluginLoadEvent(int size, int index) {
-        for (PluginLoadEventListener pluginLoadListener : pluginLoadListeners) {
-            pluginLoadListener.pluginLoading(size, index);
         }
     }
 
@@ -88,10 +80,6 @@ public class PluginManager extends DefaultLoadableEntity {
 
     public void addPluginProcessor(PluginProcessor pluginProcessor) {
         pluginProcessors.add(pluginProcessor);
-    }
-
-    public void addPluginLoadEventListener(PluginLoadEventListener pluginLoadEventListener) {
-        pluginLoadListeners.add(pluginLoadEventListener);
     }
 
 }
