@@ -5,9 +5,9 @@
 
 package com.elega9t.gui.platform.components;
 
-import com.elega9t.gui.platform.mgr.event.LogEvent;
-import com.elega9t.gui.platform.mgr.event.LogListener;
-import com.elega9t.gui.platform.mgr.event.LogManager;
+import com.elega9t.gui.platform.mgr.event.Event;
+import com.elega9t.gui.platform.mgr.event.EventListener;
+import com.elega9t.gui.platform.mgr.event.EventManager;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -17,7 +17,7 @@ import java.text.DateFormat;
  *
  * @author yogesh
  */
-public class LogsManagerPanel extends javax.swing.JPanel implements LogListener {
+public class LogsManagerPanel extends javax.swing.JPanel implements EventListener {
 
     private DateFormat dateFormat = DateFormat.getTimeInstance();
 
@@ -26,7 +26,7 @@ public class LogsManagerPanel extends javax.swing.JPanel implements LogListener 
      */
     public LogsManagerPanel() {
         initComponents();
-        LogManager.getInstance().addLogListener(LogManager.ALL_LOG_LISTENER, this);
+        EventManager.getInstance().addLogListener(EventManager.ALL_LOG_LISTENER, this);
     }
 
     /**
@@ -49,7 +49,7 @@ public class LogsManagerPanel extends javax.swing.JPanel implements LogListener 
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void log(LogEvent event) {
+    public void log(Event event) {
         Document document = logsManagerTextPane.getDocument();
         try {
             if(document.getLength() > 0) {

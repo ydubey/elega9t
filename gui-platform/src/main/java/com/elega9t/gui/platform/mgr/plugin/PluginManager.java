@@ -9,8 +9,8 @@ import com.elega9t.commons.cp.ClassPathResource;
 import com.elega9t.commons.cp.ClassPathUtilities;
 import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
-import com.elega9t.gui.platform.mgr.event.LogEvent;
-import com.elega9t.gui.platform.mgr.event.LogManager;
+import com.elega9t.gui.platform.mgr.event.Event;
+import com.elega9t.gui.platform.mgr.event.EventManager;
 import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.xml.bind.JAXBContext;
@@ -51,7 +51,7 @@ public class PluginManager extends DefaultLoadableEntity {
                     }
                 });
                 if(inputStreams.size() > 0) {
-                    LogManager.getInstance().fireLogEvent(new LogEvent("PLUGIN", new Date(), classPathResource.toString()));
+                    EventManager.getInstance().fireLogEvent(new Event("PLUGIN", new Date(), classPathResource.toString()));
                 }
                 for (InputStream inputStream : inputStreams) {
                     load(inputStream);

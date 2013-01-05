@@ -5,8 +5,8 @@
 
 package com.elega9t.gui.platform.mgr.event;
 
-public interface LogListener {
+public interface EventListener {
 
-    void log(LogEvent event);
+    void log(Event event);
 
 }

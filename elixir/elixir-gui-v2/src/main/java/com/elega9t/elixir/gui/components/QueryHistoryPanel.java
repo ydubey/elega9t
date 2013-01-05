@@ -5,20 +5,20 @@
 
 package com.elega9t.elixir.gui.components;
 
-import com.elega9t.gui.platform.mgr.event.LogEvent;
-import com.elega9t.gui.platform.mgr.event.LogListener;
-import com.elega9t.gui.platform.mgr.event.LogManager;
+import com.elega9t.gui.platform.mgr.event.Event;
+import com.elega9t.gui.platform.mgr.event.EventListener;
+import com.elega9t.gui.platform.mgr.event.EventManager;
 
 import javax.swing.table.DefaultTableModel;
 
-public class QueryHistoryPanel extends javax.swing.JPanel implements LogListener {
+public class QueryHistoryPanel extends javax.swing.JPanel implements EventListener {
 
     /**
      * Creates new form LogManagerPanel
      */
     public QueryHistoryPanel() {
         initComponents();
-        LogManager.getInstance().addLogListener("USER_QUERY", this);
+        EventManager.getInstance().addLogListener("USER_QUERY", this);
     }
 
     /**
@@ -41,7 +41,7 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements LogListener
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void log(LogEvent event) {
+    public void log(Event event) {
         DefaultTableModel model = (DefaultTableModel) queryHistoryTable.getModel();
         model.addRow(new Object[] { "blah", "blah", event.getLog() });
         System.out.println("QueryHistory: " + event.getLog());
