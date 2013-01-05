@@ -17,14 +17,14 @@ import java.text.DateFormat;
  *
  * @author yogesh
  */
-public class LogsManagerPanel extends javax.swing.JPanel implements EventListener {
+public class EventManagerPanel extends javax.swing.JPanel implements EventListener {
 
     private DateFormat dateFormat = DateFormat.getTimeInstance();
 
     /**
-     * Creates new form LogsManagerPanel
+     * Creates new form EventManagerPanel
      */
-    public LogsManagerPanel() {
+    public EventManagerPanel() {
         initComponents();
         EventManager.getInstance().addLogListener(EventManager.ALL_LOG_LISTENER, this);
     }
