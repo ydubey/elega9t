@@ -9,14 +9,20 @@ import java.util.Date;
 
 public class Event {
 
+    private Object source;
     private String eventType;
     private Date date;
     private String eventLog;
 
-    public Event(String eventType, Date date, String eventLog) {
+    public Event(Object source, String eventType, Date date, String eventLog) {
+        this.source = source;
         this.eventType = eventType;
         this.date = date;
         this.eventLog = eventLog;
+    }
+
+    public Object getSource() {
+        return source;
     }
 
     public String getEventType() {

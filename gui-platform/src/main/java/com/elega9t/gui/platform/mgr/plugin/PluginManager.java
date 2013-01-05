@@ -25,6 +25,8 @@ import java.util.List;
 
 public class PluginManager extends DefaultLoadableEntity {
 
+    public static final String PLUGIN_LOAD_EVENT_TYPE = "PLUGIN";
+
     private static PluginManager INSTANCE = new PluginManager();
 
     private List<PluginProcessor> pluginProcessors = new ArrayList<PluginProcessor>();
@@ -54,7 +56,7 @@ public class PluginManager extends DefaultLoadableEntity {
                 for (InputStream inputStream : inputStreams) {
                     Plugin plugin = load(inputStream);
                     if(inputStreams.size() > 0) {
-                        EventManager.getInstance().fireLogEvent(new Event("PLUGIN", new Date(), plugin.getInfo().getName() + " plugin loaded from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
+                        EventManager.getInstance().fireLogEvent(new Event(plugin, PLUGIN_LOAD_EVENT_TYPE, new Date(), plugin.getInfo().getName() + " plugin loaded from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
                     }
                 }
                 firePluginLoadEvent(classPathResources.size(), index + 1);

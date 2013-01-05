@@ -7,7 +7,8 @@ package com.elega9t.gui.platform.splsh;
 
 import com.elega9t.gui.platform.Context;
 import com.elega9t.gui.platform.Main;
-import com.elega9t.gui.platform.mgr.plugin.PluginLoadEventListener;
+import com.elega9t.gui.platform.mgr.event.*;
+import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.plugin.PluginManager;
 
 import javax.swing.*;
@@ -15,11 +16,7 @@ import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- *
- * @author yogesh
- */
-public class SplashScreen extends javax.swing.JFrame implements PluginLoadEventListener {
+public class SplashScreen extends javax.swing.JFrame implements EventListener {
 
     private int progressWidth = 5;
 
@@ -40,10 +37,9 @@ public class SplashScreen extends javax.swing.JFrame implements PluginLoadEventL
         new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
+                EventManager.getInstance().addLogListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, SplashScreen.this);
                 final PluginManager pluginManager = PluginManager.getInstance();
-                pluginManager.addPluginLoadEventListener(SplashScreen.this);
                 pluginManager.addPluginProcessor(Context.getInstance());
-                pluginManager.addPluginProcessor(Context.getInstance().getMain());
                 pluginManager.load();
                 SplashScreen.this.dispose();
                 java.awt.EventQueue.invokeLater(new Runnable() {
@@ -96,8 +92,13 @@ public class SplashScreen extends javax.swing.JFrame implements PluginLoadEventL
     }
 
     @Override
-    public void pluginLoading(int totalPluginCount, int processedPluginCount) {
-        progress = BigDecimal.valueOf(processedPluginCount).divide(BigDecimal.valueOf(totalPluginCount), RoundingMode.HALF_EVEN).doubleValue();
+    public void pastEvent(Event event) {
+        eventOccured(event);
+    }
+
+    @Override
+    public void eventOccured(Event event) {
+        progress = BigDecimal.valueOf(10).divide(BigDecimal.valueOf(2), RoundingMode.HALF_EVEN).doubleValue();
         repaint();
     }
 

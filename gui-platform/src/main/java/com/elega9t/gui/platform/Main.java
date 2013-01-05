@@ -8,7 +8,9 @@ package com.elega9t.gui.platform;
 import com.elega9t.docking.DockLocation;
 import com.elega9t.docking.DockPanel;
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
-import com.elega9t.gui.platform.mgr.plugin.PluginProcessor;
+import com.elega9t.gui.platform.mgr.event.*;
+import com.elega9t.gui.platform.mgr.event.Event;
+import com.elega9t.gui.platform.mgr.plugin.PluginManager;
 import com.elega9t.platform.binding.plugin.Action;
 import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.DocksDock;
@@ -16,7 +18,7 @@ import com.elega9t.platform.binding.plugin.Plugin;
 
 import java.awt.*;
 
-public class Main extends javax.swing.JFrame implements PluginProcessor {
+public class Main extends javax.swing.JFrame implements EventListener {
 
     private javax.swing.Action exitAction = new ExitAction();
 
@@ -27,6 +29,7 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
      */
     public Main() {
         initComponents();
+        EventManager.getInstance().addLogListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, this);
     }
 
     /**
@@ -68,7 +71,13 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void process(Plugin plugin) {
+    public void pastEvent(Event event) {
+        eventOccured(event);
+    }
+
+    @Override
+    public void eventOccured(Event event) {
+        Plugin plugin = (Plugin) event.getSource();
         if(plugin.getActions() != null) {
             for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
                 javax.swing.JMenu menuGroup = new javax.swing.JMenu(actionGroup.getName());
@@ -112,5 +121,5 @@ public class Main extends javax.swing.JFrame implements PluginProcessor {
             }
         }
     }
-    
+
 }
