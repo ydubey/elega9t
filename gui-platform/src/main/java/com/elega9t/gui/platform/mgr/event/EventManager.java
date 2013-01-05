@@ -5,10 +5,10 @@
 
 package com.elega9t.gui.platform.mgr.event;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class EventManager {
 
@@ -16,8 +16,8 @@ public class EventManager {
 
     private static final EventManager INSTANCE = new EventManager();
 
-    private Map<String, List<EventListener>> logListeners = new HashMap<String, List<EventListener>>();
-    private List<Event> eventLog = new ArrayList<Event>();
+    private Map<String, Queue<EventListener>> logListeners = new ConcurrentHashMap<String, Queue<EventListener>>();
+    private Queue<Event> eventLog = new ConcurrentLinkedQueue<Event>();
 
     private EventManager() {
     }
@@ -26,13 +26,13 @@ public class EventManager {
         return INSTANCE;
     }
 
-    private List<EventListener> getLogListeners(String logType) {
-        List<EventListener> listeners = logListeners.get(logType);
+    private Queue<EventListener> getLogListeners(String logType) {
+        Queue<EventListener> listeners = logListeners.get(logType);
         if(listeners == null) {
             synchronized (EventManager.class) {
                 listeners = logListeners.get(logType);
                 if(listeners == null) {
-                    listeners = new ArrayList<EventListener>();
+                    listeners = new ConcurrentLinkedQueue<EventListener>();
                     logListeners.put(logType, listeners);
                 }
             }
@@ -41,7 +41,7 @@ public class EventManager {
     }
 
     public void addLogListener(String eventType, EventListener listener) {
-        List<EventListener> listeners = getLogListeners(eventType);
+        Queue<EventListener> listeners = getLogListeners(eventType);
         listeners.add(listener);
         for (Event event : eventLog) {
             if(ALL_LOG_LISTENER.equals(eventType) || event.getEventType().equals(eventType)) {

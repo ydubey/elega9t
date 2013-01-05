@@ -38,9 +38,7 @@ public class SplashScreen extends javax.swing.JFrame implements EventListener {
             @Override
             protected Void doInBackground() throws Exception {
                 EventManager.getInstance().addLogListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, SplashScreen.this);
-                final PluginManager pluginManager = PluginManager.getInstance();
-                pluginManager.addPluginProcessor(Context.getInstance());
-                pluginManager.load();
+                PluginManager.getInstance().load();
                 SplashScreen.this.dispose();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     @Override
