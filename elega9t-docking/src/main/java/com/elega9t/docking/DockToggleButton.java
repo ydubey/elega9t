@@ -38,4 +38,18 @@ public class DockToggleButton extends DockButton {
         fireActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "selection"));
     }
 
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        if(!selected) {
+            setBorder(LINE_BORDER);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        if(!selected) {
+            setBorder(EMPTY_BORDER);
+        }
+    }
+
 }

@@ -5,14 +5,14 @@
 
 package com.elega9t.gui.platform.components;
 
-import com.elega9t.docking.DockToggleButton;
+import com.elega9t.docking.DockButton;
+import com.elega9t.docking.DockLocation;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.event.EventListener;
 import com.elega9t.gui.platform.mgr.event.EventManager;
-
+import java.text.DateFormat;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
-import java.text.DateFormat;
 
 /**
  *
@@ -42,14 +42,21 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
         logsManagerScrollPane = new javax.swing.JScrollPane();
         logsManagerTextPane = new javax.swing.JTextPane();
         optionsPanel = new javax.swing.JPanel();
+        scrollToBottomButton = new DockButton(DockLocation.BOTTOM_FIRST, "", new javax.swing.ImageIcon(EventManagerPanel.class.getResource("/com/elega9t/platform/icons/scroll_to_bottom.png")));
 
         setLayout(new java.awt.BorderLayout());
 
+        logsManagerTextPane.setEditable(false);
         logsManagerScrollPane.setViewportView(logsManagerTextPane);
 
         add(logsManagerScrollPane, java.awt.BorderLayout.CENTER);
 
+        optionsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
         optionsPanel.setLayout(new javax.swing.BoxLayout(optionsPanel, javax.swing.BoxLayout.PAGE_AXIS));
+
+        AutoScrollToBottomAction.install(logsManagerScrollPane);
+        optionsPanel.add(scrollToBottomButton);
+
         add(optionsPanel, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -76,5 +83,6 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
     private javax.swing.JScrollPane logsManagerScrollPane;
     private javax.swing.JTextPane logsManagerTextPane;
     private javax.swing.JPanel optionsPanel;
+    private javax.swing.JPanel scrollToBottomButton;
     // End of variables declaration//GEN-END:variables
 }
