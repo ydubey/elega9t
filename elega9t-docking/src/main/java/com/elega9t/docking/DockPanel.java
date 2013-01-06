@@ -7,10 +7,13 @@ package com.elega9t.docking;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DockPanel extends javax.swing.JPanel {
 
     private final ComponentResizer componentResizer = new ComponentResizer();
+    private Map<Component, DockButton> buttons = new ConcurrentHashMap<Component, DockButton>();
 
     /**
      * Creates new form DockPanel
@@ -74,7 +77,7 @@ public class DockPanel extends javax.swing.JPanel {
     }
 
     public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean enabled, boolean selected) {
-        final DockButton dockButton = new DockButton(location, component, name, icon, disabledIcon);
+        final DockButton dockButton = new DockButton(location, name, icon, disabledIcon);
         dockButton.setSelected(selected);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(selected);
@@ -103,14 +106,11 @@ public class DockPanel extends javax.swing.JPanel {
                 centerBodyPanel.add(component, java.awt.BorderLayout.CENTER);
                 break;
         }
+        buttons.put(component, dockButton);
     }
 
     public void setEnabled(Component component, boolean enabled) {
-        for (Component dockButtonHolderPanelComponent : leftDockButtonHolderPanel.getComponents()) {
-            if(dockButtonHolderPanelComponent instanceof DockButton && ((DockButton) dockButtonHolderPanelComponent).getComponent() == component) {
-                dockButtonHolderPanelComponent.setEnabled(enabled);
-            }
-        }
+        buttons.get(component).setEnabled(enabled);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

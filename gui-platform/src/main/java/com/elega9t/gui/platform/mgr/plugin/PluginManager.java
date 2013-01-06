@@ -21,12 +21,17 @@ import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class PluginManager extends DefaultLoadableEntity {
 
-    public static final String PLUGIN_LOAD_EVENT_TYPE = "PLUGIN";
+    public static final String PLUGIN_LOAD_EVENT_TYPE = "PLUGIN_LOADED";
+    public static final String PLUGIN_IGNORED_EVENT_TYPE = "PLUGIN_IGNORED";
 
     private static PluginManager INSTANCE = new PluginManager();
+
+    private Queue<String> loadedPlugins = new ConcurrentLinkedQueue<String>();
 
     protected PluginManager() {
         super("Plugin Manager");
@@ -51,8 +56,12 @@ public class PluginManager extends DefaultLoadableEntity {
                 long time = System.currentTimeMillis();
                 for (InputStream inputStream : inputStreams) {
                     Plugin plugin = load(inputStream);
-                    if(inputStreams.size() > 0) {
+                    String pluginInfo = plugin.getInfo().getId();
+                    if(!loadedPlugins.contains(pluginInfo)) {
                         EventManager.getInstance().fireLogEvent(new Event(plugin, PLUGIN_LOAD_EVENT_TYPE, new Date(), plugin.getInfo().getName() + " plugin loaded from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
+                        loadedPlugins.add(pluginInfo);
+                    } else {
+                        EventManager.getInstance().fireLogEvent(new Event(plugin, PLUGIN_IGNORED_EVENT_TYPE, new Date(), plugin.getInfo().getName() + " plugin ignored from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
                     }
                 }
             } catch (Exception e) {

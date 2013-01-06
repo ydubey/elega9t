@@ -5,6 +5,7 @@
 
 package com.elega9t.gui.platform.components;
 
+import com.elega9t.docking.DockButton;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.event.EventListener;
 import com.elega9t.gui.platform.mgr.event.EventManager;
@@ -40,12 +41,16 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
 
         logsManagerScrollPane = new javax.swing.JScrollPane();
         logsManagerTextPane = new javax.swing.JTextPane();
+        optionsPanel = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
         logsManagerScrollPane.setViewportView(logsManagerTextPane);
 
         add(logsManagerScrollPane, java.awt.BorderLayout.CENTER);
+
+        optionsPanel.setLayout(new javax.swing.BoxLayout(optionsPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        add(optionsPanel, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
@@ -70,5 +75,6 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane logsManagerScrollPane;
     private javax.swing.JTextPane logsManagerTextPane;
+    private javax.swing.JPanel optionsPanel;
     // End of variables declaration//GEN-END:variables
 }
