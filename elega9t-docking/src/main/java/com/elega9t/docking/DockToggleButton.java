@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class DockButton extends javax.swing.JPanel implements MouseListener {
+public class DockToggleButton extends javax.swing.JPanel implements MouseListener {
 
     private static final Border EMPTY_BORDER = javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0);
     private static final Border  LINE_BORDER = javax.swing.BorderFactory.createLineBorder(Color.GRAY, 1);
@@ -30,19 +30,19 @@ public class DockButton extends javax.swing.JPanel implements MouseListener {
 
     private boolean mouseOver;
 
-    public DockButton(DockLocation location) {
+    public DockToggleButton(DockLocation location) {
         this(location, null);
     }
 
-    public DockButton(DockLocation location, String text) {
+    public DockToggleButton(DockLocation location, String text) {
         this(location, text, null);
     }
 
-    public DockButton(DockLocation location, String text, Icon icon) {
+    public DockToggleButton(DockLocation location, String text, Icon icon) {
         this(location, text, icon, null);
     }
 
-    public DockButton(DockLocation location, String text, Icon icon, Icon disabledIcon) {
+    public DockToggleButton(DockLocation location, String text, Icon icon, Icon disabledIcon) {
         this.location = location;
         initComponents();
         textLabel.setText(text);

@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DockPanel extends javax.swing.JPanel {
 
     private final ComponentResizer componentResizer = new ComponentResizer();
-    private Map<Component, DockButton> buttons = new ConcurrentHashMap<Component, DockButton>();
+    private Map<Component, DockToggleButton> buttons = new ConcurrentHashMap<Component, DockToggleButton>();
 
     /**
      * Creates new form DockPanel
@@ -77,7 +77,7 @@ public class DockPanel extends javax.swing.JPanel {
     }
 
     public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean enabled, boolean selected) {
-        final DockButton dockButton = new DockButton(location, name, icon, disabledIcon);
+        final DockToggleButton dockButton = new DockToggleButton(location, name, icon, disabledIcon);
         dockButton.setSelected(selected);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
         dockablePanel.setVisible(selected);

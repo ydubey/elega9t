@@ -10,10 +10,10 @@ import java.awt.event.ActionEvent;
 
 public class DockStateAction extends AbstractAction {
 
-    private final DockButton dockButton;
+    private final DockToggleButton dockButton;
     private final DockablePanel dockablePanel;
 
-    private DockStateAction(DockButton dockButton, DockablePanel dockablePanel) {
+    private DockStateAction(DockToggleButton dockButton, DockablePanel dockablePanel) {
         this.dockButton = dockButton;
         this.dockablePanel = dockablePanel;
         dockButton.addActionListener(this);
@@ -31,7 +31,7 @@ public class DockStateAction extends AbstractAction {
         }
     }
 
-    public static void install(DockButton dockButton, DockablePanel dockablePanel) {
+    public static void install(DockToggleButton dockButton, DockablePanel dockablePanel) {
         new DockStateAction(dockButton, dockablePanel);
     }
 
