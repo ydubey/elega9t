@@ -82,6 +82,7 @@ public class Main extends javax.swing.JFrame implements EventListener {
             for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
                 javax.swing.JMenu menuGroup = new javax.swing.JMenu(actionGroup.getName());
                 menuGroup.setToolTipText(actionGroup.getDescription());
+                //menuGroup.setMnemonic('F');
                 if(actionGroup.getAddToGroup().getGroupId().equals("MainMenu")) {
                     mainMenu.add(menuGroup);
                 }
@@ -90,7 +91,9 @@ public class Main extends javax.swing.JFrame implements EventListener {
                         javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
                         javax.swing.JMenuItem actionItem = new javax.swing.JMenuItem();
                         actionItem.setAction(actionInstance);
-                        actionItem.setText(action.getName());
+                        final String actionName = action.getName();
+                        actionItem.setText(actionName);
+                        //actionItem.setMnemonic(mnemonicChar);
                         actionItem.setToolTipText(action.getDescription());
                         menuGroup.add(actionItem);
                         if("ExitApplication".equals(action.getId())) {
