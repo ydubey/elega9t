@@ -17,9 +17,9 @@
     </plugin:info>
 
     <plugin:actions>
-        <plugin:groups id="MainMenu.FileMenu" name="File" description="File menu">
+        <plugin:groups id="MainMenu.FileMenu" name="_File" description="File menu">
             <plugin:add-to-group group-id="MainMenu"/>
-            <plugin:action id="ExitApplication" name="Exit" description="Exit" class="com.elega9t.gui.platform.actions.menu.file.ExitAction"/>
+            <plugin:action id="ExitApplication" name="E_xit" description="Exit" class="com.elega9t.gui.platform.actions.menu.file.ExitAction" keyboardShortcut="ctrl X pressed"/>
         </plugin:groups>
     </plugin:actions>
 

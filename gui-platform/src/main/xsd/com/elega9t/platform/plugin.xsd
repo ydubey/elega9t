@@ -31,19 +31,9 @@
 
     <xsd:complexType name="keymap-group">
         <xsd:sequence>
-            <xsd:element name="action" type="plugin:keymap-action" maxOccurs="unbounded"/>
+            <xsd:element name="action" type="plugin:action" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="name" type="plugin:keymap-group-name"/>
-    </xsd:complexType>
-
-    <xsd:complexType name="keymap-action">
-        <xsd:sequence>
-        </xsd:sequence>
-        <xsd:attribute name="name" type="plugin:non-empty-string"/>
-        <xsd:attribute name="id" type="plugin:non-empty-string"/>
-        <xsd:attribute name="keyboardShortcut" type="plugin:non-empty-string"/>
-        <xsd:attribute name="secondKeyboardShortcut" type="plugin:non-empty-string"/>
-        <xsd:attribute name="actionClass" type="plugin:non-empty-string"/>
     </xsd:complexType>
 
     <xsd:complexType name="driver-definitions">
@@ -119,9 +109,11 @@
         <xsd:sequence>
         </xsd:sequence>
         <xsd:attribute name="id" type="plugin:non-empty-string"/>
-        <xsd:attribute name="class" type="plugin:non-empty-string"/>
         <xsd:attribute name="name" type="plugin:non-empty-string"/>
         <xsd:attribute name="description" type="plugin:non-empty-string"/>
+        <xsd:attribute name="class" type="plugin:non-empty-string"/>
+        <xsd:attribute name="keyboardShortcut" type="plugin:non-empty-string" use="optional"/>
+        <xsd:attribute name="secondKeyboardShortcut" type="plugin:non-empty-string" use="optional"/>
     </xsd:complexType>
 
     <xsd:complexType name="docks">

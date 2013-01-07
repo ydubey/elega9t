@@ -11,6 +11,7 @@ import com.elega9t.gui.platform.actions.menu.file.ExitAction;
 import com.elega9t.gui.platform.mgr.event.*;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.plugin.PluginManager;
+import com.elega9t.gui.platform.model.NameWithMnemonic;
 import com.elega9t.platform.binding.plugin.Action;
 import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.DocksDock;
@@ -80,9 +81,10 @@ public class Main extends javax.swing.JFrame implements EventListener {
         Plugin plugin = (Plugin) event.getSource();
         if(plugin.getActions() != null) {
             for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
-                javax.swing.JMenu menuGroup = new javax.swing.JMenu(actionGroup.getName());
+                NameWithMnemonic nameWithMnemonic = new NameWithMnemonic(actionGroup.getName());
+                javax.swing.JMenu menuGroup = new javax.swing.JMenu(nameWithMnemonic.getName());
+                menuGroup.setMnemonic(nameWithMnemonic.getMnemonic());
                 menuGroup.setToolTipText(actionGroup.getDescription());
-                //menuGroup.setMnemonic('F');
                 if(actionGroup.getAddToGroup().getGroupId().equals("MainMenu")) {
                     mainMenu.add(menuGroup);
                 }
@@ -91,9 +93,9 @@ public class Main extends javax.swing.JFrame implements EventListener {
                         javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
                         javax.swing.JMenuItem actionItem = new javax.swing.JMenuItem();
                         actionItem.setAction(actionInstance);
-                        final String actionName = action.getName();
-                        actionItem.setText(actionName);
-                        //actionItem.setMnemonic(mnemonicChar);
+                        nameWithMnemonic = new NameWithMnemonic(action.getName());
+                        actionItem.setText(nameWithMnemonic.getName());
+                        actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
                         actionItem.setToolTipText(action.getDescription());
                         menuGroup.add(actionItem);
                         if("ExitApplication".equals(action.getId())) {
