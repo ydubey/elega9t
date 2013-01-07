@@ -11,6 +11,7 @@ import com.elega9t.commons.entity.impl.DefaultLoadableEntity;
 import com.elega9t.commons.entity.impl.EntityLoadException;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.event.EventManager;
+import com.elega9t.gui.platform.mgr.event.Level;
 import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.xml.bind.JAXBContext;
@@ -19,15 +20,18 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import static com.elega9t.gui.platform.mgr.event.Level.ERROR;
+import static com.elega9t.gui.platform.mgr.event.Level.INFO;
 
 public class PluginManager extends DefaultLoadableEntity {
 
     public static final String PLUGIN_LOAD_EVENT_TYPE = "PLUGIN_LOADED";
     public static final String PLUGIN_IGNORED_EVENT_TYPE = "PLUGIN_IGNORED";
+    private final EventManager eventManager = EventManager.getInstance();
 
     private static PluginManager INSTANCE = new PluginManager();
 
@@ -58,14 +62,14 @@ public class PluginManager extends DefaultLoadableEntity {
                     Plugin plugin = load(inputStream);
                     String pluginInfo = plugin.getInfo().getId();
                     if(!loadedPlugins.contains(pluginInfo)) {
-                        EventManager.getInstance().fireLogEvent(new Event(plugin, PLUGIN_LOAD_EVENT_TYPE, new Date(), plugin.getInfo().getName() + " plugin loaded from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
+                        eventManager.fireLogEvent(new Event(INFO, plugin, PLUGIN_LOAD_EVENT_TYPE, String.format("\'%s\' plugin loaded from '%s' in %dms.", plugin.getInfo().getName(), classPathResource.toString(), System.currentTimeMillis() - time)));
                         loadedPlugins.add(pluginInfo);
                     } else {
-                        EventManager.getInstance().fireLogEvent(new Event(plugin, PLUGIN_IGNORED_EVENT_TYPE, new Date(), plugin.getInfo().getName() + " plugin ignored from '" + classPathResource.toString() + "' in " + (System.currentTimeMillis() - time) + "ms."));
+                        EventManager.getInstance().fireLogEvent(new Event(INFO, plugin, PLUGIN_IGNORED_EVENT_TYPE, String.format("\'%s\' plugin ignored from '%s' in %dms.", plugin.getInfo().getName(), classPathResource.toString(), System.currentTimeMillis() - time)));
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                eventManager.fireLogEvent(new Event(ERROR, e, "ERROR", e.getMessage()));
             }
         }
     }

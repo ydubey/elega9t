@@ -9,16 +9,30 @@ import java.util.Date;
 
 public class Event {
 
+    private Date date;
+    private Level level;
     private Object source;
     private String eventType;
-    private Date date;
     private String eventLog;
 
-    public Event(Object source, String eventType, Date date, String eventLog) {
+    public Event(Level level, Object source, String eventType, String eventLog) {
+        this(new Date(), level, source, eventType, eventLog);
+    }
+
+    public Event(Date date, Level level, Object source, String eventType, String eventLog) {
+        this.level = level;
         this.source = source;
         this.eventType = eventType;
         this.date = date;
         this.eventLog = eventLog;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     public Object getSource() {
@@ -27,10 +41,6 @@ public class Event {
 
     public String getEventType() {
         return eventType;
-    }
-
-    public Date getDate() {
-        return date;
     }
 
     public String getEventLog() {
