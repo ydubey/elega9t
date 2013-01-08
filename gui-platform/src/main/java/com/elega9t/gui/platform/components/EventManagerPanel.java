@@ -7,6 +7,7 @@ package com.elega9t.gui.platform.components;
 
 import com.elega9t.docking.DockButton;
 import com.elega9t.docking.DockLocation;
+import com.elega9t.gui.platform.actions.gui.eventmgr.AutoScrollToBottomAction;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.event.EventListener;
 import com.elega9t.gui.platform.mgr.event.EventManager;

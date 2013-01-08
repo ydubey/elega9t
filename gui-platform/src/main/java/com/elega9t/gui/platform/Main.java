@@ -17,6 +17,7 @@ import com.elega9t.platform.binding.plugin.ActionGroup;
 import com.elega9t.platform.binding.plugin.DocksDock;
 import com.elega9t.platform.binding.plugin.Plugin;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Main extends javax.swing.JFrame implements EventListener {
@@ -97,6 +98,9 @@ public class Main extends javax.swing.JFrame implements EventListener {
                         actionItem.setText(nameWithMnemonic.getName());
                         actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
                         actionItem.setToolTipText(action.getDescription());
+                        if(action.getKeyboardShortcut() != null) {
+                            actionItem.setAccelerator(KeyStroke.getKeyStroke(action.getKeyboardShortcut()));
+                        }
                         menuGroup.add(actionItem);
                         if("ExitApplication".equals(action.getId())) {
                             exitAction = actionInstance;

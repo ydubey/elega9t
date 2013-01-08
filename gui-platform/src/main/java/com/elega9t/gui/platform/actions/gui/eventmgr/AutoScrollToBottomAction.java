@@ -3,7 +3,7 @@
  * ELEGA9T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.Copyright (c) 2011 - 2012. Elega9t Ltd. All rights reserved.
  */
 
-package com.elega9t.gui.platform.components;
+package com.elega9t.gui.platform.actions.gui.eventmgr;
 
 import javax.swing.*;
 import java.awt.event.AdjustmentEvent;
