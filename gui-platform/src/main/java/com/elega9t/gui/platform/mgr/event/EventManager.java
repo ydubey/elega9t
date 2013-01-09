@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class EventManager {
 
-    public static final String ALL_EVENTS = "**ALL_LOGS**";
+    public static final String ALL_EVENTS = "**ALL_EVENTS**";
 
     private static final EventManager INSTANCE = new EventManager();
 
