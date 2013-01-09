@@ -8,16 +8,11 @@ package com.elega9t.gui.platform;
 import com.elega9t.commons.swing.NodeIcon;
 import com.elega9t.gui.platform.event.exit.ApplicationClosingEventListener;
 import com.elega9t.gui.platform.event.exit.DefaultApplicationClosingEventListener;
-import com.elega9t.gui.platform.mgr.event.Event;
-import com.elega9t.gui.platform.mgr.event.EventListener;
-import com.elega9t.gui.platform.mgr.event.EventManager;
-import com.elega9t.gui.platform.mgr.plugin.PluginManager;
-import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.swing.*;
 import javax.swing.plaf.IconUIResource;
 
-public final class Context implements EventListener {
+public final class Context {
 
     private static Context INSTANCE;
 
@@ -28,7 +23,6 @@ public final class Context implements EventListener {
     private ApplicationClosingEventListener applicationClosingEventListener;
 
     private Context() {
-        EventManager.getInstance().addLogListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, this);
         applicationName = "Elega9t GUI Platform v1.0-SNAPSHOT";
         applicationIcon = new javax.swing.ImageIcon(getClass().getResource("/com/elega9t/platform/icons/icon.png"));
         applicationClosingEventListener = new DefaultApplicationClosingEventListener();
@@ -76,25 +70,6 @@ public final class Context implements EventListener {
 
     public void setApplicationClosingEventListeners(ApplicationClosingEventListener applicationClosingEventListener) {
         this.applicationClosingEventListener = applicationClosingEventListener;
-    }
-
-    @Override
-    public void pastEvent(Event event) {
-        eventOccurred(event);
-    }
-
-    @Override
-    public void eventOccurred(Event event) {
-        Plugin plugin = (Plugin) event.getSource();
-        if("Application".equalsIgnoreCase(plugin.getInfo().getCategory())) {
-            applicationName = plugin.getInfo().getName() + " v" + plugin.getInfo().getVersion();
-            String iconPath = plugin.getInfo().getIcon();
-            if(iconPath != null) {
-                applicationIcon = new ImageIcon(iconPath);
-            }
-            getMain().setTitle(applicationName);
-            getMain().setIconImage(applicationIcon.getImage());
-        }
     }
 
 }

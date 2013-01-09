@@ -80,6 +80,13 @@ public class Main extends javax.swing.JFrame implements EventListener {
     @Override
     public void eventOccurred(Event event) {
         Plugin plugin = (Plugin) event.getSource();
+        if("Application".equalsIgnoreCase(plugin.getInfo().getCategory())) {
+            setTitle(plugin.getInfo().getName() + " v" + plugin.getInfo().getVersion());
+            String iconPath = plugin.getInfo().getIcon();
+            if(iconPath != null) {
+                setIconImage(new ImageIcon(iconPath).getImage());
+            }
+        }
         if(plugin.getActions() != null) {
             for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
                 NameWithMnemonic nameWithMnemonic = new NameWithMnemonic(actionGroup.getName());
