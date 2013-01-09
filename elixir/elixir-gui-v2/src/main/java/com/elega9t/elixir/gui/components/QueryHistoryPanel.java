@@ -18,7 +18,7 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements EventListen
      */
     public QueryHistoryPanel() {
         initComponents();
-        EventManager.getInstance().addLogListener("USER_QUERY", this);
+        EventManager.getInstance().addListener("USER_QUERY", this);
     }
 
     /**

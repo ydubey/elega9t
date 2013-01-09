@@ -5,7 +5,8 @@
 
 package com.elega9t.gui.platform.actions.menu.file;
 
-import com.elega9t.gui.platform.Context;
+
+import com.elega9t.gui.platform.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,12 +15,12 @@ public class ExitAction extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        Context instance = Context.getInstance();
-        if (JOptionPane.showOptionDialog(instance.getMain(),
-                "Are you sure you want to exit " + instance.getApplicationName() + "?",
+        Main main = Main.getInstance();
+        if (JOptionPane.showOptionDialog(main,
+                "Are you sure you want to exit " + main.getTitle() + "?",
                 "Confirm Exit", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, null, null) == JOptionPane.YES_OPTION) {
-            instance.getMain().dispose();
+            main.dispose();
         }
     }
 

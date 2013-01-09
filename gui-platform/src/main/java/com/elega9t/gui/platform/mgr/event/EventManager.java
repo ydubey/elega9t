@@ -40,7 +40,7 @@ public class EventManager {
         return listeners;
     }
 
-    public void addLogListener(String eventType, EventListener listener) {
+    public void addListener(String eventType, EventListener listener) {
         Queue<EventListener> listeners = getLogListeners(eventType);
         listeners.add(listener);
         for (Event event : eventLog) {

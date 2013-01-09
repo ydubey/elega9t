@@ -8,8 +8,9 @@ package com.elega9t.gui.platform;
 import com.elega9t.docking.DockLocation;
 import com.elega9t.docking.DockPanel;
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
-import com.elega9t.gui.platform.mgr.event.*;
 import com.elega9t.gui.platform.mgr.event.Event;
+import com.elega9t.gui.platform.mgr.event.EventListener;
+import com.elega9t.gui.platform.mgr.event.EventManager;
 import com.elega9t.gui.platform.mgr.plugin.PluginManager;
 import com.elega9t.gui.platform.model.NameWithMnemonic;
 import com.elega9t.platform.binding.plugin.Action;
@@ -22,16 +23,27 @@ import java.awt.*;
 
 public class Main extends javax.swing.JFrame implements EventListener {
 
+    private static Main INSTANCE;
+
     private javax.swing.Action exitAction = new ExitAction();
 
-    private final Context CONTEXT = Context.getInstance();
-    
     /**
      * Creates new form Main
      */
-    public Main() {
+    private Main() {
         initComponents();
-        EventManager.getInstance().addLogListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, this);
+        EventManager.getInstance().addListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, this);
+    }
+
+    public static Main getInstance() {
+        if(INSTANCE == null) {
+            synchronized (Main.class) {
+                if(INSTANCE == null) {
+                    INSTANCE = new Main();
+                }
+            }
+        }
+        return INSTANCE;
     }
 
     /**
@@ -48,8 +60,8 @@ public class Main extends javax.swing.JFrame implements EventListener {
         mainMenu = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setTitle("Elega9t GUI Platform v1.0-SNAPSHOT");
         setExtendedState(MAXIMIZED_BOTH);
-        setIconImage(CONTEXT.getApplicationIcon().getImage());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

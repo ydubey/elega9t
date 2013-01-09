@@ -5,10 +5,10 @@
 
 package com.elega9t.gui.platform.splsh;
 
-import com.elega9t.gui.platform.Context;
 import com.elega9t.gui.platform.Main;
-import com.elega9t.gui.platform.mgr.event.*;
 import com.elega9t.gui.platform.mgr.event.Event;
+import com.elega9t.gui.platform.mgr.event.EventListener;
+import com.elega9t.gui.platform.mgr.event.EventManager;
 import com.elega9t.gui.platform.mgr.plugin.PluginManager;
 
 import javax.swing.*;
@@ -37,13 +37,13 @@ public class SplashScreen extends javax.swing.JFrame implements EventListener {
         new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                EventManager.getInstance().addLogListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, SplashScreen.this);
+                EventManager.getInstance().addListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, SplashScreen.this);
                 PluginManager.getInstance().load();
                 SplashScreen.this.dispose();
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        Main main = Context.getInstance().getMain();
+                        Main main = Main.getInstance();
                         try {
                             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                             SwingUtilities.updateComponentTreeUI(main);
