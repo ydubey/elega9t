@@ -42,11 +42,11 @@ public class QueryHistoryPanel extends javax.swing.JPanel implements EventListen
 
     @Override
     public void pastEvent(Event event) {
-        eventOccured(event);
+        eventOccurred(event);
     }
 
     @Override
-    public void eventOccured(Event event) {
+    public void eventOccurred(Event event) {
         DefaultTableModel model = (DefaultTableModel) queryHistoryTable.getModel();
         model.addRow(new Object[] { "blah", "blah", event.getEventLog() });
         System.out.println("QueryHistory: " + event.getEventLog());

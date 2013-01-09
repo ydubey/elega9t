@@ -74,11 +74,11 @@ public class Main extends javax.swing.JFrame implements EventListener {
 
     @Override
     public void pastEvent(Event event) {
-        eventOccured(event);
+        eventOccurred(event);
     }
 
     @Override
-    public void eventOccured(Event event) {
+    public void eventOccurred(Event event) {
         Plugin plugin = (Plugin) event.getSource();
         if(plugin.getActions() != null) {
             for (ActionGroup actionGroup : plugin.getActions().getGroups()) {

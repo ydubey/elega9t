@@ -63,11 +63,11 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
 
     @Override
     public void pastEvent(Event event) {
-        eventOccured(event);
+        eventOccurred(event);
     }
 
     @Override
-    public void eventOccured(Event event) {
+    public void eventOccurred(Event event) {
         Document document = logsManagerTextPane.getDocument();
         try {
             if(document.getLength() > 0) {

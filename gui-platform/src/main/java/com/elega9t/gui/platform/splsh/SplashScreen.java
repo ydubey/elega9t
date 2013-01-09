@@ -91,11 +91,11 @@ public class SplashScreen extends javax.swing.JFrame implements EventListener {
 
     @Override
     public void pastEvent(Event event) {
-        eventOccured(event);
+        eventOccurred(event);
     }
 
     @Override
-    public void eventOccured(Event event) {
+    public void eventOccurred(Event event) {
         progress = BigDecimal.valueOf(10).divide(BigDecimal.valueOf(2), RoundingMode.HALF_EVEN).doubleValue();
         repaint();
     }

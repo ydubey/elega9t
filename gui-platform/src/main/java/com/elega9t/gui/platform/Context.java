@@ -80,11 +80,11 @@ public final class Context implements EventListener {
 
     @Override
     public void pastEvent(Event event) {
-        eventOccured(event);
+        eventOccurred(event);
     }
 
     @Override
-    public void eventOccured(Event event) {
+    public void eventOccurred(Event event) {
         Plugin plugin = (Plugin) event.getSource();
         if("Application".equalsIgnoreCase(plugin.getInfo().getCategory())) {
             applicationName = plugin.getInfo().getName() + " v" + plugin.getInfo().getVersion();

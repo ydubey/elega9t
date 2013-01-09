@@ -8,6 +8,6 @@ package com.elega9t.gui.platform.mgr.event;
 public interface EventListener {
 
     void pastEvent(Event event);
-    void eventOccured(Event event);
+    void eventOccurred(Event event);
 
 }

@@ -52,10 +52,10 @@ public class EventManager {
 
     public void fireLogEvent(Event event) {
         for (EventListener eventListener : getLogListeners(event.getEventType())) {
-            eventListener.eventOccured(event);
+            eventListener.eventOccurred(event);
         }
         for (EventListener eventListener : getLogListeners(ALL_EVENTS)) {
-            eventListener.eventOccured(event);
+            eventListener.eventOccurred(event);
         }
         eventLog.add(event);
     }
