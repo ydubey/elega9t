@@ -55,7 +55,7 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="scrollToBottomButton">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DockButton(DockLocation.BOTTOM_FIRST, &quot;&quot;, new javax.swing.ImageIcon(EventManagerPanel.class.getResource(&quot;/com/elega9t/platform/icons/scroll_to_bottom.png&quot;)))"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DockButton(DockLocation.BOTTOM_FIRST, &quot;&quot;, new javax.swing.ImageIcon(EventLogPanel.class.getResource(&quot;/com/elega9t/platform/icons/scroll_to_bottom.png&quot;)))"/>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="AutoScrollToBottomAction.install(logsManagerScrollPane);"/>
           </AuxValues>
 

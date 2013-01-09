@@ -11,22 +11,23 @@ import com.elega9t.gui.platform.actions.gui.eventmgr.AutoScrollToBottomAction;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.event.EventListener;
 import com.elega9t.gui.platform.mgr.event.EventManager;
-import java.text.DateFormat;
+
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import java.text.DateFormat;
 
 /**
  *
  * @author yogesh
  */
-public class EventManagerPanel extends javax.swing.JPanel implements EventListener {
+public class EventLogPanel extends javax.swing.JPanel implements EventListener {
 
     private DateFormat dateFormat = DateFormat.getTimeInstance();
 
     /**
-     * Creates new form EventManagerPanel
+     * Creates new form EventLogPanel
      */
-    public EventManagerPanel() {
+    public EventLogPanel() {
         initComponents();
         EventManager.getInstance().addLogListener(EventManager.ALL_EVENTS, this);
     }
@@ -43,7 +44,7 @@ public class EventManagerPanel extends javax.swing.JPanel implements EventListen
         logsManagerScrollPane = new javax.swing.JScrollPane();
         logsManagerTextPane = new javax.swing.JTextPane();
         optionsPanel = new javax.swing.JPanel();
-        scrollToBottomButton = new DockButton(DockLocation.BOTTOM_FIRST, "", new javax.swing.ImageIcon(EventManagerPanel.class.getResource("/com/elega9t/platform/icons/scroll_to_bottom.png")));
+        scrollToBottomButton = new DockButton(DockLocation.BOTTOM_FIRST, "", new javax.swing.ImageIcon(EventLogPanel.class.getResource("/com/elega9t/platform/icons/scroll_to_bottom.png")));
 
         setLayout(new java.awt.BorderLayout());
 
