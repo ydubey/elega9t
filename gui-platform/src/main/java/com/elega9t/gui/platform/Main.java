@@ -20,6 +20,10 @@ import com.elega9t.platform.binding.plugin.Plugin;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static com.elega9t.gui.platform.Utilities.readableSize;
 
 public class Main extends javax.swing.JFrame implements EventListener {
 
@@ -27,12 +31,25 @@ public class Main extends javax.swing.JFrame implements EventListener {
 
     private javax.swing.Action exitAction = new ExitAction();
 
+    private Timer memoryStatusMonitor;
+
     /**
      * Creates new form Main
      */
     private Main() {
         initComponents();
-        EventManager.getInstance().addListener(PluginManager.PLUGIN_LOAD_EVENT_TYPE, this);
+        EventManager.getInstance().addListener(EventManager.ALL_EVENTS, this);
+        memoryStatusMonitor = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                long freeMemory = Runtime.getRuntime().freeMemory();
+                long maxMemory = Runtime.getRuntime().maxMemory();
+                long usedMemory = maxMemory - freeMemory;
+                memoryStatusProgressBar.setString(readableSize(usedMemory) + " of " + readableSize(maxMemory));
+                memoryStatusProgressBar.setValue((int) ((usedMemory * 100) / maxMemory));
+            }
+        });
+        memoryStatusMonitor.start();
     }
 
     public static Main getInstance() {
@@ -57,6 +74,10 @@ public class Main extends javax.swing.JFrame implements EventListener {
 
         toolBarBasePanel = new javax.swing.JPanel();
         dockPanel = new DockPanel();
+        statusPanel = new javax.swing.JPanel();
+        statusLabel = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        memoryStatusProgressBar = new javax.swing.JProgressBar();
         mainMenu = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -71,6 +92,24 @@ public class Main extends javax.swing.JFrame implements EventListener {
         toolBarBasePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
         getContentPane().add(toolBarBasePanel, java.awt.BorderLayout.PAGE_START);
         getContentPane().add(dockPanel, java.awt.BorderLayout.CENTER);
+
+        statusPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3)));
+        statusPanel.setLayout(new javax.swing.BoxLayout(statusPanel, javax.swing.BoxLayout.LINE_AXIS));
+
+        statusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statusPanel.add(statusLabel);
+        statusPanel.add(filler2);
+
+        memoryStatusProgressBar.setString("");
+        memoryStatusProgressBar.setStringPainted(true);
+        memoryStatusProgressBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                memoryStatusProgressBarMouseClicked(evt);
+            }
+        });
+        statusPanel.add(memoryStatusProgressBar);
+
+        getContentPane().add(statusPanel, java.awt.BorderLayout.PAGE_END);
         setJMenuBar(mainMenu);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -78,9 +117,23 @@ public class Main extends javax.swing.JFrame implements EventListener {
         exitAction.actionPerformed(null);
     }//GEN-LAST:event_formWindowClosing
 
+    private void memoryStatusProgressBarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_memoryStatusProgressBarMouseClicked
+        System.gc();
+    }//GEN-LAST:event_memoryStatusProgressBarMouseClicked
+
+    @Override
+    public void dispose() {
+        memoryStatusMonitor.stop();
+        super.dispose();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel dockPanel;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JMenuBar mainMenu;
+    private javax.swing.JProgressBar memoryStatusProgressBar;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JPanel statusPanel;
     private javax.swing.JPanel toolBarBasePanel;
     // End of variables declaration//GEN-END:variables
 
@@ -91,63 +144,66 @@ public class Main extends javax.swing.JFrame implements EventListener {
 
     @Override
     public void eventOccurred(Event event) {
-        Plugin plugin = (Plugin) event.getSource();
-        if("Application".equalsIgnoreCase(plugin.getInfo().getCategory())) {
-            setTitle(plugin.getInfo().getName() + " v" + plugin.getInfo().getVersion());
-            String iconPath = plugin.getInfo().getIcon();
-            if(iconPath != null) {
-                setIconImage(new ImageIcon(iconPath).getImage());
-            }
-        }
-        if(plugin.getActions() != null) {
-            for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
-                NameWithMnemonic nameWithMnemonic = new NameWithMnemonic(actionGroup.getName());
-                javax.swing.JMenu menuGroup = new javax.swing.JMenu(nameWithMnemonic.getName());
-                menuGroup.setMnemonic(nameWithMnemonic.getMnemonic());
-                menuGroup.setToolTipText(actionGroup.getDescription());
-                if(actionGroup.getAddToGroup().getGroupId().equals("MainMenu")) {
-                    mainMenu.add(menuGroup);
+        if(PluginManager.PLUGIN_LOAD_EVENT_TYPE.equals(event.getEventType())) {
+            Plugin plugin = (Plugin) event.getSource();
+            if("Application".equalsIgnoreCase(plugin.getInfo().getCategory())) {
+                setTitle(plugin.getInfo().getName() + " v" + plugin.getInfo().getVersion());
+                String iconPath = plugin.getInfo().getIcon();
+                if(iconPath != null) {
+                    setIconImage(new ImageIcon(iconPath).getImage());
                 }
-                for (Action action : actionGroup.getAction()) {
+            }
+            if(plugin.getActions() != null) {
+                for (ActionGroup actionGroup : plugin.getActions().getGroups()) {
+                    NameWithMnemonic nameWithMnemonic = new NameWithMnemonic(actionGroup.getName());
+                    javax.swing.JMenu menuGroup = new javax.swing.JMenu(nameWithMnemonic.getName());
+                    menuGroup.setMnemonic(nameWithMnemonic.getMnemonic());
+                    menuGroup.setToolTipText(actionGroup.getDescription());
+                    if(actionGroup.getAddToGroup().getGroupId().equals("MainMenu")) {
+                        mainMenu.add(menuGroup);
+                    }
+                    for (Action action : actionGroup.getAction()) {
+                        try {
+                            javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
+                            javax.swing.JMenuItem actionItem = new javax.swing.JMenuItem();
+                            actionItem.setAction(actionInstance);
+                            nameWithMnemonic = new NameWithMnemonic(action.getName());
+                            actionItem.setText(nameWithMnemonic.getName());
+                            actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
+                            actionItem.setToolTipText(action.getDescription());
+                            if(action.getKeyboardShortcut() != null) {
+                                actionItem.setAccelerator(KeyStroke.getKeyStroke(action.getKeyboardShortcut()));
+                            }
+                            menuGroup.add(actionItem);
+                            if("ExitApplication".equals(action.getId())) {
+                                exitAction = actionInstance;
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            if(plugin.getDocks() != null) {
+                for (DocksDock dock : plugin.getDocks().getDock()) {
                     try {
-                        javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
-                        javax.swing.JMenuItem actionItem = new javax.swing.JMenuItem();
-                        actionItem.setAction(actionInstance);
-                        nameWithMnemonic = new NameWithMnemonic(action.getName());
-                        actionItem.setText(nameWithMnemonic.getName());
-                        actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
-                        actionItem.setToolTipText(action.getDescription());
-                        if(action.getKeyboardShortcut() != null) {
-                            actionItem.setAccelerator(KeyStroke.getKeyStroke(action.getKeyboardShortcut()));
+                        java.awt.Component component = (Component) Class.forName(dock.getComponentClass()).newInstance();
+                        javax.swing.Icon icon = null;
+                        javax.swing.Icon disabledIcon = null;
+                        if(dock.getIcon() != null) {
+                            icon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
                         }
-                        menuGroup.add(actionItem);
-                        if("ExitApplication".equals(action.getId())) {
-                            exitAction = actionInstance;
+                        if(dock.getDisabledIcon() != null) {
+                            disabledIcon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
                         }
+                        ((DockPanel) dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isEnabled(), dock.isVisible());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
         }
-        if(plugin.getDocks() != null) {
-            for (DocksDock dock : plugin.getDocks().getDock()) {
-                try {
-                    java.awt.Component component = (Component) Class.forName(dock.getComponentClass()).newInstance();
-                    javax.swing.Icon icon = null;
-                    javax.swing.Icon disabledIcon = null;
-                    if(dock.getIcon() != null) {
-                        icon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
-                    }
-                    if(dock.getDisabledIcon() != null) {
-                        disabledIcon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
-                    }
-                    ((DockPanel) dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isEnabled(), dock.isVisible());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        statusLabel.setText(event.getEventLog());
     }
 
 }
