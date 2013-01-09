@@ -22,10 +22,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import static com.elega9t.gui.platform.Utilities.readableSize;
 
 public class Main extends javax.swing.JFrame implements EventListener {
+
+    private static final DecimalFormat MEMORY_FORMAT = new DecimalFormat("#,##0");
 
     private static Main INSTANCE;
 
@@ -45,7 +48,7 @@ public class Main extends javax.swing.JFrame implements EventListener {
                 long freeMemory = Runtime.getRuntime().freeMemory();
                 long maxMemory = Runtime.getRuntime().maxMemory();
                 long usedMemory = maxMemory - freeMemory;
-                memoryStatusProgressBar.setString(readableSize(usedMemory) + " of " + readableSize(maxMemory));
+                memoryStatusProgressBar.setString(readableSize(usedMemory, MEMORY_FORMAT) + " of " + readableSize(maxMemory, MEMORY_FORMAT));
                 memoryStatusProgressBar.setValue((int) ((usedMemory * 100) / maxMemory));
             }
         });
@@ -100,6 +103,7 @@ public class Main extends javax.swing.JFrame implements EventListener {
         statusPanel.add(statusLabel);
         statusPanel.add(filler2);
 
+        memoryStatusProgressBar.setMaximumSize(new java.awt.Dimension(50, 20));
         memoryStatusProgressBar.setString("");
         memoryStatusProgressBar.setStringPainted(true);
         memoryStatusProgressBar.addMouseListener(new java.awt.event.MouseAdapter() {

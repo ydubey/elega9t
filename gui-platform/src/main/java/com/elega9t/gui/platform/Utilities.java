@@ -11,11 +11,15 @@ public class Utilities {
 
     private static final DecimalFormat FILE_SIZE_FORMAT = new DecimalFormat("#,##0.#");
 
-    public static String readableSize(long size) {
+    public static String readableSize(long size, DecimalFormat format) {
         if (size <= 0) return "0";
         final String[] units = new String[]{"B", "KB", "MB", "GB", "TB"};
         int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
-        return FILE_SIZE_FORMAT.format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+        return format.format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+    }
+
+    public static String readableSize(long size) {
+        return readableSize(size, FILE_SIZE_FORMAT);
     }
 
 }
