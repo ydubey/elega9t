@@ -8,6 +8,7 @@ package com.elega9t.gui.platform;
 import com.elega9t.docking.DockLocation;
 import com.elega9t.docking.DockPanel;
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
+import com.elega9t.gui.platform.components.EventProgressPanel;
 import com.elega9t.gui.platform.mgr.event.Event;
 import com.elega9t.gui.platform.mgr.event.EventListener;
 import com.elega9t.gui.platform.mgr.event.EventManager;
@@ -80,6 +81,10 @@ public class Main extends javax.swing.JFrame implements EventListener {
         statusPanel = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        statusToolBar = new javax.swing.JToolBar();
+        separator2 = new javax.swing.JToolBar.Separator();
+        eventProgressPanel = new EventProgressPanel();
+        separator1 = new javax.swing.JToolBar.Separator();
         memoryStatusProgressBar = new javax.swing.JProgressBar();
         mainMenu = new javax.swing.JMenuBar();
 
@@ -96,12 +101,20 @@ public class Main extends javax.swing.JFrame implements EventListener {
         getContentPane().add(toolBarBasePanel, java.awt.BorderLayout.PAGE_START);
         getContentPane().add(dockPanel, java.awt.BorderLayout.CENTER);
 
-        statusPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3)));
+        statusPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(0, 3, 0, 3)));
         statusPanel.setLayout(new javax.swing.BoxLayout(statusPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         statusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         statusPanel.add(statusLabel);
         statusPanel.add(filler2);
+
+        statusToolBar.setFloatable(false);
+        statusToolBar.setRollover(true);
+        statusToolBar.add(separator2);
+
+        eventProgressPanel.setEnabled(false);
+        statusToolBar.add(eventProgressPanel);
+        statusToolBar.add(separator1);
 
         memoryStatusProgressBar.setMaximumSize(new java.awt.Dimension(50, 20));
         memoryStatusProgressBar.setString("");
@@ -111,7 +124,9 @@ public class Main extends javax.swing.JFrame implements EventListener {
                 memoryStatusProgressBarMouseClicked(evt);
             }
         });
-        statusPanel.add(memoryStatusProgressBar);
+        statusToolBar.add(memoryStatusProgressBar);
+
+        statusPanel.add(statusToolBar);
 
         getContentPane().add(statusPanel, java.awt.BorderLayout.PAGE_END);
         setJMenuBar(mainMenu);
@@ -133,11 +148,15 @@ public class Main extends javax.swing.JFrame implements EventListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel dockPanel;
+    private javax.swing.JPanel eventProgressPanel;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JMenuBar mainMenu;
     private javax.swing.JProgressBar memoryStatusProgressBar;
+    private javax.swing.JToolBar.Separator separator1;
+    private javax.swing.JToolBar.Separator separator2;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JToolBar statusToolBar;
     private javax.swing.JPanel toolBarBasePanel;
     // End of variables declaration//GEN-END:variables
 
