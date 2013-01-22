@@ -20,7 +20,9 @@
     <plugin:docks>
         <plugin:dock location="LEFT_FIRST" id="Connections" name="Connections" componentClass="com.elega9t.elixir.gui.components.ConnectionsPanel" visible="true">
             <plugin:icon>/com/elega9t/elixir/gui/icons/database_connections.png</plugin:icon>
-            <plugin:action id="ExitApplication" name="E_xit" description="Exit" class="com.elega9t.gui.platform.actions.menu.file.ExitAction" keyboardShortcut="ctrl pressed X"/>
+            <plugin:action id="ExpandAll" name="Expand All" description="Expand All" class="com.elega9t.gui.platform.actions.menu.file.ExitAction" keyboardShortcut="ctrl pressed X">
+                <plugin:icon>/com/elega9t/elixir/gui/icons/expand_all.png</plugin:icon>
+            </plugin:action>
         </plugin:dock>
         <plugin:dock location="BOTTOM_FIRST" id="Results" name="Results" componentClass="com.elega9t.elixir.gui.components.ResultsPanel" visible="true">
             <plugin:icon>/com/elega9t/elixir/gui/icons/result.png</plugin:icon>

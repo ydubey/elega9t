@@ -24,7 +24,7 @@ public class NameWithMnemonic {
         return name;
     }
 
-    public char getMnemonic() {
+    public Character getMnemonic() {
         return mnemonic;
     }
 

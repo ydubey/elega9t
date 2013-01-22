@@ -242,8 +242,13 @@ public class Main extends javax.swing.JFrame implements EventListener {
         actionItem.setAction(actionInstance);
         NameWithMnemonic nameWithMnemonic = new NameWithMnemonic(action.getName());
         actionItem.setText(nameWithMnemonic.getName());
-        actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
+        if(nameWithMnemonic.getMnemonic() != null) {
+            actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
+        }
         actionItem.setToolTipText(action.getDescription());
+        if(action.getIcon() != null) {
+            actionItem.setIcon(new javax.swing.ImageIcon(getClass().getResource(action.getIcon())));
+        }
         return actionInstance;
     }
 

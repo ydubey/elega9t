@@ -107,6 +107,8 @@
 
     <xsd:complexType name="action">
         <xsd:sequence>
+            <xsd:element name="icon" type="plugin:non-empty-string" minOccurs="0"/>
+            <xsd:element name="disabled-icon" type="plugin:non-empty-string" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="id" type="plugin:non-empty-string"/>
         <xsd:attribute name="name" type="plugin:non-empty-string"/>
