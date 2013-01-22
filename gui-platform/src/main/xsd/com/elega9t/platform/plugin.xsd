@@ -126,7 +126,7 @@
         <xsd:sequence>
             <xsd:element name="icon" type="plugin:non-empty-string" minOccurs="0"/>
             <xsd:element name="disabled-icon" type="plugin:non-empty-string" minOccurs="0"/>
-            <xsd:element name="action" type="plugin:action" minOccurs="0"/>
+            <xsd:element name="action" type="plugin:action" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="id" type="plugin:non-empty-string"/>
         <xsd:attribute name="name" type="plugin:non-empty-string"/>

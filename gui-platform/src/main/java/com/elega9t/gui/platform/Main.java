@@ -214,9 +214,11 @@ public class Main extends javax.swing.JFrame implements EventListener {
                         }
                         DockablePanel dockablePanel = ((DockPanel) dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isEnabled(), dock.isVisible());
                         if(dock.getAction() != null) {
-                            JButton actionButton = new JButton();
-                            initActionItem(dock.getAction(), actionButton);
-                            dockablePanel.addToolbarButton(actionButton, true);
+                            for (Action action : dock.getAction()) {
+                                JButton actionButton = new JButton();
+                                initActionItem(action, actionButton);
+                                dockablePanel.addToolbarButton(actionButton, true);
+                            }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -96,6 +96,7 @@ public class DockablePanel extends javax.swing.JPanel {
         if(separator) {
             dockToolBar.add(new javax.swing.JToolBar.Separator(), 2);
         }
+        button.setFocusable(false);
         dockToolBar.add(button, 2);
     }
 
