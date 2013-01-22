@@ -7,6 +7,7 @@ package com.elega9t.gui.platform;
 
 import com.elega9t.docking.DockLocation;
 import com.elega9t.docking.DockPanel;
+import com.elega9t.docking.DockablePanel;
 import com.elega9t.gui.platform.actions.menu.file.ExitAction;
 import com.elega9t.gui.platform.components.EventProgressPanel;
 import com.elega9t.gui.platform.mgr.event.Event;
@@ -187,16 +188,8 @@ public class Main extends javax.swing.JFrame implements EventListener {
                     }
                     for (Action action : actionGroup.getAction()) {
                         try {
-                            javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
                             javax.swing.JMenuItem actionItem = new javax.swing.JMenuItem();
-                            actionItem.setAction(actionInstance);
-                            nameWithMnemonic = new NameWithMnemonic(action.getName());
-                            actionItem.setText(nameWithMnemonic.getName());
-                            actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
-                            actionItem.setToolTipText(action.getDescription());
-                            if(action.getKeyboardShortcut() != null) {
-                                actionItem.setAccelerator(KeyStroke.getKeyStroke(action.getKeyboardShortcut()));
-                            }
+                            javax.swing.Action actionInstance = initMenuItemAction(action, actionItem);
                             menuGroup.add(actionItem);
                             if("ExitApplication".equals(action.getId())) {
                                 exitAction = actionInstance;
@@ -219,7 +212,12 @@ public class Main extends javax.swing.JFrame implements EventListener {
                         if(dock.getDisabledIcon() != null) {
                             disabledIcon = new javax.swing.ImageIcon(getClass().getResource(dock.getIcon()));
                         }
-                        ((DockPanel) dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isEnabled(), dock.isVisible());
+                        DockablePanel dockablePanel = ((DockPanel) dockPanel).addDock(DockLocation.valueOf(dock.getLocation().name()), dock.getName(), icon, disabledIcon, component, dock.isEnabled(), dock.isVisible());
+                        if(dock.getAction() != null) {
+                            JButton actionButton = new JButton();
+                            initActionItem(dock.getAction(), actionButton);
+                            dockablePanel.addToolbarButton(actionButton, true);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -227,6 +225,24 @@ public class Main extends javax.swing.JFrame implements EventListener {
             }
         }
         statusLabel.setText(event.getEventLog());
+    }
+
+    private javax.swing.Action initMenuItemAction(Action action, JMenuItem actionItem) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+        javax.swing.Action actionInstance = initActionItem(action, actionItem);
+        if(action.getKeyboardShortcut() != null) {
+            actionItem.setAccelerator(KeyStroke.getKeyStroke(action.getKeyboardShortcut()));
+        }
+        return actionInstance;
+    }
+
+    private javax.swing.Action initActionItem(Action action, AbstractButton actionItem) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+        javax.swing.Action actionInstance = (javax.swing.Action) Class.forName(action.getClazz()).newInstance();
+        actionItem.setAction(actionInstance);
+        NameWithMnemonic nameWithMnemonic = new NameWithMnemonic(action.getName());
+        actionItem.setText(nameWithMnemonic.getName());
+        actionItem.setMnemonic(nameWithMnemonic.getMnemonic());
+        actionItem.setToolTipText(action.getDescription());
+        return actionInstance;
     }
 
 }

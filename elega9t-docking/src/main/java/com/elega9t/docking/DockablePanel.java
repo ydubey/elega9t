@@ -88,6 +88,17 @@ public class DockablePanel extends javax.swing.JPanel {
         return dockButton;
     }
 
+    public void addToolbarButton(JButton button) {
+        addToolbarButton(button, false);
+    }
+
+    public void addToolbarButton(JButton button, boolean separator) {
+        if(separator) {
+            dockToolBar.add(new javax.swing.JToolBar.Separator(), 2);
+        }
+        dockToolBar.add(button, 2);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dockButton;
     private javax.swing.JToolBar dockToolBar;

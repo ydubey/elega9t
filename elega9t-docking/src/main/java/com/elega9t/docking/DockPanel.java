@@ -76,7 +76,7 @@ public class DockPanel extends javax.swing.JPanel {
         addDock(location, name, icon, disabledIcon, component, true, false);
     }
 
-    public void addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean enabled, boolean selected) {
+    public DockablePanel addDock(final DockLocation location, String name, Icon icon, Icon disabledIcon, java.awt.Component component, boolean enabled, boolean selected) {
         final DockToggleButton dockButton = new DockToggleButton(location, name, icon, disabledIcon);
         dockButton.setSelected(selected);
         final DockablePanel dockablePanel = new DockablePanel(name, location);
@@ -107,6 +107,7 @@ public class DockPanel extends javax.swing.JPanel {
                 break;
         }
         buttons.put(component, dockButton);
+        return dockablePanel;
     }
 
     public void setEnabled(Component component, boolean enabled) {
