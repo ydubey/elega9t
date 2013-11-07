@@ -17,8 +17,6 @@ import java.net.URL;
 
 public class TargetCommand extends DefaultEntity implements Command {
 
-    // http://api.nimbus-03.cg.bskyb.com
-
     @Parameter(index=0)
     private String url;
 
